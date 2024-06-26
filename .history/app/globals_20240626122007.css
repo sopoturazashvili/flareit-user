@@ -16,6 +16,7 @@ h1 {
 
 h2 {
   color: #FFF;
+
   font-family: Inter;
   font-size: 48px;
   font-style: normal;
@@ -24,38 +25,18 @@ h2 {
 }
 
 h3 {
-  color: #FFF;
-  font-family: Inter;
   font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
 }
 
 h4 {
-  color: #FFF;
-  font-family: Inter;
   font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
 }
 
 
 h5 {
-  color: #FFF;
-  font-family: Inter;
   font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
 }
 
 h6 {
-  color: #FFF;
-  font-family: Inter;
   font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
 }

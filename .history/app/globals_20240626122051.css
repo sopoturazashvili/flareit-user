@@ -44,18 +44,14 @@ h4 {
 
 h5 {
   color: #FFF;
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
 }
 
 h6 {
-  color: #FFF;
-  font-family: Inter;
   font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
 }
