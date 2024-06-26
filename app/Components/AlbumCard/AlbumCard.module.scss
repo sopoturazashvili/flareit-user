@@ -1,0 +1,45 @@
+@import "../../styles/colors.scss";
+
+.container {
+    padding: 20px;
+    border-radius: 16px;
+    background: $PrimaryBlackTone3;
+    max-width: 184px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.container:hover {
+    background-color: $PrimaryGreyHover;
+}
+
+.coverContainer {
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.albumText {
+    color: rgba(255, 255, 255, 0.64);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.infoContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.artistName {
+    color: rgba(255, 255, 255, 0.64);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
