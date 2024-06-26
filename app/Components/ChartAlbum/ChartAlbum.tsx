@@ -1,10 +1,10 @@
 import Link from "next/link"
 import styles from "./ChartAlbum.module.scss"
-
+import Image from 'next/image'
 
 interface Props {
     id: number
-    img:string,
+    image:string,
     title:string
 }
 
@@ -14,7 +14,7 @@ const ChartAlbum = (props: Props) => {
         <Link href={`/page${props.id}`}>
             <div className={styles.AlbumChartContainer}>
                 <div className={styles.AlbumChart}>
-                    <img src={props.img} />
+                    <Image src={props.image} width={144} height={165} alt="Chart album"/>
                     <p className={styles.AlbumHits}>{props.title}</p>
                 </div>
             </div>
