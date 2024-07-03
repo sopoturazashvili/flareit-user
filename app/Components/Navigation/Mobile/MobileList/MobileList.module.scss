@@ -1,0 +1,17 @@
+@import "../../../../styles/colors.scss";
+
+.color {
+    color: $PrimaryWhite;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.navigation {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

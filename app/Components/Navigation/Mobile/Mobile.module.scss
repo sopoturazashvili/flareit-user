@@ -1,0 +1,29 @@
+@import "../../../styles/colors.scss";
+
+
+.mobileContainer  {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.color {
+    color: white;
+}
+
+.colorPink {
+    color: #5E4BE2;
+}
+
+.navigationContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background-color: #0F0F0F;
+    width: 100%;
+}
+
+
+

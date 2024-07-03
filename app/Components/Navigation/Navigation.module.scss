@@ -1,0 +1,17 @@
+@media screen and (min-width:1024px) {
+    .mobileCont {
+        display: none;
+    }
+}
+
+@media screen and (min-width:600px) and (max-width:1023px) {
+    .mobileCont {
+        display: none;
+    }
+} 
+
+@media screen and (max-width:599px) {
+    .desktopCont {
+        display: none;
+    }
+}
