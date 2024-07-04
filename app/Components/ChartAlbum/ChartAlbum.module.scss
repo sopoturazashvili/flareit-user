@@ -1,7 +1,7 @@
 @import "../../styles/colors.scss";
 
 
-.AlbumChartContainer {
+.albumChartContainer {
     max-width: 184px;
     width: 100%;
     max-height: 236px;
@@ -11,23 +11,23 @@
     border-radius: 16px;
 }
 
-.AlbumChart {
+.albumChart {
     display: flex;
     flex-direction: column;
     gap: 12px;
     border-radius: 8px;
 }
 
-.AlbumChartPhoto {
+.albumChartPhoto {
     border-radius: 12px;
 }
 
-.AlbumChartContainer:hover {
+.albumChartContainer:hover {
     background-color: $PrimaryGreyHover;
     transition: 1s;
 }
 
-.AlbumHits {
+.albumHits {
     color: #FFF;
     font-size: 16px;
     font-style: normal;

@@ -12,10 +12,10 @@ interface Props {
 const ChartAlbum = (props: Props) => {
     return (
         <Link href={`/page${props.id}`}>
-            <div className={styles.AlbumChartContainer}>
-                <div className={styles.AlbumChart}>
+            <div className={styles.albumChartContainer}>
+                <div className={styles.albumChart}>
                     <Image src={props.image} width={144} height={165} alt="Chart album"/>
-                    <p className={styles.AlbumHits}>{props.title}</p>
+                    <p className={styles.albumHits}>{props.title}</p>
                 </div>
             </div>
         </Link>
