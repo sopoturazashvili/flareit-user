@@ -1,13 +1,11 @@
-"use client"
-
 import { useState } from "react";
-import styles from "./Desktop.module.scss"
+import styles from "./DesktopItem.module.scss"
 import NavList from "../NavList/NavList";
 import {  usePathname } from "next/navigation";
 
 
 
-const Desktop = () => {
+const DesktopItem = () => {
     const data = [
         {title:"Home" ,href:"/", image:"/Image/Home.svg", key : '/' } ,
         {title:"Artist" ,href:"artist", image:"/Image/Artist.svg" , key :'/artist'},
@@ -44,4 +42,4 @@ const Desktop = () => {
     )
 }
 
-export default Desktop
+export default DesktopItem

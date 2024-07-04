@@ -1,9 +1,6 @@
-"use client"
-
-import { useEffect, useMemo, useState } from "react";
 import styles from "./MobileList.module.scss";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { ColorEnum } from "@/app/enums/colors.enum";
 
 interface Props {
     title: string,
@@ -14,7 +11,7 @@ interface Props {
 }
 
 const MobileList = (props: Props) => {
-    const color =  '#5E4BE2'
+    const color = ColorEnum.Primary_BlueTone3
 
     return (
         <Link className={styles.navigation} href={props.href}>

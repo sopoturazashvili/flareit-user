@@ -1,4 +1,4 @@
-import styles from "./Profile.module.scss"
+import styles from "./LogOut.module.scss"
 import Image from "next/image"
 import { useState } from "react"
 
@@ -9,7 +9,7 @@ interface Props {
     title:string
 }
 
-const Profile = (props:Props) => {
+const LogOut = (props:Props) => {
     const [profile,setProfile] = useState(false)  
     
     const onClick = () =>{
@@ -23,4 +23,4 @@ const Profile = (props:Props) => {
     )
 }
 
-export default Profile
+export default LogOut
