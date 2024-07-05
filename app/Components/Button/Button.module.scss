@@ -1,0 +1,27 @@
+.btnCommon {
+    color: #E2E2E3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    height: 48px;
+}
+
+.primary {
+    background-color: #5E4BE2;
+}
+
+.secondary {
+    background-color: rgba(105, 109, 140, 0.20);
+}
+
+.large {
+    padding: 21px 205px;
+    font-size: 24px;
+    height: 71px;
+}
