@@ -1,23 +1,23 @@
 import styles from './Button.module.scss'
 
 interface Props {
-    content: 'cancel' | 'done' | 'sign in';
-    onClick: () => void;
+    primary: boolean;
+    size?: 'large';
+    text: string;
+    width: string;
+    onClick?: () => void;
 }
 
 const Button = (props: Props) => {
-    let btn;
 
-    if(props.content == 'sign in') {
-        btn = styles.signIn
-    } else if(props.content == 'cancel') {
-        btn = styles.cancel
-    } else if(props.content == 'done') {
-        btn = styles.done
+    const buttonStyles = {
+        width: props.width,
+        ...(props.size == 'large' && {padding: '21px 205px', fontSize: '24px', height: '71px'})
     }
 
+
     return (
-        <button className={btn} onClick={props.onClick}>{props.content}</button>
+        <button style={buttonStyles} onClick={props.onClick} className={`${styles.btnCommon} ${props.primary ? styles.primary : styles.secondary}`}>{props.text}</button>
     )
 }
 
