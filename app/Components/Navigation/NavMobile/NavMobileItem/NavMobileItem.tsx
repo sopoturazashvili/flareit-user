@@ -1,4 +1,4 @@
-import styles from "./MobileList.module.scss";
+import styles from "./NavMobileItem.module.scss"
 import Link from "next/link";
 import { ColorEnum } from "@/app/enums/colors.enum";
 
@@ -10,7 +10,7 @@ interface Props {
     active:boolean
 }
 
-const MobileList = (props: Props) => {
+const NavMobileItem = (props: Props) => {
     const color = ColorEnum.Primary_BlueTone3
 
     return (
@@ -23,7 +23,7 @@ const MobileList = (props: Props) => {
     )
 }
 
-export default MobileList
+export default NavMobileItem
 
 
 

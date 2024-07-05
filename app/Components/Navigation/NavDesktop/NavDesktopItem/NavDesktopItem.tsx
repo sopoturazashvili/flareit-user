@@ -1,5 +1,5 @@
 import Link from "next/link"
-import styles from "./NavList.module.scss"
+import styles from "./NavDesktopItem.module.scss"
 import { ColorEnum } from "@/app/enums/colors.enum";
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
     active: boolean
 }
 
-const NavList = (props: Props) => {
+const NavDesktopItem = (props: Props) => {
     const color = ColorEnum.Primary_BlueTone3;
 
     return (
@@ -20,4 +20,4 @@ const NavList = (props: Props) => {
     )
 }
 
-export default NavList
+export default NavDesktopItem

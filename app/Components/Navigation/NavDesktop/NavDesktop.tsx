@@ -1,11 +1,11 @@
 import { useState } from "react";
-import styles from "./DesktopItem.module.scss"
-import NavList from "../NavList/NavList";
+import styles from "./NavDesktop.module.scss"
 import {  usePathname } from "next/navigation";
+import NavDesktopItem from "./NavDesktopItem/NavDesktopItem";
 
 
 
-const DesktopItem = () => {
+const NavDesktop = () => {
     const data = [
         {title:"Home" ,href:"/", image:"/Image/Home.svg", key : '/' } ,
         {title:"Artist" ,href:"artist", image:"/Image/Artist.svg" , key :'/artist'},
@@ -34,7 +34,7 @@ const DesktopItem = () => {
                         <img onClick={toggleMenu} src="/Image/Line.svg" alt="Menu" />
                     </div>
                     {data.map(item => (
-                        <NavList image={item.image} title={item.title} href={item.href} active = {item.key === pathname} />
+                        <NavDesktopItem image={item.image} title={item.title} href={item.href} active = {item.key === pathname} />
                     ))}
                 </div>
             </nav>
@@ -42,4 +42,4 @@ const DesktopItem = () => {
     )
 }
 
-export default DesktopItem
+export default NavDesktop

@@ -1,9 +1,9 @@
-import DesktopItem from "./DesktopItem/DesktopItem"
-import MobileItem from "./MobileItem/MobileItem"
-import styles from "./NavigationList.module.scss"
+import DesktopItem from "./NavDesktop/NavDesktop"
+import MobileItem from "./NavMobile/NavMobile"
+import styles from "./Navigation.module.scss"
 
 
-const NavigationList = () => {
+const Navigation = () => {
     return (
         <div>
             <div className={styles.desktopItem}>
@@ -16,4 +16,4 @@ const NavigationList = () => {
     )
 }
 
-export default NavigationList
+export default Navigation

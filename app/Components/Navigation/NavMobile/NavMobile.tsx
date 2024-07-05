@@ -1,9 +1,9 @@
 import LogOut from "../../LogOut/LogOut"
-import styles from "./MobileItem.module.scss"
-import MobileList from "./MobileList/MobileList"
+import styles from "./NavMobile.module.scss"
+import MobileList from "./NavMobileItem/NavMobileItem"
 import { usePathname } from "next/navigation"
 
-const MobileItem = () => {
+const NavMobile = () => {
     const dataItem = [
         { image: "/Image/Home.svg", title: "Home", pinkImage: "/Image/pinkHome.svg", href: "/" ,key:"/"},
         { image: '/Image/search.svg', title: "Search", pinkImage: "/Image/pinkSearch.svg", href: "search" ,key:"/search"},
@@ -23,4 +23,4 @@ const MobileItem = () => {
     )
 }
 
-export default MobileItem
+export default NavMobile
