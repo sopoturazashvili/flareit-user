@@ -1,0 +1,60 @@
+.cancel {
+    max-width: 154px;
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    text-transform: lowercase;
+    padding: 12px 14px;
+    color: #E2E2E3;
+    background: rgba(105, 109, 140, 0.20);
+}
+
+.cancel:hover {
+    background: rgba(105, 109, 140, 0.44);
+    cursor: pointer;
+}
+
+.done {
+    background: var(--primary, #5E4BE2);
+    text-transform: capitalize;
+    max-width: 154px;
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    padding: 12px 14px;
+    color: #E2E2E3;
+}
+
+.done:hover {
+    background: #5141BF;
+    cursor: pointer;
+}
+
+.signIn {
+    max-width: 488px;
+    padding: 21px 205px;
+    border-radius: 8px;
+    background: var(--primary, #5E4BE2);
+    color: var(--text-color, #FFF);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: none;
+    text-transform: capitalize;
+}
+
+.signIn:hover {
+    background: #5141BF;
+    cursor: pointer;
+}
