@@ -1,3 +1,5 @@
+@import '../../styles/colors.scss';
+
 .btnCommon {
     color: #E2E2E3;
     display: flex;
@@ -13,11 +15,19 @@
 }
 
 .primary {
-    background-color: #5E4BE2;
+    background-color: $PrimaryBlueTone3;
+
+    &:hover {
+        background-color: $PrimaryBlueTone2;
+    }
 }
 
 .secondary {
     background-color: rgba(105, 109, 140, 0.20);
+
+    &:hover {
+        background-color: rgba(105, 109, 140, 0.44);
+    }
 }
 
 .large {
