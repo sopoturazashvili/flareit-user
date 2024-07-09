@@ -1,4 +1,3 @@
-import Button from '../Button/Button';
 import styles from './FillAndTextButton.module.scss'
 
 interface Props {
