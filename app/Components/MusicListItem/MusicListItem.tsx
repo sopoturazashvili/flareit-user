@@ -8,11 +8,14 @@ interface Props {
     songDuration: string;
 }
 
-const MusicList = (props: Props) => {
+const MusicListItem = (props: Props) => {
     return (
         <div className={styles.listItem}>
-            <div className={styles.itemImage}>
-                <Image src={props.image} width={54} height={56} alt='Music Card Cover' />
+            <div className={styles.itemImageWrapper}>
+                <Image className={styles.itemImage} src={props.image} width={54} height={56} alt='Music Card Cover' />
+                <div className={styles.itemHoverPhoto}>
+                    <Image src="/images/PlayHover.svg" alt="Play Button" width={54} height={56}/>
+                </div>
             </div>
             <div className={styles.section}>
                 <div className={styles.sectionCenter}>
@@ -29,4 +32,4 @@ const MusicList = (props: Props) => {
     )
 }
 
-export default MusicList;
+export default MusicListItem;
