@@ -1,0 +1,121 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 18, 18, 0.89);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // backdrop-filter: blur(10px);
+    z-index: 999;
+}
+
+.modal {
+    border-radius: 12px;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    width: 364px;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.modalBig {
+    height: 350px;
+    gap: 12px;
+}
+
+.modalSmall {
+    height: 154px;
+    gap: 12px;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.sectionTitle {
+    line-height: 24px;
+}
+
+.closeButtonWrapper {
+    padding: 4px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid #232934;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalMiddle {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.addPhotoSection {
+    max-width: 149px;
+    width: 100%;
+    height: 120px;
+    padding: 16px;
+    border-radius: var(--borderRadius, 6px);
+    border: 1px dashed #232934;
+    background: #0D1116;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputHeading {
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.inputWrapper {
+    border-radius: 8px;
+    border: 1px solid #232934;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 12px 12px 16px;
+    width: 316px;
+    height: 44px;
+}
+
+.input {
+    border: none;
+    outline: none;
+    background: #000;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.buttonsContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.confirmationText {
+    line-height: 24px;
+}
