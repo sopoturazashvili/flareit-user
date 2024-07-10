@@ -1,0 +1,49 @@
+@import '../../styles/colors.scss';
+
+.cardWrapper {
+    border-radius: 8px;
+    background-color: $PrimaryBlackTone3;
+    max-width: 796px;
+    width: 100%;
+    max-height: 64px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+}
+
+.card {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.text {
+    text-transform: capitalize;
+}
+
+.rounded {
+    border-radius: 48px;
+}
+
+@media screen and (max-width: 599px) {
+    .cardWrapper {
+        max-width: 328px;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+    .cardWrapper {
+        max-width: 719px;
+    }
+}
+
