@@ -1,5 +1,5 @@
-import NavMobile from "../../Navigation/NavMobile/NavMobile"
-import HeaderContainer from "../HeaderContainer"
+import NavMobile from "../../Navigation/NavMobile/NavMobile";
+import HeaderContainer from "../HeaderContainer";
 import styles from "./HeaderAndNav.module.scss"
 
 
