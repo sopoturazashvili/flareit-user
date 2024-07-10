@@ -10,7 +10,7 @@ const mobileSearch = () => {
 
         <div className={styles.mobileSearch}>
             <div className={styles.searchContainer}>
-                <div >
+                <div>
                     <p className={styles.search}>Search</p>
                 </div>
                 <div className={styles.mobileSearchContainer}>

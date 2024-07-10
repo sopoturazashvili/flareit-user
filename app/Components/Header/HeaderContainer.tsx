@@ -3,9 +3,10 @@ import NavDesktop from "../Navigation/NavDesktop/NavDesktop"
 import Search from "./Search/Search"
 import { useState } from "react"
 import LogOutWeb from "../LogoutWeb/LogOutWeb"
+import Logo from "../Logo/Logo"
 
 interface Props {
-    emile: string,
+    email: string,
 }
 
 const HeaderContainer = (props: Props) => {
@@ -16,9 +17,7 @@ const HeaderContainer = (props: Props) => {
     return (
         <div className={styles.headerContainer}>
             <div className={styles.headerSearchContainer}>
-                <div>
-                    <img src="/Image/Logo.svg" />
-                </div>
+                <Logo/>
                 <div className={styles.searchContainer}>
                     <Search />
                 </div>
@@ -31,7 +30,7 @@ const HeaderContainer = (props: Props) => {
                     <div className={styles.modalCont}>
                         <div className={styles.logOutModal}>
                             <div className={styles.logOutEmil}>
-                                <span className={styles.color}>L.kuchadze@gmail.com</span>
+                                <span className={styles.color}>{props.email}</span>
                             </div>
                             <div className={styles.logOut}>
                                 <img src="/Image/LogOutIcon.svg" />
