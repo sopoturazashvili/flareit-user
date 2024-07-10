@@ -1,5 +1,8 @@
+@import "../../../../styles/colors.scss";
+
+
 .searchAndMapText {
-    color: #FFF;
+    color: $PrimaryWhite;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
@@ -14,3 +17,15 @@
     width: 100%;
     align-items: center;
 }
+
+
+.round {
+    border-radius: 24px;
+}
+
+
+.square{
+    border-radius: 4px;
+}
+
+

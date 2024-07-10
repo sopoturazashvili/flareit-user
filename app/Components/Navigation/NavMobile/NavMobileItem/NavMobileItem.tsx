@@ -7,7 +7,7 @@ interface Props {
     image: string,
     pinkImage?: string,
     href: string,
-    active:boolean
+    active?:boolean
 }
 
 const NavMobileItem = (props: Props) => {

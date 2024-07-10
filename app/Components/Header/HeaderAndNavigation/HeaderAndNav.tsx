@@ -7,7 +7,7 @@ const HeaderAndNav = () => {
     return (
         <div>
             <div className={styles.Header}>
-                <HeaderContainer/>
+                <HeaderContainer emile={""}/>
             </div>
             <div className={styles.NavMobile}>
                 <NavMobile />

@@ -10,7 +10,8 @@ const NavDesktop = () => {
         { title: "Home", href: "/", image: "/Image/Home.svg", key: '/' },
         { title: "Artist", href: "artist", image: "/Image/Artist.svg", key: '/artist' },
         { title: "Playlist", href: "playlist", image: "/Image/Albums.svg", key: '/playlist' },
-        { title: "Albums", href: "album", image: "/Image/Playlist.svg", key: '/album' }
+        { title: "Albums", href: "album", image: "/Image/Playlist.svg", key: '/album' },
+        {title: "Log Out" , image: "Image/LogOutIcon.svg",href: "/"}
     ]
 
 

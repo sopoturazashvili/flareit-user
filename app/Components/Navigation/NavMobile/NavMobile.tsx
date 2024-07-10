@@ -17,7 +17,7 @@ const NavMobile = () => {
                 {dataItem.map((item) => (
                     <MobileList title={item.title} image={item.image} pinkImage={item.pinkImage} href={item.href} active={item.key === pathname} />
                 ))}
-                <LogOut src={""} width={24} height={24} title={"Profile"} />
+                <LogOut src={"/Image/LogOut.svg"} width={24} height={24} title={"Profile"}  />
             </div>
         </div>
     )

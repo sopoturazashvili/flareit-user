@@ -21,7 +21,7 @@
     flex-direction: column;
     gap: 10px;
     height: 100vh;
-    padding:0px 24px;
+    padding: 0px 24px;
     position: fixed;
     transform: translatex(302px);
     transform: translateX(100%);
@@ -54,7 +54,6 @@
     max-width: 302px;
     width: fit-content;
     justify-content: flex-end;
-    /* cursor: pointer; */
 }
 
 .lineContainer {
@@ -64,11 +63,9 @@
     width: 100%;
 }
 
-
 @media screen and (min-width:1024px) {
     .lineContainer {
         display: none;
-
     }
 
     .navigationContainer {

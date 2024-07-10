@@ -4,7 +4,9 @@
   box-sizing: border-box;
 }
 
-
+body{
+  height: 100vh;
+}
 h1 {
   color: #FFF;
   font-size: 96px;
