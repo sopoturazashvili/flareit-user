@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 const NavMobile = () => {
     const dataItem = [
         { image: "/Image/Home.svg", title: "Home", pinkImage: "/Image/pinkHome.svg", href: "/" ,key:"/"},
-        { image: '/Image/search.svg', title: "Search", pinkImage: "/Image/pinkSearch.svg", href: "/xsearch" ,key:"/search"},
+        { image: '/Image/search.svg', title: "Search", pinkImage: "/Image/pinkSearch.svg", href: "/search" ,key:"/search"},
         { image: "/Image/Library.svg", title: "Library", pinkImage: "/Image/pinkLibrary.svg", href: "library" ,key:"/library"},
     ]
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Search.module.scss";
-import SearchMapCont from "./SearchList/SearchList";
+import SearchList from "./SearchList/SearchList";
 
 const Search = () => {
     const data = [
@@ -23,7 +23,7 @@ const Search = () => {
         return (
             <div>
                 {filteredData.map((item) => (
-                    <SearchMapCont key={item.id} item={item}/>
+                    <SearchList key={item.id} item={item}/>
                 ))}
             </div>
         );
