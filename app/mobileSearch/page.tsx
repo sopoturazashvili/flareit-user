@@ -1,7 +1,6 @@
 "use client"
 
 import Search from "../Components/Header/Search/Search"
-import NavMobile from "../Components/Navigation/NavMobile/NavMobile"
 import styles from "./page.module.scss"
 
 
@@ -16,9 +15,6 @@ const mobileSearch = () => {
                 <div className={styles.mobileSearchContainer}>
                     <Search />
                 </div>
-            </div>
-            <div className={styles.navMobile}>
-                <NavMobile />
             </div>
         </div>
     )
