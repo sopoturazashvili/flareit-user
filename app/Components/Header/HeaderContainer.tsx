@@ -6,11 +6,8 @@ import LogOutWeb from "../LogoutWeb/LogOutWeb"
 import Logo from "../Logo/Logo"
 import LogOutModal from "./LogOutModal/LogOutModal"
 
-interface Props {
-    logOut: boolean
-}
 
-const HeaderContainer = (props: Props) => {
+const HeaderContainer = () => {
     const [logOut, setLogOut] = useState(false)
 
     return (
@@ -25,6 +22,9 @@ const HeaderContainer = (props: Props) => {
                 <LogOutWeb width={32} height={32} title={""} src={"/Image/LogOut.svg"} />
             </div>
             <LogOutModal email={""} logOut={logOut} setLogOut={setLogOut} />
+            <div className={styles.NavDesktop}>
+                <NavDesktop />
+            </div>
         </div>
     )
 }
