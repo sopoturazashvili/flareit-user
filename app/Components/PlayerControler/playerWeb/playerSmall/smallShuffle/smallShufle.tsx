@@ -1,9 +1,11 @@
 import styles from "./SmallShuffle.module.scss"
 
-const smallShuffle = () => {
+const SmallShuffle = () => {
     return (
-        <div></div>
+        <>
+            <img src="/PlayerControler/Messy.svg" />
+        </>
     )
 }
 
-export default smallShuffle
+export default SmallShuffle

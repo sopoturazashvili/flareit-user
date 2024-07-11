@@ -1,12 +1,13 @@
+import PlayerSmall from "./PlayerSmall/PlayerSmall"
 import styles from "./PlayerWeb.module.scss"
 
 
-const playerWeb = () => {
+const PlayerWeb = () => {
     return (
      <div>
-
+        <PlayerSmall/>
      </div>   
     )
 }
 
-export default playerWeb
+export default PlayerWeb

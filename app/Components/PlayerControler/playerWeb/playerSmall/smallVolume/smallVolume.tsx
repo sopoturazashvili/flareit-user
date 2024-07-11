@@ -1,10 +1,12 @@
 import styles from "./SmallVolume.module.scss"
 
 
-const smallVolume = () => {
+const SmallVolume = () => {
     return (
-        <div></div>
+        <div>
+             <img src="/PlayerControler/Volume.svg" alt="Volume"  />
+        </div>
     )
 }
 
-export default smallVolume
+export default SmallVolume

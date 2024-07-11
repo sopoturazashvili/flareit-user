@@ -1,6 +1,6 @@
 import styles from "./PlayerFullScreen.module.scss"
 
-const playerFullScreen = () => {
+const PlayerFullScreen = () => {
     return(
         <div>
 
@@ -8,4 +8,4 @@ const playerFullScreen = () => {
     )
 }
 
-export default playerFullScreen
+export default PlayerFullScreen
