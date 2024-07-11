@@ -1,9 +1,9 @@
-import styles from "./smallVolume.module.scss"
+import styles from "./SmallVolume.module.scss"
 
 
 const smallVolume = () => {
     return (
-        
+        <div></div>
     )
 }
 

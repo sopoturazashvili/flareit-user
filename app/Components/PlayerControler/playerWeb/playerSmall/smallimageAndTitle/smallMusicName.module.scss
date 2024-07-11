@@ -1,0 +1,22 @@
+@import "../../../../../styles/colors.scss";
+
+
+.imageAndTitle {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+.title {
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.image {
+    max-width: 230px;
+    width: 100%;
+}

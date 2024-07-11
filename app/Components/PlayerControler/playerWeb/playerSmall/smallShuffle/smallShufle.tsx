@@ -1,8 +1,8 @@
-import styles from "./smallShuffle.module.scss"
+import styles from "./SmallShuffle.module.scss"
 
 const smallShuffle = () => {
     return (
-        
+        <div></div>
     )
 }
 

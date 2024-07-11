@@ -1,9 +1,11 @@
-import styles from "./playerWeb.module.scss"
+import styles from "./PlayerWeb.module.scss"
 
 
 const playerWeb = () => {
     return (
-        
+     <div>
+
+     </div>   
     )
 }
 

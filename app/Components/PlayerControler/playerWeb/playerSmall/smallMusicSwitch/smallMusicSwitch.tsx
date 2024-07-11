@@ -1,9 +1,11 @@
-import styles from "./smallMusicSwitch.module.scss"
+import styles from "./SmallMusicSwitch.module.scss"
 
 
 const smallMusicSwitch = () => {
     return (
+        <div>
 
+        </div>
     )
 }
 

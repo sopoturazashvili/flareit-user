@@ -1,4 +1,4 @@
-import styles from "./playerFullScreen.module.scss"
+import styles from "./PlayerFullScreen.module.scss"
 
 const playerFullScreen = () => {
     return(
