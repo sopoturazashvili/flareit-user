@@ -1,3 +1,4 @@
+import { useState } from "react"
 import styles from "./SmallMusicName.module.scss"
 
 interface Props {
@@ -6,6 +7,8 @@ interface Props {
 }
 
 export const SmallMusicName = (props:Props) => {
+    const [fullScreen,setFullScreen] = useState(false)
+    
     return(
         <div className={styles.imageAndTitle}>
             <img  className={styles.image} src={props.image} />

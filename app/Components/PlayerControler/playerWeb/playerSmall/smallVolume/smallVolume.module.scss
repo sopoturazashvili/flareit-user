@@ -1,0 +1,18 @@
+
+
+
+.volumeRange {
+    transform: rotate(-90deg);
+    height: var(--borderRadius, 4px);
+    width: 68px;
+}
+
+.volumeContainer {
+    display: flex;
+    align-items: center;
+}
+
+
+.volumeContainer > div {
+    margin-right: -20px; 
+}
