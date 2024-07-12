@@ -4,15 +4,17 @@ import { mutedState, volumeState } from "@/app/state";
 import { useRecoilState } from "recoil";
 
 
-const SmallVolume = () => { 
+
+interface Props{ 
+    audioRef: any
+}
+
+const SmallVolume = (props:Props) => {
     const [muted, setMuted] = useRecoilState(mutedState)
-    const [volume,seVolume] = useRecoilState(volumeState)
-
-
-    const audioRef = useRef<HTMLAudioElement>(null);
+    const [volume, seVolume] = useRecoilState(volumeState)
 
     const mutedFunc = () => {
-        const audio = audioRef.current;
+        const audio = props.audioRef.current;
         if (audio) {
             setMuted(!muted);
             audio.volume = muted ? volume / 100 : 0
@@ -20,10 +22,8 @@ const SmallVolume = () => {
     };
     return (
         <div className={styles.volumeContainer}>
-            <div>
-                <img src={muted ?  "/PlayerControler/Volume.svg" : "/PlayerControler/Muted.svg"} alt="Volume" onClick={mutedFunc}/>
-            </div>
-            <div>
+            <div onClick={mutedFunc} className={styles.volume}>
+                <img src={muted ? "/PlayerControler/Volume.svg" : "/PlayerControler/Muted.svg"} alt="Volume" />
                 <input type="range" className={styles.volumeRange} />
             </div>
         </div>

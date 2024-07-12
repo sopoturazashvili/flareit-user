@@ -5,6 +5,7 @@
     transform: rotate(-90deg);
     height: var(--borderRadius, 4px);
     width: 68px;
+    position: absolute;
 }
 
 .volumeContainer {
@@ -12,7 +13,7 @@
     align-items: center;
 }
 
-
-.volumeContainer > div {
-    margin-right: -20px; 
+.volume {
+    display: flex;
+    align-items: center;
 }

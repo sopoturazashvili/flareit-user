@@ -5,11 +5,12 @@ import { useRecoilState } from "recoil";
 
 
 
+
+
 const volumeInput = () => {
   const [volume, setVolume] = useRecoilState(volumeState);
   const [muted, setMuted] = useRecoilState(mutedState)
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
-
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
