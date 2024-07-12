@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 import Button from '../Button/Button'
 import styles from './Modal.module.scss'
 import Image from 'next/image'
@@ -8,23 +8,14 @@ interface Props {
     title?: string;
     onClose?: () => void;
     onDone?: () => void;
-    content: ReactNode;
+    content?: ReactNode;
+    hasFooter: boolean;
 }
 
 const Modal = (props: Props) => {
 
-    useEffect(() => {
-        if (props.isOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
-    }, [props.isOpen]);
-
-    if (!props.isOpen) return null;
-
     return (
-        <div className={styles.modalOverlay}>
+        <div className={props.isOpen ? styles.modalOverlay : styles.modalOverlayClosed}>
             <div className={styles.modal}>
                 <div className={styles.modalHeader}>
                     <h4 className={styles.sectionTitle}>{props.title}</h4>
@@ -33,10 +24,10 @@ const Modal = (props: Props) => {
                     </div>
                 </div>
                 {props.content}
-                <div className={styles.buttonsContainer}>
-                    <Button primary={false} text={'cancel'} width={'154px'} onClick={props.onClose}/>
-                    <Button primary={true} text={'done'} width={'154px'} onClick={props.onDone}/>
-                </div>
+                {props.hasFooter && <div className={styles.buttonsContainer}>
+                    <Button primary={false} text={'cancel'} width={'154px'} onClick={props.onClose} />
+                    <Button primary={true} text={'done'} width={'154px'} onClick={props.onDone} />
+                </div>}
             </div>
         </div>
     )
