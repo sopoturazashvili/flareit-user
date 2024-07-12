@@ -21,15 +21,17 @@
     flex-direction: column;
     gap: 10px;
     height: 100vh;
-    padding: px 24px;
-    position: absolute;
+    padding: 0px 24px;
+    position: fixed;
+    transform: translatex(302px);
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
     visibility: hidden;
 }
 
 .navigationContainer.open {
-    transform: translateX(0);
+    z-index: 999;
+    transform: translateX(8%);
     visibility: visible;
 }
 
@@ -52,7 +54,6 @@
     max-width: 302px;
     width: fit-content;
     justify-content: flex-end;
-    /* cursor: pointer; */
 }
 
 .lineContainer {
@@ -62,11 +63,9 @@
     width: 100%;
 }
 
-
 @media screen and (min-width:1024px) {
     .lineContainer {
         display: none;
-
     }
 
     .navigationContainer {
@@ -92,5 +91,16 @@
 
     .mainNavigation {
         display: inline;
+    }
+
+    .logOut {
+        display: none;
+    }
+}
+
+
+@media screen and (min-width:600px) and (max-width:1023px) {
+    .logOut {
+        display: none;
     }
 }
