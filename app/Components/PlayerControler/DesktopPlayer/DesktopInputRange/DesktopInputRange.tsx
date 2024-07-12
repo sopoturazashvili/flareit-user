@@ -1,26 +1,28 @@
-import { useEffect, useRef, useState } from "react";
-import styles from "./SmallInputRange.module.scss"
+import React, { useEffect, useRef, useState } from "react";
+import styles from "./DesktopInputRange.module.scss"
 import { formatTime } from "@/app/helpers/FormatTime";
 import { useRecoilState } from "recoil";
 import { audioDurrationState, currentIndexState, currentTimeState } from "@/app/state";
+import { playNext } from "@/app/helpers/PlayNext";
 
+interface Props {
+    audioRef: React.MutableRefObject<HTMLAudioElement | null>;
+}
 
-
-const SmallInputRange = () => {
-    const [currentTime, setCurrentTime] = useRecoilState(currentTimeState)
-    const [audioDuration, setAudioDuration] = useRecoilState(audioDurrationState)
-    const [currentIndex, setCurrentIndex] = useRecoilState(currentIndexState)
-    const audioRef = useRef<HTMLAudioElement>(null);
-    
+const DesktopInputRange = (props: Props) => {
+    const [currentTime, setCurrentTime] = useState(0);
+    const [audioDuration, setAudioDuration] = useState(0);
 
     useEffect(() => {
-        const audio = audioRef.current;
+        const audio = props.audioRef.current;
+
         const updateTime = () => {
             if (audio) {
                 setCurrentTime(audio.currentTime);
                 setAudioDuration(audio.duration);
             }
         };
+
         if (audio) {
             audio.addEventListener("timeupdate", updateTime);
             audio.addEventListener("loadedmetadata", updateTime);
@@ -30,24 +32,24 @@ const SmallInputRange = () => {
                 audio.removeEventListener("loadedmetadata", updateTime);
             };
         }
-    }, [currentIndex]);
+    }, [props.audioRef]);
 
     const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newTime = parseFloat(e.target.value);
-        if (audioRef.current) {
-            audioRef.current.currentTime = newTime;
+        if (props.audioRef.current) {
+            props.audioRef.current.currentTime = newTime;
             setCurrentTime(newTime);
         }
     };
 
-
     return (
         <div className={styles.inputContainer}>
-            <input type="range"
+            <input
+                type="range"
                 className={styles.inputRange}
                 value={currentTime}
                 min={0}
-                max={audioDuration || 0} 
+                max={audioDuration || 0}
                 onChange={handleSeek}
             />
             <div className={styles.musicTimeCont}>
@@ -55,7 +57,15 @@ const SmallInputRange = () => {
                 <span className={styles.color}>{formatTime(audioDuration)}</span>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default SmallInputRange
+export default DesktopInputRange;
+
+
+
+
+
+
+
+

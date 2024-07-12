@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
-import styles from "./SmallVolume.module.scss"
+import styles from "./DesktopVolume.module.scss"
 import { mutedState, volumeState } from "@/app/state";
 import { useRecoilState } from "recoil";
+import VolumeInput from "./VolumeInput/VolumeInput";
 
 
 
@@ -9,7 +10,7 @@ interface Props{
     audioRef: any
 }
 
-const SmallVolume = (props:Props) => {
+const DesktopVolume = (props:Props) => {
     const [muted, setMuted] = useRecoilState(mutedState)
     const [volume, seVolume] = useRecoilState(volumeState)
 
@@ -22,12 +23,12 @@ const SmallVolume = (props:Props) => {
     };
     return (
         <div className={styles.volumeContainer}>
-            <div onClick={mutedFunc} className={styles.volume}>
-                <img src={muted ? "/PlayerControler/Volume.svg" : "/PlayerControler/Muted.svg"} alt="Volume" />
-                <input type="range" className={styles.volumeRange} />
+            <div className={styles.volume}>
+                {muted ? <img src="/PlayerControler/Muted.svg" onClick={mutedFunc}  alt="Muted"/> : <img src="/PlayerControler/Volume.svg"  onClick={mutedFunc} alt="Volume" />}
+                <VolumeInput/>
             </div>
         </div>
     )
 }
 
-export default SmallVolume
+export default DesktopVolume

@@ -8,7 +8,7 @@ export const isPlayingState = atom({
 
 export const mutedState = atom({
     key:"muted",
-    default:false
+    default: false
 })
 
 export const volumeState = atom({

@@ -4,10 +4,7 @@ import { isPlayingState, mutedState, volumeState } from "@/app/state";
 import { useRecoilState } from "recoil";
 
 
-
-
-
-const volumeInput = () => {
+const VolumeInput = () => {
   const [volume, setVolume] = useRecoilState(volumeState);
   const [muted, setMuted] = useRecoilState(mutedState)
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
@@ -20,7 +17,6 @@ const volumeInput = () => {
       audioRef.current.volume = newVolume / 100;
     }
   };
-
 
   return (
     <>
@@ -35,4 +31,4 @@ const volumeInput = () => {
   )
 }
 
-export default volumeInput
+export default VolumeInput

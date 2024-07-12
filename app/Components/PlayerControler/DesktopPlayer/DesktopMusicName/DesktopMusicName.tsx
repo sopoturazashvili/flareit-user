@@ -1,12 +1,12 @@
 import { useState } from "react"
-import styles from "./SmallMusicName.module.scss"
+import styles from "./DesktopMusicName.module.scss"
 
 interface Props {
     image:string,
     title:string
 }
 
-export const SmallMusicName = (props:Props) => {
+export const   DesktopMusicName = (props:Props) => {
     const [fullScreen,setFullScreen] = useState(false)
     
     return(
@@ -17,4 +17,4 @@ export const SmallMusicName = (props:Props) => {
     )
 }
 
-export default SmallMusicName
+export default DesktopMusicName
