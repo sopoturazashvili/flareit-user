@@ -5,28 +5,35 @@ import Image from 'next/image'
 
 interface Props {
     isOpen: boolean;
+    setIsOpen: (value: boolean) => void
     title?: string;
-    onClose?: () => void;
     onDone?: () => void;
-    content?: ReactNode;
+    content: ReactNode;
     hasFooter: boolean;
 }
 
 const Modal = (props: Props) => {
+
+    const onClose = () => {
+        props.setIsOpen(!props.isOpen)
+    }
+
 
     return (
         <div className={props.isOpen ? styles.modalOverlay : styles.modalOverlayClosed}>
             <div className={styles.modal}>
                 <div className={styles.modalHeader}>
                     <h4 className={styles.sectionTitle}>{props.title}</h4>
-                    <div className={styles.closeButtonWrapper} onClick={props.onClose}>
+                    <div className={styles.closeButtonWrapper} onClick={onClose}>
                         <Image src={'/icons/closeButton.svg'} width={24} height={24} alt='Close Button' />
                     </div>
                 </div>
                 {props.content}
                 {props.hasFooter && <div className={styles.buttonsContainer}>
-                    <Button primary={false} text={'cancel'} width={'154px'} onClick={props.onClose} />
-                    <Button primary={true} text={'done'} width={'154px'} onClick={props.onDone} />
+                    <Button primary={false} text={'cancel'} width={'154px'} onClick={onClose} />
+                    {props.onDone && (
+                        <Button primary={true} text={'done'} width={'154px'} onClick={props.onDone} />
+                    )}
                 </div>}
             </div>
         </div>
