@@ -55,7 +55,7 @@ const DesktopFullScreen = (props: Props) => {
                 </div>
                 <div>
                     <DesktopMusicSwitch audioRef={audioRef} />
-                    <DesktopVolume  rotate={0} width={275} position={""} volumeWidth={32} volumeHeight={32} involved={""} audioRef={undefined} />
+                    <DesktopVolume  rotate={0} width={275} position={""} volumeWidth={32} volumeHeight={32} involved={""} audioRef={props.audioRef} />
                 </div>
             </div>
         </div>
