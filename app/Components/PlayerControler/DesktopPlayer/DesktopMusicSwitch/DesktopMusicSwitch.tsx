@@ -37,8 +37,6 @@ const DesktopMusicSwitch = (props: Props) => {
       setCurrentTime(twist);
     }
   };
-
-  console.log(isPlaying, );
   
   return (
     <div className={styles.musicSwitch}>

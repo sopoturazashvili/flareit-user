@@ -1,0 +1,44 @@
+
+
+
+
+.inputRangeCont {
+    max-width: 535px;
+    width: 100%;
+    text-align: right;
+}
+
+.backgroundContainer {
+    max-width: 743px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.30);
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 104px;
+    z-index: 9999;
+    position: relative;
+    margin: 0 auto;
+}
+
+
+.iconImage {
+    text-align: left;
+    width: 100%;
+}
+
+.backgroundCnot {
+    width: 100%;
+    background-color: white;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+

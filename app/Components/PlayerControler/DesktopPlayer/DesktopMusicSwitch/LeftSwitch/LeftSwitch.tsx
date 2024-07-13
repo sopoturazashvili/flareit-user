@@ -2,7 +2,6 @@ import { useRecoilState } from "recoil";
 import styles from "./LeftSwitch.module.scss"
 import { currentIndexState, isPlayingState } from "@/app/state";
 import { musicData } from "@/app/helpers/MusicData";
-import { useState } from "react";
 
 
 const LeftSwitch = () => {
@@ -15,7 +14,7 @@ const LeftSwitch = () => {
             newIndex = musicData.length - 1;
         }
         setCurrentIndex(newIndex);
-        setIsPlaying(false);
+        setIsPlaying(true);
     };
 
 
