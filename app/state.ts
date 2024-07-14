@@ -13,7 +13,7 @@ export const mutedState = atom({
 
 export const volumeState = atom({
     key:"volume",
-    default: 100
+    default: 50
 })
 
 export const currentTimeState = atom ({

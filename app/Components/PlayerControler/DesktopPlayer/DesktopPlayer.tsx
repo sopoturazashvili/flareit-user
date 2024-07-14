@@ -17,7 +17,6 @@ const DesktopPlayer = () => {
 
     useEffect(() => {
         audioRef.current?.play();
-        audioRef.current?.pause()
     }, [currentIndex]);
 
     return (

@@ -11,7 +11,7 @@ interface Props {
 
 const RightTwist = (props:Props) =>{
     return(
-        <img src="/PlayerControler/RightSwitch.svg" alt="Right Twist" onClick={() => Twistt("forward",props.setCurrentTime,props.TabletaudioRef)} />
+        <img src="/PlayerControler/RightSwitch.svg" alt="Right Twist" onClick={() => Twistt("forward",props.TabletaudioRef,props.setCurrentTime)} />
     )
 }
 

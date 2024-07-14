@@ -1,0 +1,25 @@
+
+
+
+.TabletFullScreen {
+    background: linear-gradient(180deg, #1F485F 0%, #121522 100%);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.imageAndName {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+
+.inputRangeCont {
+    max-width: 535px;
+    width: 100%;
+    text-align: right;
+}
