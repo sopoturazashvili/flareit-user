@@ -1,0 +1,21 @@
+.tabletAndMusicBox {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.musicName {
+    color: var(--text-color, #FFF);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.name {
+    color: rgba(255, 255, 255, 0.64);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}

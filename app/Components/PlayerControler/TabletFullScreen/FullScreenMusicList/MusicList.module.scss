@@ -1,0 +1,39 @@
+.nextContainer {
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+}
+
+.musicListBackground {
+    background: rgba(15, 15, 15, 0.30);
+}
+
+.musicList {
+    width: 100%;
+    padding-top: 208px;
+    height: 100%;
+    transition: padding-top 0.5s ease;
+    height: 100%;
+}
+
+.nameAndMusic {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0px 16px;
+}
+
+.imageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.musicListItem {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}

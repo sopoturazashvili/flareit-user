@@ -1,16 +1,16 @@
 import styles from "./TabletMusicName.module.scss"
+import TabletName from "./TabletName/TabletName"
 
+interface Props{
+    musicName:string,
+    name:string
+}
 
-const TabletMusicName = () => {
+const TabletMusicName = (props:Props) => {
     return (
         <div className={styles.tabletMusicName}>
             <img src="/PlayerControler/TabletPhoto.svg" />
-            <div className={styles.tabletAndMusicBox}>
-                <span className={styles.musicName}>starboy</span>
-                <div>
-                    <span className={styles.name}>Morgan Maxwell</span>
-                </div>
-            </div>
+            <TabletName musicName={props.musicName} name={props.name}/>
         </div>
     )
 }

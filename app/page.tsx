@@ -10,9 +10,9 @@ import TabletFullScreen from "./Components/PlayerControler/TabletFullScreen/Tabl
 export default function Home() {
   return (
     <main className={styles.main}>
-        {/* <TabletPlayer/> */}
+        <TabletPlayer/>
         {/* <DesktopPlayer/> */}
-        <TabletFullScreen/>
+        {/* <TabletFullScreen/> */}
     </main>
   );
 }
