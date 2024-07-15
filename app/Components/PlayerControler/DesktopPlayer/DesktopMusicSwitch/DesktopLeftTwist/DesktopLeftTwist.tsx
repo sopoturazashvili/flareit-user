@@ -2,13 +2,13 @@ import { Twistt } from "@/app/helpers/Twist"
 import styles from "./DesktopLeftTwist.module.scss"
 
 interface Props {
-    audioRef:React.MutableRefObject<HTMLAudioElement | null>,
-    setCurrentTime?:any,
+    audioRef: React.MutableRefObject<HTMLAudioElement | null>,
+    setCurrentTime?: any,
 }
 
-const DesktopLeftTwist = (props:Props) => {
+const DesktopLeftTwist = (props: Props) => {
     return (
-        <img src="/PlayerControler/LeftTwist.svg" alt="Left Twist" onClick={() => Twistt("backward",props.audioRef,props.setCurrentTime)} />
+        <img src="/PlayerControler/LeftTwist.svg" alt="Left Twist" onClick={() => Twistt("backward", props.audioRef, props.setCurrentTime)} />
     )
 }
 

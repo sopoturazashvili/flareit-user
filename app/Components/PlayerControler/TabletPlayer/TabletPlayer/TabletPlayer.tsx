@@ -10,12 +10,10 @@ import { currentIndexState, tabletFullScrenState } from "@/app/state";
 import TabletMusicShuffle from "../TabletMusicShuffle/TabletMusicShuffle";
 import TabletFullScreen from "../../TabletFullScreen/TabletFullScreen";
 
-
 const TabletPlayer = () => {
     const [currentIndex, setCurrentIndex] = useRecoilState(currentIndexState);
     const TabletaudioRef = useRef<HTMLAudioElement>(null);
-    const [fullScreen,setFullScreen] = useRecoilState(tabletFullScrenState)
-    
+    const [fullScreen, setFullScreen] = useRecoilState(tabletFullScrenState)
 
     useEffect(() => {
         TabletaudioRef?.current?.play();
@@ -31,19 +29,19 @@ const TabletPlayer = () => {
                 <audio ref={TabletaudioRef} src={musicData[currentIndex].src} />
                 <div className={styles.tabletPlayerContainer} >
                     <div className={styles.tabletMuscName} onClick={tabletFullScreen}>
-                        <TabletMusicName musicName={"Starboy"} name={"Morgan Maxwell"} />
+                        <TabletMusicName musicName={""} name={""} image={""} />
                     </div>
                     <div className={styles.inputAndSwitch}>
                         <TabletMusicInput TabletaudioRef={TabletaudioRef} />
                         <div className={styles.volumAndSwitch}>
-                            <TabeltVolume TabletaudioRef={TabletaudioRef}  tabletWidth={68}  tabletInvolved={"none"} tabletVolumeWidth={24} tabletVolumeHeight={24} />
+                            <TabeltVolume TabletaudioRef={TabletaudioRef} tabletWidth={68} tabletInvolved={"none"} tabletVolumeWidth={24} tabletVolumeHeight={24} />
                             <TabletMusicSwitch TabletaudioRef={TabletaudioRef} />
                             <TabletMusicShuffle />
                         </div>
                     </div>
                 </div>
             </div>
-            {fullScreen && <TabletFullScreen tabletaudioRef={TabletaudioRef}/>}
+            {fullScreen && <TabletFullScreen tabletaudioRef={TabletaudioRef} />}
         </>
     )
 }

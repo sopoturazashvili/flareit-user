@@ -1,3 +1,5 @@
+@import "../../../../../styles/colors.scss";
+
 .tabletAndMusicBox {
     display: flex;
     flex-direction: column;
@@ -5,7 +7,7 @@
 }
 
 .musicName {
-    color: var(--text-color, #FFF);
+    color: $PrimaryWhite;
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
@@ -13,16 +15,15 @@
 }
 
 .name {
-    color: rgba(255, 255, 255, 0.64);
+    color: $PrimaryWhiteTone1;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
 }
 
-
 .musicFullScreen {
-    color: var(--text-color, #FFF);
+    color: $PrimaryWhite;
     font-size: 20px;
     font-style: normal;
     font-weight: 600;
@@ -30,7 +31,7 @@
 }
 
 .nameFullScreen {
-    color: rgba(255, 255, 255, 0.64);
+    color: $PrimaryWhiteTone1;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;

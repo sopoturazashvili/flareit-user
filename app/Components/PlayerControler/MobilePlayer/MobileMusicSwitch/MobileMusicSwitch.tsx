@@ -7,13 +7,12 @@ import styles from "./MobileMusicSwitch.module.scss"
 import { currentTimeState, isPlayingState } from "@/app/state"
 
 interface Props {
-    MobileaudioRef:React.MutableRefObject<HTMLAudioElement | null>,
+  MobileaudioRef: React.MutableRefObject<HTMLAudioElement | null>,
 }
 
-const MobileMusicSwitch = (props:Props) => {
-    const [currenTime, setCurrentTime] = useRecoilState(currentTimeState)
+const MobileMusicSwitch = (props: Props) => {
+  const [currenTime, setCurrentTime] = useRecoilState(currentTimeState)
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
-
 
   const playPause = () => {
     const audio = props.MobileaudioRef.current
@@ -26,17 +25,17 @@ const MobileMusicSwitch = (props:Props) => {
       }
     }
   };
-    return (
-        <div className={styles.mobileSwitch}>
-            <LeftSwitch />
-            <LeftTwist setCurrentTime={setCurrentTime} TabletaudioRef={props.MobileaudioRef} />
-            <div className={styles.playPause} onClick={playPause}>
-                {isPlaying ? <img src="/PlayerControler/Play.svg" alt="Play" /> : <img src="/PlayerControler/Pause.svg" alt="Pause" />}
-            </div>
-            <RightTwist setCurrentTime={setCurrentTime} TabletaudioRef={props.MobileaudioRef} />
-            <RightSwitch TabletaudioRef={props.MobileaudioRef} />
-        </div>
-    )
+  return (
+    <div className={styles.mobileSwitch}>
+      <LeftSwitch />
+      <LeftTwist setCurrentTime={setCurrentTime} TabletaudioRef={props.MobileaudioRef} />
+      <div className={styles.playPause} onClick={playPause}>
+        {isPlaying ? <img src="/PlayerControler/Play.svg" alt="Play" /> : <img src="/PlayerControler/Pause.svg" alt="Pause" />}
+      </div>
+      <RightTwist setCurrentTime={setCurrentTime} TabletaudioRef={props.MobileaudioRef} />
+      <RightSwitch TabletaudioRef={props.MobileaudioRef} />
+    </div>
+  )
 }
 
 export default MobileMusicSwitch

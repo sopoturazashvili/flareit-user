@@ -5,10 +5,10 @@ import { useRecoilState } from "recoil";
 
 interface Props {
   width: number,
-  audioRef:any
+  audioRef: any
 }
 
-const VolumeInput = (props:Props) => {
+const VolumeInput = (props: Props) => {
   const [volume, setVolume] = useRecoilState(volumeState);
   const [muted, setMuted] = useRecoilState(mutedState)
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
@@ -27,17 +27,16 @@ const VolumeInput = (props:Props) => {
 
   }
 
-  
   return (
-    <>
-      <input style={inputVolume}
-        type="range"
-        min={0}
-        max={100}
-        value={muted ? 0 : volume}
-        onChange={handleVolumeChange}
-        onPlay={isPlaying ? props.audioRef?.current?.play() : props.audioRef?.current?.pause()} />
-    </>
+
+    <input style={inputVolume}
+      type="range"
+      min={0}
+      max={100}
+      value={muted ? 0 : volume}
+      onChange={handleVolumeChange}
+      onPlay={isPlaying ? props.audioRef?.current?.play() : props.audioRef?.current?.pause()} />
+
   )
 }
 

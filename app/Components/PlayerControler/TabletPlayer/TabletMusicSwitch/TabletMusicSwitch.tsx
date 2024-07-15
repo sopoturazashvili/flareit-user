@@ -6,7 +6,6 @@ import RightTwist from "./RightTwist/RightTwist"
 import styles from "./TabletMusicSwitch.module.scss"
 import { currentTimeState, isPlayingState } from "@/app/state"
 
-
 interface Props {
   TabletaudioRef: React.MutableRefObject<HTMLAudioElement | null>,
 }
@@ -14,7 +13,6 @@ interface Props {
 const TabletMusicSwitch = (props: Props) => {
   const [currenTime, setCurrentTime] = useRecoilState(currentTimeState)
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
-
 
   const playPause = () => {
     const audio = props.TabletaudioRef.current

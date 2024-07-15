@@ -25,16 +25,16 @@ const MusicList = () => {
         <div className={styles.musicList} >
             <div className={styles.musicListBackground} style={{ transform: musicUp ? 'translateY(0%)' : 'translateY(0%)' }}>
                 <div className={`${styles.imageContainer} ${musicUp ? styles.rotateUp : ''}`} onClick={musicUpFunc}>
-                   {musicUp ? <img src="/PlayerControler/MusicDown.svg" /> : <img src="/PlayerControler/MusicUp.svg"/> }
+                    {musicUp ? <img src="/PlayerControler/MusicDown.svg" /> : <img src="/PlayerControler/MusicUp.svg" />}
                 </div>
-                {/* <div className={styles.nameAndMusic}> */}
+                <div className={styles.nameAndMusic}>
                     <p className={styles.nextContainer}>Next Play</p>
                     <div className={styles.musicListItem}>
                         {data.slice(0, musicUp ? 6 : 3).map((item, index) => (
                             <MusicListItem key={index} image={item.image} songTitle={item.songTitle} artistName={item.artistName} songDuration={item.songDuration} />
                         ))}
                     </div>
-                {/* </div> */}
+                </div>
             </div>
         </div>
     );

@@ -1,5 +1,4 @@
-
-
+@import "../../../../styles/colors.scss";
 
 .tabletPlayer {
     width: 100%;
@@ -8,11 +7,10 @@
     align-items: flex-end;
 }
 
-
 .tabletPlayerContainer {
-    background-color: #0F0F0F;
+    background-color: $PrimaryBlackTone1;
     width: 100%;
-    padding: 16px 80px;
+    padding: 16px 0px;
     display: flex;
     align-items: center;
     justify-content: center;

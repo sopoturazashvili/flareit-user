@@ -3,14 +3,15 @@ import Name from "./Name/Name"
 
 interface Props {
     fullScreen: boolean,
-    setFullScreen: any
+    setFullScreen: any,
+    image:string
 }
 
-const MobileMusicName = (props:Props) => {
+const MobileMusicName = (props: Props) => {
     return (
-        <div className={styles.nameContainer}onClick={() => {props.setFullScreen(!props.fullScreen)}} >
-            <img className={styles.image} src="/PlayerControler/MobilePhoto.svg" />
-            <Name autor={""} name={""}/>
+        <div className={styles.nameContainer} onClick={() => { props.setFullScreen(!props.fullScreen) }} >
+            <img className={styles.image} src={props.image} />
+            <Name autor={""} name={""} />
         </div>
     )
 }

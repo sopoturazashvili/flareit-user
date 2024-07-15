@@ -9,17 +9,16 @@ import MusicList from "./FullScreenMusicList/MusicList"
 import TabletName from "../TabletPlayer/TabletMusicName/TabletName/TabletName"
 
 interface Props {
-    tabletaudioRef:React.MutableRefObject<HTMLAudioElement | null>;
+    tabletaudioRef: React.MutableRefObject<HTMLAudioElement | null>;
 }
 
-const TabletFullScreen = (props:Props) => {
-
+const TabletFullScreen = (props: Props) => {
     return (
         <div className={styles.TabletFullScreen}>
             <div className={styles.tabletFullscreenPadd}>
                 <div className={styles.imageAndName}>
-                    <FullScreenImage />
-                    <TabletName musicName={"Starboy"} name={"Morgan Maxwell"}/>
+                    <FullScreenImage image={""} />
+                    <TabletName musicName={""} name={""} />
                 </div>
                 <div className={styles.inputRangeCont}>
                     <DesktopShuffle />
@@ -27,7 +26,7 @@ const TabletFullScreen = (props:Props) => {
                 </div>
                 <div>
                     <DesktopMusicSwitch audioRef={props.tabletaudioRef} />
-                    <DesktopVolume  width={275}  volumeWidth={32} volumeHeight={32} involved={""} audioRef={props.tabletaudioRef} />
+                    <DesktopVolume width={275} volumeWidth={32} volumeHeight={32} involved={""} audioRef={props.tabletaudioRef} />
                 </div>
             </div>
             <div className={styles.musicListContainer}>

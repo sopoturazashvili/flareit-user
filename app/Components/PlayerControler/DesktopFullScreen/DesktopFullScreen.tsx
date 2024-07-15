@@ -17,7 +17,7 @@ const DesktopFullScreen = (props: Props) => {
     const { audioRef, setFullScreen } = props;
 
     const background = {
-        backgroundImage: `url("/PlayerControler/MusicPhoto.svg")`,
+        backgroundImage: `url${props.background}`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         width: "100%",
@@ -39,15 +39,16 @@ const DesktopFullScreen = (props: Props) => {
         <div className={styles.backgroundCnot}>
             <div style={background}></div>
             <div className={styles.backgroundContainer}>
+                <img
+                    className={styles.backIcon}
+                    src="/PlayerControler/BackButton.svg"
+                    alt="Back"
+                    onClick={() => setFullScreen(false)}
+                />
                 <div className={styles.iconImage}>
-                    <img
-                        src="/PlayerControler/BackButton.svg"
-                        alt="Back"
-                        onClick={() => setFullScreen(false)}
-                    />
                 </div>
                 <div>
-                    <DesktopMusicName image={"/PlayerControler/MusicNamePhoto.svg"} title={"Imagine dragons- Believer"} />
+                    <DesktopMusicName image={""} title={""} />
                 </div>
                 <div className={styles.inputRangeCont}>
                     <DesktopShuffle />
@@ -55,7 +56,7 @@ const DesktopFullScreen = (props: Props) => {
                 </div>
                 <div>
                     <DesktopMusicSwitch audioRef={audioRef} />
-                    <DesktopVolume   width={275}  volumeWidth={32} volumeHeight={32} involved={""} audioRef={props.audioRef} />
+                    <DesktopVolume width={275} volumeWidth={32} volumeHeight={32} involved={""} audioRef={props.audioRef} />
                 </div>
             </div>
         </div>

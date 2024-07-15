@@ -1,6 +1,5 @@
 @import "../../../../styles/colors.scss";
 
-
 .imageAndTitle {
     display: flex;
     flex-direction: column;
@@ -9,9 +8,8 @@
     justify-content: center;
 }
 
-
 .title {
-    color: #FFF;
+    color: $PrimaryWhite;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -23,15 +21,8 @@
     width: 100%;
 }
 
-
-// .fullScreenImage {
-//     max-width: 344px;
-//     max-height: 344px;
-//     width: 100%;
-// }
-
 .fullScreentitle {
-    color: #FFF;
+    color: $PrimaryWhite;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;

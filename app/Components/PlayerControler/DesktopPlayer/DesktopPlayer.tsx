@@ -13,7 +13,7 @@ import DesktopMusicName from "./DesktopMusicName/DesktopMusicName";
 const DesktopPlayer = () => {
     const [currentIndex, setCurrentIndex] = useRecoilState(currentIndexState);
     const audioRef = useRef<HTMLAudioElement>(null);
-    const [fullScreen, setFullScreen] = useState(false); 
+    const [fullScreen, setFullScreen] = useState(false);
 
     useEffect(() => {
         audioRef.current?.play();
@@ -25,21 +25,21 @@ const DesktopPlayer = () => {
                 <audio ref={audioRef} src={musicData[currentIndex].src} />
                 <div className={styles.nameAndRange}>
                     <DesktopMusicName
-                        image={"/PlayerControler/MusicPhoto.svg"}
-                        title={"Imagine dragons- Believer"}
+                        image={""}
+                        title={""}
                         fullScreen={fullScreen}
                         setFullScreen={setFullScreen}
                     />
                     <DesktopInputRange audioRef={audioRef} />
                 </div>
                 <div className={styles.musicPlayer}>
-                    <DesktopVolume audioRef={audioRef}  width={50} volumeWidth={24} volumeHeight={24} involved={"none"} />
+                    <DesktopVolume audioRef={audioRef} width={50} volumeWidth={24} volumeHeight={24} involved={"none"} />
                     <DesktopMusicSwitch audioRef={audioRef} />
                     <DesktopShuffle />
                 </div>
             </div>
             {fullScreen && (
-                <DesktopFullScreen background={""} audioRef={audioRef} fullScreen={fullScreen} setFullScreen={setFullScreen}/>
+                <DesktopFullScreen background={""} audioRef={audioRef} fullScreen={fullScreen} setFullScreen={setFullScreen} />
             )}
         </>
     );

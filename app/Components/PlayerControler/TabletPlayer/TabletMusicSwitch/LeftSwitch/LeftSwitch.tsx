@@ -18,7 +18,7 @@ const LeftSwitch = () => {
 
     return (
         <>
-            <img src="/PlayerControler/LeftSwitch.svg" alt="Left Switch" onClick={() => {playPrevious()}} />
+            <img src="/PlayerControler/LeftSwitch.svg" alt="Left Switch" onClick={() => { playPrevious() }} />
         </>
     )
 }

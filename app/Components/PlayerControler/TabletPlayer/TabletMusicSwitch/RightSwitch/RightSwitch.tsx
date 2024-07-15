@@ -3,25 +3,23 @@ import styles from "./RightSwitch.module.scss"
 import { currentIndexState } from "@/app/state";
 import { playNext } from "@/app/helpers/PlayNext";
 
-
 interface Props {
-    TabletaudioRef:  React.MutableRefObject<HTMLAudioElement | null>
+  TabletaudioRef: React.MutableRefObject<HTMLAudioElement | null>
 }
 
-const RightSwitch = (props:Props) =>{
-    const [currentIndex, setCurrentIndex] = useRecoilState(currentIndexState);
-  
-    
+const RightSwitch = (props: Props) => {
+  const [currentIndex, setCurrentIndex] = useRecoilState(currentIndexState);
+
   const handleNextTrack = () => {
     if (props.TabletaudioRef.current) {
       const next = playNext(currentIndex, props.TabletaudioRef);
-      setCurrentIndex(next?.newIndex || 0); 
-      
+      setCurrentIndex(next?.newIndex || 0);
+
     }
   };
-    return (
-        <img src="/PlayerControler/RightTwist.svg" alt="Right Twist" onClick={() => handleNextTrack()} />
-    )
+  return (
+    <img src="/PlayerControler/RightTwist.svg" alt="Right Twist" onClick={() => handleNextTrack()} />
+  )
 }
 
 export default RightSwitch

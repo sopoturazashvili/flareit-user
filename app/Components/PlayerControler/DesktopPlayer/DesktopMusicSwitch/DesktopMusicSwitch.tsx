@@ -9,14 +9,12 @@ import DesktopRightTwist from "./DesktopRightTwist/DesktopRightTwist";
 import DesktopLeftTwist from "./DesktopLeftTwist/DesktopLeftTwist";
 
 interface Props {
-  // setCurrentTime(arg0: string, audioRef: MutableRefObject<HTMLAudioElement | null>, setCurrentTime: any): void;
   audioRef: React.MutableRefObject<HTMLAudioElement | null>
 }
 
 const DesktopMusicSwitch = (props: Props) => {
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
   const [currenTime, setCurrentTime] = useRecoilState(currentTimeState)
-
 
   const playPause = () => {
     const audio = props.audioRef.current
@@ -29,18 +27,6 @@ const DesktopMusicSwitch = (props: Props) => {
       }
     }
   };
-
-  // const Twistt = (direction: 'forward' | 'backward') => {
-
-  //   const increment = direction === "forward" ? 5 : -5;
-
-  //   if (props.audioRef.current) {
-  //     let twist = props.audioRef.current.currentTime + increment;
-  //     twist = Math.max(0, Math.min(twist, props.audioRef.current.duration));
-  //     props.audioRef.current.currentTime = twist;
-  //     setCurrentTime(twist);
-  //   }
-  // };
   
   return (
     <div className={styles.musicSwitch}>
