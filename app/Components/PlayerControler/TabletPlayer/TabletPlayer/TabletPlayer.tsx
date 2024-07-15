@@ -45,7 +45,7 @@ const TabletPlayer = () => {
                     </div>
                 </div>
             </div>
-            {fullScreen && <TabletFullScreen tabletaudioRef={TabletaudioRef}  />}
+            {fullScreen && <TabletFullScreen tabletaudioRef={TabletaudioRef}/>}
         </>
     )
 }

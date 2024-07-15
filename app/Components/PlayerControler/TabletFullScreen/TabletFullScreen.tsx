@@ -6,7 +6,7 @@ import DesktopVolume from "../DesktopPlayer/DesktopVolume/DesktopVolume"
 import FullScreenImage from "./FullScreenImage/FullScreenImage"
 import styles from "./TabletFullScreen.module.scss"
 import MusicList from "./FullScreenMusicList/MusicList"
-import TabletName from "../TabletAndMobile/TabletMusicName/TabletName/TabletName"
+import TabletName from "../TabletPlayer/TabletMusicName/TabletName/TabletName"
 
 interface Props {
     tabletaudioRef:React.MutableRefObject<HTMLAudioElement | null>;
