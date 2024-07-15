@@ -25,7 +25,7 @@ const MusicList = () => {
         <div className={styles.musicList} >
             <div className={styles.musicListBackground} style={{ transform: musicUp ? 'translateY(0%)' : 'translateY(0%)' }}>
                 <div className={`${styles.imageContainer} ${musicUp ? styles.rotateUp : ''}`} onClick={musicUpFunc}>
-                    <img src={musicUp ? "/PlayerControler/MusicDown.svg" : "/PlayerControler/MusicUp.svg"} alt="Music control" />
+                   {musicUp ? <img src="/PlayerControler/MusicDown.svg" /> : <img src="/PlayerControler/MusicUp.svg"/> }
                 </div>
                 {/* <div className={styles.nameAndMusic}> */}
                     <p className={styles.nextContainer}>Next Play</p>

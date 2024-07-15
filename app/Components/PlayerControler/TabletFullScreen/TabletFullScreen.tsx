@@ -10,8 +10,6 @@ import TabletName from "../TabletPlayer/TabletMusicName/TabletName/TabletName"
 
 interface Props {
     tabletaudioRef:React.MutableRefObject<HTMLAudioElement | null>;
-
-   
 }
 
 const TabletFullScreen = (props:Props) => {

@@ -11,10 +11,10 @@ import MobilePlayer from "./Components/PlayerControler/MobilePlayer/MobilePlayer
 export default function Home() {
   return (
     <main className={styles.main}>
-        {/* <TabletPlayer/> */}
+        <TabletPlayer/>
         {/* <DesktopPlayer/> */}
-        {/* <TabletFullScreen/> */}
-        <MobilePlayer/>
+        {/* <TabletFullScreen /> */}
+        {/* <MobilePlayer/> */}
     </main>
   );
 }

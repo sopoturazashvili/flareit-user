@@ -14,3 +14,12 @@
 .image{
     width: 100%;
 }
+
+
+@media screen and (max-width:599px) {
+    .fullScreenImage{
+        // max-width: 328px;
+        width: 100%;
+        height: 100%;
+    }
+}

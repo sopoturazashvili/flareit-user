@@ -34,7 +34,6 @@ const TabletVolumeInput = (props:Props) => {
                 value={muted ? 0 : volume}
                 onChange={TabletVolumeChange}
                 onPlay={isPlaying ? props.TabletaudioRef?.current?.play() : props.TabletaudioRef?.current?.pause()} />
-
         </>
     )
 }

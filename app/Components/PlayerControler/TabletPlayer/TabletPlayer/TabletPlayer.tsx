@@ -25,8 +25,6 @@ const TabletPlayer = () => {
         setFullScreen(!fullScreen)
     }
 
-    
-
     return (
         <>
             <div className={styles.tabletPlayer} >
@@ -38,7 +36,7 @@ const TabletPlayer = () => {
                     <div className={styles.inputAndSwitch}>
                         <TabletMusicInput TabletaudioRef={TabletaudioRef} />
                         <div className={styles.volumAndSwitch}>
-                            <TabeltVolume TabletaudioRef={TabletaudioRef}  tabletWidth={50}  tabletInvolved={"none"} tabletVolumeWidth={24} tabletVolumeHeight={24} />
+                            <TabeltVolume TabletaudioRef={TabletaudioRef}  tabletWidth={68}  tabletInvolved={"none"} tabletVolumeWidth={24} tabletVolumeHeight={24} />
                             <TabletMusicSwitch TabletaudioRef={TabletaudioRef} />
                             <TabletMusicShuffle />
                         </div>

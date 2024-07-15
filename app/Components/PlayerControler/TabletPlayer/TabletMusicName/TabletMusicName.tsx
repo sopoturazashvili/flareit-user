@@ -10,7 +10,7 @@ const TabletMusicName = (props:Props) => {
     return (
         <div className={styles.tabletMusicName}>
             <img src="/PlayerControler/TabletPhoto.svg" />
-            <TabletName musicName={props.musicName} name={props.name}/>
+            <TabletName musicName={props.musicName} name={props.name} />
         </div>
     )
 }

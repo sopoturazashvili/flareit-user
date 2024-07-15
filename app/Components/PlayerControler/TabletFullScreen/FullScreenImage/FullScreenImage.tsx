@@ -4,18 +4,16 @@ import { tabletFullScrenState } from "@/app/state"
 
 
 
-
 const FullScreenImage = () => {
     const [fullScreen,setFullScreen] = useRecoilState(tabletFullScrenState)
 
-    const fullScreenFunc = () =>{
-        setFullScreen(false)
+    const fullFunc = () => {
+        setFullScreen(!fullScreen)
     }
-    
 
     return (
         <div className={styles.fullScreenImage}>
-            <img className={styles.backButton} src="/PlayerControler/TabletBackButton.svg" onClick={() => {fullScreenFunc()}} />
+            <img className={styles.backButton} src="/PlayerControler/TabletBackButton.svg" onClick={() => {fullFunc()}} />
             <img className={styles.image} src="/PlayerControler/TabletImage.svg" />
         </div>
     )

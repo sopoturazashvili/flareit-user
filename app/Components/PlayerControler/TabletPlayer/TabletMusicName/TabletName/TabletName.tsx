@@ -1,4 +1,6 @@
+import { useRecoilState } from "recoil"
 import styles from "./TabletName.module.scss"
+import { tabletFullScrenState } from "@/app/state"
 
 interface Props {
     musicName: string,
@@ -6,10 +8,13 @@ interface Props {
 }
 
 const TabletName = (props: Props) => {
+    
+
+
     return (
-        <div className={styles.tabletAndMusicBox} >
-            <span className={styles.musicName}>{props.musicName}</span>
-            <span className={styles.name}>{props.name}</span>
+        <div className={styles.tabletAndMusicBox}  >
+            {/* <span className={fullScreen ? styles.musicFullScreen : styles.musicName}>{props.musicName}</span>
+            <span className={fullScreen ? styles.nameFullScreen : styles.name}>{props.name}</span> */}
         </div>
     )
 }
