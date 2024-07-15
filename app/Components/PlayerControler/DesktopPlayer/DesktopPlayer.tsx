@@ -33,7 +33,7 @@ const DesktopPlayer = () => {
                     <DesktopInputRange audioRef={audioRef} />
                 </div>
                 <div className={styles.musicPlayer}>
-                    <DesktopVolume audioRef={audioRef} rotate={-90} width={50} position={"absolute"} volumeWidth={24} volumeHeight={24} involved={"none"} />
+                    <DesktopVolume audioRef={audioRef}  width={50} volumeWidth={24} volumeHeight={24} involved={"none"} />
                     <DesktopMusicSwitch audioRef={audioRef} />
                     <DesktopShuffle />
                 </div>

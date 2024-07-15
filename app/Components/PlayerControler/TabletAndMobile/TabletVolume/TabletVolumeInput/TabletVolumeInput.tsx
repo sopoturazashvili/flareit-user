@@ -5,9 +5,7 @@ import { isPlayingState, mutedState, volumeState } from "@/app/state";
 
 interface Props {
     TabletaudioRef: React.MutableRefObject<HTMLAudioElement | null>,
-    tabletRotate:number,
     tabletWidth:number,
-    tabletPosition?:String
 }
 
 const TabletVolumeInput = (props:Props) => {
@@ -24,10 +22,8 @@ const TabletVolumeInput = (props:Props) => {
   };
 
   const tabletinputVolume = {
-    transform: `rotate(${props.tabletRotate}deg)`,
     height: "var(--borderRadius, 4px)",
     width: `${props.tabletWidth}px`,
-    position: `${props.tabletPosition}`,
   }
     return (
         <>

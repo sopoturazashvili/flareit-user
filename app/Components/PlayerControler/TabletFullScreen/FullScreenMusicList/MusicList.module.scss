@@ -1,29 +1,20 @@
-.nextContainer {
-    color: #FFF;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-
+.musicList {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    // position: absolute;
+    justify-content: flex-end;
 }
 
 .musicListBackground {
     background: rgba(15, 15, 15, 0.30);
-}
-
-.musicList {
-    width: 100%;
-    padding-top: 208px;
-    height: 100%;
-    transition: padding-top 0.5s ease;
-    height: 100%;
-}
-
-.nameAndMusic {
+    padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding: 0px 16px;
+    transition: transform 0.5s ease-in-out;
+    
 }
 
 .imageContainer {
@@ -32,8 +23,23 @@
     justify-content: center;
 }
 
+.nextContainer {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    text-align: left;
+}
+
 .musicListItem {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    align-items: center;
+
+}
+
+.rotateUp {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease; 
 }

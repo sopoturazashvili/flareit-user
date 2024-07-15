@@ -31,3 +31,8 @@ export const currentIndexState = atom ({
     key:"currentIndex",
     default: 0
 })
+
+export const tabletFullScrenState = atom({
+    key:"tabletFullScreenState",
+    default: false
+})

@@ -3,7 +3,7 @@ import TabletName from "./TabletName/TabletName"
 
 interface Props{
     musicName:string,
-    name:string
+    name:string,
 }
 
 const TabletMusicName = (props:Props) => {

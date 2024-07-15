@@ -5,9 +5,7 @@ import { mutedState, volumeState } from "@/app/state"
 
 interface Props {
     TabletaudioRef:  React.MutableRefObject<HTMLAudioElement | null>,
-    tabletRotate:number,
     tabletWidth:number,
-    tablettPosition:string,
     tabletInvolved:string,
     tabletVolumeWidth:number,
     tabletVolumeHeight:number
@@ -36,7 +34,7 @@ const TabeltVolume = (props:Props) => {
         <div className={styles.volumeContainer}>
             <div className={styles.volume}>
                 {muted ? <img src="/PlayerControler/Muted.svg" onClick={mutedFunc} style={tabletVolumeWidth} alt="Muted"/> : <img src="/PlayerControler/Volume.svg" style={tabletVolumeWidth} onClick={mutedFunc} alt="Volume" />}
-                <TabletVolumeInput tabletRotate={props.tabletRotate} tabletWidth={props.tabletWidth} tabletPosition={props.tablettPosition} TabletaudioRef={props.TabletaudioRef}/>
+                <TabletVolumeInput  tabletWidth={props.tabletWidth}  TabletaudioRef={props.TabletaudioRef}/>
                 <img src="/PlayerControler/Involved.svg" style={tabletInvolved}/>
             </div>
         </div>

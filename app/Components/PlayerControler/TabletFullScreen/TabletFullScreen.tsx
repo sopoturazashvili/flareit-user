@@ -10,8 +10,8 @@ import TabletName from "../TabletAndMobile/TabletMusicName/TabletName/TabletName
 
 interface Props {
     tabletaudioRef:React.MutableRefObject<HTMLAudioElement | null>;
-    setFullScreen:any,
-    fullScreen:boolean
+
+   
 }
 
 const TabletFullScreen = (props:Props) => {
@@ -20,7 +20,7 @@ const TabletFullScreen = (props:Props) => {
         <div className={styles.TabletFullScreen}>
             <div className={styles.tabletFullscreenPadd}>
                 <div className={styles.imageAndName}>
-                    <FullScreenImage setFullScreen={props.setFullScreen} fullScreen={props.fullScreen} />
+                    <FullScreenImage />
                     <TabletName musicName={"Starboy"} name={"Morgan Maxwell"}/>
                 </div>
                 <div className={styles.inputRangeCont}>
@@ -29,10 +29,12 @@ const TabletFullScreen = (props:Props) => {
                 </div>
                 <div>
                     <DesktopMusicSwitch audioRef={props.tabletaudioRef} />
-                    <DesktopVolume rotate={0} width={275} position={""} volumeWidth={32} volumeHeight={32} involved={""} audioRef={props.tabletaudioRef} />
+                    <DesktopVolume  width={275}  volumeWidth={32} volumeHeight={32} involved={""} audioRef={props.tabletaudioRef} />
                 </div>
             </div>
+            <div className={styles.musicListContainer}>
                 <MusicList />
+            </div>
         </div>
     )
 }

@@ -4,9 +4,7 @@ import { isPlayingState, mutedState, volumeState } from "@/app/state";
 import { useRecoilState } from "recoil";
 
 interface Props {
-  rotate: number,
   width: number,
-  position?: string
   audioRef:any
 }
 
@@ -24,10 +22,9 @@ const VolumeInput = (props:Props) => {
   };
 
   const inputVolume = {
-    transform: `rotate(${props.rotate}deg)`,
     height: "var(--borderRadius, 4px)",
     width: `${props.width}px`,
-    position: `${props.position}`,
+
   }
 
   

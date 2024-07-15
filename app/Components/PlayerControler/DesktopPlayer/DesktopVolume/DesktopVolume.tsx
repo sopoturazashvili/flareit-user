@@ -8,9 +8,7 @@ import VolumeInput from "./VolumeInput/VolumeInput";
 
 interface Props{ 
     audioRef?: any
-    rotate:number,
     width:number,
-    position?:string,
     volumeWidth:number,
     volumeHeight:number,
     involved:string
@@ -41,7 +39,7 @@ const DesktopVolume = (props:Props) => {
         <div className={styles.volumeContainer}>
             <div className={styles.volume}>
                 {muted ? <img src="/PlayerControler/Muted.svg" onClick={mutedFunc} style={volumeWidth} alt="Muted"/> : <img src="/PlayerControler/Volume.svg" style={volumeWidth} onClick={mutedFunc} alt="Volume" />}
-                <VolumeInput rotate={props.rotate} width={props.width} position={props.position} audioRef={props.audioRef}/>
+                <VolumeInput  width={props.width}  audioRef={props.audioRef}/>
                 <img src="/PlayerControler/Involved.svg" style={involved}/>
             </div>
         </div>
