@@ -18,7 +18,6 @@ const Modal = (props: Props) => {
         props.setIsOpen(!props.isOpen)
     }
 
-
     return (
         <div className={props.isOpen ? styles.modalOverlay : styles.modalOverlayClosed}>
             <div className={styles.modal}>
@@ -28,7 +27,9 @@ const Modal = (props: Props) => {
                         <Image src={'/icons/closeButton.svg'} width={24} height={24} alt='Close Button' />
                     </div>
                 </div>
-                {props.content}
+                <div className={styles.content}>
+                    {props.content}
+                </div>
                 {props.hasFooter && <div className={styles.buttonsContainer}>
                     <Button primary={false} text={'cancel'} width={'154px'} onClick={onClose} />
                     {props.onDone && (
