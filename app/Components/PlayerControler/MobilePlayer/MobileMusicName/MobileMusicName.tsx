@@ -3,7 +3,7 @@ import Name from "./Name/Name"
 
 interface Props {
     fullScreen: boolean,
-    setFullScreen: any,
+    setFullScreen: Function,
     image:string
 }
 

@@ -5,7 +5,7 @@ import { useRecoilState } from "recoil";
 import VolumeInput from "./VolumeInput/VolumeInput";
 
 interface Props {
-    audioRef?: any
+    audioRef:  React.MutableRefObject<HTMLAudioElement | null>;
     width: number,
     volumeWidth: number,
     volumeHeight: number,

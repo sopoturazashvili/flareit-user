@@ -8,7 +8,7 @@ import DesktopVolume from "../DesktopPlayer/DesktopVolume/DesktopVolume";
 
 interface Props {
     background: string;
-    audioRef: any;
+    audioRef: React.MutableRefObject<HTMLAudioElement | null>;
     fullScreen: boolean;
     setFullScreen: (e: boolean) => void;
 }

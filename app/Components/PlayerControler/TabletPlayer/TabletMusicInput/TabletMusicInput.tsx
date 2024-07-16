@@ -3,7 +3,7 @@ import styles from "./TabletMusicInput.module.scss"
 import { formatTime } from "@/app/helpers/FormatTime";
 
 interface Props {
-    TabletaudioRef: any
+    TabletaudioRef: React.MutableRefObject<HTMLAudioElement | null>
 }
 
 const TabletMusicInput = (props: Props) => {
