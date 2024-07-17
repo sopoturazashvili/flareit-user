@@ -1,0 +1,30 @@
+@import "../../../../styles/colors.scss";
+
+.imageAndTitle {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    color: $PrimaryWhite;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.image {
+    max-width: 230px;
+    width: 100%;
+}
+
+.fullScreentitle {
+    color: $PrimaryWhite;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
