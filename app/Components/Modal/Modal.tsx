@@ -6,7 +6,7 @@ import Image from 'next/image'
 interface Props {
     isOpen: boolean;
     setIsOpen: (value: boolean) => void
-    title?: string;
+    title: string;
     onDone?: () => void;
     content: ReactNode;
     hasFooter: boolean;
@@ -17,6 +17,7 @@ const Modal = (props: Props) => {
     const onClose = () => {
         props.setIsOpen(!props.isOpen)
     }
+
 
     return (
         <div className={props.isOpen ? styles.modalOverlay : styles.modalOverlayClosed}>
@@ -42,3 +43,4 @@ const Modal = (props: Props) => {
 }
 
 export default Modal
+
