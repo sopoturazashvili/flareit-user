@@ -14,7 +14,6 @@ const CreatedPlaylist = () => {
     const onDone = () => {
         if (value !== "") { 
             setAdd(false); 
-            console.log("Playlist title:", value);
         }
     };
 
