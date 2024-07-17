@@ -1,5 +1,6 @@
 import styles from "./LogOut.module.scss"
 import Image from "next/image"
+import Link from "next/link"
 import { useState } from "react"
 
 interface Props {
@@ -16,10 +17,10 @@ const LogOut = (props:Props) => {
         setProfile(!profile)
     }
     return (
-        <div className={styles.profile} onClick={onClick}>
+        <Link className={styles.profile} onClick={onClick} href={"/mobileLogOut"}>
             <Image src={props.src} width={props.width} height={props.height} alt={"profile"}/>
             {props.title && <span className={styles.title}>{props.title}</span>}
-        </div>
+        </Link>
     )
 }
 

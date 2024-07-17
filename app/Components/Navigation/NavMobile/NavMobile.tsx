@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 const NavMobile = () => {
     const dataItem = [
         { image: "/Image/Home.svg", title: "Home", pinkImage: "/Image/pinkHome.svg", href: "/" ,key:"/"},
-        { image: '/Image/search.svg', title: "Search", pinkImage: "/Image/pinkSearch.svg", href: "search" ,key:"/search"},
+        { image: '/Image/search.svg', title: "Search", pinkImage: "/Image/pinkSearch.svg", href: "/mobileSearch" ,key:"/mobileSearch"},
         { image: "/Image/Library.svg", title: "Library", pinkImage: "/Image/pinkLibrary.svg", href: "library" ,key:"/library"},
     ]
 
@@ -17,7 +17,7 @@ const NavMobile = () => {
                 {dataItem.map((item) => (
                     <MobileList title={item.title} image={item.image} pinkImage={item.pinkImage} href={item.href} active={item.key === pathname} />
                 ))}
-                <LogOut src={""} width={24} height={24} title={"Profile"} />
+                <LogOut src={"/Image/LogOut.svg"} width={24} height={24} title={"Profile"}  />
             </div>
         </div>
     )
