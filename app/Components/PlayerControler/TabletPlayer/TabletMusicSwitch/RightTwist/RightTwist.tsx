@@ -2,7 +2,7 @@ import { Twistt } from "@/app/helpers/Twist"
 import styles from "./RightTwist.module.scss"
 
 interface Props {
-    setCurrentTime: any,
+    setCurrentTime: React.Dispatch<React.SetStateAction<number>>,
     TabletaudioRef: React.MutableRefObject<HTMLAudioElement | null>
 }
 

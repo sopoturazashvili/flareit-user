@@ -3,7 +3,7 @@ import styles from "./DesktopLeftTwist.module.scss"
 
 interface Props {
     audioRef: React.MutableRefObject<HTMLAudioElement | null>,
-    setCurrentTime?: any,
+    setCurrentTime: React.Dispatch<React.SetStateAction<number>>,
 }
 
 const DesktopLeftTwist = (props: Props) => {
