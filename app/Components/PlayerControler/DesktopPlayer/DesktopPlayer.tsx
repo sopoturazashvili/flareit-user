@@ -7,8 +7,8 @@ import DesktopVolume from "./DesktopVolume/DesktopVolume";
 import DesktopMusicSwitch from "./DesktopMusicSwitch/DesktopMusicSwitch";
 import DesktopInputRange from "./DesktopInputRange/DesktopInputRange";
 import DesktopFullScreen from "../DesktopFullScreen/DesktopFullScreen";
-import DesktopShuffle from "./DesktopShuffle/SmallShufle";
 import DesktopMusicName from "./DesktopMusicName/DesktopMusicName";
+import Shuffle from "../Shuffle/Shufle";
 
 const DesktopPlayer = () => {
     const [currentIndex, setCurrentIndex] = useRecoilState(currentIndexState);
@@ -35,7 +35,7 @@ const DesktopPlayer = () => {
                 <div className={styles.musicPlayer}>
                     <DesktopVolume audioRef={audioRef} width={50} volumeWidth={24} volumeHeight={24} involved={"none"} />
                     <DesktopMusicSwitch audioRef={audioRef} />
-                    <DesktopShuffle />
+                    <Shuffle />
                 </div>
             </div>
             {fullScreen && (

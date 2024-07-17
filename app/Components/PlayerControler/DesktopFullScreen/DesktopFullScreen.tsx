@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./DesktopFullScreen.module.scss";
 import DesktopMusicName from "../DesktopPlayer/DesktopMusicName/DesktopMusicName";
-import DesktopShuffle from "../DesktopPlayer/DesktopShuffle/SmallShufle";
 import DesktopInputRange from "../DesktopPlayer/DesktopInputRange/DesktopInputRange";
 import DesktopMusicSwitch from "../DesktopPlayer/DesktopMusicSwitch/DesktopMusicSwitch";
 import DesktopVolume from "../DesktopPlayer/DesktopVolume/DesktopVolume";
+import Shuffle from "../Shuffle/Shufle";
 
 interface Props {
     background: string;
@@ -18,26 +18,11 @@ const DesktopFullScreen = (props: Props) => {
 
     const background = {
         backgroundImage: `url${props.background}`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        width: "100%",
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "12px",
-        zIndex: 0,
-        position: "absolute",
-        top: 0,
-        filter: "blur(10px)",
-        webkitFilter: "blur(8px)"
     };
-
 
     return (
         <div className={styles.backgroundCnot}>
-            <div style={background}></div>
+            <div style={background} className={styles.backgroundBox}></div>
             <div className={styles.backgroundContainer}>
                 <img
                     className={styles.backIcon}
@@ -51,7 +36,7 @@ const DesktopFullScreen = (props: Props) => {
                     <DesktopMusicName image={""} title={""} />
                 </div>
                 <div className={styles.inputRangeCont}>
-                    <DesktopShuffle />
+                    <Shuffle />
                     <DesktopInputRange audioRef={audioRef} />
                 </div>
                 <div>

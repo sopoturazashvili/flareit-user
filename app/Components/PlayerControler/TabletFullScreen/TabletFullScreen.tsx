@@ -1,12 +1,12 @@
 import { useRef } from "react"
 import DesktopInputRange from "../DesktopPlayer/DesktopInputRange/DesktopInputRange"
 import DesktopMusicSwitch from "../DesktopPlayer/DesktopMusicSwitch/DesktopMusicSwitch"
-import DesktopShuffle from "../DesktopPlayer/DesktopShuffle/SmallShufle"
 import DesktopVolume from "../DesktopPlayer/DesktopVolume/DesktopVolume"
 import FullScreenImage from "./FullScreenImage/FullScreenImage"
 import styles from "./TabletFullScreen.module.scss"
 import MusicList from "./FullScreenMusicList/MusicList"
 import TabletName from "../TabletPlayer/TabletMusicName/TabletName/TabletName"
+import Shuffle from "../Shuffle/Shufle"
 
 interface Props {
     tabletaudioRef: React.MutableRefObject<HTMLAudioElement | null>;
@@ -21,7 +21,7 @@ const TabletFullScreen = (props: Props) => {
                     <TabletName musicName={""} name={""} />
                 </div>
                 <div className={styles.inputRangeCont}>
-                    <DesktopShuffle />
+                    <Shuffle />
                     <DesktopInputRange audioRef={props.tabletaudioRef} />
                 </div>
                 <div>
