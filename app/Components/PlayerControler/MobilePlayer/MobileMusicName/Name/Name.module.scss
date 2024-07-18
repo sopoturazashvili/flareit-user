@@ -1,0 +1,22 @@
+@import "../../../../../styles/colors.scss";
+
+.autor {
+    color: $PrimaryWhite;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.name {
+    color: $PrimaryGreytone3;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.nameContainer {
+    display: flex;
+    flex-direction: column;
+}
