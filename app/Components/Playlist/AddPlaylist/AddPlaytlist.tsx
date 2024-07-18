@@ -1,12 +1,12 @@
 import { useState } from "react"
-import styles from "./CreatedPlaylist.module.scss"
+import styles from "./AddPlaylist.module.scss"
 import Modal from "../../Modal/Modal"
 import PlayListInput from "../PlayListInput/PlayListInput"
 
-const CreatedPlaylist = () => {
+const AddPlaylist = () => {
     const [add, setAdd] = useState(false)
     const [value, setValue] = useState<String>("")
-
+    
     const onAdd = (newValue: string) => {
         setValue(newValue);
     };
@@ -16,6 +16,7 @@ const CreatedPlaylist = () => {
             setAdd(false); 
         }
     };
+    
 
     return (
         <>
@@ -32,6 +33,6 @@ const CreatedPlaylist = () => {
     )
 }
 
-export default CreatedPlaylist
+export default AddPlaylist
 
 
