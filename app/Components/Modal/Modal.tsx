@@ -8,7 +8,7 @@ interface Props {
     setIsOpen: (value: boolean) => void
     title?: string;
     onDone?: () => void;
-    content: ReactNode;
+    children: ReactNode;
     hasFooter: boolean;
 }
 
@@ -28,7 +28,9 @@ const Modal = (props: Props) => {
                         <Image src={'/icons/closeButton.svg'} width={24} height={24} alt='Close Button' />
                     </div>
                 </div>
-                {props.content}
+                <div className={styles.content}>
+                    {props.children}
+                </div>
                 {props.hasFooter && <div className={styles.buttonsContainer}>
                     <Button primary={false} text={'cancel'} width={'154px'} onClick={onClose} />
                     {props.onDone && (
@@ -41,3 +43,4 @@ const Modal = (props: Props) => {
 }
 
 export default Modal
+

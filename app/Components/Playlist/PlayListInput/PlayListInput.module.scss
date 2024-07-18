@@ -1,0 +1,31 @@
+@import "../../../styles/colors.scss";
+
+.inputContainer {
+    max-width: 316px;
+    width: 100%;
+    padding: 12px 12px 12px 16px;
+    background-color: #000;
+    border: 1px solid #232934;
+    border-radius: 8px;
+}
+
+.playlist {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.input {
+    border: none;
+    outline: none;
+    background-color: #000;
+    color: #7B819D;
+}
+
+.title {
+    color: $PrimaryWhite;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+}
