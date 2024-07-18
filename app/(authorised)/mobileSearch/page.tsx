@@ -1,6 +1,6 @@
 "use client"
 
-import Search from "../Components/Header/Search/Search"
+import Search from "../../Components/Header/Search/Search"
 import styles from "./page.module.scss"
 
 
