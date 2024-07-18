@@ -6,9 +6,9 @@ import Image from 'next/image'
 interface Props {
     isOpen: boolean;
     setIsOpen: (value: boolean) => void
-    title: string;
+    title?: string;
     onDone?: () => void;
-    content: ReactNode;
+    children: ReactNode;
     hasFooter: boolean;
 }
 
@@ -29,7 +29,7 @@ const Modal = (props: Props) => {
                     </div>
                 </div>
                 <div className={styles.content}>
-                    {props.content}
+                    {props.children}
                 </div>
                 {props.hasFooter && <div className={styles.buttonsContainer}>
                     <Button primary={false} text={'cancel'} width={'154px'} onClick={onClose} />

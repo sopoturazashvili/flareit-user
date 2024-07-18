@@ -6,17 +6,17 @@ import PlayListInput from "../PlayListInput/PlayListInput"
 const AddPlaylist = () => {
     const [add, setAdd] = useState(false)
     const [value, setValue] = useState<String>("")
-    
+
     const onAdd = (newValue: string) => {
         setValue(newValue);
     };
 
     const onDone = () => {
-        if (value !== "") { 
-            setAdd(false); 
+        if (value !== "") {
+            setAdd(false);
         }
     };
-    
+
 
     return (
         <>
@@ -28,7 +28,9 @@ const AddPlaylist = () => {
                     <span className={styles.name}>Create Playlist</span>
                 </div>
             </div>
-            {add && <Modal isOpen={true} setIsOpen={setAdd} content={<PlayListInput onChange={onAdd} />} hasFooter={true} title={"Add Playlist"} onDone={onDone}  />}
+            {add && <Modal isOpen={true} setIsOpen={setAdd} hasFooter={true} title={"Add Playlist"} onDone={onDone}  >
+                <PlayListInput onChange={onAdd} />
+            </Modal>}
         </>
     )
 }
