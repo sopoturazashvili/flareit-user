@@ -14,10 +14,24 @@ const HeaderContainer = () => {
     return (
         <div className={styles.headerContainerBox}>
             <div className={styles.headerContainer}>
+<<<<<<< Updated upstream
                 <div className={styles.logo}>
                     <Logo/>
                 </div>
                 <div className={styles.headerSearchContainer}>
+=======
+<<<<<<< Updated upstream
+                <div className={styles.headerSearchContainer}>
+                <div className={styles.logo}>
+                    <Logo/>
+                </div>
+=======
+                <div className={styles.logo}>
+                    <Logo/>
+                </div>
+                <div className={styles.headerSearchContainer}>
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
                     <div className={styles.searchContainer}>
                         <Search />
                     </div>

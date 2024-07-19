@@ -7,7 +7,15 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
+<<<<<<< Updated upstream
      
+=======
+<<<<<<< Updated upstream
+      
+=======
+    
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     </main>
   );
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import Search from "../../Components/Header/Search/Search"
+import Search from "@/app/Components/Header/Search/Search"
 import styles from "./page.module.scss"
 
 
@@ -13,7 +13,7 @@ const mobileSearch = () => {
                     <p className={styles.search}>Search</p>
                 </div>
                 <div className={styles.mobileSearchContainer}>
-                    <Search />
+                    <Search/>
                 </div>
             </div>
         </div>

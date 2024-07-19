@@ -1,10 +1,13 @@
 @import "../../../styles/colors.scss";
 
-
 .mainNavigation {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    max-width: 302px;
+    width: 100%;
+    position: sticky;
+    top: 0;
 }
 
 .navigation {
@@ -19,7 +22,7 @@
     background-color: $PrimaryBlackTone1;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 36px;
     height: 100vh;
     padding: 0px 24px;
     transform: translatex(302px);
@@ -72,7 +75,7 @@
         background-color: $PrimaryBlackTone1;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 36px;
         height: 100vh;
         padding: 20px 24px;
         transform: none;
