@@ -1,14 +1,12 @@
-import Link from "next/link"
-import styles from "./Logo.module.scss"
-
+import Link from "next/link";
+import styles from "./Logo.module.scss";
 
 const Logo = () => {
-    return (
-        <Link href={"/"}>
-            <img src="/Image/Logo.svg" />
-        </Link>
-    )
-}
+  return (
+    <Link href={"/"}>
+      <img src="/Image/Logo.svg" />
+    </Link>
+  );
+};
 
-
-export default Logo
+export default Logo;

@@ -1,29 +1,20 @@
 @import "../../../styles/colors.scss";
 
-
-.mobileContainer  {
-    display: flex;
-    align-items: flex-end;
-    height: 100%;
-    position: absolute;
+.mobileContainer {
     width: 100%;
 }
 
 .color {
-    color: white;
+    color: $PrimaryWhite;
 }
 
 .colorPink {
-    color: #5E4BE2;
+    color: $PrimaryBlueTone3;
 }
 
 .navigationContainer {
     display: flex;
     justify-content: space-between;
     padding: 10px 16px;
-    background-color: #0F0F0F;
-    width: 100%;
+    background-color: $PrimaryBlackTone1;
 }
-
-
-

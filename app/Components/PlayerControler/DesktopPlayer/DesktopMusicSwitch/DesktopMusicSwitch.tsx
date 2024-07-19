@@ -1,5 +1,5 @@
-import { MutableRefObject, useEffect, useRef, useState } from "react"
-import styles from "./DesktopMusicSwitch.module.scss"
+import { MutableRefObject, useEffect, useRef, useState } from "react";
+import styles from "./DesktopMusicSwitch.module.scss";
 import { useRecoilState } from "recoil";
 import { currentTimeState, isPlayingState } from "@/app/state";
 import LeftSwitch from "./LeftSwitch/LeftSwitch";
@@ -9,15 +9,15 @@ import DesktopRightTwist from "./DesktopRightTwist/DesktopRightTwist";
 import DesktopLeftTwist from "./DesktopLeftTwist/DesktopLeftTwist";
 
 interface Props {
-  audioRef: React.MutableRefObject<HTMLAudioElement | null>
+  audioRef: React.MutableRefObject<HTMLAudioElement | null>;
 }
 
 const DesktopMusicSwitch = (props: Props) => {
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
-  const [currenTime, setCurrentTime] = useRecoilState(currentTimeState)
+  const [currenTime, setCurrentTime] = useRecoilState(currentTimeState);
 
   const playPause = () => {
-    const audio = props.audioRef.current
+    const audio = props.audioRef.current;
     if (audio) {
       setIsPlaying(!isPlaying);
       if (!isPlaying) {
@@ -27,18 +27,28 @@ const DesktopMusicSwitch = (props: Props) => {
       }
     }
   };
-  
+
   return (
     <div className={styles.musicSwitch}>
       <LeftSwitch />
-      <DesktopLeftTwist audioRef={props.audioRef} setCurrentTime={setCurrentTime}/>
+      <DesktopLeftTwist
+        audioRef={props.audioRef}
+        setCurrentTime={setCurrentTime}
+      />
       <div className={styles.playPaus} onClick={playPause}>
-        {isPlaying ? <img src="/PlayerControler/Play.svg" alt="Play" /> : <img src="/PlayerControler/Pause.svg" alt="Pause" />}
+        {isPlaying ? (
+          <img src="/PlayerControler/Play.svg" alt="Play" />
+        ) : (
+          <img src="/PlayerControler/Pause.svg" alt="Pause" />
+        )}
       </div>
-     <DesktopRightTwist audioRef={props.audioRef} setCurrentTime={setCurrentTime}/>
+      <DesktopRightTwist
+        audioRef={props.audioRef}
+        setCurrentTime={setCurrentTime}
+      />
       <RightSwitch audioRef={props.audioRef} />
     </div>
-  )
-}
+  );
+};
 
-export default DesktopMusicSwitch
+export default DesktopMusicSwitch;
