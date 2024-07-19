@@ -1,9 +1,5 @@
+const artist = () => {
+  return <div>asdsadsda</div>;
+};
 
-
-const artist = ()=> {
-    return(
-        <div>helooooooooo</div>
-    )
-}
-
-export default artist
+export default artist;

@@ -10,24 +10,23 @@ interface Props {
 
 const RightSwitch = (props: Props) => {
   const [currentIndex, setCurrentIndex] = useRecoilState(currentIndexState);
-  const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
+  const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
 
   const handleNextTrack = () => {
     if (props.audioRef.current) {
       const next = playNext(currentIndex, props.audioRef);
       setCurrentIndex(next?.newIndex || 0);
-      setIsPlaying(true)
+      setIsPlaying(true);
     }
   };
 
   return (
-    <img src="/PlayerControler/RightTwist.svg" alt="Right Twist" onClick={() => handleNextTrack()} />
+    <img
+      src="/PlayerControler/RightTwist.svg"
+      alt="Right Twist"
+      onClick={() => handleNextTrack()}
+    />
   );
 };
 
 export default RightSwitch;
-
-
-
-
-

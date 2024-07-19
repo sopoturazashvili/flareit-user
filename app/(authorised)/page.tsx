@@ -1,12 +1,7 @@
-"use client"
-import NavDesktop from "../Components/Navigation/NavDesktop/NavDesktop";
+"use client";
+
 import styles from "./page.module.scss";
 
-
 export default function Home() {
-
-  return (
-    <main className={styles.main}>
-    </main>
-  );
+  return <main className={styles.main}></main>;
 }
