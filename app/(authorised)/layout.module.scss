@@ -1,26 +1,16 @@
 @import "../styles/colors.scss";
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
+
 .headerAndNavigation {
     display: flex;
     background-color: $PrimaryBlackTone2;
 }
-
-=======
->>>>>>> Stashed changes
 
 .headerAndNavigation {
     display: flex;
     background-color: $PrimaryBlackTone1;
 }
 
-
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 .header {
     width: 100%;
 }
@@ -30,9 +20,6 @@
     width: 100%;
 }
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
 .headerAndNav {
     display: flex;
 }
@@ -47,17 +34,12 @@
         display: none;
     }
 }
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 
 @media screen and (min-width:600px) and (max-width:1023px) {
     .navigation {
         display: none;
     }
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
+
     .navMobile {
         display: none;
     }
@@ -67,7 +49,4 @@
     .navigation {
         display: none;
     }
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 }

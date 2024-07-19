@@ -14,24 +14,10 @@ const HeaderContainer = () => {
     return (
         <div className={styles.headerContainerBox}>
             <div className={styles.headerContainer}>
-<<<<<<< Updated upstream
-                <div className={styles.logo}>
-                    <Logo/>
-                </div>
                 <div className={styles.headerSearchContainer}>
-=======
-<<<<<<< Updated upstream
-                <div className={styles.headerSearchContainer}>
-                <div className={styles.logo}>
-                    <Logo/>
-                </div>
-=======
-                <div className={styles.logo}>
-                    <Logo/>
-                </div>
-                <div className={styles.headerSearchContainer}>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+                    <div className={styles.logo}>
+                        <Logo />
+                    </div>
                     <div className={styles.searchContainer}>
                         <Search />
                     </div>
@@ -40,9 +26,9 @@ const HeaderContainer = () => {
                     <LogOutWeb width={32} height={32} title={""} src={"/Image/LogOut.svg"} />
                 </div>
                 <LogOutModal email={""} logOut={logOut} setLogOut={setLogOut} />
-            <div className={styles.NavDesktop}>
-                <NavDesktop />
-            </div>
+                <div className={styles.NavDesktop}>
+                    <NavDesktop />
+                </div>
             </div>
         </div>
     )

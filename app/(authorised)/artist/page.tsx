@@ -37,7 +37,7 @@ const ArtistPage = () => {
             </div>
             <div className={styles.list}>
                 {artists.map((artist, index) => (
-                    <ArtistPlaylistItem key={artist.id} image={artist.image} text={artist.name} imageRound={true} id={artist.id} pagePathName={} />
+                    <ArtistPlaylistItem key={artist.id} image={artist.image} text={artist.name} imageRound={true} id={artist.id} pagePathName={"artists"} />
                 ))}
             </div>
         </div>
