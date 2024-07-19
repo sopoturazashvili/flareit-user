@@ -3,7 +3,7 @@ import AddPlaylist from '@/app/Components/Playlist/AddPlaylist/AddPlaytlist'
 import styles from './page.module.scss'
 import ArtistPlaylistItem from '@/app/Components/ArtistPlaylistListItem/ArtistPlaylistItem'
 
-const Playlist = () => {
+const Playlists = () => {
     const playlists = [
         {   
             id: 1,
@@ -29,12 +29,12 @@ const Playlist = () => {
             </div>
             <div className={styles.list}>
                 <AddPlaylist />
-                {playlists.map((playlist, index) => (
-                    <ArtistPlaylistItem image={playlist.image} text={playlist.name} imageRound={false} id={playlist.id} pagePathName={'playlist'} />
+                {playlists.map((playlist) => (
+                    <ArtistPlaylistItem image={playlist.image} text={playlist.name} imageRound={false} id={playlist.id} pagePathName={'playlists'} />
                 ) )}
             </div>
         </div>
     )
 }
 
-export default Playlist
+export default Playlists
