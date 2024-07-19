@@ -5,7 +5,6 @@ import styles from "./NavDesktop.module.scss";
 import { usePathname } from "next/navigation";
 import NavDesktopItem from "./NavDesktopItem/NavDesktopItem";
 import Image from "next/image";
-import LogOut from "../../LogOut/LogOut";
 import LogOutTablet from "./LogOutTablet/LogOutTablet";
 import Logo from "../../Logo/Logo";
 
@@ -49,11 +48,10 @@ const NavDesktop = () => {
           <Image width={40} height={40} src="/Image/Line.svg" alt="Menu" />
         </div>
       </div>
-      <nav
+      <div
         className={`${styles.navigationContainer}  ${
           isOpen ? styles.open : ""
-        }`}
-      >
+        }`}>
         <div className={styles.logo}>
           <Logo />
         </div>
@@ -88,7 +86,7 @@ const NavDesktop = () => {
             />
           </div>
         </div>
-      </nav>
+      </div>
     </div>
   );
 };
