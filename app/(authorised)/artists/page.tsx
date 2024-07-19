@@ -1,7 +1,7 @@
 import styles from './page.module.scss'
 import ArtistPlaylistItem from '@/app/Components/ArtistPlaylistListItem/ArtistPlaylistItem';
 
-const ArtistPage = () => {
+const Artists = () => {
     const artists = [
         {   
             id:1,
@@ -36,12 +36,12 @@ const ArtistPage = () => {
                 <span className={styles.title}>Top Artist</span>
             </div>
             <div className={styles.list}>
-                {artists.map((artist, index) => (
-                    <ArtistPlaylistItem key={artist.id} image={artist.image} text={artist.name} imageRound={true} id={artist.id} pagePathName={'artist'} />
+                {artists.map((artist) => (
+                    <ArtistPlaylistItem key={artist.id} image={artist.image} text={artist.name} imageRound={true} id={artist.id} pagePathName={'artists'} />
                 ))}
             </div>
         </div>
     )
 }
 
-export default ArtistPage;
+export default Artists;
