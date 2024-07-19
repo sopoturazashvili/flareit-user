@@ -68,7 +68,7 @@ const Albums = () => {
         </div>
         <div className={styles.list}>
             {albums.map((album) => (
-                <AlbumCard key={album.id} image={album.image} albumName={album.albumName} year={album.year} artistName={album.artistName} id={album.id} />
+                <AlbumCard key={album.id} image={album.image} albumName={album.albumName} year={album.year} artistName={album.artistName} id={album.id} pagePathName={'albums'} />
             ))}
         </div>
     </div>
