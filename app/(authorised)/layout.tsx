@@ -2,6 +2,7 @@ import HeaderContainer from "../Components/Header/HeaderContainer";
 import NavDesktop from "../Components/Navigation/NavDesktop/NavDesktop";
 import NavMobile from "../Components/Navigation/NavMobile/NavMobile";
 import Navigation from "../Components/Navigation/Navigation";
+import PlayerAndList from "../Components/PlayerAndList/PlayerAndList";
 import styles from "./layout.module.scss";
 import { ReactNode } from "react";
 
@@ -17,7 +18,10 @@ const Layout = (props: Props) => {
       </div>
       <div className={styles.header}>
         <HeaderContainer />
-        {props.children}
+        <div className={styles.headerAndChildren}>
+          {props.children}
+          <PlayerAndList />
+        </div>
         <div className={styles.navMobile}>
           <NavMobile />
         </div>

@@ -1,0 +1,41 @@
+.playerAndListBox {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.playerAndList {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0px 0px 12px 12px;
+  max-width: 278px;
+  width: 100%;
+}
+
+.playerAndListContainer {
+  padding: 16px 16px 8px 16px;
+  background-color: #0F0F0F;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.listDataContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+
+@media screen and (min-width:600px) and (max-width:1023px) {
+    .playerAndListBox {
+        display: none;
+    }
+}
+
+@media screen and (max-width:599px) {
+    .playerAndListBox {
+        display: none;
+    }
+}

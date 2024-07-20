@@ -15,6 +15,13 @@
     width: 100%;
 }
 
+.headerAndChildren {
+    display: flex;
+    justify-content: space-between;
+    background-color: #121212;
+    padding: 20px;
+}
+
 .navigation {
     max-width: 302px;
     width: 100%;

@@ -6,6 +6,7 @@ import MobileList from "./NavMobileItem/NavMobileItem";
 import { usePathname } from "next/navigation";
 
 const NavMobile = () => {
+
   const dataItem = [
     {
       image: "/Image/Home.svg",
@@ -42,7 +43,7 @@ const NavMobile = () => {
             image={item.image}
             pinkImage={item.pinkImage}
             href={item.href}
-            active={pathname.includes(`${item.key}`)}
+            active={pathname === item.href}
           />
         ))}
         <LogOut

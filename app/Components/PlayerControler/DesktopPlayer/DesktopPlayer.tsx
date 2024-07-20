@@ -25,7 +25,7 @@ const DesktopPlayer = () => {
         <audio ref={audioRef} src={musicData[currentIndex].src} />
         <div className={styles.nameAndRange}>
           <DesktopMusicName
-            image={""}
+            image={"/PlayerControler/MusicPhoto.svg"}
             title={""}
             fullScreen={fullScreen}
             setFullScreen={setFullScreen}
