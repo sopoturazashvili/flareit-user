@@ -16,6 +16,8 @@ const DesktopMusicSwitch = (props: Props) => {
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
   const [currenTime, setCurrentTime] = useRecoilState(currentTimeState);
 
+  console.log(isPlaying,"playc");
+  
   const playPause = () => {
     const audio = props.audioRef.current;
     if (audio) {
@@ -52,3 +54,7 @@ const DesktopMusicSwitch = (props: Props) => {
 };
 
 export default DesktopMusicSwitch;
+
+
+
+

@@ -28,7 +28,7 @@ const DesktopPlayer = (props:Props) => {
   return (
     <>
       <div className={styles.playerSmall}>
-        <audio ref={props.audioRef} src={musicData[currentIndex]?.src} />
+        <audio ref={props.audioRef} />
         <div className={styles.nameAndRange}>
           <DesktopMusicName
             image={"/PlayerControler/MusicPhoto.svg"}
@@ -46,7 +46,7 @@ const DesktopPlayer = (props:Props) => {
             volumeHeight={24}
             involved={"none"}
           />
-          <DesktopMusicSwitch audioRef={props.audioRef} />
+          <DesktopMusicSwitch audioRef={props.audioRef}/>
           <Shuffle />
         </div>
       </div>
@@ -63,3 +63,11 @@ const DesktopPlayer = (props:Props) => {
 };
 
 export default DesktopPlayer;
+
+
+
+
+function setIsPlaying(arg0: boolean) {
+  throw new Error("Function not implemented.");
+}
+

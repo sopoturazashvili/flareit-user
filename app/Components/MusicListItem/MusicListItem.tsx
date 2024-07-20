@@ -12,7 +12,7 @@ interface Props {
   audioRef: React.RefObject<HTMLAudioElement>;  
 }
 
-const MusicListItem: React.FC<Props> = (props) => {
+const MusicListItem = (props:Props) => {
   const handlePlay = () => {
     if (props.playFunc) {
       props.playFunc();  
@@ -22,6 +22,7 @@ const MusicListItem: React.FC<Props> = (props) => {
       }
     }
   };
+
 
   return (
     <div className={styles.listItem}>
@@ -60,3 +61,6 @@ const MusicListItem: React.FC<Props> = (props) => {
 };
 
 export default MusicListItem;
+
+
+
