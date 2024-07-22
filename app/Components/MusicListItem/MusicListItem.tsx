@@ -8,41 +8,34 @@ interface Props {
   artistName: string;
   songDuration: string;
   src: string;
-  playFunc?: () => void;  
-  audioRef: React.RefObject<HTMLAudioElement>;  
+  isPlaying: boolean;
+  onClick: () => void;
+  audioRef: React.RefObject<HTMLAudioElement>;
 }
 
-const MusicListItem = (props:Props) => {
-  const handlePlay = () => {
-    if (props.playFunc) {
-      props.playFunc();  
-    } else {
-      if (props.audioRef.current) {
-        props.audioRef.current.play();  
-      }
-    }
-  };
-
-
+const MusicListItem = (props: Props) => {
   return (
     <div className={styles.listItem}>
-      <audio src={props.src} />
-      <div className={styles.itemImageWrapper}>
-        <Image
-          className={styles.itemImage}
-          src={props.image}
-          width={54}
-          height={56}
-          alt="Music Card Cover"
-        />
-        <div className={styles.itemHoverPhoto}>
-          <Image
-            src="/images/PlayHover.svg"
-            alt="Play Button"
-            width={54}
-            height={56}
-            onClick={handlePlay}
-          />
+      <div
+        style={{ backgroundImage: `url(${props.image})` }}
+        className={styles.itemImageWrapper}
+      >
+        <div className={styles.itemHoverPhoto} onClick={props.onClick}>
+          {props.isPlaying ? (
+            <Image
+              src="/PlayerControler/Play.svg"
+              alt="Play Button"
+              width={54}
+              height={56}
+            />
+          ) : (
+            <Image
+              src="/Images/PlayHover.svg"
+              alt="Pause Button"
+              width={54}
+              height={56}
+            />
+          )}
         </div>
       </div>
       <div className={styles.section}>
@@ -61,6 +54,3 @@ const MusicListItem = (props:Props) => {
 };
 
 export default MusicListItem;
-
-
-

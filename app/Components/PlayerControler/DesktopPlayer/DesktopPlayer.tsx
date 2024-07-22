@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import styles from "./DesktopPlayer.module.scss";
 import { musicData } from "@/app/helpers/MusicData";
-import { currentIndexState } from "@/app/state";
+import { currentIndexState, fullScreenState } from "@/app/state";
 import { useRecoilState } from "recoil";
 import DesktopVolume from "./DesktopVolume/DesktopVolume";
 import DesktopMusicSwitch from "./DesktopMusicSwitch/DesktopMusicSwitch";
@@ -16,7 +16,7 @@ interface Props {
 
 const DesktopPlayer = (props:Props) => {
   const [currentIndex, setCurrentIndex] = useRecoilState(currentIndexState);
-  const [fullScreen, setFullScreen] = useState(false);
+  const [fullScreen, setFullScreen] = useRecoilState(fullScreenState);
 
   useEffect(() => {
     if (props.audioRef.current && musicData.length > 0) {
@@ -63,11 +63,3 @@ const DesktopPlayer = (props:Props) => {
 };
 
 export default DesktopPlayer;
-
-
-
-
-function setIsPlaying(arg0: boolean) {
-  throw new Error("Function not implemented.");
-}
-

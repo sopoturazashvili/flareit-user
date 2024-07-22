@@ -1,6 +1,10 @@
+@import "../../styles/colors.scss";
+
 .playerAndListBox {
     display: flex;
     justify-content: flex-end;
+    height: 100vh;
+    background-color: $PrimaryBlackTone2;
 }
 
 .playerAndList {
@@ -13,10 +17,12 @@
 
 .playerAndListContainer {
   padding: 16px 16px 8px 16px;
-  background-color: #0F0F0F;
+  background-color: $PrimaryBlackTone1;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  height: 400px;
+  overflow: scroll;
 }
 
 .listDataContainer {

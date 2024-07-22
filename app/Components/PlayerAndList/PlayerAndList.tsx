@@ -1,17 +1,33 @@
-"use client"
+"use client";
 
-import { useRef } from "react";
+import React, { useRef } from "react";
 import MusicListItem from "../MusicListItem/MusicListItem";
 import DesktopPlayer from "../PlayerControler/DesktopPlayer/DesktopPlayer";
 import NextPlay from "./NextPlay/NextPlay";
 import styles from "./PlayerAndList.module.scss";
 import { musicData } from "@/app/helpers/MusicData";
 import { useRecoilState } from "recoil";
-import { currentIndexState } from "@/app/state";
+import { currentIndexState, isPlayingState } from "@/app/state";
 
 const PlayerAndList = () => {
   const [currentIndex, setCurrentIndex] = useRecoilState(currentIndexState);
+  const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState); 
   const audioRef = useRef<HTMLAudioElement>(null);
+
+  const playTrack = (index: number) => {
+    setCurrentIndex(index);
+    setIsPlaying(true); 
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  };
+
+  const pauseTrack = () => {
+    setIsPlaying(false); 
+    if (audioRef.current) {
+      audioRef.current.pause(); 
+    }
+  };
 
   const listData = musicData.map((item) => ({
     image: "/images/natashaB.png",
@@ -20,13 +36,6 @@ const PlayerAndList = () => {
     songDuration: "4:17",
     src: item.src,
   }));
-
-  const setCurrentIndexAndPlay = (index: number) => {
-    setCurrentIndex(index);  
-    if (audioRef.current) {
-      audioRef.current.play(); 
-    }
-  };
 
   return (
     <div className={styles.playerAndListBox}>
@@ -43,8 +52,15 @@ const PlayerAndList = () => {
                 artistName={item.artistName}
                 songDuration={item.songDuration}
                 src={item.src}
-                playFunc={() => setCurrentIndexAndPlay(index)}
                 audioRef={audioRef}
+                isPlaying={isPlaying && currentIndex === index} 
+                onClick={() => {
+                  if (isPlaying && currentIndex === index) {
+                    pauseTrack();
+                  } else {
+                    playTrack(index);
+                  }
+                }}
               />
             ))}
           </div>
@@ -58,5 +74,3 @@ const PlayerAndList = () => {
 };
 
 export default PlayerAndList;
-
-

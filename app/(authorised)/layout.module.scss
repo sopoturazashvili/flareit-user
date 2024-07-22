@@ -1,41 +1,35 @@
 @import "../styles/colors.scss";
 
-
-.headerAndNavigation {
+.wrapper { 
     display: flex;
-    background-color: $PrimaryBlackTone2;
 }
-
-.headerAndNavigation {
+.contentWrapper {
     display: flex;
-    background-color: $PrimaryBlackTone1;
+    flex-direction: column;
+    flex: 1;
 }
 
-.header {
-    width: 100%;
-}
-
-.headerAndChildren {
-    display: flex;
-    justify-content: space-between;
-    background-color: #121212;
-    padding: 20px;
-}
-
-.navigation {
+.navWrapper {
     max-width: 302px;
     width: 100%;
 }
-
-.headerAndNav {
+.childrenAndPlayer {
     display: flex;
+    padding: 20px 20px 0px 20px;
+    background-color: $PrimaryBlackTone2;
+}
+.childeren{ 
+    flex: 1;
 }
 
-.navMobile {
-    display: flex;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
+.header {
+    position: sticky;
+    top: 0;
+}
+
+.wrapperFull {
+    height: 100vh;
+    overflow: hidden;
 }
 
 @media screen and (min-width:1024px) {
@@ -45,17 +39,25 @@
 }
 
 @media screen and (min-width:600px) and (max-width:1023px) {
-    .navigation {
+    .navWrapper {
         display: none;
     }
-
     .navMobile {
         display: none;
+    }
+    .childrenAndPlayer {
+        display: flex;
+        background-color: $PrimaryBlackTone2;
+        padding: 24px 24px 0px 20px;
     }
 }
 
 @media screen and (max-width:599px) {
-    .navigation {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    .navWrapper {
         display: none;
     }
 }
