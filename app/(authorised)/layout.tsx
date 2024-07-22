@@ -30,9 +30,9 @@ const Layout = (props: Props) => {
           <PlayerAndList />
         </div>
       </div>
-          <div className={styles.navMobile}>
-          <NavMobile />
-        </div>
+      <div className={styles.navMobile}>
+        <NavMobile />
+      </div>
     </div>
   );
 };
