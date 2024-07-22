@@ -9,11 +9,12 @@ interface Props {
   year: string;
   artistName: string;
   id: number;
+  pagePathName: string;
 }
 
 const AlbumCard = (props: Props) => {
   return (
-    <Link href={`/page/${props.id}`}>
+    <Link href={`/${props.pagePathName}/${props.id}`}>
       <div className={styles.container}>
         <div className={styles.coverContainer}>
           <Image src={props.image} width={144} height={144} alt="Album Cover" />
