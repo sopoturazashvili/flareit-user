@@ -12,22 +12,22 @@ const NavDesktop = () => {
   const data = [
     { title: "Home", href: "/", image: "/Image/Home.svg", key: "/" },
     {
-      title: "Artist",
-      href: "/artist",
+      title: "Artists",
+      href: "/artists",
       image: "/Image/Artist.svg",
-      key: "/artist",
+      key: "/artists",
     },
     {
-      title: "Playlist",
-      href: "/playlist",
+      title: "Playlists",
+      href: "/playlists",
       image: "/Image/Albums.svg",
-      key: "/playlist",
+      key: "/playlists",
     },
     {
       title: "Albums",
-      href: "/album",
+      href: "/albums",
       image: "/Image/Playlist.svg",
-      key: "/album",
+      key: "/albums",
     },
   ];
 

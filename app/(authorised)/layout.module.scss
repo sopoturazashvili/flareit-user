@@ -13,11 +13,14 @@
   max-width: 302px;
   width: 100%;
 }
+
 .childrenAndPlayer {
   display: flex;
-  padding: 20px 20px 0px 0px;
+  gap: 20px;
+  padding: 20px 20px 0px 20px;
   background-color: $PrimaryBlackTone2;
 }
+
 .childeren {
   flex: 1;
 }
@@ -56,6 +59,7 @@
   }
 }
 
+
 @media screen and (max-width: 599px) {
   .wrapper {
     display: flex;
@@ -66,9 +70,9 @@
   }
   .childrenAndPlayer {
     height: calc(100vh - 64px);
+    padding: 32px 16px 0px 16px;
     overflow: auto;
     display: flex;
-    padding: 0;
     background-color: $PrimaryBlackTone2;
   }
   .childrenAndPlayer::-webkit-scrollbar {

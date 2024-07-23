@@ -1,19 +1,19 @@
+import Link from "next/link";
 import styles from "./FillAndTextButton.module.scss";
 
 interface Props {
   text: string;
   fill: boolean;
-  onClick: () => void;
+  href: string;
 }
 
 const FillAndTextButton = (props: Props) => {
   return (
-    <button
-      onClick={props.onClick}
-      className={props.fill ? styles.btnFill : styles.btnText}
-    >
-      {props.text}
-    </button>
+    <Link href={`/${props.href}`}>
+      <button className={props.fill ? styles.btnFill : styles.btnText}>
+        {props.text}
+      </button>
+    </Link>
   );
 };
 
