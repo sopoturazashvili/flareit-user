@@ -1,63 +1,63 @@
 @import "../styles/colors.scss";
 
-.wrapper { 
-    display: flex;
+.wrapper {
+  display: flex;
 }
 .contentWrapper {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .navWrapper {
-    max-width: 302px;
-    width: 100%;
+  max-width: 302px;
+  width: 100%;
 }
 .childrenAndPlayer {
-    display: flex;
-    padding: 20px 20px 0px 20px;
-    background-color: $PrimaryBlackTone2;
+  display: flex;
+  padding: 20px 20px 0px 0px;
+  background-color: $PrimaryBlackTone2;
 }
-.childeren{ 
-    flex: 1;
+.childeren {
+  flex: 1;
 }
 
 .header {
-    position: sticky;
-    top: 0;
+  position: sticky;
+  top: 0;
 }
 
 .wrapperFull {
-    height: 100vh;
-    overflow: hidden;
+  height: 100vh;
+  overflow: hidden;
 }
 
-@media screen and (min-width:1024px) {
-    .navMobile {
-        display: none;
-    }
+@media screen and (min-width: 1024px) {
+  .navMobile {
+    display: none;
+  }
 }
 
-@media screen and (min-width:600px) and (max-width:1023px) {
-    .navWrapper {
-        display: none;
-    }
-    .navMobile {
-        display: none;
-    }
-    .childrenAndPlayer {
-        display: flex;
-        background-color: $PrimaryBlackTone2;
-        padding: 24px 24px 0px 20px;
-    }
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+  .navWrapper {
+    display: none;
+  }
+  .navMobile {
+    display: none;
+  }
+  .childrenAndPlayer {
+    display: flex;
+    background-color: $PrimaryBlackTone2;
+    padding: 24px 24px 0px 20px;
+  }
 }
 
-@media screen and (max-width:599px) {
-    .wrapper {
-        display: flex;
-        flex-direction: column;
-    }
-    .navWrapper {
-        display: none;
-    }
+@media screen and (max-width: 599px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .navWrapper {
+    display: none;
+  }
 }

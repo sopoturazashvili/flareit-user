@@ -1,5 +1,4 @@
 export const musicData = [
-    {src: "/Player/ussr.mp3"},
     { src: "/Player/stairway.mp3" },
     { src: "/Player/Bellin.mp3" },
     { src: "/Player/judas.mp3" },

@@ -1,9 +1,16 @@
-.test { 
-    background-color: #121212;
-    height: 100%;
+@import "../styles/colors.scss";
+
+.test {
+  background-color: $PrimaryBlackTone2;
+  height: 100%;
 }
 
-.main {
+@media screen and (min-width: 1024px) {
+  .main {
     height: 100vh;
     overflow: auto;
+  }
+  .main::-webkit-scrollbar{
+    display: none;
+  }
 }
