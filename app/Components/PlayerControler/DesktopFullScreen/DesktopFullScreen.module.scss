@@ -1,64 +1,66 @@
 @import "../../../styles/colors.scss";
 
-
-
 .inputRangeCont {
-    max-width: 535px;
-    width: 100%;
-    text-align: right;
+  max-width: 535px;
+  width: 100%;
+  text-align: right;
 }
 
 .backgroundContainer {
-    max-width: 743px;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.30);
-    border-radius: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 104px;
-    z-index: 9999;
-    position: relative;
-    margin: 0 auto;
+  max-width: 743px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 104px;
+  z-index: 9999;
+  position: relative;
+  margin: 0 auto;
 }
 
 .backgroundBox {
-    background-Repeat: no-repeat;
-    background-Size: cover;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-Direction: column;
-    align-Items: center;
-    justify-Content: center;
-    gap: 12px;
-    z-Index: 0;
-    position: absolute;
-    top: 0;
-    filter: blur(10px);
-    -webkit-filter: blur(8px);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: blur(10px);
+  -webkit-filter: blur(8px);
 }
 
 .iconImage {
-    text-align: left;
-    width: 100%;
+  text-align: left;
+  width: 100%;
 }
 
 .backgroundCnot {
-    width: 100%;
-    background-color: $PrimaryWhite;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .backIcon {
-    position: absolute;
-    top: 43px;
-    left: 43px;
+  position: absolute;
+  top: 43px;
+  left: 43px;
 }

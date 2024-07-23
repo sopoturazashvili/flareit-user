@@ -4,8 +4,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 54px;
-    max-height: 56px;
+    width: 54px;
+    height: 56px;
 }
 
 .songName {
@@ -42,9 +42,6 @@
 }
 
 .itemHoverPhoto {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     display: flex;
@@ -53,10 +50,6 @@
     background: rgba(0, 0, 0, 0.5);
     opacity: 0;
     transition: opacity 0.3s ease;
-}
-
-.itemImageWrapper {
-    position: relative;
 }
 
 .itemImage {

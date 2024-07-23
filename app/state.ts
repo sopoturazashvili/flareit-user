@@ -36,3 +36,9 @@ export const tabletFullScrenState = atom({
     key:"tabletFullScreenState",
     default: false
 })
+
+
+export const fullScreenState = atom ({
+    key: "fullscreen", 
+    default: false
+})

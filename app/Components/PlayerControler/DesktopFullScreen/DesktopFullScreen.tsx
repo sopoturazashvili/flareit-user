@@ -17,11 +17,11 @@ const DesktopFullScreen = (props: Props) => {
   const { audioRef, setFullScreen } = props;
 
   const background = {
-    backgroundImage: `url${props.background}`,
+    backgroundImage: `url(${props.background})`,
   };
 
   return (
-    <div className={styles.backgroundCnot}>
+    <div className={styles.backgroundCnot} style={background}>
       <div style={background} className={styles.backgroundBox}></div>
       <div className={styles.backgroundContainer}>
         <img
@@ -32,7 +32,10 @@ const DesktopFullScreen = (props: Props) => {
         />
         <div className={styles.iconImage}></div>
         <div>
-          <DesktopMusicName image={""} title={""} />
+          <DesktopMusicName
+            image={""}
+            title={""}
+          />
         </div>
         <div className={styles.inputRangeCont}>
           <Shuffle />

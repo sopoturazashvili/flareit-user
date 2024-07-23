@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import styles from "./DesktopPlayer.module.scss";
 import { musicData } from "@/app/helpers/MusicData";
-import { currentIndexState } from "@/app/state";
+import { currentIndexState, fullScreenState } from "@/app/state";
 import { useRecoilState } from "recoil";
 import DesktopVolume from "./DesktopVolume/DesktopVolume";
 import DesktopMusicSwitch from "./DesktopMusicSwitch/DesktopMusicSwitch";
@@ -10,44 +10,50 @@ import DesktopFullScreen from "../DesktopFullScreen/DesktopFullScreen";
 import DesktopMusicName from "./DesktopMusicName/DesktopMusicName";
 import Shuffle from "../Shuffle/Shufle";
 
-const DesktopPlayer = () => {
+interface Props {
+  audioRef: React.MutableRefObject<HTMLAudioElement | null>;
+}
+
+const DesktopPlayer = (props:Props) => {
   const [currentIndex, setCurrentIndex] = useRecoilState(currentIndexState);
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const [fullScreen, setFullScreen] = useState(false);
+  const [fullScreen, setFullScreen] = useRecoilState(fullScreenState);
 
   useEffect(() => {
-    audioRef.current?.play();
-  }, [currentIndex]);
+    if (props.audioRef.current && musicData.length > 0) {
+      props.audioRef.current.src = musicData[currentIndex]?.src || "";
+      props.audioRef.current.play();
+    }
+  }, [currentIndex, props.audioRef]);
 
   return (
     <>
       <div className={styles.playerSmall}>
-        <audio ref={audioRef} src={musicData[currentIndex].src} />
+        <audio ref={props.audioRef} />
         <div className={styles.nameAndRange}>
           <DesktopMusicName
-            image={""}
+            image={"/PlayerControler/MusicPhoto.svg"}
             title={""}
             fullScreen={fullScreen}
             setFullScreen={setFullScreen}
           />
-          <DesktopInputRange audioRef={audioRef} />
+          <DesktopInputRange audioRef={props.audioRef} />
         </div>
         <div className={styles.musicPlayer}>
           <DesktopVolume
-            audioRef={audioRef}
+            audioRef={props.audioRef}
             width={50}
             volumeWidth={24}
             volumeHeight={24}
             involved={"none"}
           />
-          <DesktopMusicSwitch audioRef={audioRef} />
+          <DesktopMusicSwitch audioRef={props.audioRef}/>
           <Shuffle />
         </div>
       </div>
       {fullScreen && (
         <DesktopFullScreen
           background={""}
-          audioRef={audioRef}
+          audioRef={props.audioRef}
           fullScreen={fullScreen}
           setFullScreen={setFullScreen}
         />
