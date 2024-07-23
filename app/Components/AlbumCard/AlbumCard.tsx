@@ -1,7 +1,7 @@
-import styles from './AlbumCard.module.scss'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import Link from 'next/link';
+import styles from "./AlbumCard.module.scss";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import Link from "next/link";
 
 interface Props {
     image: string;

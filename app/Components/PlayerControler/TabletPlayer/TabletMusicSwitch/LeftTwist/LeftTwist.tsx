@@ -1,15 +1,21 @@
-import { Twistt } from "@/app/helpers/Twist"
-import styles from "./LeftTwist.module.scss"
+import { Twistt } from "@/app/helpers/Twist";
+import styles from "./LeftTwist.module.scss";
 
 interface Props {
-    setCurrentTime: React.Dispatch<React.SetStateAction<number>>,
-    TabletaudioRef: React.MutableRefObject<HTMLAudioElement | null>
+  setCurrentTime: React.Dispatch<React.SetStateAction<number>>;
+  TabletaudioRef: React.MutableRefObject<HTMLAudioElement | null>;
 }
 
 const LeftTwist = (props: Props) => {
-    return (
-        <img src="/PlayerControler/LeftTwist.svg" alt="Left Twist" onClick={() => Twistt("backward", props.TabletaudioRef, props.setCurrentTime)} />
-    )
-}
+  return (
+    <img
+      src="/PlayerControler/LeftTwist.svg"
+      alt="Left Twist"
+      onClick={() =>
+        Twistt("backward", props.TabletaudioRef, props.setCurrentTime)
+      }
+    />
+  );
+};
 
-export default LeftTwist
+export default LeftTwist;

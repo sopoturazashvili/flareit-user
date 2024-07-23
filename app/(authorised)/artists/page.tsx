@@ -1,5 +1,5 @@
-import styles from './page.module.scss'
-import ArtistPlaylistItem from '@/app/Components/ArtistPlaylistListItem/ArtistPlaylistItem';
+import styles from "./page.module.scss";
+import ArtistPlaylistItem from "@/app/Components/ArtistPlaylistListItem/ArtistPlaylistItem";
 
 const Artists = () => {
     const artists = [
