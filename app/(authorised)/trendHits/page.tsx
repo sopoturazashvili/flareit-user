@@ -110,8 +110,8 @@ const trendHits = () => {
                 <span className={styles.title}>Trend Hits</span>
             </div>
             <div className={styles.containerInside}>
-                {hits.map((song) => (
-                    <MusicCard image={song.image} title={song.title} teamName={song.artist} />
+                {hits.map((item) => (
+                    <MusicCard image={item.image} title={item.title} teamName={item.artist} />
                 ))}
             </div>
         </div>

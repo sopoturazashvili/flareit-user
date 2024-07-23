@@ -14,7 +14,7 @@ const MusicCard = (props: Props) => {
         <div className={styles.musicCardhover}>
           <img className={styles.musicCardPhoto} src={props.image} />
           <div className={styles.musicCardHoverPhoto}>
-            <img src="/Image/PlayHover.svg" />
+            <img src="/images/PlayHover.svg" />
           </div>
         </div>
         <div className={styles.musicCardTitle}>
