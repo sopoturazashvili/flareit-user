@@ -1,8 +1,15 @@
 @import "../styles/colors.scss";
 
 .test {
-  background-color: $PrimaryBlackTone2;
+//   background-color: $PrimaryBlackTone2;
+background: red;
   height: 100%;
+}
+
+.div {
+    display: flex;
+    flex-direction: column;
+    gap: 500px;
 }
 
 @media screen and (min-width: 1024px) {
