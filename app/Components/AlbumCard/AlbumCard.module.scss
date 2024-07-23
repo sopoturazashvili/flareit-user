@@ -31,12 +31,14 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    text-transform: capitalize;
 }
 
 .infoContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-transform: capitalize;
 }
 
 .artistName {
@@ -45,4 +47,5 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    text-transform: capitalize;
 }
