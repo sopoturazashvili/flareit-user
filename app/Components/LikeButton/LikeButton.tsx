@@ -14,9 +14,9 @@ export const LikeButton = (props: Props) => {
   return (
     <div onClick={LikeFunc} className={styles.cursorPointer}>
       {like ? (
-        <img src={"Image/LikeButton.svg"} />
+        <img src={"/images/LikeButton.svg"} />
       ) : (
-        <img src={"/image/WhithoutLike.svg"} />
+        <img src={"/images/WhithoutLike.svg"} />
       )}
     </div>
   );
