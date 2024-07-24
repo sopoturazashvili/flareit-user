@@ -1,7 +1,8 @@
 import ArtistPlaylistItem from '@/app/Components/ArtistPlaylistListItem/ArtistPlaylistItem'
 import styles from './page.module.scss'
 
-const TopArtist = () => {
+const TopArtists = () => {
+
     const artists = [
         {   
             id:1,
@@ -44,4 +45,4 @@ const TopArtist = () => {
     )
 }
 
-export default TopArtist
+export default TopArtists;
