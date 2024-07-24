@@ -33,7 +33,7 @@ const Artists = () => {
     return (
         <div className={styles.container}>
             <div>
-                <span className={styles.title}>Top Artist</span>
+                <span className={styles.title}>Artists</span>
             </div>
             <div className={styles.list}>
                 {artists.map((artist) => (
