@@ -3,6 +3,7 @@ import styles from './albums.module.scss'
 
 
 const Albums = () => {
+
     const albums = [
         {
             id: 1,
@@ -64,9 +65,7 @@ const Albums = () => {
 
     return (
         <div className={styles.container}>
-            <div>
-                <span className={styles.title}>Albums</span>
-            </div>
+            <span className={styles.title}>Albums</span>
             <div className={styles.list}>
                 {albums.map((album) => (
                     <AlbumCard key={album.id} image={album.image} albumName={album.albumName} year={album.year} artistName={album.artistName} id={album.id} pagePathName={'albums'} />
