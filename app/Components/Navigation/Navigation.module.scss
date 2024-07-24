@@ -1,24 +1,23 @@
 .desktopItem {
-    max-width: 302px;
-    width: 100%;
-    position: sticky;
-    top: 0;
+  width: 302px;
+  position: sticky;
+  top: 0;
 }
 
-@media screen and (min-width:1024px) {
-    .mobileItem {
-        display: none;
-    }
+@media screen and (min-width: 1024px) {
+  .mobileItem {
+    display: none;
+  }
 }
 
-@media screen and (min-width:600px) and (max-width:1023px) {
-    .mobileItem {
-        display: none;
-    }
-} 
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+  .mobileItem {
+    display: none;
+  }
+}
 
-@media screen and (max-width:599px) {
-    .desktopItem {
-        display: none;
-    }
+@media screen and (max-width: 599px) {
+  .desktopItem {
+    display: none;
+  }
 }
