@@ -2,6 +2,7 @@
 
 import MusicCard from "../Components/MusicCard/MusicCard";
 import SectionHeader from "../Components/SectionHeader/SectionHeader";
+import TopFourAlbums from "../Components/TopFourAlbums/TopFourAlbums";
 import TopFourArtist from "../Components/TopFourArtist/TopFourArtist";
 import TopFourCharts from "../Components/TopFourCharts/TopFourCharts";
 import TopFourHits from "../Components/TopFourHits/TopFourHits";
@@ -30,6 +31,12 @@ export default function Home() {
         <SectionHeader title={"Top Hits"} href={"trendHits"} />
         <div className={styles.hitsContainer}>
           <TopFourHits />
+        </div>
+      </div>
+      <div className={styles.sectionHeader}>
+        <SectionHeader title={"Top Albums"} href={"topAlbums"} />
+        <div className={styles.artistCard}>
+          <TopFourAlbums pagePathName={"topAlbums"} />
         </div>
       </div>
     </main>
