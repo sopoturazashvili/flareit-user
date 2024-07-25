@@ -7,17 +7,17 @@ const TrendHitsCard = () => {
         {
             id: 1,
             backgroundColor: 'linear-gradient(270deg, #5E4BE2 36.76%, #34297C 94.73%)',
-            backgroundImage: '/image/billieEilish.png'
+            backgroundImage: '/images/billieEilish.svg'
         },
         {
             id: 2,
             backgroundColor: 'linear-gradient(270deg, #E2934B 7.1%, #D3620F 94.73%)',
-            backgroundImage: '/image/harryStyles.png'
+            backgroundImage: '/images/harryStyles.png'
         },
         {
             id: 3,
             backgroundColor: 'linear-gradient(270deg, #E24BD3 25.06%, #4E0FD3 94.73%)',
-            backgroundImage: '/image/boysGroup.png'
+            backgroundImage: '/images/boysGroup.png'
         }
     ];
 

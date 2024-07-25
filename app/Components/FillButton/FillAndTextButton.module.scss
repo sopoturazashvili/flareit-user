@@ -1,31 +1,31 @@
-@import '../../styles/colors.scss';
+@import "../../styles/colors.scss";
 
 .btnFill {
-    padding: 14px 78px;
-    border: none;
-    border-radius: 16px;
-    background: var(--background, #0F0F0F);
-    color: $PrimaryWhite;
-    text-transform: capitalize;
-    font-size: 16px;
-    font-weight: 500;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    outline: none;
+  padding: 14px 78px;
+  border: none;
+  border-radius: 16px;
+  background: var(--background, #0f0f0f);
+  color: $PrimaryWhite;
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
 
-    &:hover {
-        background: #232323;
-    }
+  &:hover {
+    background: #232323;
+  }
 }
 
 .btnText {
-    border: none;
-    text-transform: capitalize;
-    background: none;
-    border: none;
-    color: $PrimaryBlueTone3; 
-    font-size: 16px;
-    font-weight: 500;
-    outline: none;
+  border: none;
+  text-transform: capitalize;
+  background: none;
+  border: none;
+  color: $PrimaryBlueTone3;
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
 }
