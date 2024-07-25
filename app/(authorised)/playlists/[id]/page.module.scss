@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    height: 100%;
+    overflow: auto;
+    padding-bottom: 50px;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+.pageName {
+  color: white;
+}
+
+.name {
+  color: #fff;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.photoAndNameCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardAndPhoto {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.photoAndName {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.topFourHits {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
