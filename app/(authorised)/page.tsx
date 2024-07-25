@@ -1,8 +1,10 @@
 "use client";
 
+import MusicCard from "../Components/MusicCard/MusicCard";
 import SectionHeader from "../Components/SectionHeader/SectionHeader";
 import TopFourArtist from "../Components/TopFourArtist/TopFourArtist";
 import TopFourCharts from "../Components/TopFourCharts/TopFourCharts";
+import TopFourHits from "../Components/TopFourHits/TopFourHits";
 import TrendHitsCard from "../Components/TrendHitsCard/TrendHitsCard";
 import styles from "./page.module.scss";
 
@@ -22,6 +24,12 @@ export default function Home() {
         <SectionHeader title={"Top Charts"} href={"topCharts"} />
         <div className={styles.artistCard}>
           <TopFourCharts />
+        </div>
+      </div>
+      <div className={styles.sectionHeader}>
+        <SectionHeader title={"Top Hits"} href={"trendHits"} />
+        <div className={styles.hitsContainer}>
+          <TopFourHits />
         </div>
       </div>
     </main>
