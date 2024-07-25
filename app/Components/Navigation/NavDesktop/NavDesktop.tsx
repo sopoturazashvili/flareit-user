@@ -12,13 +12,13 @@ const NavDesktop = () => {
   const data = [
     { title: "Home", href: "/", image: "/Image/Home.svg", key: "/" },
     {
-      title: "Artist",
+      title: "Artists",
       href: "/artists",
       image: "/Image/Artist.svg",
       key: "/artists",
     },
     {
-      title: "Playlist",
+      title: "Playlists",
       href: "/playlists",
       image: "/Image/Albums.svg",
       key: "/playlists",
@@ -49,9 +49,8 @@ const NavDesktop = () => {
         </div>
       </div>
       <div
-        className={`${styles.navigationContainer}  ${
-          isOpen ? styles.open : ""
-        }`}>
+        className={`${styles.navigationContainer}  ${isOpen ? styles.open : ""
+          }`}>
         <div className={styles.logo}>
           <Logo />
         </div>
