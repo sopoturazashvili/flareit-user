@@ -14,7 +14,7 @@ export default function Home() {
         <TrendHitsCard />
       </div>
       <div className={styles.sectionAndCard}>
-        <SectionHeader title={"see all"} href={"artists"} />
+        <SectionHeader title={"Popular Artists"} href={"artists"} />
         <div className={styles.artistCard}>
           <TopFourArtist/>
         </div>

@@ -1,5 +1,5 @@
-import Link from "next/link";
 import styles from "./FillAndTextButton.module.scss";
+import { useRouter } from "next/navigation";
 
 interface Props {
   text: string;
@@ -8,12 +8,15 @@ interface Props {
 }
 
 const FillAndTextButton = (props: Props) => {
+  const router = useRouter()
+
+  const handelClick = () => {
+    router.push(props.href)
+  }
   return (
-    <Link href={`/${props.href}`}>
-      <button className={props.fill ? styles.btnFill : styles.btnText}>
+      <button onClick={handelClick} className={props.fill ? styles.btnFill : styles.btnText}>
         {props.text}
       </button>
-    </Link>
   );
 };
 
