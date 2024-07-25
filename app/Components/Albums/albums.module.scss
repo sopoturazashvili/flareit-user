@@ -9,6 +9,10 @@
     overflow: auto;
 }
 
+.container::-webkit-scrollbar {
+    display: none;
+}
+
 .title {
     color: $PrimaryWhite;
     font-size: 20px;
