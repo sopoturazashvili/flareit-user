@@ -13,7 +13,7 @@ interface Props {
 
 const AlbumCard = (props: Props) => {
     return (
-        <Link href={`/${props.pagePathName}/${props.id}`}>
+        <Link href={`/${props.pagePathName}/${props.id}`} className={styles.link}>
             <div className={styles.container}>
                 <div className={styles.coverContainer}>
                     <img className={styles.image} src={props.image} alt='Album Cover' />

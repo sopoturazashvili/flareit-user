@@ -60,6 +60,62 @@ const Albums = () => {
             albumName: 'Lover',
             year: '2001',
             image: '/images/lover.png'
+        },
+        {
+            id: 9,
+            artistName: 'SZA',
+            albumName: 'SOS',
+            year: '2009',
+            image: '/images/sza.png'
+        },
+        {
+            id: 10,
+            artistName: 'SZA',
+            albumName: 'SOS',
+            year: '2009',
+            image: '/images/sza.png'
+        },
+        {
+            id: 11,
+            artistName: 'SZA',
+            albumName: 'SOS',
+            year: '2009',
+            image: '/images/sza.png'
+        },
+        {
+            id: 12,
+            artistName: 'SZA',
+            albumName: 'SOS',
+            year: '2009',
+            image: '/images/sza.png'
+        },
+        {
+            id: 13,
+            artistName: 'SZA',
+            albumName: 'SOS',
+            year: '2009',
+            image: '/images/sza.png'
+        },
+        {
+            id: 14,
+            artistName: 'SZA',
+            albumName: 'SOS',
+            year: '2009',
+            image: '/images/sza.png'
+        },
+        {
+            id: 15,
+            artistName: 'SZA',
+            albumName: 'SOS',
+            year: '2009',
+            image: '/images/sza.png'
+        },
+        {
+            id: 16,
+            artistName: 'SZA',
+            albumName: 'SOS',
+            year: '2009',
+            image: '/images/sza.png'
         }
     ]
 
