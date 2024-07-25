@@ -15,10 +15,9 @@ const ArtistCard = (props: Props) => {
       <div className={styles.container}>
         <div className={styles.containerCenter}>
           <div className={styles.imageContainer}>
-            <Image
+            <img
+              className={styles.image}
               src={props.image}
-              width={144}
-              height={140}
               alt="Artist Card"
             />
           </div>

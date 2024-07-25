@@ -2,24 +2,29 @@
 
 .wrapper {
   display: flex;
+  height: 100%;
 }
 .contentWrapper {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  width: 100%;
+}
+
+.children {
+  padding: 0px 20px 0px 20px;
+  width: 100%;
 }
 
 .navWrapper {
   max-width: 302px;
   width: 100%;
 }
+
 .childrenAndPlayer {
   display: flex;
-  padding: 20px 20px 0px 0px;
   background-color: $PrimaryBlackTone2;
-}
-.childeren {
-  flex: 1;
+  padding: 20px 20px 0px 0px;
+  height: 100%;
 }
 
 .header {
@@ -27,14 +32,15 @@
   top: 0;
 }
 
-.wrapperFull {
-  height: 100vh;
-  overflow: hidden;
-}
-
 @media screen and (min-width: 1024px) {
   .navMobile {
     display: none;
+  }
+  .childrenAndPlayer {
+    display: flex;
+    background-color: $PrimaryBlackTone2;
+    padding: 20px 20px 0px 0px;
+    height: calc(100vh - 64px);
   }
 }
 
@@ -48,30 +54,44 @@
   .childrenAndPlayer {
     display: flex;
     background-color: $PrimaryBlackTone2;
-    padding: 24px 24px 0px 20px;
-    overflow: auto;
+    padding: 0;
   }
   .childrenAndPlayer::-webkit-scrollbar {
     display: none;
+  }
+  .children {
+    padding: 24px 24px 26px 24px;
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 599px) {
   .wrapper {
     display: flex;
-    flex-direction: column;
+    width: 100%;
   }
+
+  .children {
+    padding: 32px 16px 32px 16px;
+    width: 100%;
+  }
+
   .navWrapper {
     display: none;
   }
+
   .childrenAndPlayer {
-    height: calc(100vh - 64px);
-    overflow: auto;
+    width: 100%;
     display: flex;
-    padding: 0;
     background-color: $PrimaryBlackTone2;
+    padding: 0;
   }
   .childrenAndPlayer::-webkit-scrollbar {
     display: none;
   }
 }
+
+
+
+
+
