@@ -3,7 +3,9 @@ import styles from './page.module.scss'
 
 const TrendHitsPage = () => {
     return (
-        <TrendHits />
+        <div className={styles.container}>
+            <TrendHits />
+        </div>
     )
 }
 
