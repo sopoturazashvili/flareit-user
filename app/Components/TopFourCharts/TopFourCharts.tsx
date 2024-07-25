@@ -1,4 +1,4 @@
-import ChartAlbum from "../ChartAlbum/ChartAlbum"
+import ChartCard from "../ChartCard/ChartCard"
 import styles from "./TopFourCharts.module.scss"
 
 const TopFourCharts = () => {
@@ -27,7 +27,7 @@ const TopFourCharts = () => {
     return (
         <>
             {data.map((item) => (
-                <ChartAlbum id={item.id} image={item.image} title={item.title}/>
+                <ChartCard id={item.id} image={item.image} title={item.title}/>
             ))}
         </>
     )
