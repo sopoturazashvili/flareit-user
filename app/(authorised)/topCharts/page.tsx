@@ -1,4 +1,4 @@
-import ChartAlbum from '@/app/Components/ChartAlbum/ChartAlbum';
+import ChartCard from '@/app/Components/ChartCard/ChartCard';
 import styles from './page.module.scss'
 
 const topCharts = () => {
@@ -53,7 +53,7 @@ const topCharts = () => {
             </div>
             <div className={styles.containerInside}>
                 {charts.map((chart) => (
-                    <ChartAlbum id={chart.id} image={chart.image} title={chart.title} />
+                    <ChartCard id={chart.id} image={chart.image} title={chart.title} />
                 ))}
             </div>
         </div>
