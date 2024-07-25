@@ -13,7 +13,7 @@ const ChartAlbum = (props: Props) => {
     <Link href={`/page${props.id}`}>
       <div className={styles.albumChartContainer}>
         <div className={styles.albumChart}>
-          <Image src={props.image} width={144} height={165} alt="Chart album" />
+          <img className={styles.image} src={props.image} alt="Chart album" />
           <p className={styles.albumHits}>{props.title}</p>
         </div>
       </div>
