@@ -1,5 +1,6 @@
 import styles from "./MusicCard.module.scss";
 import LikeButton from "../LikeButton/LikeButton";
+import DeleteBox from "../DleleteBox/DeleteBox";
 
 interface Props {
   image: string;
@@ -24,6 +25,7 @@ const MusicCard = (props: Props) => {
       </div>
       <div>
         <LikeButton isLiked={false} />
+        <DeleteBox/>
       </div>
     </div>
   );

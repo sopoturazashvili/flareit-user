@@ -2,9 +2,11 @@ import { useState } from "react"
 import styles from "./AddPlaylist.module.scss"
 import Modal from "../../Modal/Modal"
 import PlayListInput from "../PlayListInput/PlayListInput"
+import { useRecoilState } from "recoil"
+import { openState } from "@/app/state"
 
 const AddPlaylist = () => {
-    const [add, setAdd] = useState(false)
+    const [add, setAdd] = useRecoilState(openState)
     const [value, setValue] = useState<String>("")
 
     const onAdd = (newValue: string) => {
@@ -13,10 +15,11 @@ const AddPlaylist = () => {
 
     const onDone = () => {
         if (value !== "") {
-            setAdd(false);
+            setAdd(add);
+            console.log(value , "vlaue");
+            
         }
     };
-
 
     return (
         <>
@@ -28,9 +31,9 @@ const AddPlaylist = () => {
                     <span className={styles.name}>Create Playlist</span>
                 </div>
             </div>
-            {add && <Modal isOpen={true} setIsOpen={setAdd} hasFooter={true} title={"Add Playlist"} onDone={onDone}  >
+          <Modal active={add} hasFooter={true} title={"Add Playlist"} onDone={onDone}  cancelText={"Cancel"} confirmText={"Done"}  >
                 <PlayListInput onChange={onAdd} />
-            </Modal>}
+            </Modal>
         </>
     )
 }

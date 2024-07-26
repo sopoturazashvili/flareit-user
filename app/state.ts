@@ -42,3 +42,9 @@ export const fullScreenState = atom ({
     key: "fullscreen", 
     default: false
 })
+
+
+export const openState = atom ({
+    key: "open",
+    default: false
+})

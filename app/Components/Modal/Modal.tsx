@@ -1,25 +1,30 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import Button from "../Button/Button";
 import styles from "./Modal.module.scss";
 import Image from "next/image";
+import { useRecoilState } from "recoil";
+import { openState } from "@/app/state";
 
 interface Props {
-  isOpen: boolean;
-  setIsOpen: (value: boolean) => void;
+  active:boolean;
   title?: string;
   onDone?: () => void;
   children: ReactNode;
   hasFooter: boolean;
+  cancelText: string,
+  confirmText: string
 }
 
 const Modal = (props: Props) => {
+  const [open, setIsOpen]=useRecoilState<boolean>(openState)
+  
   const onClose = () => {
-    props.setIsOpen(!props.isOpen);
+    setIsOpen(!open);
   };
 
   return (
     <div
-      className={props.isOpen ? styles.modalOverlay : styles.modalOverlayClosed}
+      className={open ? styles.modalOverlay : styles.modalOverlayClosed}
     >
       <div className={styles.modal}>
         <div className={styles.modalHeader}>
@@ -38,14 +43,14 @@ const Modal = (props: Props) => {
           <div className={styles.buttonsContainer}>
             <Button
               primary={false}
-              text={"cancel"}
+              text={props.cancelText}
               width={"154px"}
               onClick={onClose}
             />
             {props.onDone && (
               <Button
                 primary={true}
-                text={"done"}
+                text={props.confirmText}
                 width={"154px"}
                 onClick={props.onDone}
               />
