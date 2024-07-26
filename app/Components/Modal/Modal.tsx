@@ -2,8 +2,6 @@ import { ReactNode, useState } from "react";
 import Button from "../Button/Button";
 import styles from "./Modal.module.scss";
 import Image from "next/image";
-import { useRecoilState } from "recoil";
-import { openState } from "@/app/state";
 
 interface Props {
   isOpen:boolean;
@@ -44,14 +42,12 @@ const Modal = (props: Props) => {
             <Button
               primary={false}
               text={props.cancelText}
-              width={"154px"}
               onClick={onClose}
             />
             {props.onDone && (
               <Button
                 primary={true}
                 text={props.confirmText}
-                width={"154px"}
                 onClick={props.onDone}
               />
             )}

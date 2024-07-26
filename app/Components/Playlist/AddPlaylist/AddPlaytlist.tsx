@@ -2,8 +2,6 @@ import { useState } from "react";
 import styles from "./AddPlaylist.module.scss";
 import Modal from "../../Modal/Modal";
 import PlayListInput from "../PlayListInput/PlayListInput";
-import { useRecoilState } from "recoil";
-import { openState } from "@/app/state";
 
 const AddPlaylist = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
