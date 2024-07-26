@@ -1,10 +1,13 @@
 import styles from "./MusicCard.module.scss";
 import LikeButton from "../LikeButton/LikeButton";
+import DeleteBox from "../DleleteBox/DeleteBox";
 
 interface Props {
   image: string;
   title: string;
   teamName: string;
+  deleteOrLike?: boolean;
+  id: number
 }
 
 const MusicCard = (props: Props) => {
@@ -23,7 +26,7 @@ const MusicCard = (props: Props) => {
         </div>
       </div>
       <div>
-        <LikeButton isLiked={false} />
+        {props.deleteOrLike ? <DeleteBox id={props.id} /> : <LikeButton isLiked={false} id={props.id}/>}
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ interface Props {
   primary: boolean;
   size?: "large";
   text: string;
-  width: string;
+  width?: string;
   onClick: () => void;
 }
 

@@ -35,7 +35,6 @@
     transition: transform 0.3s ease;
 }
 
-
 .modalHeader {
     display: flex;
     justify-content: space-between;
@@ -63,7 +62,8 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    gap: 8px;
 }
 
 .content {
