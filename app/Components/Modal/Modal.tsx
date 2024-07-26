@@ -6,7 +6,8 @@ import { useRecoilState } from "recoil";
 import { openState } from "@/app/state";
 
 interface Props {
-  active:boolean;
+  isOpen:boolean;
+  setIsModalOpen:(value:boolean)=>void
   title?: string;
   onDone?: () => void;
   children: ReactNode;
@@ -16,15 +17,14 @@ interface Props {
 }
 
 const Modal = (props: Props) => {
-  const [open, setIsOpen]=useRecoilState<boolean>(openState)
-  
+
   const onClose = () => {
-    setIsOpen(!open);
+    props.setIsModalOpen(!props.isOpen);
   };
 
   return (
     <div
-      className={open ? styles.modalOverlay : styles.modalOverlayClosed}
+      className={props.isOpen ? styles.modalOverlay : styles.modalOverlayClosed}
     >
       <div className={styles.modal}>
         <div className={styles.modalHeader}>

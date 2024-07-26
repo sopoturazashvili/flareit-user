@@ -6,6 +6,8 @@ interface Props {
   image: string;
   title: string;
   teamName: string;
+  deleteOrLike?: boolean;
+  id: number
 }
 
 const MusicCard = (props: Props) => {
@@ -24,8 +26,7 @@ const MusicCard = (props: Props) => {
         </div>
       </div>
       <div>
-        <LikeButton isLiked={false} />
-        <DeleteBox/>
+        {props.deleteOrLike ? <DeleteBox id={props.id} /> : <LikeButton isLiked={false} id={props.id}/>}
       </div>
     </div>
   );

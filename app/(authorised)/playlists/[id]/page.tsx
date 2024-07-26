@@ -1,27 +1,42 @@
 "use client";
 
-import TopFourHits from "@/app/Components/TopFourHits/TopFourHits";
 import styles from "./page.module.scss";
 import { useEffect, useState } from "react";
-import axios from "axios";
-import ChartCard from "@/app/Components/ChartCard/ChartCard";
-import TopFourCharts from "@/app/Components/TopFourCharts/TopFourCharts";
+import MusicCard from "@/app/Components/MusicCard/MusicCard";
+import { Turret_Road } from "next/font/google";
 
 const playlist = () => {
-  const [data, setData] = useState<any>("")
-  const [currentUrl, setCurrentUrl] = useState("");
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setCurrentUrl(window.location.pathname);
-    }
-  }, []);
-
+  const data = [
+    {
+      image: "/images/MusicCard.svg",
+      title: "Yellow",
+      temeName: "Morgan Maxwell",
+      id: 1,
+    },
+    {
+      image: "/images/MusicCard.svg",
+      title: "Yellow",
+      temeName: "Morgan Maxwell",
+      id: 2,
+    },
+    {
+      image: "/images/MusicCard.svg",
+      title: "Yellow",
+      temeName: "Morgan Maxwell",
+      id: 3,
+    },
+    {
+      image: "/images/MusicCard.svg",
+      title: "Yellow",
+      temeName: "Morgan Maxwell",
+      id: 4,
+    },
+  ];
 
   return (
     <div className={styles.container}>
       <div>
-        <span className={styles.pageName}>{currentUrl}</span>
+        <span className={styles.pageName}>My Everyday</span>
       </div>
       <div className={styles.photoAndNameCont}>
         <div className={styles.photoAndName}>
@@ -30,9 +45,15 @@ const playlist = () => {
         </div>
       </div>
       <div className={styles.topFourHits}>
-          <TopFourHits/>
-          {/* <TopFourHits/>
-          <TopFourHits/> */}
+        {data.map((item) => (
+          <MusicCard
+            image={item.image}
+            title={item.title}
+            teamName={item.temeName}
+            deleteOrLike={true}
+            id={item.id}
+          />
+        ))}
       </div>
     </div>
   );

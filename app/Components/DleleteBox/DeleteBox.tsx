@@ -1,31 +1,34 @@
 import { useState } from "react";
 import styles from "./DeleteBox.module.scss";
 import Modal from "../Modal/Modal";
-import { useRecoilState } from "recoil";
-import { openState } from "@/app/state";
 
-const DeleteBox = () => {
-  const [modal, setModal] = useRecoilState(openState);
+interface Props {
+  id: number;
+}
+
+const DeleteBox = (props: Props) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const onClick = () => {
-    setModal(!modal);
+    setIsModalOpen(!isModalOpen);
   };
 
+  const deleteCard = () => {
+    console.log(props.id);
+    setIsModalOpen(!isModalOpen);
+  };
   return (
     <>
       <img onClick={onClick} src="/images/Delete.svg" />
-       <Modal
-          active={modal}
-          hasFooter={true}
-          confirmText={"yes"}
-          cancelText={"no"}
-          onDone={() => {
-            true;
-          }}
-        >
-          <span className={styles.modalText}>
-            Are you sure to delete song ?
-          </span>
-        </Modal>
+      <Modal
+        hasFooter={true}
+        confirmText={"yes"}
+        cancelText={"no"}
+        onDone={deleteCard}
+        isOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      >
+        <span className={styles.modalText}>Are you sure to delete song ?</span>
+      </Modal>
     </>
   );
 };
