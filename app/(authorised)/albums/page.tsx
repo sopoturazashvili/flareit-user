@@ -1,11 +1,9 @@
-import Albums from '@/app/Components/Albums/Albums';
-import styles from './page.module.scss'
+import styles from "./page.module.scss";
+import OneAlbum from "./[id]/page";
+import Albums from "@/app/Components/Albums/Albums";
 
 const AlbumsPage = () => {
-
-    return (
-       <Albums />
-    )
-}
+  return <Albums />;
+};
 
 export default AlbumsPage;

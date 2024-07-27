@@ -6,7 +6,7 @@ interface Props {
   image: string;
   title: string;
   teamName: string;
-  deleteOrLike?: boolean;
+  deleteOrLike: boolean;
   id: number
 }
 
