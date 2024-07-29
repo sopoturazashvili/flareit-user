@@ -11,7 +11,7 @@ interface Props {
 
 const ArtistCard = (props: Props) => {
   return (
-    <Link href={`/page/${props.id}`}>
+    <Link href={`/artists/${props.id}?artistId=${props.id}`}>
       <div className={styles.container}>
         <div className={styles.containerCenter}>
           <div className={styles.imageContainer}>

@@ -7,13 +7,12 @@ interface Props {
   text: string;
   onClick?: () => void;
   imageRound: boolean;
-  id: number;
   pagePathName: string;
 }
 
 const ArtistPlaylistItem = (props: Props) => {
   return (
-    <Link href={`/${props.pagePathName}/${props.id}`}>
+    <Link href={`${props.pagePathName}`}>
       <div className={styles.cardWrapper} onClick={props.onClick}>
         <div className={styles.card}>
           <div className={styles.cardContent}>
