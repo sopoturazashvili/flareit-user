@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "./ChartAlbum.module.scss";
+import styles from "./ChartCard.module.scss";
 import Image from "next/image";
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
   title: string;
 }
 
-const ChartAlbum = (props: Props) => {
+const ChartCard = (props: Props) => {
   return (
     <Link href={`/page${props.id}`}>
       <div className={styles.albumChartContainer}>
@@ -21,4 +21,4 @@ const ChartAlbum = (props: Props) => {
   );
 };
 
-export default ChartAlbum;
+export default ChartCard;
