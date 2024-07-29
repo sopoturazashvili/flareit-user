@@ -1,47 +1,10 @@
+import Artists from "@/app/Components/Artists/Artists";
 import styles from "./page.module.scss";
-import ArtistPlaylistItem from "@/app/Components/ArtistPlaylistListItem/ArtistPlaylistItem";
 
-const Artists = () => {
-    const artists = [
-        {   
-            id:1,
-            name: 'Sia',
-            image: '/images/sia.svg'
-        },
-        {   
-            id:2,
-            name: 'Beyonce',
-            image: '/images/beyonce.svg'
-        },
-        {   
-            id:3,
-            name: 'Ed Sheeran',
-            image: '/images/edSheeran.svg'
-        },
-        {   
-            id:4,
-            name: 'Taylor Swift',
-            image: '/images/taylor.svg'
-        },
-        {   
-            id:5,
-            name: 'Ariana Grande',
-            image: '/images/ariana.svg'
-        }
-    ]
-
+const ArtistsPage = () => {
     return (
-        <div className={styles.container}>
-            <div>
-                <span className={styles.title}>Top Artists</span>
-            </div>
-            <div className={styles.list}>
-                {artists.map((artist) => (
-                    <ArtistPlaylistItem key={artist.id} image={artist.image} text={artist.name} imageRound={true} id={artist.id} pagePathName={'artists'} />
-                ))}
-            </div>
-        </div>
+        <Artists />
     )
 }
 
-export default Artists;
+export default ArtistsPage;
