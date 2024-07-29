@@ -1,0 +1,35 @@
+@import '../../styles/colors.scss';
+
+.title {
+    color: $PrimaryWhite;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.containerInside {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+@media screen and (max-width: 599px) {
+    .containerInside {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .containerInside {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 5px;
+    }
+}

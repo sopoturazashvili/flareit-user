@@ -1,5 +1,7 @@
 import ArtistPlaylistItem from "@/app/Components/ArtistPlaylistListItem/ArtistPlaylistItem";
 import styles from "./page.module.scss";
+import ArtistPlaylistItem from "@/app/Components/ArtistPlaylistListItem/ArtistPlaylistItem";
+import styles from "./page.module.scss";
 
 const TopArtists = () => {
     const artists = [
