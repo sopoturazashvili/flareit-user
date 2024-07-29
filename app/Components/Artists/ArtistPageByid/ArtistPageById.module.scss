@@ -1,0 +1,55 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: auto;
+    padding-bottom: 50px;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+.nameAndPhoto {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+.pathName {
+    color: #fff;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.nameColor {
+    color: #fff;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.biografiContainer {
+    color: #ababab;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.musicCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 20px;
+}
