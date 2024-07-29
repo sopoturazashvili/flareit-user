@@ -1,20 +1,23 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import Button from "../Button/Button";
 import styles from "./Modal.module.scss";
 import Image from "next/image";
 
 interface Props {
-  isOpen: boolean;
-  setIsOpen: (value: boolean) => void;
+  isOpen:boolean;
+  setIsModalOpen:(value:boolean)=>void
   title?: string;
   onDone?: () => void;
   children: ReactNode;
   hasFooter: boolean;
+  cancelText: string,
+  confirmText: string
 }
 
 const Modal = (props: Props) => {
+
   const onClose = () => {
-    props.setIsOpen(!props.isOpen);
+    props.setIsModalOpen(!props.isOpen);
   };
 
   return (
@@ -38,15 +41,13 @@ const Modal = (props: Props) => {
           <div className={styles.buttonsContainer}>
             <Button
               primary={false}
-              text={"cancel"}
-              width={"154px"}
+              text={props.cancelText}
               onClick={onClose}
             />
             {props.onDone && (
               <Button
                 primary={true}
-                text={"done"}
-                width={"154px"}
+                text={props.confirmText}
                 onClick={props.onDone}
               />
             )}
