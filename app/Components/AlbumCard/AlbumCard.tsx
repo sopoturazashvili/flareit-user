@@ -1,6 +1,5 @@
-import styles from "./AlbumCard.module.scss";
-import Image from "next/image";
-import Link from "next/link";
+import styles from './AlbumCard.module.scss';
+import Link from 'next/link';
 
 interface Props {
     image: string;
@@ -13,10 +12,17 @@ interface Props {
 
 const AlbumCard = (props: Props) => {
     return (
-        <Link href={`/${props.pagePathName}/${props.id}`} className={styles.link}>
+        <Link
+            href={`/${props.pagePathName}/${props.id}`}
+            className={styles.link}
+        >
             <div className={styles.container}>
                 <div className={styles.coverContainer}>
-                    <img className={styles.image} src={props.image} alt='Album Cover' />
+                    <img
+                        className={styles.image}
+                        src={props.image}
+                        alt="Album Cover"
+                    />
                 </div>
                 <div>
                     <div className={styles.infoContainer}>
@@ -24,12 +30,14 @@ const AlbumCard = (props: Props) => {
                         <span className={styles.albumText}>{props.year}</span>
                     </div>
                     <div>
-                        <span className={styles.artistName}>{props.artistName}</span>
+                        <span className={styles.artistName}>
+                            {props.artistName}
+                        </span>
                     </div>
                 </div>
             </div>
         </Link>
-    )
-}
+    );
+};
 
 export default AlbumCard;

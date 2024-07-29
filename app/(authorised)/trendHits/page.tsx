@@ -1,10 +1,7 @@
 import TrendHits from '@/app/Components/TrendHits/TrendHits';
-import styles from './page.module.scss'
 
 const TrendHitsPage = () => {
-    return (
-        <TrendHits />
-    )
-}
+    return <TrendHits />;
+};
 
 export default TrendHitsPage;

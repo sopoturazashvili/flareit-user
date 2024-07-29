@@ -1,10 +1,7 @@
-import Artists from "@/app/Components/Artists/Artists";
-import styles from "./page.module.scss";
+import Artists from '@/app/Components/Artists/Artists';
 
 const ArtistsPage = () => {
-    return (
-        <Artists />
-    )
-}
+    return <Artists />;
+};
 
 export default ArtistsPage;

@@ -1,33 +1,32 @@
-import ArtistPlaylistItem from "@/app/Components/ArtistPlaylistListItem/ArtistPlaylistItem";
-import styles from "./TopArtists.module.scss";
-
+import ArtistPlaylistItem from '@/app/Components/ArtistPlaylistListItem/ArtistPlaylistItem';
+import styles from './TopArtists.module.scss';
 
 const TopArtists = () => {
     const artists = [
         {
             id: 1,
-            name: "Sia",
-            image: "/images/sia.svg",
+            name: 'Sia',
+            image: '/images/sia.svg',
         },
         {
             id: 2,
-            name: "Beyonce",
-            image: "/images/beyonce.svg",
+            name: 'Beyonce',
+            image: '/images/beyonce.svg',
         },
         {
             id: 3,
-            name: "Ed Sheeran",
-            image: "/images/edSheeran.svg",
+            name: 'Ed Sheeran',
+            image: '/images/edSheeran.svg',
         },
         {
             id: 4,
-            name: "Taylor Swift",
-            image: "/images/taylor.svg",
+            name: 'Taylor Swift',
+            image: '/images/taylor.svg',
         },
         {
             id: 5,
-            name: "Ariana Grande",
-            image: "/images/ariana.svg",
+            name: 'Ariana Grande',
+            image: '/images/ariana.svg',
         },
     ];
 
@@ -44,7 +43,7 @@ const TopArtists = () => {
                         text={artist.name}
                         imageRound={true}
                         id={artist.id}
-                        pagePathName={"topartists"}
+                        pagePathName={'topartists'}
                     />
                 ))}
             </div>
