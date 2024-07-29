@@ -1,0 +1,33 @@
+@import '../../styles/colors.scss';
+
+.container {
+    background-color: $PrimaryBlackTone2;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: auto;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+.title {
+    color: $PrimaryWhite;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 8px;
+}
+
+@media screen and (max-width: 599px) {
+    .list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+}
