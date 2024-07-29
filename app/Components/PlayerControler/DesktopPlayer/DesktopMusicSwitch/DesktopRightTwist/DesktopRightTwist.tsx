@@ -1,19 +1,20 @@
-import { Twistt } from "@/app/helpers/Twist";
-import styles from "./DesktopRightTwist.module.scss";
+import { Twistt } from '@/app/helpers/Twist';
 
 interface Props {
-  audioRef: React.MutableRefObject<HTMLAudioElement | null>;
-  setCurrentTime: React.Dispatch<React.SetStateAction<number>>;
+    audioRef: React.MutableRefObject<HTMLAudioElement | null>;
+    setCurrentTime: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const DesktopRightTwist = (props: Props) => {
-  return (
-    <img
-      src="/PlayerControler/RightSwitch.svg"
-      alt="Right Twist"
-      onClick={() => Twistt("forward", props.audioRef, props.setCurrentTime)}
-    />
-  );
+    return (
+        <img
+            src="/PlayerControler/RightSwitch.svg"
+            alt="Right Twist"
+            onClick={() =>
+                Twistt('forward', props.audioRef, props.setCurrentTime)
+            }
+        />
+    );
 };
 
 export default DesktopRightTwist;

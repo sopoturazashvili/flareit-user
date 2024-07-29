@@ -3,32 +3,32 @@ import styles from './Artists.module.scss';
 
 const Artists = () => {
     const artists = [
-        {   
-            id:1,
+        {
+            id: 1,
             name: 'Sia',
-            image: '/images/sia.svg'
+            image: '/images/sia.svg',
         },
-        {   
-            id:2,
+        {
+            id: 2,
             name: 'Beyonce',
-            image: '/images/beyonce.svg'
+            image: '/images/beyonce.svg',
         },
-        {   
-            id:3,
+        {
+            id: 3,
             name: 'Ed Sheeran',
-            image: '/images/edSheeran.svg'
+            image: '/images/edSheeran.svg',
         },
-        {   
-            id:4,
+        {
+            id: 4,
             name: 'Taylor Swift',
-            image: '/images/taylor.svg'
+            image: '/images/taylor.svg',
         },
-        {   
-            id:5,
+        {
+            id: 5,
             name: 'Ariana Grande',
-            image: '/images/ariana.svg'
-        }
-    ]
+            image: '/images/ariana.svg',
+        },
+    ];
 
     return (
         <div className={styles.container}>
@@ -37,11 +37,18 @@ const Artists = () => {
             </div>
             <div className={styles.list}>
                 {artists.map((artist) => (
-                    <ArtistPlaylistItem key={artist.id} image={artist.image} text={artist.name} imageRound={true} id={artist.id} pagePathName={'artists'} />
+                    <ArtistPlaylistItem
+                        key={artist.id}
+                        image={artist.image}
+                        text={artist.name}
+                        imageRound={true}
+                        id={artist.id}
+                        pagePathName={'artists'}
+                    />
                 ))}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Artists;

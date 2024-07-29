@@ -1,18 +1,13 @@
-"use client"
+'use client';
 
 import { ReactNode } from 'react';
 import { RecoilRoot } from 'recoil';
 
 interface Props {
-    children:ReactNode
+    children: ReactNode;
 }
+const RecoilWrapper = (props: Props) => {
+    return <RecoilRoot>{props.children}</RecoilRoot>;
+};
 
-export const RecoilWrapper = (props:Props) => {
-    return (
-        <RecoilRoot>
-            {props.children}
-        </RecoilRoot>
-    )
-}
-
-export default RecoilWrapper
+export default RecoilWrapper;

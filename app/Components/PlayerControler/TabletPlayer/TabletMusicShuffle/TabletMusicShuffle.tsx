@@ -1,7 +1,5 @@
-import stylesf from "./TabletMusicShuffle.module.scss";
-
 const TabletMusicShuffle = () => {
-  return <img src="/PlayerControler/Messy.svg" />;
+    return <img src="/PlayerControler/Messy.svg" alt="Messy" />;
 };
 
 export default TabletMusicShuffle;
