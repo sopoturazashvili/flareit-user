@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import styles from "./TabletMusicInput.module.scss"
-import { formatTime } from "@/app/helpers/FormatTime";
+import { useEffect, useState } from 'react';
+import styles from './TabletMusicInput.module.scss';
+import { formatTime } from '@/app/helpers/FormatTime';
 
 interface Props {
-    TabletaudioRef: React.MutableRefObject<HTMLAudioElement | null>
+    TabletaudioRef: React.MutableRefObject<HTMLAudioElement | null>;
 }
 
 const TabletMusicInput = (props: Props) => {
@@ -21,12 +21,12 @@ const TabletMusicInput = (props: Props) => {
         };
 
         if (audio) {
-            audio.addEventListener("timeupdate", updateTime);
-            audio.addEventListener("loadedmetadata", updateTime);
+            audio.addEventListener('timeupdate', updateTime);
+            audio.addEventListener('loadedmetadata', updateTime);
 
             return () => {
-                audio.removeEventListener("timeupdate", updateTime);
-                audio.removeEventListener("loadedmetadata", updateTime);
+                audio.removeEventListener('timeupdate', updateTime);
+                audio.removeEventListener('loadedmetadata', updateTime);
             };
         }
     }, [props.TabletaudioRef]);
@@ -40,18 +40,20 @@ const TabletMusicInput = (props: Props) => {
     };
     return (
         <div className={styles.tabletMusicInput}>
-            <input type="range"
+            <input
+                type="range"
                 className={styles.tabletInputRange}
                 value={currentTime}
                 min={0}
                 max={audioDuration || 0}
-                onChange={handleSeek} />
+                onChange={handleSeek}
+            />
             <div className={styles.musicTime}>
                 <span className={styles.time}>{formatTime(currentTime)}</span>
                 <span className={styles.time}>{formatTime(audioDuration)}</span>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default TabletMusicInput
+export default TabletMusicInput;
