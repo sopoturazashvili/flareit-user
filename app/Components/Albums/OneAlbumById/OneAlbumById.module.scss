@@ -1,0 +1,44 @@
+@import "../../../styles/colors.scss";
+
+.photoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.OneAlbumByIdContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.musicCard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 20px;
+}
+
+.nameContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.musicName {
+  color: $PrimaryWhite;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.artistName {
+  color: $PrimaryWhiteTone1;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

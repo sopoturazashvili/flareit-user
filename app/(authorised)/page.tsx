@@ -1,6 +1,7 @@
 "use client";
 
 import MusicCard from "../Components/MusicCard/MusicCard";
+import TabletPlayer from "../Components/PlayerControler/TabletPlayer/TabletPlayer/TabletPlayer";
 import SectionHeader from "../Components/SectionHeader/SectionHeader";
 import TopFourAlbums from "../Components/TopFourAlbums/TopFourAlbums";
 import TopFourArtist from "../Components/TopFourArtist/TopFourArtist";

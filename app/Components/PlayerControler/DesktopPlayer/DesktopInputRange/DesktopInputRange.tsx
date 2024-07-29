@@ -1,13 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./DesktopInputRange.module.scss";
 import { formatTime } from "@/app/helpers/FormatTime";
-import { useRecoilState } from "recoil";
-import {
-  audioDurrationState,
-  currentIndexState,
-  currentTimeState,
-} from "@/app/state";
-import { playNext } from "@/app/helpers/PlayNext";
 
 interface Props {
   audioRef: React.MutableRefObject<HTMLAudioElement | null>;
@@ -46,15 +39,20 @@ const DesktopInputRange = (props: Props) => {
     }
   };
 
+  const progressPercent = (currentTime / audioDuration) * 100;
+
   return (
     <div className={styles.inputContainer}>
       <input
         type="range"
-        className={styles.inputRange}
         value={currentTime}
         min={0}
         max={audioDuration || 0}
         onChange={handleSeek}
+        className={styles.inputRange}
+        style={{
+          background: `linear-gradient(to right, #5E4BE2 ${progressPercent}%, #292929 ${progressPercent}%)`,
+        }}
       />
       <div className={styles.musicTimeCont}>
         <span className={styles.color}>{formatTime(currentTime)}</span>

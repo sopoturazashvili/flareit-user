@@ -1,0 +1,15 @@
+@import "../../../styles/colors.scss";
+
+.pathName {
+  color: $PrimaryWhite;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.OneAlbum {
+  display: flex;
+  flex-direction: column;
+  gap: 29px;
+}
