@@ -3,6 +3,7 @@ import styles from './SectionHeader.module.scss'
 
 interface Props {
     title: string;
+    href:string;
 }
 
 const SectionHeader = (props: Props) => {
@@ -11,7 +12,7 @@ const SectionHeader = (props: Props) => {
         <div className={styles.container}>
             <div className={styles.text}>{props.title}</div>
             <div>
-                <FillAndTextButton text={'See All'} fill={false} onClick={} />
+                <FillAndTextButton text={'See All'} fill={false} href={props.href} />
             </div>
         </div>
     )

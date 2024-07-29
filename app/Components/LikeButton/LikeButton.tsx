@@ -3,6 +3,7 @@ import styles from "./LikeButton.module.scss";
 
 interface Props {
   isLiked: boolean;
+  id: number;
 }
 
 export const LikeButton = (props: Props) => {

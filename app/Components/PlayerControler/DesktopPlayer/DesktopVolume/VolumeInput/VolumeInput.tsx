@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import styles from "./VolumeInput.module.scss";
 import { isPlayingState, mutedState, volumeState } from "@/app/state";
 import { useRecoilState } from "recoil";
@@ -11,35 +11,38 @@ interface Props {
 const VolumeInput = (props: Props) => {
   const [volume, setVolume] = useRecoilState(volumeState);
   const [muted, setMuted] = useRecoilState(mutedState);
-  const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
+
+  useEffect(() => {
+    if (props.audioRef.current) {
+      props.audioRef.current.volume = volume / 100;
+    }
+  }, [volume, props.audioRef]);
 
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(e.target.value);
     setVolume(newVolume);
-    if (props.audioRef.current) {
-      props.audioRef.current.volume = newVolume / 100;
-    }
   };
 
-  const inputVolume = {
-    height: "var(--borderRadius, 4px)",
-    width: `${props.width}px`,
+  const progressPercent = volume;
+  const trackStyle = {
+    background: `linear-gradient(to right, #5E4BE2 ${progressPercent}%, #292929 ${progressPercent}%)`,
   };
 
   return (
-    <input
-      style={inputVolume}
-      type="range"
-      min={0}
-      max={100}
-      value={muted ? 0 : volume}
-      onChange={handleVolumeChange}
-      onPlay={
-        isPlaying
-          ? props.audioRef?.current?.play()
-          : props.audioRef?.current?.pause()
-      }
-    />
+    <div
+      className={styles.inputContainer}
+      style={{ width: `${props.width}px` }}
+    >
+      <input
+        type="range"
+        min={0}
+        max={100}
+        value={muted ? 0 : volume}
+        onChange={handleVolumeChange}
+        className={styles.volumeRange}
+        style={trackStyle}
+      />
+    </div>
   );
 };
 
