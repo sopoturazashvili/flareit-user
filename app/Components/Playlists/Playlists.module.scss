@@ -1,0 +1,21 @@
+@import "../../styles/colors.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  overflow: auto;
+}
+
+.title {
+  color: $PrimaryWhite;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
