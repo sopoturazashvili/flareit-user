@@ -15,27 +15,27 @@ export default function Home() {
                 <TrendHitsCard />
             </div>
             <div className={styles.sectionHeader}>
-                <SectionHeader title={'Popular Artists'} href={'artists'} />
+                <SectionHeader title={'Popular Artists'} href={'topartists'} />
                 <div className={styles.artistCard}>
                     <TopFourArtist />
                 </div>
             </div>
             <div className={styles.sectionHeader}>
-                <SectionHeader title={'Top Charts'} href={'topCharts'} />
+                <SectionHeader title={'Top Charts'} href={'topcharts'} />
                 <div className={styles.artistCard}>
                     <TopFourCharts />
                 </div>
             </div>
             <div className={styles.sectionHeader}>
-                <SectionHeader title={'Top Hits'} href={'trendHits'} />
+                <SectionHeader title={'Top Hits'} href={'trendhits'} />
                 <div className={styles.hitsContainer}>
                     <TopFourHits />
                 </div>
             </div>
             <div className={styles.sectionHeader}>
-                <SectionHeader title={'Top Albums'} href={'topAlbums'} />
+                <SectionHeader title={'Top Albums'} href={'topalbums'} />
                 <div className={styles.artistCard}>
-                    <TopFourAlbums pagePathName={'topAlbums'} />
+                    <TopFourAlbums pagePathName={'topalbums'} />
                 </div>
             </div>
         </main>
