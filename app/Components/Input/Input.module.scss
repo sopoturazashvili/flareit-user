@@ -19,29 +19,25 @@
         transition: color 0.3s ease;
     }
 
-    &:focus {
-        background-color: #0C0C0C;
-    }
-
 }
 
 .input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px black inset;
+    -webkit-box-shadow: 0 0 0px 1000px #151515 inset;
     -webkit-text-fill-color: white;
 }
 
 .input:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0px 1000px black inset;
+    -webkit-box-shadow: 0 0 0px 1000px #151515 inset;
     -webkit-text-fill-color: white;
 }
 
 .input:-webkit-autofill:hover {
-    -webkit-box-shadow: 0 0 0px 1000px black inset;
+    -webkit-box-shadow: 0 0 0px 1000px #151515 inset;
     -webkit-text-fill-color: white;
 }
 
 .input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0px 1000px black inset;
+    -webkit-box-shadow: 0 0 0px 1000px #151515 inset;
     -webkit-text-fill-color: white;
 }
 
