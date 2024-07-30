@@ -37,10 +37,6 @@ const InputPage = () => {
                         minLength: {
                             value: 8,
                             message: 'Password must be at least 8 characters long'
-                        },
-                        pattern: {
-                            value: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}/,
-                            message: 'Password must include uppercase, lowercase, and a number'
                         }
                     })}
                     type="password"
