@@ -1,0 +1,79 @@
+@import '../../styles/colors.scss';
+
+.input {
+    border: none;
+    outline: none;
+    width: 100%;
+    caret-color: $PrimaryWhite;
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFF;
+    background: transparent;
+
+    &::placeholder {
+        color: #FFF;
+    }
+
+    &:focus::placeholder {
+        color: #4d4d4d;
+        transition: color 0.3s ease;
+    }
+
+    &:focus {
+        background-color: #0C0C0C;
+    }
+
+}
+
+.input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px black inset;
+    -webkit-text-fill-color: white;
+}
+
+.input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px black inset;
+    -webkit-text-fill-color: white;
+}
+
+.input:-webkit-autofill:hover {
+    -webkit-box-shadow: 0 0 0px 1000px black inset;
+    -webkit-text-fill-color: white;
+}
+
+.input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px black inset;
+    -webkit-text-fill-color: white;
+}
+
+
+.inputWrapper {
+    max-width: 487px;
+    width: 100%;
+    max-height: 41px;
+    height: 100%;
+    border-radius: 8px;
+    background-color: #151515;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+    gap: 35px;
+
+    &:focus {
+        background-color: #0C0C0C;
+    }
+}
+
+.error {
+    border: 2px solid #961E18;
+}
+
+.valid {
+    border: 2px solid #75B040;
+}
+
+.btn {
+    width: 50px;
+    height: 20px;
+}
