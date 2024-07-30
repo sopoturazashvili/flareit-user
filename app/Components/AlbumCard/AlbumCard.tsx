@@ -12,10 +12,7 @@ interface Props {
 
 const AlbumCard = (props: Props) => {
     return (
-        <Link
-            href={`/${props.pagePathName}/${props.id}`}
-            className={styles.link}
-        >
+        <Link href={`/albums/${props.id}`} className={styles.link}>
             <div className={styles.container}>
                 <div className={styles.coverContainer}>
                     <img

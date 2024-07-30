@@ -9,7 +9,7 @@ interface Props {
 
 const ChartCard = (props: Props) => {
     return (
-        <Link href={`/page${props.id}`}>
+        <Link href={`/topcharts/${props.id}`}>
             <div className={styles.albumChartContainer}>
                 <div className={styles.albumChart}>
                     <img
