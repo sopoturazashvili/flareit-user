@@ -1,8 +1,12 @@
 'use client';
+import { useParams } from 'next/navigation';
+import AlbumCard from '../../AlbumCard/AlbumCard';
 import MusicCard from '../../MusicCard/MusicCard';
 import styles from './ArtistPageById.module.scss';
 
 const ArtistPageById = () => {
+    const id = useParams();
+    console.log(id);
     const data = [
         {
             image: '/images/MusicCard.svg',
@@ -53,6 +57,65 @@ const ArtistPageById = () => {
             id: 8,
         },
     ];
+
+    const albumsData = [
+        {
+            id: 1,
+            artistName: 'Gunna',
+            albumName: 'one of wun',
+            year: '2019',
+            image: '/images/guna.png',
+        },
+        {
+            id: 2,
+            artistName: 'Morgan Wallen',
+            albumName: 'Dangerous',
+            year: '2000',
+            image: '/images/dangerous.png',
+        },
+        {
+            id: 3,
+            artistName: 'Twenty one pilot',
+            albumName: 'Clancy',
+            year: '2000',
+            image: '/images/clancy.png',
+        },
+        {
+            id: 4,
+            artistName: 'Billie Eillish',
+            albumName: 'Hit me hard...',
+            year: '2005',
+            image: '/images/billie.png',
+        },
+        {
+            id: 5,
+            artistName: 'Olivia Rodrigo',
+            albumName: 'Guts',
+            year: '2000',
+            image: '/images/taylorSwift.png',
+        },
+        {
+            id: 6,
+            artistName: 'Taylor Swift',
+            albumName: '1989',
+            year: '1989',
+            image: '/images/1989.png',
+        },
+        {
+            id: 7,
+            artistName: 'SZA',
+            albumName: 'SOS',
+            year: '2009',
+            image: '/images/sza.png',
+        },
+        {
+            id: 8,
+            artistName: 'Taylor Swift',
+            albumName: 'Lover',
+            year: '2001',
+            image: '/images/lover.png',
+        },
+    ];
     return (
         <div className={styles.container}>
             <div>
@@ -66,24 +129,24 @@ const ArtistPageById = () => {
                 />
                 <p className={styles.nameColor}>Coldplay</p>
                 <p className={styles.biografiContainer}>
-                    Coldplay are a British rock band formed in London in 1997,
+                    Coldplayare a Britishrockband formed inLondonin 1997,
                     consisting of vocalist and pianistChris Martin, lead
-                    guitarist Jonny Buckland, bassist Guy Berryman, drummer and
-                    percussionist Will Champion, and manager Phil
-                    Harvey.[a] They are best known for their live
-                    performances,[3] having also impacted popular
-                    culture with their artistry, advocacy and achievements. The
-                    members of the band initially met at University College
-                    London, calling themselves Big Fat Noises and changing to
-                    Starfish, before settling on the current name. After
-                    releasing Safety (1998) independently, Coldplay signed
-                    with Parlophone in 1999 and wrote their debut
-                    album, Parachutes (2000). It featured breakthrough single //
-                    eslint-disable-next-line react/no-unescaped-entities
-                    "Yellow" and received a Brit Award for British Album of the
-                    Year and a Grammy Award for Best Alternative Music Album.
-                    The group's follow-up, A Rush of Blood to the Head (2002),
-                    won the same accolades.
+                    guitaristJonny Buckland, bassistGuy Berryman, drummer and
+                    percussionistWill Champion, and managerPhil Harvey.[a]They
+                    are best known fortheir live performances,[3]having
+                    alsoimpacted popular culturewiththeir
+                    artistry,advocacyandachievements. The members of the band
+                    initially met atUniversity College London, calling
+                    themselves Big Fat Noises and changing to Starfish, before
+                    settling on the current name. After releasingSafety(1998)
+                    independently, Coldplay signed withParlophonein 1999 and
+                    wrote their debut album,Parachutes(2000). It featured
+                    breakthrough single // eslint-disable-next-line,
+                    react/no-unescaped-entities react/no-unescaped-entities
+                    Yellow and received aBrit Award for British Album of the
+                    Yearand aGrammy Award for Best Alternative Music Album. The
+                    groups follow-up,A Rush of Blood to the Head(2002), won the
+                    same accolades.
                 </p>
             </div>
             <div className={styles.musicCard}>
@@ -97,6 +160,22 @@ const ArtistPageById = () => {
                         id={itme.id}
                     />
                 ))}
+            </div>
+            <div className={styles.albumContainer}>
+                <p className={styles.albumsCont}>Albums</p>
+                <div className={styles.albumMapContainer}>
+                    {albumsData.map((item) => (
+                        <AlbumCard
+                            key={item.id}
+                            image={item.image}
+                            albumName={item.albumName}
+                            year={item.year}
+                            artistName={item.artistName}
+                            id={item.id}
+                            pagePathName={'albums'}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );
