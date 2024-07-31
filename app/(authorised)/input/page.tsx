@@ -39,7 +39,7 @@ const InputPage = () => {
                             message: 'Password must be at least 8 characters long'
                         }
                     })}
-                    type="password"
+                    type='password'
                     error={errors.password?.message} submitted={isSubmitted} />
                 <input type='submit' className={styles.btn} value='Sign In' />
             </form>
