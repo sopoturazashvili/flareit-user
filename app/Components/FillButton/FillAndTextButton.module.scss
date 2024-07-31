@@ -13,8 +13,9 @@
   justify-content: center;
   align-items: center;
   outline: none;
+  cursor: pointer;
   width: 100%;
-
+  
   &:hover {
     background: #232323;
   }
@@ -30,6 +31,7 @@
   font-size: 16px;
   font-weight: 500;
   outline: none;
+  cursor: pointer;
 }
 
 @media screen and (max-width:599px) {
