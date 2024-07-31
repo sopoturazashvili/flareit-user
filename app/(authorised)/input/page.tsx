@@ -20,7 +20,7 @@ const InputPage = () => {
         <div>
             <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
                 <Input
-                    placeholder="Enter email"
+                    placeholder='Enter email'
                     register={register('email', {
                         required: 'Email is required',
                         pattern: {
@@ -28,10 +28,10 @@ const InputPage = () => {
                             message: 'Invalid email address'
                         }
                     })}
-                    type="email"
-                    error={errors.email?.message} submitted={isSubmitted}                />
+                    type='email'
+                    error={errors.email?.message} submitted={isSubmitted} />
                 <Input
-                    placeholder="Enter password"
+                    placeholder='Enter password'
                     register={register('password', {
                         required: 'Password is required',
                         minLength: {
@@ -40,8 +40,8 @@ const InputPage = () => {
                         }
                     })}
                     type="password"
-                    error={errors.password?.message} submitted={isSubmitted}                />
-                <input type="submit" className={styles.btn} value="Sign In" />
+                    error={errors.password?.message} submitted={isSubmitted} />
+                <input type='submit' className={styles.btn} value='Sign In' />
             </form>
         </div>
     );
