@@ -35,7 +35,6 @@ const InputPage = () => {
                         },
                     })}
                     submitted={isSubmitted}
-                    type={'email'}
                     error={errors.email?.message}
                 />
                 <Input

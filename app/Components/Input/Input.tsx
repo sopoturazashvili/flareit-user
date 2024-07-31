@@ -13,11 +13,7 @@ const Input = (props: Props) => {
     const classNames = [styles.inputWrapper];
 
     if (props.submitted) {
-        if (props.error) {
-            classNames.push(styles.error);
-        } else {
-            classNames.push(styles.valid);
-        }
+        classNames.push(props.error ? styles.error : styles.valid);
     }
 
     return (
