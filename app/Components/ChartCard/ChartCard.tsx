@@ -17,7 +17,9 @@ const ChartCard = (props: Props) => {
                         src={props.image}
                         alt="Chart album"
                     />
-                    <p className={styles.albumHits}>{props.title}</p>
+                    <div className={styles.titleContainer}>
+                        <p className={styles.albumHits}>{props.title}</p>
+                    </div>
                 </div>
             </div>
         </Link>

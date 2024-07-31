@@ -29,7 +29,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .infoNumb {
@@ -40,4 +40,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (min-width:1023px) and (max-width:1270px) {
+  .container{
+    min-width: 80px;
+  }
+}
+
+@media screen and (min-width:1024px) and (max-width:1050px) {
+  .container{
+    padding: 14px;
+  }
 }
