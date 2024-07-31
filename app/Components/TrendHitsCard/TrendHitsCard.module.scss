@@ -1,25 +1,35 @@
 .container {
-    // max-width: 796px;
     width: 100%;
     height: 299px;
     border-radius: 16px;
     display: flex;
 }
 
-
-
 .content {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    width: 50%;
+    flex: 1;
     height: 100%;
     justify-content: center;
     align-items: center;
 }
 
+.trendHitsContrainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.fillTextButton {
+    max-width: 252px;
+    width: 100%;
+}
+
 .forBgImage {
-    width: 50%;
+    flex: 1;
     height: 100%;
     background: no-repeat right 23px bottom;
     border-radius: 0px 0px 16px 0px;
@@ -29,7 +39,6 @@
 
 @media screen and (min-width: 711px) and (max-width: 1023px) {
     .container {
-        // max-width: 720px;
         width: 100%;
         height: 299px;
         border-radius: 16px;
@@ -41,7 +50,6 @@
 
 @media screen and (min-width: 600px) and (max-width: 710px) {
     .container {
-        // max-width: 720px;
         width: 100%;
         height: 299px;
         border-radius: 16px;
@@ -55,7 +63,6 @@
 
 @media screen and (max-width: 599px) {
     .container {
-        // max-width: 328px;
         width: 100%;
         height: 138px;
         border-radius: 16px;
@@ -73,7 +80,7 @@
         font-size: 40px;
         font-weight: 600;
     }
-
+    .fillTextButton {
+        max-width: 107px;
+    }
 }
-
-

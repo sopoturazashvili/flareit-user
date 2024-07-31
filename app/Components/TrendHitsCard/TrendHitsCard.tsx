@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './TrendHitsCard.module.scss';
+import FillAndTextButton from '../FillButton/FillAndTextButton';
 
 const TrendHitsCard = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -45,9 +46,16 @@ const TrendHitsCard = () => {
             style={{ background: currentItem.backgroundColor }}
         >
             <div className={styles.content}>
-                <div>
+                <div className={styles.trendHitsContrainer}>
                     <h2 className={styles.text}>Trend Hits</h2>
                     <h1 className={styles.year}>2024</h1>
+                    <div className={styles.fillTextButton}>
+                        <FillAndTextButton
+                            text={'View playlist'}
+                            fill={true}
+                            href={'/trendhits'}
+                        />
+                    </div>
                 </div>
             </div>
             <div className={styles.forBgImage} style={bgStyles}></div>

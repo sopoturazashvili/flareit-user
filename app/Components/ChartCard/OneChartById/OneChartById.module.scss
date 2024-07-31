@@ -1,0 +1,29 @@
+.OneChartById {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    height: 100%;
+    overflow: auto;
+}
+
+.pathColor {
+    color: #fff;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.oneMusicCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 20px;
+}
+
+@media screen and (max-width: 599px) {
+    .oneMusicCard {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px 20px;
+    }
+}

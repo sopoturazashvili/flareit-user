@@ -20,7 +20,7 @@ const LogOut = (props: Props) => {
         <Link
             className={styles.profile}
             onClick={onClick}
-            href={'/mobileLogOut'}
+            href={'/mobilelogout'}
         >
             <Image
                 src={props.src}

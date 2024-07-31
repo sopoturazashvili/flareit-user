@@ -18,14 +18,14 @@ const NavMobile = () => {
             image: '/Image/search.svg',
             title: 'Search',
             pinkImage: '/Image/pinkSearch.svg',
-            href: '/mobileSearch',
+            href: '/mobilesearch',
             key: 'search',
         },
         {
             image: '/Image/Library.svg',
             title: 'Library',
             pinkImage: '/Image/pinkLibrary.svg',
-            href: '/library',
+            href: '/artists',
             key: 'library',
         },
     ];
