@@ -1,7 +1,7 @@
 @import "../../styles/colors.scss";
 
 .btnFill {
-  padding: 14px 78px;
+  padding: 14px;
   border: none;
   border-radius: 16px;
   background: var(--background, #0f0f0f);
@@ -14,13 +14,15 @@
   align-items: center;
   outline: none;
   cursor: pointer;
-
+  width: 100%;
+  
   &:hover {
     background: #232323;
   }
 }
 
 .btnText {
+  width: 100%;
   border: none;
   text-transform: capitalize;
   background: none;
@@ -30,4 +32,10 @@
   font-weight: 500;
   outline: none;
   cursor: pointer;
+}
+
+@media screen and (max-width:599px) {
+  .btnFill{
+    font-size: 14px;
+  }
 }
