@@ -1,3 +1,4 @@
+'use client';
 import { useParams } from 'next/navigation';
 import MusicCard from '../../MusicCard/MusicCard';
 import styles from './OneChartById.module.scss';
