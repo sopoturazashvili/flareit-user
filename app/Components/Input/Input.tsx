@@ -4,7 +4,7 @@ import styles from './Input.module.scss';
 interface Props {
     placeholder: string;
     register: UseFormRegisterReturn;
-    type?: string; 
+    type?: string;
     error?: string;
     submitted: boolean;
 }
@@ -12,7 +12,7 @@ interface Props {
 const Input = (props: Props) => {
     const classNames = [styles.inputWrapper];
 
-    if(props.submitted) {
+    if (props.submitted) {
         if (props.error) {
             classNames.push(styles.error);
         } else {

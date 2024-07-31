@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import Input from '@/app/Components/Input/Input';
 import styles from './page.module.scss';
@@ -10,7 +10,11 @@ interface FormInputs {
 }
 
 const InputPage = () => {
-    const { register, handleSubmit, formState: { errors, isSubmitted } } = useForm<FormInputs>();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitted },
+    } = useForm<FormInputs>();
 
     const onSubmit = (values: FormInputs) => {
         console.log(values);
@@ -20,28 +24,33 @@ const InputPage = () => {
         <div>
             <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
                 <Input
-                    placeholder='Enter email'
+                    placeholder="Enter email"
                     register={register('email', {
                         required: 'Email is required',
                         pattern: {
                             value: /\S+@\S+\.\S+/,
-                            message: 'Invalid email address'
-                        }
+                            message: 'Invalid email address',
+                        },
                     })}
-                    type='email'
-                    error={errors.email?.message} submitted={isSubmitted} />
+                    type="email"
+                    error={errors.email?.message}
+                    submitted={isSubmitted}
+                />
                 <Input
-                    placeholder='Enter password'
+                    placeholder="Enter password"
                     register={register('password', {
                         required: 'Password is required',
                         minLength: {
                             value: 8,
-                            message: 'Password must be at least 8 characters long'
-                        }
+                            message:
+                                'Password must be at least 8 characters long',
+                        },
                     })}
-                    type='password'
-                    error={errors.password?.message} submitted={isSubmitted} />
-                <input type='submit' className={styles.btn} value='Sign In' />
+                    type="password"
+                    error={errors.password?.message}
+                    submitted={isSubmitted}
+                />
+                <input type="submit" className={styles.btn} value="Sign In" />
             </form>
         </div>
     );
