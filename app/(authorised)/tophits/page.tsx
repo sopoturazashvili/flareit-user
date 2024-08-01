@@ -1,4 +1,3 @@
-'use client';
 import TopHits from '@/app/Components/TopHits/TopHits';
 
 const topHits = () => {

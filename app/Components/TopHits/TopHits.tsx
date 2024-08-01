@@ -1,3 +1,5 @@
+'use client';
+
 import MusicCard from '../MusicCard/MusicCard';
 import styles from './TopHits.module.scss';
 
