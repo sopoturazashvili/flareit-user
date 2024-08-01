@@ -4,6 +4,7 @@ import HeaderContainer from '../Components/Header/HeaderContainer';
 import NavMobile from '../Components/Navigation/NavMobile/NavMobile';
 import Navigation from '../Components/Navigation/Navigation';
 import PlayerAndList from '../Components/PlayerAndList/PlayerAndList';
+import TabletPlayer from '../Components/PlayerControler/TabletPlayer/TabletPlayer/TabletPlayer';
 import styles from './layout.module.scss';
 import { ReactNode } from 'react';
 
@@ -23,7 +24,12 @@ const Layout = (props: Props) => {
                 </div>
                 <div className={styles.childrenAndPlayer}>
                     <div className={styles.children}>{props.children}</div>
-                    <PlayerAndList />
+                    <div className={styles.playerAndList}>
+                        <PlayerAndList />
+                    </div>
+                </div>
+                <div className={styles.tabletPlayer}>
+                    <TabletPlayer />
                 </div>
                 <div className={styles.navMobile}>
                     <NavMobile />

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import styles from './TabletMusicInput.module.scss';
 import { formatTime } from '@/app/helpers/FormatTime';
 
@@ -10,15 +10,16 @@ const TabletMusicInput = (props: Props) => {
     const [currentTime, setCurrentTime] = useState(0);
     const [audioDuration, setAudioDuration] = useState(0);
 
+    const updateTime = useCallback(() => {
+        const audio = props.TabletaudioRef.current;
+        if (audio) {
+            setCurrentTime(audio.currentTime);
+            setAudioDuration(audio.duration);
+        }
+    }, [props.TabletaudioRef]);
+
     useEffect(() => {
         const audio = props.TabletaudioRef.current;
-
-        const updateTime = () => {
-            if (audio) {
-                setCurrentTime(audio.currentTime);
-                setAudioDuration(audio.duration);
-            }
-        };
 
         if (audio) {
             audio.addEventListener('timeupdate', updateTime);
@@ -29,7 +30,7 @@ const TabletMusicInput = (props: Props) => {
                 audio.removeEventListener('loadedmetadata', updateTime);
             };
         }
-    }, [props.TabletaudioRef]);
+    }, [updateTime]);
 
     const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newTime = parseFloat(e.target.value);
@@ -38,6 +39,11 @@ const TabletMusicInput = (props: Props) => {
             setCurrentTime(newTime);
         }
     };
+
+    const progressPercent = audioDuration
+        ? (currentTime / audioDuration) * 100
+        : 0;
+
     return (
         <div className={styles.tabletMusicInput}>
             <input
@@ -47,6 +53,9 @@ const TabletMusicInput = (props: Props) => {
                 min={0}
                 max={audioDuration || 0}
                 onChange={handleSeek}
+                style={{
+                    background: `linear-gradient(to right, #5E4BE2 ${progressPercent}%, #292929 ${progressPercent}%)`,
+                }}
             />
             <div className={styles.musicTime}>
                 <span className={styles.time}>{formatTime(currentTime)}</span>

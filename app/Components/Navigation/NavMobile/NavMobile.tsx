@@ -1,9 +1,11 @@
 'use client';
 
 import LogOut from '../../LogOut/LogOut';
+
 import styles from './NavMobile.module.scss';
 import MobileList from './NavMobileItem/NavMobileItem';
 import { usePathname } from 'next/navigation';
+import MobilePlayer from '../../PlayerControler/MobilePlayer/MobilePlayer';
 
 const NavMobile = () => {
     const dataItem = [
@@ -34,6 +36,7 @@ const NavMobile = () => {
 
     return (
         <div className={styles.mobileContainer}>
+            <MobilePlayer />
             <div className={styles.navigationContainer}>
                 {dataItem.map((item) => (
                     <MobileList

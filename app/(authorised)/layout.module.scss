@@ -34,6 +34,9 @@
 }
 
 @media screen and (min-width: 1024px) {
+  .tabletPlayer{
+    display: none;
+  }
   .navMobile {
     display: none;
   }
@@ -46,6 +49,14 @@
 }
 
 @media screen and (min-width: 600px) and (max-width: 1023px) {
+  .playerAndList{
+    display: none;
+  }
+  .tabletPlayer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
   .navWrapper {
     display: none;
   }
@@ -67,15 +78,27 @@
 }
 
 @media screen and (max-width: 599px) {
+  .playerAndList{
+    display: none;
+  }
+  .tabletPlayer{
+    display: none;
+  }
   .wrapper {
     display: flex;
     width: 100%;
-    height: calc(100vh - 64px);
+  }
+
+  .navMobile {
+    width: 100%;
+    bottom: 0;
+    position: absolute;
   }
 
   .children {
     padding: 32px 16px 0px 16px;
     width: 100%;
+    height: 100vh;
   }
 
   .navWrapper {
