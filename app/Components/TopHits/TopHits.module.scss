@@ -12,14 +12,20 @@
     display: none;
 }
 
-.containerInside {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+.musicCardContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 8px;
 }
 
 .title {
     color: $PrimaryWhite;
     font-size: 20px;
     font-weight: 500;
+}
+
+@media screen and (max-width: 599px) {
+    .musicCardContainer {
+        grid-template-columns: 1fr;
+    }
 }
