@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import AuthForm from '../authForm/authForm';
 import styles from './AuthPageContainer.module.scss';
 
@@ -18,9 +19,9 @@ const AuthPageContaiener = () => {
                     </div>
                     <AuthForm />
                     <div className={styles.anotherAccountContainer}>
-                        <p className={styles.anotherAccount}>
+                        <Link className={styles.anotherAccount} href={''}>
                             Don’t have an account? Sign up{' '}
-                        </p>
+                        </Link>
                     </div>
                 </div>
             </div>
