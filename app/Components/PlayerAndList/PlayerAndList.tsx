@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import MusicListItem from '../MusicListItem/MusicListItem';
 import DesktopPlayer from '../PlayerControler/DesktopPlayer/DesktopPlayer';
 import NextPlay from './NextPlay/NextPlay';
@@ -28,6 +28,30 @@ const PlayerAndList = () => {
             audioRef.current.pause();
         }
     };
+
+    const handleTrackEnd = () => {
+        if (currentIndex < musicData.length - 1) {
+            playTrack(currentIndex + 1);
+        } else {
+            pauseTrack();
+        }
+    };
+
+    useEffect(() => {
+        const audioElement = audioRef.current;
+        if (audioElement) {
+            audioElement.addEventListener('ended', handleTrackEnd);
+            return () => {
+                audioElement.removeEventListener('ended', handleTrackEnd);
+            };
+        }
+    }, [currentIndex]);
+
+    useEffect(() => {
+        if (audioRef.current) {
+            audioRef.current.pause();
+        }
+    }, []);
 
     const listData = musicData.map((item) => ({
         image: '/images/natashaB.png',
