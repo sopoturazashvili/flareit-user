@@ -105,6 +105,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .input {
@@ -112,6 +113,11 @@
     border: none;
     background-color: #5e4be2;
     color: #ffffff;
+    cursor: pointer;
+}
+
+.checkboxPointer {
+    cursor: pointer;
 }
 
 .anotherAccount {
@@ -121,6 +127,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    cursor: pointer;
 }
 
 .anotherAccountContainer {
@@ -130,14 +137,14 @@
     padding-top: 8px;
 }
 
-@media screen and (max-width:599px) {
+@media screen and (max-width: 599px) {
     .flareItPhoto {
         max-width: 53px;
         width: 100%;
         max-height: 66px;
         height: 100%;
     }
-    .authPageContaiener{
+    .authPageContaiener {
         max-height: 330px;
         height: 100%;
         padding: 12px 16px 21px 12px;

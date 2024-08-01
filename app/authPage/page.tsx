@@ -73,7 +73,10 @@ const authPage = () => {
                         </div>
                     </form>
                     <div className={styles.checkboxContaeiner}>
-                        <input type="checkbox" />
+                        <input
+                            className={styles.checkboxPointer}
+                            type="checkbox"
+                        />
                         <p className={styles.checkboxColor}>
                             Remember password
                         </p>
