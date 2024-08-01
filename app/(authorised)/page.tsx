@@ -27,7 +27,7 @@ export default function Home() {
                 </div>
             </div>
             <div className={styles.sectionHeader}>
-                <SectionHeader title={'Top Hits'} href={'trendhits'} />
+                <SectionHeader title={'Top Hits'} href={'tophits'} />
                 <div className={styles.hitsContainer}>
                     <TopFourHits />
                 </div>

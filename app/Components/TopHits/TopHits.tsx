@@ -1,10 +1,10 @@
 'use client';
 
-import MusicCard from '@/app/Components/MusicCard/MusicCard';
-import styles from './TrendHits.module.scss';
+import MusicCard from '../MusicCard/MusicCard';
+import styles from './TopHits.module.scss';
 
-const TrendHits = () => {
-    const hits = [
+const topHits = () => {
+    const data = [
         {
             id: 1,
             image: '/images/feelIt.png',
@@ -102,12 +102,11 @@ const TrendHits = () => {
             artist: 'Taylor Swift',
         },
     ];
-
     return (
         <div className={styles.container}>
-            <span className={styles.title}>Trend Hits</span>
-            <div className={styles.containerInside}>
-                {hits.map((item) => (
+            <span className={styles.title}>Top Hits</span>
+            <div className={styles.musicCardContainer}>
+                {data.map((item) => (
                     <MusicCard
                         key={item.id}
                         image={item.image}
@@ -121,5 +120,4 @@ const TrendHits = () => {
         </div>
     );
 };
-
-export default TrendHits;
+export default topHits;
