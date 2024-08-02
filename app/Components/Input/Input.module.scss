@@ -7,18 +7,21 @@
     caret-color: $PrimaryWhite;
     font-size: 14px;
     font-weight: 500;
-    color: #FFF;
+    color: #fff;
     background: transparent;
 
     &::placeholder {
-        color: #FFF;
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 16px;
     }
 
     &:focus::placeholder {
         color: #4d4d4d;
         transition: color 0.3s ease;
     }
-
 }
 
 .input:-webkit-autofill {
@@ -41,7 +44,6 @@
     -webkit-text-fill-color: white;
 }
 
-
 .inputWrapper {
     width: 100%;
     max-height: 41px;
@@ -53,16 +55,16 @@
     flex-direction: column;
 
     &:focus {
-        background-color: #0C0C0C;
+        background-color: #0c0c0c;
     }
 }
 
 .error {
-    border: 2px solid #961E18;
+    border: 2px solid #961e18;
 }
 
 .valid {
-    border: 2px solid #75B040;
+    border: 2px solid #75b040;
 }
 
 .btn {
@@ -71,7 +73,7 @@
 }
 
 .errorText {
-    color: #961E18;
+    color: #961e18;
     font-size: 14px;
 }
 
