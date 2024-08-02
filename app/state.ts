@@ -5,6 +5,16 @@ export const isPlayingState = atom({
     default: false,
 });
 
+export const isPlayingTabletState = atom({
+    key: 'isPlaying',
+    default: false,
+});
+
+export const isPlayingMobileState = atom({
+    key: 'isPlaying',
+    default: false,
+});
+
 export const mutedState = atom({
     key: 'muted',
     default: false,
@@ -38,4 +48,9 @@ export const tabletFullScrenState = atom({
 export const fullScreenState = atom({
     key: 'fullscreen',
     default: false,
+});
+
+export const activePlayerState = atom({
+    key: 'activePlayerState',
+    default: 'none', // 'desktop', 'mobile', 'tablet', or 'none'
 });

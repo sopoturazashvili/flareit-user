@@ -12,14 +12,17 @@ const MobilePlayer = () => {
     const [fullScreen, setFullScreen] = useRecoilState(tabletFullScrenState);
     const MobileaudioRef = useRef<HTMLAudioElement>(null);
 
-    useEffect(() => {
-        MobileaudioRef?.current?.play();
-    }, [currentIndex]);
+    // useEffect(() => {
+    //     MobileaudioRef?.current?.play();
+    // }, [currentIndex]);
 
     return (
         <>
             <div className={styles.mobilePlayer}>
-                <audio ref={MobileaudioRef} src={musicData[currentIndex].src} />
+                <audio
+                    ref={MobileaudioRef}
+                    src={musicData[currentIndex]?.src}
+                />
                 <div className={styles.mobilePlayerContainer}>
                     <MobileMusicName
                         setFullScreen={setFullScreen}
@@ -35,3 +38,5 @@ const MobilePlayer = () => {
 };
 
 export default MobilePlayer;
+
+

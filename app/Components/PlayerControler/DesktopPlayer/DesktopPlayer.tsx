@@ -21,7 +21,6 @@ const DesktopPlayer = (props: Props) => {
     useEffect(() => {
         if (props.audioRef.current && musicData.length > 0) {
             props.audioRef.current.src = musicData[currentIndex]?.src || '';
-            props.audioRef.current.play();
         }
     }, [currentIndex, props.audioRef]);
 
