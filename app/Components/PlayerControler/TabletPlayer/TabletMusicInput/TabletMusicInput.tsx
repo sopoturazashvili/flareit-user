@@ -31,7 +31,6 @@ const TabletMusicInput = (props: Props) => {
             };
         }
     }, [updateTime]);
-    console.log(currentTime, 'currentTime');
 
     const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newTime = parseFloat(e.target.value);

@@ -12,9 +12,7 @@ interface Props {
 
 const DesktopMusicSwitch = (props: Props) => {
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
-    const [currentIndex, setCurrentTime] = useRecoilState(currentTimeState);
-    console.log(currentIndex, 'index');
-    console.log(isPlaying, 'isPlaying');
+    const [, setCurrentTime] = useRecoilState(currentTimeState);
 
     const playPause = () => {
         const audio = props.audioRef.current;

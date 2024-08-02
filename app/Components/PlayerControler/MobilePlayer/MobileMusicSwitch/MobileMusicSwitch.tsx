@@ -14,8 +14,6 @@ const MobileMusicSwitch = (props: Props) => {
     const [, setCurrentTime] = useRecoilState(currentTimeState);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingMobileState);
 
-    console.log(isPlaying, 'mobile');
-
     const playPause = () => {
         const audio = props.MobileaudioRef.current;
         if (audio) {

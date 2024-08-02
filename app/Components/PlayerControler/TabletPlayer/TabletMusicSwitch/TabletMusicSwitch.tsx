@@ -14,8 +14,6 @@ const TabletMusicSwitch = (props: Props) => {
     const [, setCurrentTime] = useRecoilState(currentTimeState);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingTabletState);
 
-    console.log(isPlaying, 'tablet');
-
     const playPause = () => {
         const audio = props.TabletaudioRef.current;
         if (audio) {

@@ -8,11 +8,21 @@ import styles from './PlayerAndList.module.scss';
 import { musicData } from '@/app/helpers/MusicData';
 import { useRecoilState } from 'recoil';
 import { currentIndexState, isPlayingState } from '@/app/state';
+import useViewport from '@/app/helpers/UseViewport';
 
 const PlayerAndList = () => {
     const [currentIndex, setCurrentIndex] = useRecoilState(currentIndexState);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
     const audioRef = useRef<HTMLAudioElement>(null);
+
+    useEffect(() => {
+        if (audioRef.current) {
+            console.log('haloo');
+            audioRef.current.pause();
+            audioRef.current.src = musicData[currentIndex]?.src || '';
+            audioRef.current.play();
+        }
+    }, [currentIndex, audioRef]);
 
     const playTrack = (index: number) => {
         setCurrentIndex(index);
@@ -60,6 +70,10 @@ const PlayerAndList = () => {
         songDuration: '4:17',
         src: item.src,
     }));
+    const { isMobile, isTablet } = useViewport();
+    if (isMobile || isTablet) {
+        return null;
+    }
 
     return (
         <div className={styles.playerAndListBox}>

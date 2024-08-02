@@ -9,6 +9,7 @@ import DesktopInputRange from './DesktopInputRange/DesktopInputRange';
 import DesktopFullScreen from '../DesktopFullScreen/DesktopFullScreen';
 import DesktopMusicName from './DesktopMusicName/DesktopMusicName';
 import Shuffle from '../Shuffle/Shufle';
+import useViewport from '@/app/helpers/UseViewport';
 
 interface Props {
     audioRef: React.MutableRefObject<HTMLAudioElement | null>;
@@ -18,16 +19,12 @@ const DesktopPlayer = (props: Props) => {
     const [currentIndex] = useRecoilState(currentIndexState);
     const [fullScreen, setFullScreen] = useRecoilState(fullScreenState);
 
-    useEffect(() => {
-        if (props.audioRef.current && musicData.length > 0) {
-            props.audioRef.current.src = musicData[currentIndex]?.src || '';
-        }
-    }, [currentIndex, props.audioRef]);
+
 
     return (
         <>
             <div className={styles.playerSmall}>
-                <audio ref={props.audioRef} />
+                <audio ref={props.audioRef} src={musicData[currentIndex].src} />
                 <div className={styles.nameAndRange}>
                     <DesktopMusicName
                         image={'/PlayerControler/MusicPhoto.svg'}

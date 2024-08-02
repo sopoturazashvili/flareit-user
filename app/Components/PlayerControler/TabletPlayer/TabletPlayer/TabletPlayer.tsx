@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import TabletMusicInput from '../TabletMusicInput/TabletMusicInput';
 import TabletMusicName from '../TabletMusicName/TabletMusicName';
 import styles from './TabletPlayer.module.scss';
@@ -15,16 +15,12 @@ const TabletPlayer = () => {
     const [fullScreen, setFullScreen] = useRecoilState(tabletFullScrenState);
     const TabletaudioRef = useRef<HTMLAudioElement>(null);
 
-    // useEffect(() => {
-    //     console.log('currentIndex changed:', currentIndex);
-    //     if (TabletaudioRef.current) {
-    //         TabletaudioRef.current.play();
-    //     }
-    // }, [currentIndex]);
-
     const tabletFullScreen = () => {
         setFullScreen(!fullScreen);
     };
+    useEffect(() => {
+        TabletaudioRef.current?.play();
+    }, []);
 
     return (
         <>
@@ -61,4 +57,3 @@ const TabletPlayer = () => {
 };
 
 export default TabletPlayer;
-
