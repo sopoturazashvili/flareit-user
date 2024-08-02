@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import AuthForm from '../authForm/authForm';
+import AuthForm from '@/app/authPage/authForm/authForm';
 import styles from './AuthPageContainer.module.scss';
 
 const AuthPageContaiener = () => {
