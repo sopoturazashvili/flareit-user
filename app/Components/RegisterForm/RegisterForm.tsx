@@ -21,6 +21,7 @@ const RegisterForm = () => {
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
             <div className={styles.emailContainer}>
+                <p className={styles.title}>Enter email</p>
                 <Input
                     placeholder="Enter Email"
                     register={register('email', {
@@ -34,7 +35,8 @@ const RegisterForm = () => {
                     error={errors.email?.message}
                 />
             </div>
-            <div className={styles.passwordContainer}>
+            <div className={styles.emailContainer}>
+                <p className={styles.title}>Enter Password</p>
                 <Input
                     placeholder="Enter Password"
                     register={register('password', {
@@ -50,7 +52,8 @@ const RegisterForm = () => {
                     error={errors.password?.message}
                 />
             </div>
-            <div className={styles.confirmPasswordContainer}>
+            <div className={styles.emailContainer}>
+                <p className={styles.title}>Confirm Password</p>
                 <Input
                     placeholder={'Confirm Password'}
                     register={register('confirmPassword', {

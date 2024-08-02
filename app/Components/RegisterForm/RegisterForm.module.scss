@@ -5,16 +5,10 @@
     gap: 20px;
 }
 
-.emilContainer {
+.emailContainer {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-}
-
-.passwordContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    gap: 8px;
 }
 
 .checkboxContainer {
@@ -58,4 +52,12 @@
 
 .checkboxPointer {
     cursor: pointer;
+}
+
+.title {
+    color: var(--text-color, #fff);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
 }

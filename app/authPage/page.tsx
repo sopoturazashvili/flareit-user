@@ -1,6 +1,4 @@
-'use client';
-
-import AuthPageContaiener from '@/app/authPage/authPageContainer/AuthPageContainer';
+import AuthPageContaiener from '@/app/Components/AuthPageContainer/AuthPageContainer';
 
 const AuthPage = () => {
     return <AuthPageContaiener />;
