@@ -1,4 +1,4 @@
-import styles from './authForm.module.scss';
+import styles from './AuthForm.module.scss';
 import Input from '@/app/Components/Input/Input';
 import { useForm } from 'react-hook-form';
 

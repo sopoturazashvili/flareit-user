@@ -1,5 +1,7 @@
+'use client';
+
 import Link from 'next/link';
-import AuthForm from '@/app/authPage/authForm/authForm';
+import AuthForm from '@/app/Components/AuthForm/AuthForm';
 import styles from './AuthPageContainer.module.scss';
 
 const AuthPageContaiener = () => {
