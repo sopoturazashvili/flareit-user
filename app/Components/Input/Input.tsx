@@ -17,13 +17,15 @@ const Input = (props: Props) => {
     }
 
     return (
-        <div className={classNames.join(' ')}>
-            <input
-                type={props.type === 'password' ? 'password' : ''}
-                placeholder={props.placeholder}
-                className={styles.input}
-                {...props.register}
-            />
+        <div className={styles.container}>
+            <div className={classNames.join(' ')}>
+                <input
+                    type={props.type === 'password' ? 'password' : ''}
+                    placeholder={props.placeholder}
+                    className={styles.input}
+                    {...props.register}
+                />
+            </div>
             {props.error && <p className={styles.errorText}>{props.error}</p>}
         </div>
     );
