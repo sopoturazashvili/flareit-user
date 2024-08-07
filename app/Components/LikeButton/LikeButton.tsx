@@ -4,6 +4,7 @@ import styles from './LikeButton.module.scss';
 interface Props {
     isLiked: boolean;
     id: number;
+    menu: () => void;
 }
 
 const LikeButton = (props: Props) => {
@@ -11,6 +12,7 @@ const LikeButton = (props: Props) => {
 
     const LikeFunc = () => {
         setLike(!like);
+        props.menu();
     };
     return (
         <div onClick={LikeFunc} className={styles.cursorPointer}>
