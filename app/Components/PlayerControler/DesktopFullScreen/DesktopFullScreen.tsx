@@ -2,22 +2,23 @@ import React from 'react';
 import styles from './DesktopFullScreen.module.scss';
 import DesktopMusicName from '../DesktopPlayer/DesktopMusicName/DesktopMusicName';
 import DesktopInputRange from '../DesktopPlayer/DesktopInputRange/DesktopInputRange';
-import DesktopMusicSwitch from '../DesktopPlayer/DesktopMusicSwitch/DesktopMusicSwitch';
-import DesktopVolume from '../DesktopPlayer/DesktopVolume/DesktopVolume';
 import Shuffle from '../Shuffle/Shufle';
+import DesktopVolume from '../DesktopPlayer/DesktopVolume/DesktopVolume';
+import DesktopMusicSwitch from '../DesktopMusicSwitch/DesktopMusicSwitch';
+import { fullScreenState, globalImageState } from '@/app/state';
+import { useRecoilState } from 'recoil';
 
 interface Props {
     background: string;
-    audioRef: React.MutableRefObject<HTMLAudioElement | null>;
     fullScreen: boolean;
     setFullScreen: (e: boolean) => void;
 }
 
 const DesktopFullScreen = (props: Props) => {
-    const { audioRef, setFullScreen } = props;
-
+    const [image] = useRecoilState(globalImageState);
+    const [, setFullScreen] = useRecoilState(fullScreenState);
     const background = {
-        backgroundImage: `url(${props.background})`,
+        backgroundImage: `url(${image})`,
     };
 
     return (
@@ -32,20 +33,19 @@ const DesktopFullScreen = (props: Props) => {
                 />
                 <div className={styles.iconImage}></div>
                 <div>
-                    <DesktopMusicName image={''} title={''} />
+                    <DesktopMusicName title={''} />
                 </div>
                 <div className={styles.inputRangeCont}>
                     <Shuffle />
-                    <DesktopInputRange audioRef={audioRef} />
+                    <DesktopInputRange />
                 </div>
                 <div>
-                    <DesktopMusicSwitch audioRef={audioRef} />
+                    <DesktopMusicSwitch />
                     <DesktopVolume
                         width={275}
                         volumeWidth={32}
                         volumeHeight={32}
                         involved={''}
-                        audioRef={props.audioRef}
                     />
                 </div>
             </div>

@@ -1,5 +1,6 @@
+import styles from './Shuffle.module.scss';
 const Shuffle = () => {
-    return <img src="/PlayerControler/Messy.svg" alt="Messy" />;
+    return <img className={styles.shuffle} src="/PlayerControler/Messy.svg" alt="Messy" />;
 };
 
 export default Shuffle;

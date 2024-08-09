@@ -1,69 +1,69 @@
-@import "../styles/colors.scss";
+@import '../styles/colors.scss';
 
 .main {
-  background-color: $PrimaryBlackTone2;
-  height: 100%;
-  overflow: auto;
-  width: 100%;
-  padding-bottom: 50px;
+    background-color: $PrimaryBlackTone2;
+    height: 100vh;
+    overflow: auto;
+    width: 100%;
+    padding-bottom: 50px;
 }
 
 .main::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .artistCard {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 10px;
-  width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    width: 100%;
 }
 
 .sectionHeader {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 24px;
 }
 
 .hitsContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 100%;
-  gap: 8px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 8px 20px;
 }
 
 @media screen and (min-width: 1024px) {
-  .main::-webkit-scrollbar {
-    display: none;
-  }
+    .main::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 600px) and (max-width: 1023px) {
-  .main::-webkit-scrollbar {
-    display: none;
-  }
-  .artistCard {
-    overflow-x: scroll;
-    width: 100%;
-  }
-  .artistCard::-webkit-scrollbar {
-    display: none;
-  }
+    .main::-webkit-scrollbar {
+        display: none;
+    }
+    .artistCard {
+        overflow-x: scroll;
+        width: 100%;
+    }
+    .artistCard::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 599px) {
-  .artistCard {
-    overflow-x: scroll;
-    width: 100%;
-    display: flex;
-  }
-  .artistCard::-webkit-scrollbar {
-    display: none;
-  }
-  .hitsContainer {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
+    .artistCard {
+        overflow-x: scroll;
+        width: 100%;
+        display: flex;
+    }
+    .artistCard::-webkit-scrollbar {
+        display: none;
+    }
+    .hitsContainer {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 }

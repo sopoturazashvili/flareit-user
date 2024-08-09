@@ -94,7 +94,8 @@ const MusicList = () => {
                     <div className={styles.musicListItem}>
                         {data.slice(0, musicUp ? 6 : 3).map((item, index) => (
                             <MusicListItem
-                                key={index}
+                                id={index}
+                                key={item.songTitle}
                                 image={item.image}
                                 songTitle={item.songTitle}
                                 artistName={item.artistName}

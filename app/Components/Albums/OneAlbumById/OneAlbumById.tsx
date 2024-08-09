@@ -1,56 +1,70 @@
 'use client';
+import { isPlayingState, musicGlobalState, musicId } from '@/app/state';
 import MusicCard from '../../MusicCard/MusicCard';
 import styles from './OneAlbumById.module.scss';
+import { useRecoilState } from 'recoil';
+import { Itim } from 'next/font/google';
 
 const OneAlbumById = () => {
+    const [, setGlobalsrc] = useRecoilState(musicGlobalState);
+    const [globalMusicId, setGlobalId] = useRecoilState(musicId);
+    const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
     const data = [
         {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
-            id: 1,
+            id: 33,
+            src: '/Player/stairway.mp3',
         },
         {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
-            id: 2,
+            id: 34,
+            src: '/Player/Bellin.mp3',
         },
         {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
-            id: 3,
+            id: 35,
+            src: '/Player/judas.mp3',
         },
         {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
-            id: 4,
+            id: 36,
+            src: '/Player/Bellaire.mp3',
         },
         {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
-            id: 5,
+            id: 37,
+            src: '/Player/IVdasi.mp3',
         },
         {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
-            id: 6,
+            id: 38,
+            src: '/Player/SoMany.mp3',
         },
         {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
-            id: 7,
+            id: 39,
+            src: '/Player/Kendrick.mp3',
         },
         {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
-            id: 8,
+            id: 40,
+            src: '/Player/stairway.mp3',
         },
     ];
     return (
@@ -65,7 +79,7 @@ const OneAlbumById = () => {
                 </div>
             </div>
             <div className={styles.musicCard}>
-                {data.map((item) => (
+                {data.map((item, index) => (
                     <MusicCard
                         key={item.id}
                         image={item.image}
@@ -73,6 +87,12 @@ const OneAlbumById = () => {
                         teamName={item.temeName}
                         id={item.id}
                         deleteOrLike={false}
+                        isPlaying={isPlaying && globalMusicId === index}
+                        onClick={() => {
+                            setIsPlaying(true);
+                            setGlobalId(item.id);
+                            setGlobalsrc(item.src);
+                        }}
                     />
                 ))}
             </div>
