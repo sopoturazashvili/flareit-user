@@ -21,7 +21,7 @@ const ArtistCard = (props: Props) => {
                         />
                     </div>
                     <div className={styles.infoContainer}>
-                        <h4>{props.artist}</h4>
+                        <h4 className={styles.artistName}>{props.artist}</h4>
                         <h5 className={styles.infoNumb}>{props.year}</h5>
                     </div>
                 </div>
