@@ -3,7 +3,6 @@ import styles from './TabletVolumeInput.module.scss';
 import { mutedState, volumeState } from '@/app/state';
 
 interface Props {
-    TabletaudioRef: React.MutableRefObject<HTMLAudioElement | null>;
     tabletWidth: number;
 }
 
@@ -15,9 +14,6 @@ const TabletVolumeInput = (props: Props) => {
     const TabletVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newVolume = parseFloat(e.target.value);
         setVolume(newVolume);
-        if (props.TabletaudioRef.current) {
-            props.TabletaudioRef.current.volume = newVolume / 100;
-        }
     };
 
     const progressPercent = volume;

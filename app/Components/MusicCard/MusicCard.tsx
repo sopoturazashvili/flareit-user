@@ -8,12 +8,15 @@ interface Props {
     teamName: string;
     deleteOrLike: boolean;
     id: number;
+    onClick: () => void;
+    isPlaying: boolean;
+    index: number;
 }
 
 const MusicCard = (props: Props) => {
     return (
         <div className={styles.musicCard}>
-            <div className={styles.musicCardHeader}>
+            <div className={styles.musicCardHeader} onClick={props.onClick}>
                 <div className={styles.musicCardhover}>
                     <img
                         className={styles.musicCardPhoto}

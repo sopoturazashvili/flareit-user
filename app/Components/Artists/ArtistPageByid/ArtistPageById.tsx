@@ -3,8 +3,13 @@ import { useParams } from 'next/navigation';
 import AlbumCard from '../../AlbumCard/AlbumCard';
 import MusicCard from '../../MusicCard/MusicCard';
 import styles from './ArtistPageById.module.scss';
+import { useRecoilState } from 'recoil';
+import { isPlayingState, musicGlobalState, musicId } from '@/app/state';
 
 const ArtistPageById = () => {
+    const [, setGlobalsrc] = useRecoilState(musicGlobalState);
+    const [globalMusicId, setGlobalId] = useRecoilState(musicId);
+    const [isPLaying, setIsPlaying] = useRecoilState(isPlayingState);
     const id = useParams();
     console.log(id);
     const data = [
@@ -12,49 +17,57 @@ const ArtistPageById = () => {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
-            id: 1,
+            id: 57,
+            src: '/Player/stairway.mp3',
         },
         {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
-            id: 2,
+            id: 58,
+            src: '/Player/Bellin.mp3',
         },
         {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
-            id: 3,
+            id: 59,
+            src: '/Player/judas.mp3',
         },
         {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
-            id: 4,
+            id: 60,
+            src: '/Player/Bellaire.mp3',
         },
         {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
-            id: 5,
+            id: 61,
+            src: '/Player/IVdasi.mp3',
         },
         {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
-            id: 6,
+            id: 62,
+            src: '/Player/SoMany.mp3',
         },
         {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
-            id: 7,
+            id: 63,
+            src: '/Player/Kendrick.mp3',
         },
         {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
-            id: 8,
+            id: 64,
+            src: '/Player/stairway.mp3',
         },
     ];
 
@@ -150,7 +163,7 @@ const ArtistPageById = () => {
                 </p>
             </div>
             <div className={styles.musicCard}>
-                {data.map((itme) => (
+                {data.map((itme, index) => (
                     <MusicCard
                         key={itme.id}
                         image={itme.image}
@@ -158,6 +171,12 @@ const ArtistPageById = () => {
                         teamName={itme.temeName}
                         deleteOrLike={false}
                         id={itme.id}
+                        isPlaying={isPLaying && globalMusicId === index}
+                        onClick={() => {
+                            setIsPlaying(true);
+                            setGlobalId(itme.id);
+                            setGlobalsrc(itme.src);
+                        }}
                     />
                 ))}
             </div>
