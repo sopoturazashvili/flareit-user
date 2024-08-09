@@ -20,12 +20,14 @@ const MusicListItem = (props: Props) => {
                 className={styles.itemImageWrapper}
             >
                 <div className={styles.itemHoverPhoto} onClick={props.onClick}>
-                    <Image
-                        src="/Images/PlayHover.svg"
-                        alt="Pause Button"
-                        width={54}
-                        height={56}
-                    />
+                    {
+                        <Image
+                            src="/Images/PlayHover.svg"
+                            alt="Pause Button"
+                            width={54}
+                            height={56}
+                        />
+                    }
                 </div>
             </div>
             <div className={styles.section}>

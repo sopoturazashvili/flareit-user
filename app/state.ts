@@ -64,3 +64,12 @@ export const globalImageState = atom({
     key: 'globalImage',
     default: '',
 });
+
+export const musicNameState = atom({
+    key: 'musicName',
+    default: '',
+});
+export const authorNameState = atom({
+    key: 'authorName',
+    default: '',
+});

@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import MusicListItem from '../MusicListItem/MusicListItem';
 import NextPlay from './NextPlay/NextPlay';
 import styles from './PlayerAndList.module.scss';
 import { useRecoilState } from 'recoil';
 import {
+    globalImageState,
     indexState,
     isPlayingState,
     musicGlobalState,
@@ -16,8 +17,8 @@ const PlayerAndList = () => {
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
     const [globalMusicId, setGlobalId] = useRecoilState(musicId);
     const [, setGlobalsrc] = useRecoilState(musicGlobalState);
-
     const [, setActiveIdx] = useRecoilState(indexState);
+    const [, setImage] = useRecoilState(globalImageState);
 
     const data = [
         {
@@ -60,7 +61,7 @@ const PlayerAndList = () => {
 
         const allSrc = data.map((item) => item.src);
         setGlobalsrc(allSrc);
-
+        setImage(item.image);
         setActiveIdx(index);
     };
 

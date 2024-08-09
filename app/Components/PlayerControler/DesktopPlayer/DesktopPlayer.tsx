@@ -16,10 +16,7 @@ const DesktopPlayer = () => {
             <div className={styles.playerSmall}>
                 <div className={styles.nameAndRange}>
                     <DesktopMusicName
-                        image={'/PlayerControler/MusicPhoto.svg'}
                         title={''}
-                        fullScreen={fullScreen}
-                        setFullScreen={setFullScreen}
                     />
                     <DesktopInputRange />
                 </div>

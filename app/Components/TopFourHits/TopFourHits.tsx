@@ -1,10 +1,15 @@
 import { useRecoilState } from 'recoil';
 import MusicCard from '../MusicCard/MusicCard';
 import {
+    authorName,
+    authorNameState,
+    globalImageState,
     indexState,
     isPlayingState,
     musicGlobalState,
     musicId,
+    musicName,
+    musicNameState,
 } from '@/app/state';
 
 const TopFourHits = () => {
@@ -12,6 +17,9 @@ const TopFourHits = () => {
     const [globalMusicId, setGlobalId] = useRecoilState(musicId);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
     const [, setActiveIdx] = useRecoilState(indexState);
+    const [, setImage] = useRecoilState(globalImageState);
+    const [, setMusicName] = useRecoilState(musicNameState);
+    const [, setAuthorName] = useRecoilState(authorNameState);
     const data = [
         {
             image: '/images/MusicCard.svg',
@@ -49,6 +57,9 @@ const TopFourHits = () => {
         const allSrc = data.map((item) => item.src);
         setGlobalsrc(allSrc);
         setActiveIdx(index);
+        setImage(item.image);
+        setMusicName(item.temeName);
+        setAuthorName(item.title);
     };
     return (
         <>

@@ -1,5 +1,3 @@
-// src/components/PlayerHandler/PlayerHandler.tsx
-
 import { useEffect, useRef } from 'react';
 import { useRecoilState } from 'recoil';
 import {
@@ -11,7 +9,7 @@ import {
     shouldAddTimeState,
     shouldRewindState,
     volumeState,
-    mutedState, // Import mutedState
+    mutedState,
 } from '@/app/state';
 
 const PlayerHandler = () => {
@@ -23,8 +21,8 @@ const PlayerHandler = () => {
     const [shouldAddTime, setShouldAddTime] =
         useRecoilState(shouldAddTimeState);
     const [shouldRewind, setShouldRewind] = useRecoilState(shouldRewindState);
-    const [volume] = useRecoilState(volumeState); // Volume in percentage (0-100)
-    const [muted] = useRecoilState(mutedState); // Mute state
+    const [volume] = useRecoilState(volumeState);
+    const [muted] = useRecoilState(mutedState);
 
     const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -99,7 +97,7 @@ const PlayerHandler = () => {
         const audio = audioRef.current;
 
         if (audio) {
-            audio.volume = muted ? 0 : volume / 100; // Set volume to 0 if muted, else to volume
+            audio.volume = muted ? 0 : volume / 100;
         }
     }, [volume, muted]);
 

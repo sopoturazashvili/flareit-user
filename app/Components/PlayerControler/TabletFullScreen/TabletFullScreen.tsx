@@ -13,7 +13,7 @@ const TabletFullScreen = () => {
             <div className={styles.tabletFullscreenPadd}>
                 <div className={styles.imageAndName}>
                     <FullScreenImage image={''} />
-                    <TabletName musicName={''} name={''} />
+                    <TabletName />
                 </div>
                 <div className={styles.inputRangeCont}>
                     <Shuffle />

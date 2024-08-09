@@ -5,6 +5,8 @@ import DesktopInputRange from '../DesktopPlayer/DesktopInputRange/DesktopInputRa
 import Shuffle from '../Shuffle/Shufle';
 import DesktopVolume from '../DesktopPlayer/DesktopVolume/DesktopVolume';
 import DesktopMusicSwitch from '../DesktopMusicSwitch/DesktopMusicSwitch';
+import { fullScreenState, globalImageState } from '@/app/state';
+import { useRecoilState } from 'recoil';
 
 interface Props {
     background: string;
@@ -13,8 +15,10 @@ interface Props {
 }
 
 const DesktopFullScreen = (props: Props) => {
+    const [image] = useRecoilState(globalImageState);
+    const [, setFullScreen] = useRecoilState(fullScreenState);
     const background = {
-        backgroundImage: `url(${props.background})`,
+        backgroundImage: `url(${image})`,
     };
 
     return (
@@ -25,11 +29,11 @@ const DesktopFullScreen = (props: Props) => {
                     className={styles.backIcon}
                     src="/PlayerControler/BackButton.svg"
                     alt="Back"
-                    onClick={() => props.setFullScreen(false)}
+                    onClick={() => setFullScreen(false)}
                 />
                 <div className={styles.iconImage}></div>
                 <div>
-                    <DesktopMusicName image={''} title={''} />
+                    <DesktopMusicName title={''} />
                 </div>
                 <div className={styles.inputRangeCont}>
                     <Shuffle />
