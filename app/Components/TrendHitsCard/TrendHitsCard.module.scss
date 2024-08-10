@@ -1,27 +1,37 @@
 .container {
     width: 100%;
-    height: 299px;
+    height: 100%; // Ensure the height is responsive
     border-radius: 16px;
     display: flex;
-}
+    justify-content: flex-start;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-.content {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    flex: 1;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    padding: 0px 5px;
+    @media screen and (min-width: 1024px) {
+        background-size: cover;
+    }
+
+    @media screen and (min-width: 600px) and (max-width: 1023px) {
+        height: 299px;
+        background-size: contain; // or 'cover', depending on preference
+        background-position: right 20px;
+    }
+
+    @media screen and (max-width: 599px) {
+        height: 138px;
+        background-size: contain; // Adjust to fit smaller screens
+        background-position: center;
+    }
 }
 
 .trendHitsContrainer {
     display: flex;
-    align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
+    align-items: center;
+    padding: 52px 0 52px 50px;
+    gap: 12px;
 }
 
 .fillTextButton {
@@ -29,59 +39,71 @@
     width: 100%;
 }
 
-.forBgImage {
-    flex: 1;
-    height: 100%;
-    background: no-repeat right 23px bottom;
-    border-radius: 0px 0px 16px 0px;
+.text {
+    color: #fff;
+    font-size: 53px;
+    font-weight: 900;
+    line-height: 57px;
+    font-style: normal;
 }
 
-// For Tablet
-
-@media screen and (min-width: 711px) and (max-width: 1023px) {
-    .container {
-        width: 100%;
-        height: 299px;
-        border-radius: 16px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+.textHits {
+    color: #fff;
+    font-size: 76px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 80px;
 }
 
-@media screen and (min-width: 600px) and (max-width: 710px) {
-    .container {
-        width: 100%;
-        height: 299px;
-        border-radius: 16px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+.titles {
+    display: flex;
+    flex-direction: column;
 }
 
-// For Mobile
+// @media screen and (min-width: 600px) and (max-width: 1023) {
+//     .container {
+//         width: 100%;
+//         height: 299px;
+//         border-radius: 16px;
+//         display: flex;
+//         justify-content: flex-start;
+//         background-position: right 20px;
+//         background: center center;
+//     }
 
-@media screen and (max-width: 599px) {
-    .container {
-        width: 100%;
-        height: 138px;
-        border-radius: 16px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+//     .text {
+//         color: #fff;
+//         font-size: 48px;
+//         font-weight: 900;
+//         line-height: 51.114px;
+//     }
 
-    .text {
-        font-size: 20px;
-        font-weight: 500;
-    }
+//     .textHits {
+//         font-size: 68px;
+//         line-height: 71.739px;
+//     }
+// }
 
-    .year {
-        font-size: 40px;
-        font-weight: 600;
-    }
-    .fillTextButton {
-        max-width: 107px;
-    }
-}
+// @media screen and (max-width: 599px) {
+//     .container {
+//         width: 100%;
+//         height: 138px;
+//         border-radius: 16px;
+//         display: flex;
+//         display: flex;
+//         justify-content: flex-start;
+//     }
+
+//     .text {
+//         font-size: 20px;
+//         font-weight: 500;
+//     }
+
+//     .year {
+//         font-size: 40px;
+//         font-weight: 600;
+//     }
+//     .fillTextButton {
+//         max-width: 107px;
+//     }
+// }
