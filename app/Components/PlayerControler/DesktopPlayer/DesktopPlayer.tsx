@@ -1,5 +1,5 @@
 import styles from './DesktopPlayer.module.scss';
-import { fullScreenState } from '@/app/state';
+import { fullScreenState, globalImageState } from '@/app/state';
 import { useRecoilState } from 'recoil';
 import DesktopVolume from './DesktopVolume/DesktopVolume';
 import DesktopInputRange from './DesktopInputRange/DesktopInputRange';
@@ -9,15 +9,14 @@ import Shuffle from '../Shuffle/Shufle';
 import DesktopMusicSwitch from '../DesktopMusicSwitch/DesktopMusicSwitch';
 
 const DesktopPlayer = () => {
-    const [fullScreen, setFullScreen] = useRecoilState(fullScreenState);
+    const [fullScreen] = useRecoilState(fullScreenState);
+    const [image] = useRecoilState(globalImageState);
 
     return (
         <>
             <div className={styles.playerSmall}>
                 <div className={styles.nameAndRange}>
-                    <DesktopMusicName
-                        title={''}
-                    />
+                    <DesktopMusicName title={''} />
                     <DesktopInputRange />
                 </div>
                 <div className={styles.musicPlayer}>
@@ -31,13 +30,7 @@ const DesktopPlayer = () => {
                     <Shuffle />
                 </div>
             </div>
-            {fullScreen && (
-                <DesktopFullScreen
-                    background={''}
-                    fullScreen={fullScreen}
-                    setFullScreen={setFullScreen}
-                />
-            )}
+            {image && fullScreen && <DesktopFullScreen />}
         </>
     );
 };

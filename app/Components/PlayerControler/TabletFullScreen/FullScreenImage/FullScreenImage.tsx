@@ -2,8 +2,6 @@ import { useRecoilState } from 'recoil';
 import styles from './FullScreenImage.module.scss';
 import { fullScreenState, globalImageState } from '@/app/state';
 
-
-
 const FullScreenImage = () => {
     const [fullScreen, setFullScreen] = useRecoilState(fullScreenState);
     const [image] = useRecoilState(globalImageState);

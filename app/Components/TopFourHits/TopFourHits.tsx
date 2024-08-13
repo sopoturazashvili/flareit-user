@@ -1,14 +1,12 @@
 import { useRecoilState } from 'recoil';
 import MusicCard from '../MusicCard/MusicCard';
 import {
-    authorName,
     authorNameState,
     globalImageState,
     indexState,
     isPlayingState,
     musicGlobalState,
     musicId,
-    musicName,
     musicNameState,
 } from '@/app/state';
 

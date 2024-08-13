@@ -10,10 +10,14 @@ const MobileMusicName = () => {
         <div
             className={styles.nameContainer}
             onClick={() => {
-                setFullScreen(!fullScreen);
+                if (image) setFullScreen(!fullScreen);
             }}
         >
-            <img className={styles.image} src={image} alt="photo" />
+            <img
+                className={styles.image}
+                src={image ? image : '/PlayerControler/Default.svg'}
+                alt="photo"
+            />
             <Name />
         </div>
     );

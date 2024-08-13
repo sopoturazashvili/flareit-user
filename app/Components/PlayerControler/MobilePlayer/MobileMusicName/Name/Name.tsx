@@ -1,6 +1,5 @@
 import { useRecoilState } from 'recoil';
 import styles from './Name.module.scss';
-import { Ms_Madi } from 'next/font/google';
 import { authorNameState, musicNameState } from '@/app/state';
 
 const Name = () => {

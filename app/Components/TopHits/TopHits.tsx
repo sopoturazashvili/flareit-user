@@ -1,6 +1,7 @@
 'use client';
 
 import {
+    globalImageState,
     indexState,
     isPlayingState,
     musicGlobalState,
@@ -15,6 +16,7 @@ const TopHits = () => {
     const [globalMusicId, setGlobalId] = useRecoilState(musicId);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
     const [, setActiveIdx] = useRecoilState(indexState);
+    const [, setImage] = useRecoilState(globalImageState);
     const data = [
         {
             id: 1,
@@ -132,7 +134,7 @@ const TopHits = () => {
     const handleClick = (item, index: number) => {
         setIsPlaying(true);
         setGlobalId(item.id);
-
+        setImage(item.image);
         const allSrc = data.map((item) => item.src);
         setGlobalsrc(allSrc);
         setActiveIdx(index);

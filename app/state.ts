@@ -73,3 +73,8 @@ export const authorNameState = atom({
     key: 'authorName',
     default: '',
 });
+
+export const showNavMobileState = atom({
+    key: 'showNavMobileState',
+    default: true,
+});

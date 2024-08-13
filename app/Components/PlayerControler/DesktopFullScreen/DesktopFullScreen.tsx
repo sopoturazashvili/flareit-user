@@ -8,13 +8,8 @@ import DesktopMusicSwitch from '../DesktopMusicSwitch/DesktopMusicSwitch';
 import { fullScreenState, globalImageState } from '@/app/state';
 import { useRecoilState } from 'recoil';
 
-interface Props {
-    background: string;
-    fullScreen: boolean;
-    setFullScreen: (e: boolean) => void;
-}
 
-const DesktopFullScreen = (props: Props) => {
+const DesktopFullScreen = () => {
     const [image] = useRecoilState(globalImageState);
     const [, setFullScreen] = useRecoilState(fullScreenState);
     const background = {

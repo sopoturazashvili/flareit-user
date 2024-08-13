@@ -1,64 +1,101 @@
 import MusicListItem from '@/app/Components/MusicListItem/MusicListItem';
 import styles from './MusicList.module.scss';
 import { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import {
+    globalImageState,
+    indexState,
+    musicGlobalState,
+    musicId,
+} from '@/app/state';
 
 const MusicList = () => {
+    const [, setGlobalId] = useRecoilState(musicId);
+    const [, setGlobalsrc] = useRecoilState(musicGlobalState);
+    const [, setActiveIdx] = useRecoilState(indexState);
+    const [, setImage] = useRecoilState(globalImageState);
     const data = [
         {
             image: '/images/natashaB.png',
             songTitle: 'Unwritten',
             artistName: 'Natasha Bedingfield',
             songDuration: '4:17',
+            src: '/Player/stairway.mp3',
+            id: 80,
         },
         {
             image: '/images/natashaB.png',
             songTitle: 'Unwritten',
             artistName: 'Natasha Bedingfield',
             songDuration: '4:17',
+            src: '/Player/Bellin.mp3',
+            id: 81,
         },
         {
             image: '/images/natashaB.png',
             songTitle: 'Unwritten',
             artistName: 'Natasha Bedingfield',
             songDuration: '4:17',
+            src: '/Player/judas.mp3',
+            id: 82,
         },
         {
             image: '/images/natashaB.png',
             songTitle: 'Unwritten',
             artistName: 'Natasha Bedingfield',
             songDuration: '4:17',
+            src: '/Player/Bellaire.mp3',
+            id: 83,
         },
         {
             image: '/images/natashaB.png',
             songTitle: 'Unwritten',
             artistName: 'Natasha Bedingfield',
             songDuration: '4:17',
+            src: '/Player/IVdasi.mp3',
+            id: 84,
         },
         {
             image: '/images/natashaB.png',
             songTitle: 'Unwritten',
             artistName: 'Natasha Bedingfield',
             songDuration: '4:17',
+            src: '/Player/SoMany.mp3',
+            id: 85,
         },
         {
             image: '/images/natashaB.png',
             songTitle: 'Unwritten',
             artistName: 'Natasha Bedingfield',
             songDuration: '4:17',
+            src: '/Player/Kendrick.mp3',
+            id: 86,
         },
         {
             image: '/images/natashaB.png',
             songTitle: 'Unwritten',
             artistName: 'Natasha Bedingfield',
             songDuration: '4:17',
+            src: '/Player/stairway.mp3',
+            id: 87,
         },
         {
             image: '/images/natashaB.png',
             songTitle: 'Unwritten',
             artistName: 'Natasha Bedingfield',
             songDuration: '4:17',
+            src: '/Player/Bellin.mp3',
+            id: 88,
         },
     ];
+
+    const handleClick = (item, index: number) => {
+        setGlobalId(item.id);
+        const allSrc = data.map((item) => item.src);
+        setGlobalsrc(allSrc);
+        setImage(item.image);
+        setActiveIdx(index);
+    };
 
     const [musicUp, setMusicUp] = useState(false);
 
@@ -92,7 +129,7 @@ const MusicList = () => {
                 <div className={styles.nameAndMusic}>
                     <p className={styles.nextContainer}>Next Play</p>
                     <div className={styles.musicListItem}>
-                        {data.slice(0, musicUp ? 6 : 3).map((item, index) => (
+                        {data.slice(0, musicUp ? 6 : 0).map((item, index) => (
                             <MusicListItem
                                 id={index}
                                 key={item.songTitle}
@@ -100,6 +137,10 @@ const MusicList = () => {
                                 songTitle={item.songTitle}
                                 artistName={item.artistName}
                                 songDuration={item.songDuration}
+                                onClick={() => {
+                                    handleClick(item, index);
+                                }}
+                                index={index}
                             />
                         ))}
                     </div>

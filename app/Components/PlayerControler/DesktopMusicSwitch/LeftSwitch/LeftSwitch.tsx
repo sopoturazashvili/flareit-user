@@ -6,7 +6,9 @@ const LeftSwitch = () => {
     const [index, setIndex] = useRecoilState(indexState);
 
     const playPrevious = () => {
-        setIndex(index - 1);
+        if (index > 0) {
+            setIndex(index - 1);
+        }
     };
 
     return (

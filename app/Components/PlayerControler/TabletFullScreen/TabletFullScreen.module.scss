@@ -1,28 +1,32 @@
 .TabletFullScreen {
     background: linear-gradient(180deg, #1f485f 0%, #121522 100%);
-    width: 100%;
-    height: 100vh;
+    // width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
-    // position: absolute;
+    // overflow: auto;
     top: 0;
+    right: 0;
+    bottom: 0;
     left: 0;
 }
 
 .imageAndName {
     display: flex;
     flex-direction: column;
+    // align-items: center;
     gap: 14px;
+    width: 100%;
 }
 
 .tabletFullscreenPadd {
-    padding: 40px 24px;
+    padding: 0px 24px;
+    height: 100vh;
+    // width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
 }
 
 .musicList {

@@ -18,6 +18,7 @@ const MusicListItem = (props: Props) => {
             <div
                 style={{ backgroundImage: `url(${props.image})` }}
                 className={styles.itemImageWrapper}
+                onClick={props.onClick}
             >
                 <div className={styles.itemHoverPhoto} onClick={props.onClick}>
                     {

@@ -4,6 +4,7 @@ import { useRecoilState } from 'recoil';
 
 const DesktopLeftTwist = () => {
     const [, setShouldRewind] = useRecoilState(shouldRewindState);
+
     return (
         <img
             className={styles.LeftTwist}

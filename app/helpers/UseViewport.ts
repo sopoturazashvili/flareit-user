@@ -20,7 +20,7 @@ const useViewport = () => {
 
     const isMobile = useMemo(() => width >= 50 && width <= 599, [width]);
     const isTablet = useMemo(() => width > 600 && width <= 1023, [width]);
-    const isDesktop = useMemo(() => width > 1024, [width]);
+    const isDesktop = useMemo(() => width > 1023, [width]);
 
     return {
         width,

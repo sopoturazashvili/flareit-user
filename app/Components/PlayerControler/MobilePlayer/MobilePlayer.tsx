@@ -1,12 +1,13 @@
 import MobileMusicName from './MobileMusicName/MobileMusicName';
 import styles from './MobilePlayer.module.scss';
 import { useRecoilState } from 'recoil';
-import { fullScreenState } from '@/app/state';
+import { fullScreenState, globalImageState } from '@/app/state';
 import TabletFullScreen from '../TabletFullScreen/TabletFullScreen';
 import DesktopMusicSwitch from '../DesktopMusicSwitch/DesktopMusicSwitch';
 
 const MobilePlayer = () => {
-    const [fullScreen, setFullScreen] = useRecoilState(fullScreenState);
+    const [fullScreen] = useRecoilState(fullScreenState);
+    const [image] = useRecoilState(globalImageState);
 
     return (
         <>
@@ -16,7 +17,7 @@ const MobilePlayer = () => {
                     <DesktopMusicSwitch />
                 </div>
             </div>
-            {fullScreen && <TabletFullScreen />}
+            {fullScreen && image && <TabletFullScreen />}
         </>
     );
 };

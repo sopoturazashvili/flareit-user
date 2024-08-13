@@ -12,7 +12,7 @@ const TabletFullScreen = () => {
         <div className={styles.TabletFullScreen}>
             <div className={styles.tabletFullscreenPadd}>
                 <div className={styles.imageAndName}>
-                    <FullScreenImage image={''} />
+                    <FullScreenImage />
                     <TabletName />
                 </div>
                 <div className={styles.inputRangeCont}>

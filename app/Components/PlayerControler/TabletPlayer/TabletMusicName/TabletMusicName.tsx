@@ -7,7 +7,11 @@ const TabletMusicName = () => {
     const [image] = useRecoilState(globalImageState);
     return (
         <div className={styles.tabletMusicName}>
-            <img src={image} alt="photo" />
+            <img
+                className={styles.image}
+                src={image ? image : '/PlayerControler/Default.svg'}
+                alt="photo"
+            />
             <TabletName />
         </div>
     );

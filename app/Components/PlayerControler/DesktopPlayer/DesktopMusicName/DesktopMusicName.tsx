@@ -19,7 +19,9 @@ const DesktopMusicName = (props: Props) => {
             }}
         >
             <img
-                className={fullScreen ? styles.fullScreenImage : styles.image}
+                className={
+                    fullScreen && image ? styles.fullScreenImage : styles.image
+                }
                 src={image ? image : '/PlayerControler/Default.svg'}
                 alt="Music Cover"
             />
