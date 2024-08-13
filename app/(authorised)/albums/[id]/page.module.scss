@@ -12,4 +12,10 @@
   display: flex;
   flex-direction: column;
   gap: 29px;
+  height: 100%;
+  overflow: auto;
+}
+
+.OneAlbum::-webkit-scrollbar {
+  display: none;
 }

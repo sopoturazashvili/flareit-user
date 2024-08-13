@@ -1,21 +1,25 @@
-@import "../../styles/colors.scss";
+@import '../../styles/colors.scss';
 
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  height: 100%;
-  overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 100%;
+    overflow: auto;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
 }
 
 .title {
-  color: $PrimaryWhite;
-  font-size: 20px;
-  font-weight: 500;
+    color: $PrimaryWhite;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }

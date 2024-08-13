@@ -39,7 +39,57 @@ const TopCharts = () => {
             title: 'Top Hits 2024',
         },
         {
-            id: 8,
+            id: 9,
+            image: '/images/topHits2024.png',
+            title: 'Top Hits 2024',
+        },
+        {
+            id: 10,
+            image: '/images/topHits2024.png',
+            title: 'Top Hits 2024',
+        },
+        {
+            id: 11,
+            image: '/images/topHits2024.png',
+            title: 'Top Hits 2024',
+        },
+        {
+            id: 12,
+            image: '/images/topHits2024.png',
+            title: 'Top Hits 2024',
+        },
+        {
+            id: 13,
+            image: '/images/topHits2024.png',
+            title: 'Top Hits 2024',
+        },
+        {
+            id: 14,
+            image: '/images/topHits2024.png',
+            title: 'Top Hits 2024',
+        },
+        {
+            id: 15,
+            image: '/images/topHits2024.png',
+            title: 'Top Hits 2024',
+        },
+        {
+            id: 16,
+            image: '/images/topHits2024.png',
+            title: 'Top Hits 2024',
+        },
+        {
+            id: 17,
+            image: '/images/topHits2024.png',
+            title: 'Top Hits 2024',
+        },
+        {
+            id: 18,
+            image: '/images/topHits2024.png',
+            title: 'Top Hits 2024',
+        },
+        {
+            id: 19,
             image: '/images/topHits2024.png',
             title: 'Top Hits 2024',
         },

@@ -59,6 +59,62 @@ const TopAlbums = () => {
             year: '2001',
             image: '/images/lover.png',
         },
+        {
+            id: 9,
+            artistName: 'Taylor Swift',
+            albumName: 'Lover',
+            year: '2001',
+            image: '/images/lover.png',
+        },
+        {
+            id: 10,
+            artistName: 'Taylor Swift',
+            albumName: 'Lover',
+            year: '2001',
+            image: '/images/lover.png',
+        },
+        {
+            id: 11,
+            artistName: 'Taylor Swift',
+            albumName: 'Lover',
+            year: '2001',
+            image: '/images/lover.png',
+        },
+        {
+            id: 12,
+            artistName: 'Taylor Swift',
+            albumName: 'Lover',
+            year: '2001',
+            image: '/images/lover.png',
+        },
+        {
+            id: 13,
+            artistName: 'Taylor Swift',
+            albumName: 'Lover',
+            year: '2001',
+            image: '/images/lover.png',
+        },
+        {
+            id: 14,
+            artistName: 'Taylor Swift',
+            albumName: 'Lover',
+            year: '2001',
+            image: '/images/lover.png',
+        },
+        {
+            id: 15,
+            artistName: 'Taylor Swift',
+            albumName: 'Lover',
+            year: '2001',
+            image: '/images/lover.png',
+        },
+        {
+            id: 16,
+            artistName: 'Taylor Swift',
+            albumName: 'Lover',
+            year: '2001',
+            image: '/images/lover.png',
+        },
     ];
 
     return (

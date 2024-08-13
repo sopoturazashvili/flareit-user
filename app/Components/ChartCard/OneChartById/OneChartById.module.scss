@@ -6,6 +6,10 @@
     overflow: auto;
 }
 
+.OneChartById::-webkit-scrollbar {
+    display: none;
+}
+
 .pathColor {
     color: #fff;
     font-size: 20px;

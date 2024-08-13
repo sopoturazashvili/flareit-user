@@ -52,6 +52,90 @@ const OneAlbumById = () => {
             temeName: 'Morgan Maxwell',
             id: 8,
         },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 9,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 10,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 11,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 12,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 13,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 14,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 15,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 16,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 17,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 18,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 19,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 20,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 21,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 22,
+        },
     ];
     return (
         <div className={styles.OneAlbumByIdContainer}>
