@@ -31,7 +31,7 @@ const DesktopPlayer = () => {
                     <Shuffle />
                 </div>
             </div>
-            {image.length && fullScreen && <DesktopFullScreen />}
+            {image[index] && fullScreen && <DesktopFullScreen />}
         </>
     );
 };

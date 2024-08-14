@@ -136,7 +136,7 @@ const TopHits = () => {
             src: '/Player/Bellin.mp3',
         },
     ];
-    const handleClick = (item, index: number) => {
+    const handleClick = (item: any, index: number) => {
         const allSrc = data.map((item) => item.src);
         const imageSrc = data.map((item) => item.image);
         const artist = data.map((item) => item.artist);
