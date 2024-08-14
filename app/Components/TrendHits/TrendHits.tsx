@@ -135,7 +135,16 @@ const TrendHits = () => {
             src: '/Player/Bellin.mp3',
         },
     ];
-    const handleClick = (item: any, index: number) => {
+    const handleClick = (
+        item: {
+            id: number;
+            image?: string;
+            title?: string;
+            artist?: string;
+            src?: string;
+        },
+        index: number,
+    ) => {
         const imageSrc = hits.map((item) => item.image);
         const allSrc = hits.map((item) => item.src);
         const musicName = hits.map((item) => item.artist);
