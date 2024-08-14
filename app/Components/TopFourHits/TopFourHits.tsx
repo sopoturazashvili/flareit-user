@@ -48,7 +48,7 @@ const TopFourHits = () => {
             src: '/Player/Bellaire.mp3',
         },
     ];
-    const handleClick = (item, index: number) => {
+    const handleClick = (item: any, index: number) => {
         const imageSrc = data.map((item) => item.image);
         const allSrc = data.map((item) => item.src);
         const musicName = data.map((item) => item.temeName);

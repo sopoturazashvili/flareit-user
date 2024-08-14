@@ -1,7 +1,7 @@
 import { useRecoilState } from 'recoil';
 import styles from './TabeltVolume.module.scss';
 import TabletVolumeInput from './TabletVolumeInput/TabletVolumeInput';
-import { mutedState, volumeState } from '@/app/state';
+import { mutedState } from '@/app/state';
 
 interface Props {
     tabletWidth: number;
@@ -12,7 +12,6 @@ interface Props {
 
 const TabeltVolume = (props: Props) => {
     const [muted, setMuted] = useRecoilState(mutedState);
-    const [volume] = useRecoilState(volumeState);
 
     const mutedFunc = () => {
         setMuted(!muted);
