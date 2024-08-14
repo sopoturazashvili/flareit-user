@@ -1,21 +1,24 @@
 import { useRecoilState } from 'recoil';
 import styles from './MobileMusicName.module.scss';
 import Name from './Name/Name';
-import { fullScreenState, globalImageState } from '@/app/state';
+import { fullScreenState, globalImageState, indexState } from '@/app/state';
 
 const MobileMusicName = () => {
     const [fullScreen, setFullScreen] = useRecoilState(fullScreenState);
     const [image] = useRecoilState(globalImageState);
+    const [index] = useRecoilState(indexState);
     return (
         <div
             className={styles.nameContainer}
             onClick={() => {
-                if (image) setFullScreen(!fullScreen);
+                if (image[index]) setFullScreen(!fullScreen);
             }}
         >
             <img
                 className={styles.image}
-                src={image ? image : '/PlayerControler/Default.svg'}
+                src={
+                    image[index] ? image[index] : '/PlayerControler/Default.svg'
+                }
                 alt="photo"
             />
             <Name />

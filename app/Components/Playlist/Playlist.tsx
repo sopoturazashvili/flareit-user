@@ -1,4 +1,12 @@
-import { isPlayingState, musicGlobalState, musicId } from '@/app/state';
+import {
+    authorNameState,
+    globalImageState,
+    indexState,
+    isPlayingState,
+    musicGlobalState,
+    musicId,
+    musicNameState,
+} from '@/app/state';
 import MusicCard from '../MusicCard/MusicCard';
 import styles from './Playlist.module.scss';
 import { useRecoilState } from 'recoil';
@@ -8,9 +16,13 @@ interface Props {
 }
 
 const Playlist = (props: Props) => {
-    const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
     const [, setGlobalsrc] = useRecoilState(musicGlobalState);
     const [globalMusicId, setGlobalId] = useRecoilState(musicId);
+    const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
+    const [, setActiveIdx] = useRecoilState(indexState);
+    const [, setImage] = useRecoilState(globalImageState);
+    const [, setArtist] = useRecoilState(musicNameState);
+    const [, setTitle] = useRecoilState(authorNameState);
     const data = [
         {
             image: '/images/MusicCard.svg',
@@ -41,6 +53,20 @@ const Playlist = (props: Props) => {
             src: '/Player/Bellaire.mp3',
         },
     ];
+
+    const handleClick = (item, index: number) => {
+        const allSrc = data.map((item) => item.src);
+        const imageSrc = data.map((item) => item.image);
+        const artist = data.map((item) => item.temeName);
+        const title = data.map((item) => item.title);
+        setIsPlaying(true);
+        setGlobalId(item.id);
+        setImage(imageSrc);
+        setGlobalsrc(allSrc);
+        setActiveIdx(index);
+        setArtist(artist);
+        setTitle(title);
+    };
     return (
         <div className={styles.PlaylistContainer}>
             <div className={styles.photoAndNameCont}>
@@ -57,13 +83,10 @@ const Playlist = (props: Props) => {
                         image={item.image}
                         title={item.title}
                         teamName={item.temeName}
-                        onClick={() => {
-                            setIsPlaying(true);
-                            setGlobalId(item.id);
-                            setGlobalsrc(item.src);
-                        }}
                         isPlaying={isPlaying && globalMusicId === index}
                         deleteOrLike={true}
+                        onClick={() => handleClick(item, index)}
+                        index={index}
                     />
                 ))}
             </div>

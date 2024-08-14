@@ -49,15 +49,17 @@ const TopFourHits = () => {
         },
     ];
     const handleClick = (item, index: number) => {
+        const imageSrc = data.map((item) => item.image);
+        const allSrc = data.map((item) => item.src);
+        const musicName = data.map((item) => item.temeName);
+        const title = data.map((item) => item.title);
         setIsPlaying(true);
         setGlobalId(item.id);
-
-        const allSrc = data.map((item) => item.src);
         setGlobalsrc(allSrc);
         setActiveIdx(index);
-        setImage(item.image);
-        setMusicName(item.temeName);
-        setAuthorName(item.title);
+        setImage(imageSrc);
+        setMusicName(musicName);
+        setAuthorName(title);
     };
     return (
         <>

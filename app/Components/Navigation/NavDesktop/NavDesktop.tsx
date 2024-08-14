@@ -8,11 +8,12 @@ import Image from 'next/image';
 import LogOutTablet from './LogOutTablet/LogOutTablet';
 import Logo from '../../Logo/Logo';
 import { useRecoilState } from 'recoil';
-import { fullScreenState, globalImageState } from '@/app/state';
+import { fullScreenState, globalImageState, indexState } from '@/app/state';
 
 const NavDesktop = () => {
     const [fullScreen] = useRecoilState(fullScreenState);
     const [image] = useRecoilState(globalImageState);
+    const [index] = useRecoilState(indexState);
     const data = [
         { title: 'Home', href: '/', image: '/Image/Home.svg', key: '/' },
         {
@@ -63,7 +64,7 @@ const NavDesktop = () => {
                 }`}
             >
                 <div className={styles.logo}>
-                    {fullScreen && image ? '' : <Logo />}
+                    {fullScreen && image[index] ? '' : <Logo />}
                 </div>
                 <div className={styles.navigation}>
                     <div className={styles.navigationLine}>

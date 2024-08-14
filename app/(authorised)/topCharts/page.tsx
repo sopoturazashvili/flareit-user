@@ -1,4 +1,4 @@
-import TopCharts from '@/app/Components/Topcharts/TopCharts';
+import TopCharts from '@/app/Components/TopCharts/TopCharts';
 
 const TopChartsPage = () => {
     return <TopCharts />;

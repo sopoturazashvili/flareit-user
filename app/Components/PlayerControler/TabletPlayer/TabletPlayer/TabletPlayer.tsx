@@ -1,7 +1,7 @@
 import TabletMusicName from '../TabletMusicName/TabletMusicName';
 import styles from './TabletPlayer.module.scss';
 import { useRecoilState } from 'recoil';
-import { fullScreenState, globalImageState } from '@/app/state';
+import { fullScreenState, globalImageState, indexState } from '@/app/state';
 import TabletFullScreen from '../../TabletFullScreen/TabletFullScreen';
 import DesktopMusicSwitch from '../../DesktopMusicSwitch/DesktopMusicSwitch';
 import DesktopInputRange from '../../DesktopPlayer/DesktopInputRange/DesktopInputRange';
@@ -11,6 +11,7 @@ import Shuffle from '../../Shuffle/Shufle';
 const TabletPlayer = () => {
     const [fullScreen, setFullScreen] = useRecoilState(fullScreenState);
     const [image] = useRecoilState(globalImageState);
+    const [index] = useRecoilState(indexState);
 
     const tabletFullScreen = () => {
         setFullScreen(!fullScreen);
@@ -41,7 +42,7 @@ const TabletPlayer = () => {
                     </div>
                 </div>
             </div>
-            {fullScreen && image && <TabletFullScreen />}
+            {fullScreen && image[index] && <TabletFullScreen />}
         </>
     );
 };

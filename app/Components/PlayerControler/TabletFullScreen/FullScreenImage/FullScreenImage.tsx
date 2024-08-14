@@ -1,10 +1,11 @@
 import { useRecoilState } from 'recoil';
 import styles from './FullScreenImage.module.scss';
-import { fullScreenState, globalImageState } from '@/app/state';
+import { fullScreenState, globalImageState, indexState } from '@/app/state';
 
 const FullScreenImage = () => {
     const [fullScreen, setFullScreen] = useRecoilState(fullScreenState);
     const [image] = useRecoilState(globalImageState);
+    const [index] = useRecoilState(indexState);
 
     const fullFunc = () => {
         setFullScreen(!fullScreen);
@@ -20,7 +21,7 @@ const FullScreenImage = () => {
                     fullFunc();
                 }}
             />
-            <img className={styles.image} src={image} alt="photo" />
+            <img className={styles.image} src={image[index]} alt="photo" />
         </div>
     );
 };

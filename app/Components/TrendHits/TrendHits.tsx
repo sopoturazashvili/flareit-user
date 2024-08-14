@@ -2,13 +2,25 @@
 
 import MusicCard from '@/app/Components/MusicCard/MusicCard';
 import styles from './TrendHits.module.scss';
-import { isPlayingState, musicGlobalState, musicId } from '@/app/state';
+import {
+    authorNameState,
+    globalImageState,
+    indexState,
+    isPlayingState,
+    musicGlobalState,
+    musicId,
+    musicNameState,
+} from '@/app/state';
 import { useRecoilState } from 'recoil';
 
 const TrendHits = () => {
     const [, setGlobalsrc] = useRecoilState(musicGlobalState);
     const [globalMusicId, setGlobalId] = useRecoilState(musicId);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
+    const [, setActiveIdx] = useRecoilState(indexState);
+    const [, setImage] = useRecoilState(globalImageState);
+    const [, setMusicName] = useRecoilState(musicNameState);
+    const [, setAuthorName] = useRecoilState(authorNameState);
     const hits = [
         {
             id: 17,
@@ -123,6 +135,19 @@ const TrendHits = () => {
             src: '/Player/Bellin.mp3',
         },
     ];
+    const handleClick = (item, index: number) => {
+        const imageSrc = hits.map((item) => item.image);
+        const allSrc = hits.map((item) => item.src);
+        const musicName = hits.map((item) => item.artist);
+        const title = hits.map((item) => item.title);
+        setIsPlaying(true);
+        setGlobalId(item.id);
+        setImage(imageSrc);
+        setGlobalsrc(allSrc);
+        setActiveIdx(index);
+        setMusicName(musicName);
+        setAuthorName(title);
+    };
 
     return (
         <div className={styles.container}>
@@ -137,11 +162,8 @@ const TrendHits = () => {
                         deleteOrLike={false}
                         id={item.id}
                         isPlaying={isPlaying && globalMusicId === index}
-                        onClick={() => {
-                            setIsPlaying(true);
-                            setGlobalId(item.id);
-                            setGlobalsrc(item.src);
-                        }}
+                        onClick={() => handleClick(item, index)}
+                        index={index}
                     />
                 ))}
             </div>

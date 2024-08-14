@@ -60,18 +60,18 @@ export const shouldRewindState = atom({
     default: false,
 });
 
-export const globalImageState = atom({
+export const globalImageState = atom<string[]>({
     key: 'globalImage',
-    default: '',
+    default: [],
 });
 
-export const musicNameState = atom({
+export const musicNameState = atom<string[]>({
     key: 'musicName',
-    default: '',
+    default: [],
 });
-export const authorNameState = atom({
+export const authorNameState = atom<string[]>({
     key: 'authorName',
-    default: '',
+    default: [],
 });
 
 export const showNavMobileState = atom({

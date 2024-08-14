@@ -1,15 +1,21 @@
 import React from 'react';
 import styles from './DesktopMusicName.module.scss';
 import { useRecoilState } from 'recoil';
-import { fullScreenState, globalImageState } from '@/app/state';
+import {
+    authorNameState,
+    fullScreenState,
+    globalImageState,
+    indexState,
+    musicNameState,
+} from '@/app/state';
 
-interface Props {
-    title: string;
-}
-
-const DesktopMusicName = (props: Props) => {
+const DesktopMusicName = () => {
     const [image] = useRecoilState(globalImageState);
     const [fullScreen, setFullScreen] = useRecoilState(fullScreenState);
+    const [artist] = useRecoilState(musicNameState);
+    const [index] = useRecoilState(indexState);
+    const [songName] = useRecoilState(authorNameState);
+    console.log(image, 'image');
 
     return (
         <div
@@ -20,15 +26,23 @@ const DesktopMusicName = (props: Props) => {
         >
             <img
                 className={
-                    fullScreen && image ? styles.fullScreenImage : styles.image
+                    fullScreen && image[index]
+                        ? styles.fullScreenImage
+                        : styles.image
                 }
-                src={image ? image : '/PlayerControler/Default.svg'}
+                src={
+                    image[index] ? image[index] : '/PlayerControler/Default.svg'
+                }
                 alt="Music Cover"
             />
             <span
-                className={fullScreen ? styles.fullScreentitle : styles.title}
+                className={
+                    fullScreen && image[index]
+                        ? styles.fullScreentitle
+                        : styles.title
+                }
             >
-                {props.title}
+                {image[index] && `${songName[index]}  ${'-'} ${artist[index]}`}
             </span>
         </div>
     );

@@ -6,11 +6,13 @@ import NextPlay from './NextPlay/NextPlay';
 import styles from './PlayerAndList.module.scss';
 import { useRecoilState } from 'recoil';
 import {
+    authorNameState,
     globalImageState,
     indexState,
     isPlayingState,
     musicGlobalState,
     musicId,
+    musicNameState,
 } from '@/app/state';
 
 const PlayerAndList = () => {
@@ -19,6 +21,8 @@ const PlayerAndList = () => {
     const [, setGlobalsrc] = useRecoilState(musicGlobalState);
     const [, setActiveIdx] = useRecoilState(indexState);
     const [, setImage] = useRecoilState(globalImageState);
+    const [, setMusicName] = useRecoilState(musicNameState);
+    const [, setAuthorName] = useRecoilState(authorNameState);
 
     const data = [
         {
@@ -56,13 +60,17 @@ const PlayerAndList = () => {
     ];
 
     const handleClick = (item, index: number) => {
+        const allSrc = data.map((item) => item.src);
+        const imageSrc = data.map((item) => item.image);
+        const musicName = data.map((item) => item.songTitle);
+        const title = data.map((item) => item.artistName);
         setIsPlaying(true);
         setGlobalId(item.id);
-
-        const allSrc = data.map((item) => item.src);
+        setImage(imageSrc);
         setGlobalsrc(allSrc);
-        setImage(item.image);
         setActiveIdx(index);
+        setMusicName(musicName);
+        setAuthorName(title);
     };
 
     return (
