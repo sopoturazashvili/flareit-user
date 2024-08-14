@@ -3,17 +3,23 @@ import styles from './MusicList.module.scss';
 import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import {
+    authorNameState,
     globalImageState,
     indexState,
+    isPlayingState,
     musicGlobalState,
     musicId,
+    musicNameState,
 } from '@/app/state';
 
 const MusicList = () => {
-    const [, setGlobalId] = useRecoilState(musicId);
     const [, setGlobalsrc] = useRecoilState(musicGlobalState);
+    const [, setGlobalId] = useRecoilState(musicId);
+    const [, setIsPlaying] = useRecoilState(isPlayingState);
     const [, setActiveIdx] = useRecoilState(indexState);
     const [, setImage] = useRecoilState(globalImageState);
+    const [, setArtist] = useRecoilState(musicNameState);
+    const [, setTitle] = useRecoilState(authorNameState);
     const data = [
         {
             image: '/images/natashaB.png',
@@ -90,13 +96,18 @@ const MusicList = () => {
     ];
 
     const handleClick = (item, index: number) => {
-        setGlobalId(item.id);
         const allSrc = data.map((item) => item.src);
+        const imageSrc = data.map((item) => item.image);
+        const artist = data.map((item) => item.artistName);
+        const title = data.map((item) => item.songTitle);
+        setIsPlaying(true);
+        setGlobalId(item.id);
+        setImage(imageSrc);
         setGlobalsrc(allSrc);
-        setImage(item.image);
         setActiveIdx(index);
+        setArtist(artist);
+        setTitle(title);
     };
-
     const [musicUp, setMusicUp] = useState(false);
 
     const musicUpFunc = () => {
