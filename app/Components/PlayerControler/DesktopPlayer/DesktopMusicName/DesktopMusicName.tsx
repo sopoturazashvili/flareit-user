@@ -15,7 +15,6 @@ const DesktopMusicName = () => {
     const [artist] = useRecoilState(musicNameState);
     const [index] = useRecoilState(indexState);
     const [songName] = useRecoilState(authorNameState);
-    console.log(image, 'image');
 
     return (
         <div
