@@ -1,96 +1,100 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import MusicListItem from '../MusicListItem/MusicListItem';
-import DesktopPlayer from '../PlayerControler/DesktopPlayer/DesktopPlayer';
 import NextPlay from './NextPlay/NextPlay';
 import styles from './PlayerAndList.module.scss';
-import { musicData } from '@/app/helpers/MusicData';
 import { useRecoilState } from 'recoil';
-import { currentIndexState, isPlayingState } from '@/app/state';
+import {
+    authorNameState,
+    globalImageState,
+    indexState,
+    isPlayingState,
+    musicGlobalState,
+    musicId,
+    musicNameState,
+} from '@/app/state';
 
 const PlayerAndList = () => {
-    const [currentIndex, setCurrentIndex] = useRecoilState(currentIndexState);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
-    const audioRef = useRef<HTMLAudioElement>(null);
+    const [globalMusicId, setGlobalId] = useRecoilState(musicId);
+    const [, setGlobalsrc] = useRecoilState(musicGlobalState);
+    const [, setActiveIdx] = useRecoilState(indexState);
+    const [, setImage] = useRecoilState(globalImageState);
+    const [, setMusicName] = useRecoilState(musicNameState);
+    const [, setAuthorName] = useRecoilState(authorNameState);
 
-    const playTrack = (index: number) => {
-        setCurrentIndex(index);
+    const data = [
+        {
+            image: '/images/natashaB.png',
+            songTitle: 'Unwritten',
+            artistName: 'Natasha Bedingfield',
+            songDuration: '4:17',
+            id: 49,
+            src: '/Player/stairway.mp3',
+        },
+        {
+            image: '/images/natashaB.png',
+            songTitle: 'Unwritten',
+            artistName: 'Natasha Bedingfield',
+            songDuration: '4:17',
+            id: 50,
+            src: '/Player/Bellin.mp3',
+        },
+        {
+            image: '/images/natashaB.png',
+            songTitle: 'Unwritten',
+            artistName: 'Natasha Bedingfield',
+            songDuration: '4:17',
+            id: 51,
+            src: '/Player/judas.mp3',
+        },
+        {
+            image: '/images/natashaB.png',
+            songTitle: 'Unwritten',
+            artistName: 'Natasha Bedingfield',
+            songDuration: '4:17',
+            id: 52,
+            src: '/Player/Bellaire.mp3',
+        },
+    ];
+
+    const handleClick = (item, index: number) => {
+        const allSrc = data.map((item) => item.src);
+        const imageSrc = data.map((item) => item.image);
+        const musicName = data.map((item) => item.songTitle);
+        const title = data.map((item) => item.artistName);
         setIsPlaying(true);
-        if (audioRef.current) {
-            audioRef.current.play();
-        }
+        setGlobalId(item.id);
+        setImage(imageSrc);
+        setGlobalsrc(allSrc);
+        setActiveIdx(index);
+        setMusicName(musicName);
+        setAuthorName(title);
     };
-
-    const pauseTrack = () => {
-        setIsPlaying(false);
-        if (audioRef.current) {
-            audioRef.current.pause();
-        }
-    };
-
-    const handleTrackEnd = () => {
-        if (currentIndex < musicData.length - 1) {
-            playTrack(currentIndex + 1);
-        } else {
-            pauseTrack();
-        }
-    };
-
-    useEffect(() => {
-        const audioElement = audioRef.current;
-        if (audioElement) {
-            audioElement.addEventListener('ended', handleTrackEnd);
-            return () => {
-                audioElement.removeEventListener('ended', handleTrackEnd);
-            };
-        }
-    }, [currentIndex]);
-
-    useEffect(() => {
-        if (audioRef.current) {
-            audioRef.current.pause();
-        }
-    }, []);
-
-    const listData = musicData.map((item) => ({
-        image: '/images/natashaB.png',
-        songTitle: 'Unwritten',
-        artistName: 'Natasha Bedingfield',
-        songDuration: '4:17',
-        src: item.src,
-    }));
 
     return (
         <div className={styles.playerAndListBox}>
-            <audio ref={audioRef} src={musicData[currentIndex]?.src} />
             <div className={styles.playerAndList}>
                 <div className={styles.playerAndListContainer}>
                     <NextPlay />
                     <div className={styles.listDataContainer}>
-                        {listData.map((item, index) => (
+                        {data.map((item, index) => (
                             <MusicListItem
-                                key={index}
+                                index={index}
+                                key={item.id}
                                 image={item.image}
                                 songTitle={item.songTitle}
                                 artistName={item.artistName}
                                 songDuration={item.songDuration}
-                                src={item.src}
-                                audioRef={audioRef}
-                                isPlaying={isPlaying && currentIndex === index}
-                                onClick={() => {
-                                    if (isPlaying && currentIndex === index) {
-                                        pauseTrack();
-                                    } else {
-                                        playTrack(index);
-                                    }
-                                }}
+                                isPlaying={
+                                    isPlaying && globalMusicId === item.id
+                                }
+                                onClick={() => handleClick(item, index)}
+                                id={item.id}
                             />
                         ))}
                     </div>
-                </div>
-                <div>
-                    <DesktopPlayer audioRef={audioRef} />
                 </div>
             </div>
         </div>

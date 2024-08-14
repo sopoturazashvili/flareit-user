@@ -25,11 +25,6 @@ export const audioDurrationState = atom({
     default: 0,
 });
 
-export const currentIndexState = atom({
-    key: 'currentIndex',
-    default: 0,
-});
-
 export const tabletFullScrenState = atom({
     key: 'tabletFullScreenState',
     default: false,
@@ -38,4 +33,48 @@ export const tabletFullScrenState = atom({
 export const fullScreenState = atom({
     key: 'fullscreen',
     default: false,
+});
+
+export const musicGlobalState = atom<string[]>({
+    key: 'musicGlobalState',
+    default: [],
+});
+
+export const indexState = atom({
+    key: 'index',
+    default: 0,
+});
+
+export const musicId = atom({
+    key: 'musicId',
+    default: 1,
+});
+
+export const shouldAddTimeState = atom({
+    key: 'shouldAddTime',
+    default: false,
+});
+
+export const shouldRewindState = atom({
+    key: 'shouldRewindState',
+    default: false,
+});
+
+export const globalImageState = atom<string[]>({
+    key: 'globalImage',
+    default: [],
+});
+
+export const musicNameState = atom<string[]>({
+    key: 'musicName',
+    default: [],
+});
+export const authorNameState = atom<string[]>({
+    key: 'authorName',
+    default: [],
+});
+
+export const showNavMobileState = atom({
+    key: 'showNavMobileState',
+    default: true,
 });
