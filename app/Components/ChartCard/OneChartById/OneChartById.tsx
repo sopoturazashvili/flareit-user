@@ -81,7 +81,16 @@ const OneChartById = () => {
             src: '/Player/stairway.mp3',
         },
     ];
-    const handleClick = (item: any, index: number) => {
+    const handleClick = (
+        item: {
+            image?: string;
+            title?: string;
+            temeName?: string;
+            id: number;
+            src?: string;
+        },
+        index: number,
+    ) => {
         const allSrc = data.map((item) => item.src);
         const imageSrc = data.map((item) => item.image);
         const artist = data.map((item) => item.temeName);

@@ -95,7 +95,17 @@ const MusicList = () => {
         },
     ];
 
-    const handleClick = (item: any, index: number) => {
+    const handleClick = (
+        item: {
+            image?: string;
+            songTitle?: string;
+            artistName?: string;
+            songDuration?: string;
+            src?: string;
+            id: number;
+        },
+        index: number,
+    ) => {
         const allSrc = data.map((item) => item.src);
         const imageSrc = data.map((item) => item.image);
         const artist = data.map((item) => item.artistName);
