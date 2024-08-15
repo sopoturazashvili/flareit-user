@@ -1,15 +1,15 @@
+import { useRecoilState } from 'recoil';
 import styles from './Name.module.scss';
+import { authorNameState, indexState, musicNameState } from '@/app/state';
 
-interface Props {
-    autor: string;
-    name: string;
-}
-
-const Name = (props: Props) => {
+const Name = () => {
+    const [musicName] = useRecoilState(musicNameState);
+    const [authorName] = useRecoilState(authorNameState);
+    const [index] = useRecoilState(indexState);
     return (
         <div className={styles.nameContainer}>
-            <span className={styles.autor}>{props.autor}</span>
-            <span className={styles.name}>{props.name}</span>
+            <span className={styles.autor}>{authorName[index]}</span>
+            <span className={styles.name}>{musicName[index]}</span>
         </div>
     );
 };

@@ -109,6 +109,9 @@
         display: flex;
         justify-content: space-between;
     }
+    .itemHoverPhoto {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 599px) {
@@ -143,5 +146,8 @@
 
     .itemImage {
         display: block;
+    }
+    .itemHoverPhoto {
+        display: none;
     }
 }

@@ -1,43 +1,43 @@
-@import "../../styles/colors.scss";
+@import '../../styles/colors.scss';
 
 .musicCard {
-  width: 100%;
-  background-color: $PrimaryBlackTone1;
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 12px 8px 8px;
-  align-items: center;
-  cursor: pointer;
+    width: 100%;
+    background-color: $PrimaryBlackTone1;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px 8px 8px;
+    align-items: center;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 599px) {
-  .musicCard:hover .musicCardHoverPhoto {
-    visibility: hidden;
-  }
+    .musicCard:hover .musicCardHoverPhoto {
+        visibility: hidden;
+    }
 }
 
 @media screen and (min-width: 600px) and (max-width: 1024px) {
-  .musicCard:hover .musicCardHoverPhoto {
-    visibility: hidden;
-  }
+    .musicCard:hover .musicCardHoverPhoto {
+        visibility: hidden;
+    }
 }
 
 .musicCard:hover {
-  background-color: $PrimaryGreyHoverTone1;
+    background-color: $PrimaryGreyHoverTone1;
 }
 
 .musicCardHeader {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
 }
 
 .musicCardhover {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .musicCardPhoto {
@@ -46,34 +46,34 @@
 }
 
 .musicCardHoverPhoto {
-  position: absolute;
-  display: none;
-  cursor: grab;
+    position: absolute;
+    display: none;
+    cursor: grab;
 }
 
 .musicCard:hover .musicCardHoverPhoto {
-  position: absolute;
-  display: block;
+    position: absolute;
+    display: block;
 }
 
 .musicCardTitle {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .musicCardName {
-  color: #fff;
-  font-size: 17.868px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
+    color: #fff;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 }
 
 .musicCardTeam {
-  color: $PrimaryWhiteTone1;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+    color: $PrimaryWhiteTone1;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }

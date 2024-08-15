@@ -1,15 +1,17 @@
 import { useRecoilState } from 'recoil';
 import styles from './TabletName.module.scss';
-import { tabletFullScrenState } from '@/app/state';
+import {
+    authorNameState,
+    fullScreenState,
+    indexState,
+    musicNameState,
+} from '@/app/state';
 
-interface Props {
-    musicName: string;
-    name: string;
-}
-
-const TabletName = (props: Props) => {
-    const [fullScreen] = useRecoilState(tabletFullScrenState);
-
+const TabletName = () => {
+    const [fullScreen] = useRecoilState(fullScreenState);
+    const [musicname] = useRecoilState(musicNameState);
+    const [authorName] = useRecoilState(authorNameState);
+    const [index] = useRecoilState(indexState);
     return (
         <div className={styles.tabletAndMusicBox}>
             <span
@@ -17,10 +19,10 @@ const TabletName = (props: Props) => {
                     fullScreen ? styles.musicFullScreen : styles.musicName
                 }
             >
-                {props.musicName}
+                {authorName[index]}
             </span>
             <span className={fullScreen ? styles.nameFullScreen : styles.name}>
-                {props.name}
+                {musicname[index]}
             </span>
         </div>
     );

@@ -1,16 +1,17 @@
-@import "../../../../styles/colors.scss";
+@import '../../../../styles/colors.scss';
 
 .tabletPlayer {
     width: 100%;
-    height: 100vh;
     display: flex;
     align-items: flex-end;
+    bottom: 0;
+    position: relative;
 }
 
 .tabletPlayerContainer {
     background-color: $PrimaryBlackTone1;
     width: 100%;
-    padding: 16px 0px;
+    padding: 16px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,6 +23,7 @@
     flex-direction: column;
     max-width: 361px;
     width: 100%;
+    gap: 8px;
 }
 
 .tabletMuscName {

@@ -1,4 +1,4 @@
-@import "../../../../styles/colors.scss";
+@import '../../../../styles/colors.scss';
 
 .imageAndTitle {
     display: flex;
@@ -10,15 +10,22 @@
 
 .title {
     color: $PrimaryWhite;
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
 }
 
 .image {
-    max-width: 230px;
-    width: 100%;
+    width: 230px;
+    height: 136px;
+    cursor: pointer;
+}
+
+.fullScreenImage {
+    border-radius: 50%;
+    width: 344px;
+    height: 344px;
 }
 
 .fullScreentitle {

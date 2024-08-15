@@ -1,13 +1,11 @@
 import { useRecoilState } from 'recoil';
 import styles from './FullScreenImage.module.scss';
-import { tabletFullScrenState } from '@/app/state';
+import { fullScreenState, globalImageState, indexState } from '@/app/state';
 
-interface Props {
-    image: string;
-}
-
-const FullScreenImage = (props: Props) => {
-    const [fullScreen, setFullScreen] = useRecoilState(tabletFullScrenState);
+const FullScreenImage = () => {
+    const [fullScreen, setFullScreen] = useRecoilState(fullScreenState);
+    const [image] = useRecoilState(globalImageState);
+    const [index] = useRecoilState(indexState);
 
     const fullFunc = () => {
         setFullScreen(!fullScreen);
@@ -23,7 +21,7 @@ const FullScreenImage = (props: Props) => {
                     fullFunc();
                 }}
             />
-            <img className={styles.image} src={props.image} alt="photo" />
+            <img className={styles.image} src={image[index]} alt="photo" />
         </div>
     );
 };

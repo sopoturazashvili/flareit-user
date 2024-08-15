@@ -1,23 +1,17 @@
-import { useEffect, useRef } from 'react';
-import TabletMusicInput from '../TabletMusicInput/TabletMusicInput';
 import TabletMusicName from '../TabletMusicName/TabletMusicName';
 import styles from './TabletPlayer.module.scss';
-import { musicData } from '@/app/helpers/MusicData';
 import { useRecoilState } from 'recoil';
-import TabletMusicSwitch from '../TabletMusicSwitch/TabletMusicSwitch';
-import TabeltVolume from '../TabletVolume/TabletVolume';
-import { currentIndexState, tabletFullScrenState } from '@/app/state';
-import TabletMusicShuffle from '../TabletMusicShuffle/TabletMusicShuffle';
+import { fullScreenState, globalImageState, indexState } from '@/app/state';
 import TabletFullScreen from '../../TabletFullScreen/TabletFullScreen';
+import DesktopMusicSwitch from '../../DesktopMusicSwitch/DesktopMusicSwitch';
+import DesktopInputRange from '../../DesktopPlayer/DesktopInputRange/DesktopInputRange';
+import DesktopVolume from '../../DesktopPlayer/DesktopVolume/DesktopVolume';
+import Shuffle from '../../Shuffle/Shufle';
 
 const TabletPlayer = () => {
-    const [currentIndex] = useRecoilState(currentIndexState);
-    const TabletaudioRef = useRef<HTMLAudioElement>(null);
-    const [fullScreen, setFullScreen] = useRecoilState(tabletFullScrenState);
-
-    useEffect(() => {
-        TabletaudioRef?.current?.play();
-    }, [currentIndex]);
+    const [fullScreen, setFullScreen] = useRecoilState(fullScreenState);
+    const [image] = useRecoilState(globalImageState);
+    const [index] = useRecoilState(indexState);
 
     const tabletFullScreen = () => {
         setFullScreen(!fullScreen);
@@ -26,33 +20,29 @@ const TabletPlayer = () => {
     return (
         <>
             <div className={styles.tabletPlayer}>
-                <audio ref={TabletaudioRef} src={musicData[currentIndex].src} />
                 <div className={styles.tabletPlayerContainer}>
                     <div
                         className={styles.tabletMuscName}
                         onClick={tabletFullScreen}
                     >
-                        <TabletMusicName musicName={''} name={''} image={''} />
+                        <TabletMusicName />
                     </div>
                     <div className={styles.inputAndSwitch}>
-                        <TabletMusicInput TabletaudioRef={TabletaudioRef} />
+                        <DesktopInputRange />
                         <div className={styles.volumAndSwitch}>
-                            <TabeltVolume
-                                TabletaudioRef={TabletaudioRef}
-                                tabletWidth={68}
-                                tabletInvolved={'none'}
-                                tabletVolumeWidth={24}
-                                tabletVolumeHeight={24}
+                            <DesktopVolume
+                                width={68}
+                                volumeWidth={24}
+                                volumeHeight={24}
+                                involved={'none'}
                             />
-                            <TabletMusicSwitch
-                                TabletaudioRef={TabletaudioRef}
-                            />
-                            <TabletMusicShuffle />
+                            <DesktopMusicSwitch />
+                            <Shuffle />
                         </div>
                     </div>
                 </div>
             </div>
-            {fullScreen && <TabletFullScreen tabletaudioRef={TabletaudioRef} />}
+            {fullScreen && image[index] && <TabletFullScreen />}
         </>
     );
 };

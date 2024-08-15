@@ -1,16 +1,15 @@
-import React from 'react';
 import styles from './MusicListItem.module.scss';
 import Image from 'next/image';
 
 interface Props {
+    id: number;
     image: string;
     songTitle: string;
     artistName: string;
     songDuration: string;
-    src?: string;
     isPlaying?: boolean;
     onClick?: () => void;
-    audioRef?: React.RefObject<HTMLAudioElement>;
+    index: number;
 }
 
 const MusicListItem = (props: Props) => {
@@ -19,23 +18,17 @@ const MusicListItem = (props: Props) => {
             <div
                 style={{ backgroundImage: `url(${props.image})` }}
                 className={styles.itemImageWrapper}
+                onClick={props.onClick}
             >
                 <div className={styles.itemHoverPhoto} onClick={props.onClick}>
-                    {props.isPlaying ? (
-                        <Image
-                            src="/PlayerControler/Play.svg"
-                            alt="Play Button"
-                            width={54}
-                            height={56}
-                        />
-                    ) : (
+                    {
                         <Image
                             src="/Images/PlayHover.svg"
                             alt="Pause Button"
                             width={54}
                             height={56}
                         />
-                    )}
+                    }
                 </div>
             </div>
             <div className={styles.section}>
