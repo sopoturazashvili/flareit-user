@@ -135,6 +135,42 @@ const TopHits = () => {
             artist: 'Taylor Swift',
             src: '/Player/Bellin.mp3',
         },
+        {
+            id: 17,
+            image: '/images/cruelSummer.png',
+            title: 'Cruel Summer',
+            artist: 'Taylor Swift',
+        },
+        {
+            id: 18,
+            image: '/images/cruelSummer.png',
+            title: 'Cruel Summer',
+            artist: 'Taylor Swift',
+        },
+        {
+            id: 19,
+            image: '/images/cruelSummer.png',
+            title: 'Cruel Summer',
+            artist: 'Taylor Swift',
+        },
+        {
+            id: 20,
+            image: '/images/cruelSummer.png',
+            title: 'Cruel Summer',
+            artist: 'Taylor Swift',
+        },
+        {
+            id: 21,
+            image: '/images/cruelSummer.png',
+            title: 'Cruel Summer',
+            artist: 'Taylor Swift',
+        },
+        {
+            id: 22,
+            image: '/images/cruelSummer.png',
+            title: 'Cruel Summer',
+            artist: 'Taylor Swift',
+        },
     ];
     const handleClick = (
         item: {

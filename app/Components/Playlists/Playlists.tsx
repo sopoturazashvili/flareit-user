@@ -21,6 +21,71 @@ const Playlists = () => {
             name: 'Car Songs',
             image: '/images/carSongs.png',
         },
+        {
+            id: 4,
+            name: 'Car Songs',
+            image: '/images/carSongs.png',
+        },
+        {
+            id: 5,
+            name: 'Car Songs',
+            image: '/images/carSongs.png',
+        },
+        {
+            id: 6,
+            name: 'Car Songs',
+            image: '/images/carSongs.png',
+        },
+        {
+            id: 7,
+            name: 'Car Songs',
+            image: '/images/carSongs.png',
+        },
+        {
+            id: 8,
+            name: 'Car Songs',
+            image: '/images/carSongs.png',
+        },
+        {
+            id: 9,
+            name: 'Car Songs',
+            image: '/images/carSongs.png',
+        },
+        {
+            id: 10,
+            name: 'Car Songs',
+            image: '/images/carSongs.png',
+        },
+        {
+            id: 11,
+            name: 'Car Songs',
+            image: '/images/carSongs.png',
+        },
+        {
+            id: 12,
+            name: 'Car Songs',
+            image: '/images/carSongs.png',
+        },
+        {
+            id: 13,
+            name: 'Car Songs',
+            image: '/images/carSongs.png',
+        },
+        {
+            id: 14,
+            name: 'Car Songs',
+            image: '/images/carSongs.png',
+        },
+        {
+            id: 15,
+            name: 'Car Songs',
+            image: '/images/carSongs.png',
+        },
+        {
+            id: 16,
+            name: 'Car Songs',
+            image: '/images/carSongs.png',
+        },
     ];
 
     return (

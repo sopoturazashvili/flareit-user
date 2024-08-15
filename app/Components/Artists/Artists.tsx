@@ -28,6 +28,66 @@ const Artists = () => {
             name: 'Ariana Grande',
             image: '/images/ariana.svg',
         },
+        {
+            id: 6,
+            name: 'Sia',
+            image: '/images/sia.svg',
+        },
+        {
+            id: 7,
+            name: 'Sia',
+            image: '/images/sia.svg',
+        },
+        {
+            id: 8,
+            name: 'Sia',
+            image: '/images/sia.svg',
+        },
+        {
+            id: 9,
+            name: 'Sia',
+            image: '/images/sia.svg',
+        },
+        {
+            id: 10,
+            name: 'Sia',
+            image: '/images/sia.svg',
+        },
+        {
+            id: 11,
+            name: 'Sia',
+            image: '/images/sia.svg',
+        },
+        {
+            id: 12,
+            name: 'Sia',
+            image: '/images/sia.svg',
+        },
+        {
+            id: 13,
+            name: 'Sia',
+            image: '/images/sia.svg',
+        },
+        {
+            id: 14,
+            name: 'Sia',
+            image: '/images/sia.svg',
+        },
+        {
+            id: 15,
+            name: 'Sia',
+            image: '/images/sia.svg',
+        },
+        {
+            id: 16,
+            name: 'Sia',
+            image: '/images/sia.svg',
+        },
+        {
+            id: 17,
+            name: 'Sia',
+            image: '/images/sia.svg',
+        },
     ];
 
     return (
