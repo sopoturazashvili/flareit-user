@@ -89,3 +89,15 @@
         gap: 8px 20px;
     }
 }
+
+@media screen and (max-width: 599px) {
+    .albumMapContainer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 599px) and (max-width: 1023px) {
+    .albumMapContainer {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
