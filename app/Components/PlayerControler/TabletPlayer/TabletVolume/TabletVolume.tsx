@@ -1,10 +1,9 @@
 import { useRecoilState } from 'recoil';
 import styles from './TabeltVolume.module.scss';
 import TabletVolumeInput from './TabletVolumeInput/TabletVolumeInput';
-import { mutedState, volumeState } from '@/app/state';
+import { mutedState } from '@/app/state';
 
 interface Props {
-    TabletaudioRef: React.MutableRefObject<HTMLAudioElement | null>;
     tabletWidth: number;
     tabletInvolved: string;
     tabletVolumeWidth: number;
@@ -13,14 +12,9 @@ interface Props {
 
 const TabeltVolume = (props: Props) => {
     const [muted, setMuted] = useRecoilState(mutedState);
-    const [volume] = useRecoilState(volumeState);
 
     const mutedFunc = () => {
-        const audio = props.TabletaudioRef.current;
-        if (audio) {
-            setMuted(!muted);
-            audio.volume = muted ? volume / 100 : 0;
-        }
+        setMuted(!muted);
     };
     const tabletInvolved = {
         display: `${props.tabletInvolved}`,
@@ -48,10 +42,7 @@ const TabeltVolume = (props: Props) => {
                         alt="Volume"
                     />
                 )}
-                <TabletVolumeInput
-                    tabletWidth={props.tabletWidth}
-                    TabletaudioRef={props.TabletaudioRef}
-                />
+                <TabletVolumeInput tabletWidth={props.tabletWidth} />
                 <img
                     src="/PlayerControler/Involved.svg"
                     style={tabletInvolved}

@@ -1,10 +1,11 @@
+// src/components/DesktopVolume/DesktopVolume.tsx
+
 import styles from './DesktopVolume.module.scss';
 import { mutedState, volumeState } from '@/app/state';
 import { useRecoilState } from 'recoil';
 import VolumeInput from './VolumeInput/VolumeInput';
 
 interface Props {
-    audioRef: React.MutableRefObject<HTMLAudioElement | null>;
     width: number;
     volumeWidth: number;
     volumeHeight: number;
@@ -13,13 +14,15 @@ interface Props {
 
 const DesktopVolume = (props: Props) => {
     const [muted, setMuted] = useRecoilState(mutedState);
-    const [volume] = useRecoilState(volumeState);
+    const [, setVolume] = useRecoilState(volumeState);
 
     const mutedFunc = () => {
-        const audio = props.audioRef.current;
-        if (audio) {
-            setMuted(!muted);
-            audio.volume = muted ? volume / 100 : 0;
+        if (muted) {
+            setMuted(false);
+            setVolume(50);
+        } else {
+            setMuted(true);
+            setVolume(0);
         }
     };
 
@@ -37,6 +40,7 @@ const DesktopVolume = (props: Props) => {
             <div className={styles.volume}>
                 {muted ? (
                     <img
+                        className={styles.Muted}
                         src="/PlayerControler/Muted.svg"
                         onClick={mutedFunc}
                         style={volumeWidth}
@@ -44,14 +48,16 @@ const DesktopVolume = (props: Props) => {
                     />
                 ) : (
                     <img
+                        className={styles.Volume}
                         src="/PlayerControler/Volume.svg"
                         style={volumeWidth}
                         onClick={mutedFunc}
                         alt="Volume"
                     />
                 )}
-                <VolumeInput width={props.width} audioRef={props.audioRef} />
+                <VolumeInput width={props.width} />
                 <img
+                    className={styles.Involved}
                     src="/PlayerControler/Involved.svg"
                     style={involved}
                     alt="img"
