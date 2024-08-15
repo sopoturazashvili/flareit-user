@@ -77,6 +77,54 @@ const OneAlbumById = () => {
             id: 40,
             src: '/Player/stairway.mp3',
         },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 9,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 10,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 11,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 12,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 13,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 14,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 15,
+        },
+        {
+            image: '/images/MusicCard.svg',
+            title: 'Yellow',
+            temeName: 'Morgan Maxwell',
+            id: 16,
+        },
     ];
 
     const handleClick = (
