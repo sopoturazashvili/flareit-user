@@ -81,6 +81,7 @@
 .buttonsContainer {
     display: flex;
     gap: 5px;
+    position: relative;
 }
 
 .menu {
@@ -98,9 +99,9 @@
 }
 
 .right {
-    left: 30px;
+    left: 25px;
 }
 
 .left {
-    right: 30px;
+    left: -250px;
 }
