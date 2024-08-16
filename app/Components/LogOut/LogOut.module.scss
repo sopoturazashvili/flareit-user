@@ -1,13 +1,12 @@
-@import "../../styles/colors.scss";
+@import '../../styles/colors.scss';
 
 .title {
     color: $PrimaryWhite;
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
-    line-height: normal
+    line-height: normal;
 }
-
 
 .profile {
     display: flex;

@@ -1,5 +1,4 @@
-@import "../../../styles/colors.scss";
-
+@import '../../../styles/colors.scss';
 
 .logOutBackground {
     top: 0;
@@ -19,7 +18,6 @@
     margin-right: 24px;
 }
 
-
 .logOutModal {
     max-width: 295px;
     width: 100%;
@@ -33,15 +31,14 @@
     border-radius: 8px;
 }
 
-
 .color {
     color: $PrimaryWhite;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    cursor: pointer;
 }
-
 
 .logOut {
     padding: 4px 0px 4px 0px;

@@ -1,11 +1,11 @@
 .title {
-    color: #FFF;
+    color: #fff;
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
-    line-height: normal
+    line-height: normal;
+    cursor: pointer;
 }
-
 
 .profile {
     display: flex;
@@ -13,4 +13,8 @@
     gap: 4px;
     align-items: center;
     justify-content: space-between;
+}
+
+.image {
+    cursor: pointer;
 }
