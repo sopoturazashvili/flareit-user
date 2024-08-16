@@ -18,6 +18,7 @@ const LogOutWeb = (props: Props) => {
     return (
         <div className={styles.profile} onClick={onClick}>
             <Image
+                className={styles.image}
                 src={props.src}
                 width={props.width}
                 height={props.height}
