@@ -77,3 +77,30 @@
     font-weight: 500;
     line-height: normal;
 }
+
+.buttonsContainer {
+    display: flex;
+    gap: 5px;
+}
+
+.menu {
+    position: relative;
+}
+
+.dropDownMenu {
+    position: absolute;
+    top: 0;
+    z-index: 999;
+    border-radius: 8px;
+    background: #000;
+    padding: 8px 16px;
+    width: 254px;
+}
+
+.right {
+    left: 30px;
+}
+
+.left {
+    right: 30px;
+}
