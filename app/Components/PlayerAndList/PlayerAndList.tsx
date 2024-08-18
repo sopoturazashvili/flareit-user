@@ -31,7 +31,7 @@ const PlayerAndList = () => {
             artistName: 'Natasha Bedingfield',
             songDuration: '4:17',
             id: 49,
-            src: '/Player/stairway.mp3',
+            src: '/Player/Move.mp3',
         },
         {
             image: '/images/natashaB.png',
@@ -39,7 +39,7 @@ const PlayerAndList = () => {
             artistName: 'Natasha Bedingfield',
             songDuration: '4:17',
             id: 50,
-            src: '/Player/Bellin.mp3',
+            src: '/Player/Mwaki.mp3',
         },
         {
             image: '/images/natashaB.png',
@@ -47,7 +47,7 @@ const PlayerAndList = () => {
             artistName: 'Natasha Bedingfield',
             songDuration: '4:17',
             id: 51,
-            src: '/Player/judas.mp3',
+            src: '/Player/Good.mp3',
         },
         {
             image: '/images/natashaB.png',
@@ -55,7 +55,7 @@ const PlayerAndList = () => {
             artistName: 'Natasha Bedingfield',
             songDuration: '4:17',
             id: 52,
-            src: '/Player/Bellaire.mp3',
+            src: '/Player/Shouse.mp3',
         },
     ];
 

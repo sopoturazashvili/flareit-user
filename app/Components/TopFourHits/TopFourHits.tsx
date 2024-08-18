@@ -24,28 +24,28 @@ const TopFourHits = () => {
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
             id: 53,
-            src: '/Player/stairway.mp3',
+            src: '/Player/Disclosure.mp3',
         },
         {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
             id: 54,
-            src: '/Player/Marron.mp3',
+            src: '/Player/FastCar.mp3',
         },
         {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
             id: 55,
-            src: '/Player/judas.mp3',
+            src: '/Player/Regard.mp3',
         },
         {
             image: '/images/MusicCard.svg',
             title: 'Yellow',
             temeName: 'Morgan Maxwell',
             id: 56,
-            src: '/Player/Bellaire.mp3',
+            src: '/Player/Mwaki.mp3',
         },
     ];
     const handleClick = (
