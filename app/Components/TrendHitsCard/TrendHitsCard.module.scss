@@ -1,87 +1,38 @@
 .container {
-    width: 100%;
-    height: 299px;
     border-radius: 16px;
     display: flex;
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    flex: 1;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    padding: 0px 5px;
+    justify-content: flex-start;
+    background-size: 100% 100%;
 }
 
 .trendHitsContrainer {
     display: flex;
-    align-items: center;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
+    margin: 52px 0 52px 50px;
+    gap: 12px;
+}
+
+.button {
     width: 100%;
 }
 
-.fillTextButton {
-    max-width: 252px;
-    width: 100%;
+.titles {
+    color: #fff;
+    font-style: normal;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 48px;
 }
 
-.forBgImage {
-    flex: 1;
-    height: 100%;
-    background: no-repeat right 23px bottom;
-    border-radius: 0px 0px 16px 0px;
+.titleContainer {
+    max-width: 150px;
 }
-
-// For Tablet
-
-@media screen and (min-width: 711px) and (max-width: 1023px) {
-    .container {
-        width: 100%;
-        height: 299px;
-        border-radius: 16px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-}
-
-@media screen and (min-width: 600px) and (max-width: 710px) {
-    .container {
-        width: 100%;
-        height: 299px;
-        border-radius: 16px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-}
-
-// For Mobile
 
 @media screen and (max-width: 599px) {
-    .container {
-        width: 100%;
-        height: 138px;
-        border-radius: 16px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .text {
-        font-size: 20px;
-        font-weight: 500;
-    }
-
-    .year {
-        font-size: 40px;
-        font-weight: 600;
-    }
-    .fillTextButton {
-        max-width: 107px;
+    .titles {
+        font-size: 32px;
+        font-weight: 700;
     }
 }
