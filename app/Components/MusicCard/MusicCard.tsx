@@ -14,10 +14,11 @@ interface Props {
     onClick: () => void;
     isPlaying: boolean;
     index: number;
+    menuOpen: boolean;
+    toggleMenu: () => void;
 }
 
 const MusicCard = (props: Props) => {
-    const [menuOpen, setMenuOpen] = useState(false);
     const [menuStyles, setMenuStyles] = useState<React.CSSProperties>({
         position: 'absolute',
         top: '0',
@@ -30,24 +31,13 @@ const MusicCard = (props: Props) => {
     });
     const musicCardRef = useRef<HTMLDivElement>(null);
 
-    const toggleMenu = () => {
-        console.log('Toggling menu. Current state:', menuOpen);
-        setMenuOpen((prevState) => {
-            console.log('Previous state:', prevState);
-            return !prevState;
-        });
-    };
-
     useEffect(() => {
-        console.log('useEffect running. Menu open:', menuOpen);
-        if (menuOpen && musicCardRef.current) {
+        if (props.menuOpen && musicCardRef.current) {
             const rect = musicCardRef.current.getBoundingClientRect();
 
-            console.log('Rect:', rect);
-            console.log('this is rect left', rect.left);
-            console.log('this is rect right', rect.right);
+            console.log(rect.left);
 
-            if (rect.left > 700) {
+            if (rect.left > window.innerWidth / 2 || props.deleteOrLike) {
                 setMenuStyles({
                     position: 'absolute',
                     top: '0',
@@ -58,20 +48,9 @@ const MusicCard = (props: Props) => {
                     padding: '8px 16px',
                     width: '254px',
                 });
-            } else {
-                setMenuStyles({
-                    position: 'absolute',
-                    top: '0',
-                    left: '20px',
-                    zIndex: '999',
-                    borderRadius: '8px',
-                    background: '#000',
-                    padding: '8px 16px',
-                    width: '254px',
-                });
             }
         }
-    }, [menuOpen]);
+    }, [props.deleteOrLike, props.menuOpen]);
 
     return (
         <div ref={musicCardRef} className={styles.musicCard}>
@@ -99,9 +78,9 @@ const MusicCard = (props: Props) => {
                 ) : (
                     <LikeButton isLiked={false} id={props.id} />
                 )}
-                <div onClick={toggleMenu} className={styles.menu}>
+                <div onClick={props.toggleMenu} className={styles.menu}>
                     <BiDotsVerticalRounded size={24} color="white" />
-                    {menuOpen && (
+                    {props.menuOpen && (
                         <div style={menuStyles}>
                             <DropDownMenu />
                         </div>
