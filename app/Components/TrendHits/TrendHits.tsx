@@ -12,8 +12,10 @@ import {
     musicNameState,
 } from '@/app/state';
 import { useRecoilState } from 'recoil';
+import useToggleMenu from '@/app/useToggleMenu';
 
 const TrendHits = () => {
+    const { currentCardId, toggleMenu } = useToggleMenu();
     const [, setGlobalsrc] = useRecoilState(musicGlobalState);
     const [globalMusicId, setGlobalId] = useRecoilState(musicId);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
@@ -135,43 +137,43 @@ const TrendHits = () => {
             src: '/Player/Bellin.mp3',
         },
         {
-            id: 17,
+            id: 33,
             image: '/images/cruelSummer.png',
             title: 'Cruel Summer',
             artist: 'Taylor Swift',
         },
         {
-            id: 18,
+            id: 34,
             image: '/images/cruelSummer.png',
             title: 'Cruel Summer',
             artist: 'Taylor Swift',
         },
         {
-            id: 19,
+            id: 35,
             image: '/images/cruelSummer.png',
             title: 'Cruel Summer',
             artist: 'Taylor Swift',
         },
         {
-            id: 20,
+            id: 36,
             image: '/images/cruelSummer.png',
             title: 'Cruel Summer',
             artist: 'Taylor Swift',
         },
         {
-            id: 21,
+            id: 37,
             image: '/images/cruelSummer.png',
             title: 'Cruel Summer',
             artist: 'Taylor Swift',
         },
         {
-            id: 22,
+            id: 38,
             image: '/images/cruelSummer.png',
             title: 'Cruel Summer',
             artist: 'Taylor Swift',
         },
         {
-            id: 23,
+            id: 39,
             image: '/images/cruelSummer.png',
             title: 'Cruel Summer',
             artist: 'Taylor Swift',
@@ -215,6 +217,8 @@ const TrendHits = () => {
                         isPlaying={isPlaying && globalMusicId === index}
                         onClick={() => handleClick(item, index)}
                         index={index}
+                        menuOpen={currentCardId === item.id}
+                        toggleMenu={() => toggleMenu(item.id)}
                     />
                 ))}
             </div>

@@ -10,12 +10,14 @@ import {
 import MusicCard from '../MusicCard/MusicCard';
 import styles from './Playlist.module.scss';
 import { useRecoilState } from 'recoil';
+import useToggleMenu from '@/app/useToggleMenu';
 
 interface Props {
     image: string;
 }
 
 const Playlist = (props: Props) => {
+    const { currentCardId, toggleMenu } = useToggleMenu();
     const [, setGlobalsrc] = useRecoilState(musicGlobalState);
     const [globalMusicId, setGlobalId] = useRecoilState(musicId);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
@@ -258,6 +260,8 @@ const Playlist = (props: Props) => {
                         deleteOrLike={true}
                         onClick={() => handleClick(item, index)}
                         index={index}
+                        menuOpen={currentCardId === item.id}
+                        toggleMenu={() => toggleMenu(item.id)}
                     />
                 ))}
             </div>
