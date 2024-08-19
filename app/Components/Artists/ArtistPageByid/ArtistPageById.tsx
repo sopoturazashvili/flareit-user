@@ -13,8 +13,10 @@ import {
     musicId,
     musicNameState,
 } from '@/app/state';
+import useToggleMenu from '@/app/useToggleMenu';
 
 const ArtistPageById = () => {
+    const { currentCardId, toggleMenu } = useToggleMenu();
     const [, setGlobalsrc] = useRecoilState(musicGlobalState);
     const [globalMusicId, setGlobalId] = useRecoilState(musicId);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
@@ -209,6 +211,8 @@ const ArtistPageById = () => {
                         isPlaying={isPlaying && globalMusicId === index}
                         onClick={() => handleClick(itme, index)}
                         index={index}
+                        menuOpen={currentCardId === itme.id}
+                        toggleMenu={() => toggleMenu(itme.id)}
                     />
                 ))}
             </div>
