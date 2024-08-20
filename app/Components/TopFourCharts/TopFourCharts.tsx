@@ -4,7 +4,7 @@ const TopFourCharts = () => {
     const data = [
         {
             id: 1,
-            image: '/images/topHits2024.png',
+            image: '/images/topHits.png',
             title: 'Top Hits 2024',
         },
         {

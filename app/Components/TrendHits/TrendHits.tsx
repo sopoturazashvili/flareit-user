@@ -136,48 +136,6 @@ const TrendHits = () => {
             artist: 'Taylor Swift',
             src: '/Player/Bellin.mp3',
         },
-        {
-            id: 33,
-            image: '/images/cruelSummer.png',
-            title: 'Cruel Summer',
-            artist: 'Taylor Swift',
-        },
-        {
-            id: 34,
-            image: '/images/cruelSummer.png',
-            title: 'Cruel Summer',
-            artist: 'Taylor Swift',
-        },
-        {
-            id: 35,
-            image: '/images/cruelSummer.png',
-            title: 'Cruel Summer',
-            artist: 'Taylor Swift',
-        },
-        {
-            id: 36,
-            image: '/images/cruelSummer.png',
-            title: 'Cruel Summer',
-            artist: 'Taylor Swift',
-        },
-        {
-            id: 37,
-            image: '/images/cruelSummer.png',
-            title: 'Cruel Summer',
-            artist: 'Taylor Swift',
-        },
-        {
-            id: 38,
-            image: '/images/cruelSummer.png',
-            title: 'Cruel Summer',
-            artist: 'Taylor Swift',
-        },
-        {
-            id: 39,
-            image: '/images/cruelSummer.png',
-            title: 'Cruel Summer',
-            artist: 'Taylor Swift',
-        },
     ];
     const handleClick = (
         item: {

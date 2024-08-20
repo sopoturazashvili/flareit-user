@@ -1,27 +1,25 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './TrendHitsCard.module.scss';
 import FillAndTextButton from '../FillButton/FillAndTextButton';
 
 const TrendHitsCard = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+
     const items = [
         {
             id: 1,
-            backgroundColor:
-                'linear-gradient(270deg, #5E4BE2 36.76%, #34297C 94.73%)',
-            backgroundImage: '/images/billieEilish.svg',
+            backgroundImage: '/images/trendhits_blue.jpeg',
+            title: 'trend hits',
         },
         {
             id: 2,
-            backgroundColor:
-                'linear-gradient(270deg, #E2934B 7.1%, #D3620F 94.73%)',
-            backgroundImage: '/images/harryStyles.png',
+            backgroundImage: '/images/trendhits_red.jpeg',
+            title: 'most liked',
         },
         {
             id: 3,
-            backgroundColor:
-                'linear-gradient(270deg, #E24BD3 25.06%, #4E0FD3 94.73%)',
-            backgroundImage: '/images/boysGroup.png',
+            backgroundImage: '/images/trendhits_green.jpeg',
+            title: 'new arrivals',
         },
     ];
 
@@ -36,29 +34,24 @@ const TrendHitsCard = () => {
     const currentItem = items[currentIndex];
     const bgStyles = {
         backgroundImage: `url(${currentItem.backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        width: '100%',
+        height: 'auto',
     };
 
     return (
-        <div
-            className={styles.container}
-            style={{ background: currentItem.backgroundColor }}
-        >
-            <div className={styles.content}>
-                <div className={styles.trendHitsContrainer}>
-                    <h2 className={styles.text}>Trend Hits</h2>
-                    <h1 className={styles.year}>2024</h1>
-                    <div className={styles.fillTextButton}>
-                        <FillAndTextButton
-                            text={'View playlist'}
-                            fill={true}
-                            href={'/trendhits'}
-                        />
-                    </div>
+        <div className={styles.container} style={bgStyles}>
+            <div className={styles.trendHitsContrainer}>
+                <div className={styles.titleContainer}>
+                    <span className={styles.titles}>{currentItem.title}</span>
+                </div>
+                <div className={styles.button}>
+                    <FillAndTextButton
+                        text={'View playlist'}
+                        fill={true}
+                        href={'/trendhits'}
+                    />
                 </div>
             </div>
-            <div className={styles.forBgImage} style={bgStyles}></div>
         </div>
     );
 };
