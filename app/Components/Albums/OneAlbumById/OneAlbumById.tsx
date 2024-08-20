@@ -12,7 +12,15 @@ import MusicCard from '../../MusicCard/MusicCard';
 import styles from './OneAlbumById.module.scss';
 import { useRecoilState } from 'recoil';
 import useToggleMenu from '@/app/useToggleMenu';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
+interface albumId {
+    coverImgUrl: string;
+    audioUrl: string;
+    title: string;
+    id: number;
+}
 const OneAlbumById = () => {
     const { currentCardId, toggleMenu } = useToggleMenu();
     const [, setGlobalsrc] = useRecoilState(musicGlobalState);
@@ -22,64 +30,17 @@ const OneAlbumById = () => {
     const [, setImage] = useRecoilState(globalImageState);
     const [, setArtist] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
-    const data = [
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 33,
-            src: '/Player/stairway.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 34,
-            src: '/Player/Bellin.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 35,
-            src: '/Player/judas.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 36,
-            src: '/Player/Bellaire.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 37,
-            src: '/Player/IVdasi.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 38,
-            src: '/Player/SoMany.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 39,
-            src: '/Player/Kendrick.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 40,
-            src: '/Player/stairway.mp3',
-        },
-    ];
+    const [albumId, setAlbumId] = useState<albumId[]>([]);
+    useEffect(() => {
+        axios
+            .get('https://enigma-wtuc.onrender.com/musics')
+            .then((result) => {
+                setAlbumId(result.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching music data:', error);
+            });
+    }, []);
 
     const handleClick = (
         item: {
@@ -91,10 +52,10 @@ const OneAlbumById = () => {
         },
         index: number,
     ) => {
-        const allSrc = data.map((item) => item.src);
-        const imageSrc = data.map((item) => item.image);
-        const artist = data.map((item) => item.temeName);
-        const title = data.map((item) => item.title);
+        const allSrc = albumId.map((item) => item.audioUrl);
+        const imageSrc = albumId.map((item) => item.coverImgUrl);
+        const artist = albumId.map((item) => item.title);
+        const title = albumId.map((item) => item.title);
         setIsPlaying(true);
         setGlobalId(item.id);
         setImage(imageSrc);
@@ -115,12 +76,12 @@ const OneAlbumById = () => {
                 </div>
             </div>
             <div className={styles.musicCard}>
-                {data.map((item, index) => (
+                {albumId.map((item, index) => (
                     <MusicCard
                         key={item.id}
-                        image={item.image}
+                        image={item.coverImgUrl}
                         title={item.title}
-                        teamName={item.temeName}
+                        teamName={item.title}
                         id={item.id}
                         deleteOrLike={false}
                         isPlaying={isPlaying && globalMusicId === index}

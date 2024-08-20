@@ -29,3 +29,10 @@
         grid-template-columns: 1fr;
     }
 }
+
+
+@media screen and (min-width:1024px) and (max-width:1240px) {
+    .musicCardContainer {
+        grid-template-columns: 1fr;
+    }
+}

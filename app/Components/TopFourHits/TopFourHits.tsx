@@ -10,6 +10,15 @@ import {
     musicNameState,
 } from '@/app/state';
 import useToggleMenu from '@/app/useToggleMenu';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
+interface Music {
+    coverImgUrl: string;
+    audioUrl: string;
+    title: string;
+    id: number;
+}
 
 const TopFourHits = () => {
     const { currentCardId, toggleMenu } = useToggleMenu();
@@ -20,36 +29,18 @@ const TopFourHits = () => {
     const [, setImage] = useRecoilState(globalImageState);
     const [, setMusicName] = useRecoilState(musicNameState);
     const [, setAuthorName] = useRecoilState(authorNameState);
-    const data = [
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 53,
-            src: '/Player/Disclosure.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 54,
-            src: '/Player/FastCar.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 55,
-            src: '/Player/Regard.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 56,
-            src: '/Player/Mwaki.mp3',
-        },
-    ];
+    const [music, setMusic] = useState<Music[]>([]);
+
+    useEffect(() => {
+        axios.get('https://enigma-wtuc.onrender.com/musics/tophits')
+            .then((result) => {
+                setMusic(result.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching music data:', error);
+            });
+    }, []);
+
     const handleClick = (
         item: {
             image?: string;
@@ -60,10 +51,10 @@ const TopFourHits = () => {
         },
         index: number,
     ) => {
-        const imageSrc = data.map((item) => item.image);
-        const allSrc = data.map((item) => item.src);
-        const musicName = data.map((item) => item.temeName);
-        const title = data.map((item) => item.title);
+        const imageSrc = music.map((item) => item.coverImgUrl);
+        const allSrc = music.map((item) => item.audioUrl);
+        const musicName = music.map((item) => item.title);
+        const title = music.map((item) => item.title);
         setIsPlaying(true);
         setGlobalId(item.id);
         setGlobalsrc(allSrc);
@@ -72,14 +63,15 @@ const TopFourHits = () => {
         setMusicName(musicName);
         setAuthorName(title);
     };
+
     return (
         <>
-            {data.map((item, index) => (
+            {music.map((item, index) => (
                 <MusicCard
                     key={item.id}
-                    image={item.image}
+                    image={item.coverImgUrl}
                     title={item.title}
-                    teamName={item.temeName}
+                    teamName={item.title}
                     id={item.id}
                     deleteOrLike={false}
                     isPlaying={isPlaying && globalMusicId === index}

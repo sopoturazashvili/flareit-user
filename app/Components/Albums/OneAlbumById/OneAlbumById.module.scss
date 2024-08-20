@@ -15,13 +15,9 @@
 }
 
 .musicCard {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px 20px;
-
-  @media (max-width: 1023px) {
-    grid-template-columns: 1fr;
-  }
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 20px;
 }
 
 .nameContainer {
@@ -45,4 +41,28 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+}
+
+@media screen and (min-width: 599px) and (max-width: 1023px) {
+    .musicCard {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 599px) and (max-width: 660px) {
+    .musicCard {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 599px) {
+    .musicCard {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1240px) {
+    .musicCard {
+        grid-template-columns: 1fr;
+    }
 }

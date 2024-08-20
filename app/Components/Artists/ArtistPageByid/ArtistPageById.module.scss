@@ -82,22 +82,31 @@
     gap: 8px 20px;
 }
 
-@media screen and (max-width: 1023px) {
-    .musicCard {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 8px 20px;
-    }
-}
-
 @media screen and (max-width: 599px) {
     .albumMapContainer {
         grid-template-columns: 1fr 1fr;
+    }
+    .musicCard {
+        grid-template-columns: 1fr;
     }
 }
 
 @media screen and (min-width: 599px) and (max-width: 1023px) {
     .albumMapContainer {
         grid-template-columns: 1fr 1fr 1fr;
+    }
+    .musicCard {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media screen and (min-width: 599px) and (max-width: 660px) {
+    .musicCard {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1240px) {
+    .musicCard {
+        grid-template-columns: 1fr;
     }
 }
