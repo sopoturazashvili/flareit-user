@@ -12,8 +12,10 @@ import {
 import MusicCard from '../MusicCard/MusicCard';
 import styles from './TopHits.module.scss';
 import { useRecoilState } from 'recoil';
+import useToggleMenu from '@/app/useToggleMenu';
 
 const TopHits = () => {
+    const { currentCardId, toggleMenu } = useToggleMenu();
     const [, setGlobalsrc] = useRecoilState(musicGlobalState);
     const [globalMusicId, setGlobalId] = useRecoilState(musicId);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
@@ -174,6 +176,8 @@ const TopHits = () => {
                         isPlaying={isPlaying && globalMusicId === index}
                         onClick={() => handleClick(item, index)}
                         index={index}
+                        menuOpen={currentCardId === item.id}
+                        toggleMenu={() => toggleMenu(item.id)}
                     />
                 ))}
             </div>

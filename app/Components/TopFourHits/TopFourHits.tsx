@@ -9,8 +9,10 @@ import {
     musicId,
     musicNameState,
 } from '@/app/state';
+import useToggleMenu from '@/app/useToggleMenu';
 
 const TopFourHits = () => {
+    const { currentCardId, toggleMenu } = useToggleMenu();
     const [, setGlobalsrc] = useRecoilState(musicGlobalState);
     const [globalMusicId, setGlobalId] = useRecoilState(musicId);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
@@ -83,6 +85,8 @@ const TopFourHits = () => {
                     isPlaying={isPlaying && globalMusicId === index}
                     onClick={() => handleClick(item, index)}
                     index={index}
+                    menuOpen={currentCardId === item.id}
+                    toggleMenu={() => toggleMenu(item.id)}
                 />
             ))}
         </>
