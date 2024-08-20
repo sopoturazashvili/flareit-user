@@ -78,8 +78,3 @@ export const showNavMobileState = atom({
     key: 'showNavMobileState',
     default: true,
 });
-
-export const currentCardIdState = atom<number | null>({
-    key: 'currentCardIdState',
-    default: null,
-});

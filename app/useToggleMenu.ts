@@ -1,9 +1,7 @@
-import { useRecoilState } from 'recoil';
-import { currentCardIdState } from './state';
+import { useState } from 'react';
 
 const useToggleMenu = () => {
-    const [currentCardId, setCurrentCardId] =
-        useRecoilState(currentCardIdState);
+    const [currentCardId, setCurrentCardId] = useState<number | null>();
 
     const toggleMenu = (id: number) => {
         if (currentCardId === id) {

@@ -23,11 +23,6 @@ const MusicCard = (props: Props) => {
         position: 'absolute',
         top: '0',
         left: '20px',
-        zIndex: '999',
-        borderRadius: '8px',
-        background: '#000',
-        padding: '8px 16px',
-        width: '254px',
     });
     const musicCardRef = useRef<HTMLDivElement>(null);
 
@@ -35,22 +30,15 @@ const MusicCard = (props: Props) => {
         if (props.menuOpen && musicCardRef.current) {
             const rect = musicCardRef.current.getBoundingClientRect();
 
-            console.log(rect.left);
-
-            if (rect.left > window.innerWidth / 2 || props.deleteOrLike) {
+            if (rect.left >= window.innerWidth - rect.right) {
                 setMenuStyles({
                     position: 'absolute',
                     top: '0',
                     left: '-250px',
-                    zIndex: '999',
-                    borderRadius: '8px',
-                    background: '#000',
-                    padding: '8px 16px',
-                    width: '254px',
                 });
             }
         }
-    }, [props.deleteOrLike, props.menuOpen]);
+    }, [props.menuOpen]);
 
     return (
         <div ref={musicCardRef} className={styles.musicCard}>
@@ -78,10 +66,10 @@ const MusicCard = (props: Props) => {
                 ) : (
                     <LikeButton isLiked={false} id={props.id} />
                 )}
-                <div onClick={props.toggleMenu} className={styles.menu}>
+                <div onClick={props.toggleMenu} className={styles.dots}>
                     <BiDotsVerticalRounded size={24} color="white" />
                     {props.menuOpen && (
-                        <div style={menuStyles}>
+                        <div style={menuStyles} className={styles.menu}>
                             <DropDownMenu />
                         </div>
                     )}

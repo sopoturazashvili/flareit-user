@@ -84,24 +84,15 @@
     position: relative;
 }
 
-.menu {
+.dots {
     position: relative;
 }
 
-.dropDownMenu {
-    position: absolute;
-    top: 0;
+.menu {
     z-index: 999;
     border-radius: 8px;
-    background: #000;
+    background-color: #000;
     padding: 8px 16px;
     width: 254px;
 }
 
-.right {
-    left: 25px;
-}
-
-.left {
-    left: -250px;
-}
