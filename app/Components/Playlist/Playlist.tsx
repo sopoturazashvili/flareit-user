@@ -11,9 +11,18 @@ import MusicCard from '../MusicCard/MusicCard';
 import styles from './Playlist.module.scss';
 import { useRecoilState } from 'recoil';
 import useToggleMenu from '@/app/useToggleMenu';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 interface Props {
     image: string;
+}
+
+interface playlistId {
+    coverImgUrl: string;
+    audioUrl: string;
+    title: string;
+    id: number;
 }
 
 const Playlist = (props: Props) => {
@@ -25,36 +34,18 @@ const Playlist = (props: Props) => {
     const [, setImage] = useRecoilState(globalImageState);
     const [, setArtist] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
-    const data = [
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 1,
-            src: '/Player/stairway.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 2,
-            src: '/Player/Bellin.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 3,
-            src: '/Player/judas.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 4,
-            src: '/Player/Bellaire.mp3',
-        },
-    ];
+    const [playlistId, setPlaylistId] = useState<playlistId[]>([]);
+
+    useEffect(() => {
+        axios
+            .get('https://enigma-wtuc.onrender.com/musics/tophits')
+            .then((result) => {
+                setPlaylistId(result.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching music data:', error);
+            });
+    }, []);
 
     const handleClick = (
         item: {
@@ -66,10 +57,10 @@ const Playlist = (props: Props) => {
         },
         index: number,
     ) => {
-        const allSrc = data.map((item) => item.src);
-        const imageSrc = data.map((item) => item.image);
-        const artist = data.map((item) => item.temeName);
-        const title = data.map((item) => item.title);
+        const allSrc = playlistId.map((item) => item.audioUrl);
+        const imageSrc = playlistId.map((item) => item.coverImgUrl);
+        const artist = playlistId.map((item) => item.title);
+        const title = playlistId.map((item) => item.title);
         setIsPlaying(true);
         setGlobalId(item.id);
         setImage(imageSrc);
@@ -87,13 +78,13 @@ const Playlist = (props: Props) => {
                 </div>
             </div>
             <div className={styles.topFourHits}>
-                {data.map((item, index) => (
+                {playlistId.map((item, index) => (
                     <MusicCard
                         id={item.id}
                         key={item.id}
-                        image={item.image}
+                        image={item.coverImgUrl}
                         title={item.title}
-                        teamName={item.temeName}
+                        teamName={item.title}
                         isPlaying={isPlaying && globalMusicId === index}
                         deleteOrLike={true}
                         onClick={() => handleClick(item, index)}

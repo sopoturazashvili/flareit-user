@@ -13,6 +13,15 @@ import MusicCard from '../MusicCard/MusicCard';
 import styles from './TopHits.module.scss';
 import { useRecoilState } from 'recoil';
 import useToggleMenu from '@/app/useToggleMenu';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+interface tophits {
+    coverImgUrl: string;
+    audioUrl: string;
+    title: string;
+    id: number;
+}
 
 const TopHits = () => {
     const { currentCardId, toggleMenu } = useToggleMenu();
@@ -23,121 +32,17 @@ const TopHits = () => {
     const [, setImage] = useRecoilState(globalImageState);
     const [, setArtist] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
-
-    const data = [
-        {
-            id: 1,
-            image: '/images/feelIt.png',
-            title: 'Feel It',
-            artist: 'D4VD',
-            src: '/Player/2Pac.mp3',
-        },
-        {
-            id: 2,
-            image: '/images/slowDown.png',
-            title: 'Slow Down',
-            artist: 'Selena Gomez',
-            src: '/Player/Bellin.mp3',
-        },
-        {
-            id: 3,
-            image: '/images/fortnight.png',
-            title: 'Fortnight',
-            artist: 'Taylor Swift',
-            src: '/Player/2Pac.mp3',
-        },
-        {
-            id: 4,
-            image: '/images/lunch.png',
-            title: 'Billie Eillish',
-            artist: 'Lunch',
-            src: '/Player/Bellaire.mp3',
-        },
-        {
-            id: 5,
-            image: '/images/noAngels.png',
-            title: 'No Angels',
-            artist: 'Justin Timberlake',
-            src: '/Player/IVdasi.mp3',
-        },
-        {
-            id: 6,
-            image: '/images/missMeToo.png',
-            title: 'Miss Me Too',
-            artist: 'Griff',
-            src: '/Player/SoMany.mp3',
-        },
-        {
-            id: 7,
-            image: '/images/saturn.png',
-            title: 'Saturn',
-            artist: 'SZA',
-            src: '/Player/Kendrick.mp3',
-        },
-        {
-            id: 8,
-            image: '/images/greedy.png',
-            title: 'Greedy',
-            artist: 'Tata Mcrae',
-            src: '/Player/stairway.mp3',
-        },
-        {
-            id: 9,
-            image: '/images/madeForMe.png',
-            title: 'Made For Me',
-            artist: 'Muni Long',
-            src: '/Player/2Pac.mp3',
-        },
-        {
-            id: 10,
-            image: '/images/wildOnes.png',
-            title: 'Wild Ones',
-            artist: 'Jessie Murph',
-            src: '/Player/2Pac.mp3',
-        },
-        {
-            id: 11,
-            image: '/images/lovinOnMe.png',
-            title: 'Lovin On Me',
-            artist: 'Jack Harlow',
-            src: '/Player/Bellaire.mp3',
-        },
-        {
-            id: 12,
-            image: '/images/dontWannaWait.png',
-            title: 'Dont Wanna Wait',
-            artist: 'David Guetta',
-            src: '/Player/IVdasi.mp3',
-        },
-        {
-            id: 13,
-            image: '/images/blueOverYou.png',
-            title: 'Blue Over You',
-            artist: 'Mason Ramsey',
-            src: '/Player/SoMany.mp3',
-        },
-        {
-            id: 14,
-            image: '/images/makeYouMine.png',
-            title: 'Make You Mine',
-            artist: 'Madison Beer',
-            src: '/Player/Kendrick.mp3',
-        },
-        {
-            id: 15,
-            image: '/images/feelingLucky.png',
-            title: 'Feeling Lucky',
-            artist: 'Bibi&Jackson Wang',
-            src: '/Player/stairway.mp3',
-        },
-        {
-            id: 16,
-            image: '/images/cruelSummer.png',
-            title: 'Cruel Summer',
-            artist: 'Taylor Swift',
-            src: '/Player/Bellin.mp3',
-        },
-    ];
+    const [topHits, setTopHits] = useState<tophits[]>([]);
+    useEffect(() => {
+        axios
+            .get('https://enigma-wtuc.onrender.com/musics')
+            .then((result) => {
+                setTopHits(result.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching music data:', error);
+            });
+    }, []);
     const handleClick = (
         item: {
             id: number;
@@ -148,10 +53,10 @@ const TopHits = () => {
         },
         index: number,
     ) => {
-        const allSrc = data.map((item) => item.src);
-        const imageSrc = data.map((item) => item.image);
-        const artist = data.map((item) => item.artist);
-        const title = data.map((item) => item.title);
+        const allSrc = topHits.map((item) => item.audioUrl);
+        const imageSrc = topHits.map((item) => item.coverImgUrl);
+        const artist = topHits.map((item) => item.title);
+        const title = topHits.map((item) => item.title);
         setIsPlaying(true);
         setGlobalId(item.id);
         setImage(imageSrc);
@@ -165,12 +70,12 @@ const TopHits = () => {
         <div className={styles.container}>
             <span className={styles.title}>Top Hits</span>
             <div className={styles.musicCardContainer}>
-                {data.map((item, index) => (
+                {topHits.map((item, index) => (
                     <MusicCard
                         key={item.id}
-                        image={item.image}
+                        image={item.coverImgUrl}
                         title={item.title}
-                        teamName={item.artist}
+                        teamName={item.title}
                         deleteOrLike={false}
                         id={item.id}
                         isPlaying={isPlaying && globalMusicId === index}

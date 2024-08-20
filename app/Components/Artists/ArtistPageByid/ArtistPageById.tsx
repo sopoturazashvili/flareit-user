@@ -14,6 +14,15 @@ import {
     musicNameState,
 } from '@/app/state';
 import useToggleMenu from '@/app/useToggleMenu';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+interface artistId {
+    coverImgUrl: string;
+    audioUrl: string;
+    title: string;
+    id: number;
+}
 
 const ArtistPageById = () => {
     const { currentCardId, toggleMenu } = useToggleMenu();
@@ -24,67 +33,19 @@ const ArtistPageById = () => {
     const [, setImage] = useRecoilState(globalImageState);
     const [, setArtist] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
+    const [artistId,setArtistId] = useState<artistId[]>([])
     const id = useParams();
     console.log(id);
-    const data = [
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 57,
-            src: '/Player/stairway.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 58,
-            src: '/Player/Bellin.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 59,
-            src: '/Player/judas.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 60,
-            src: '/Player/Bellaire.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 61,
-            src: '/Player/IVdasi.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 62,
-            src: '/Player/SoMany.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 63,
-            src: '/Player/Kendrick.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 64,
-            src: '/Player/stairway.mp3',
-        },
-    ];
-
+    useEffect(() => {
+        axios
+            .get('https://enigma-wtuc.onrender.com/musics')
+            .then((result) => {
+                setArtistId(result.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching music data:', error);
+            });
+    }, []);
     const albumsData = [
         {
             id: 1,
@@ -154,10 +115,10 @@ const ArtistPageById = () => {
         },
         index: number,
     ) => {
-        const allSrc = data.map((item) => item.src);
-        const imageSrc = data.map((item) => item.image);
-        const artist = data.map((item) => item.temeName);
-        const title = data.map((item) => item.title);
+        const allSrc = artistId.map((item) => item.audioUrl);
+        const imageSrc = artistId.map((item) => item.coverImgUrl);
+        const artist = artistId.map((item) => item.title);
+        const title = artistId.map((item) => item.title);
         setIsPlaying(true);
         setGlobalId(item.id);
         setImage(imageSrc);
@@ -200,12 +161,12 @@ const ArtistPageById = () => {
                 </p>
             </div>
             <div className={styles.musicCard}>
-                {data.map((itme, index) => (
+                {artistId.map((itme, index) => (
                     <MusicCard
                         key={itme.id}
-                        image={itme.image}
+                        image={itme.coverImgUrl}
                         title={itme.title}
-                        teamName={itme.temeName}
+                        teamName={itme.title}
                         deleteOrLike={false}
                         id={itme.id}
                         isPlaying={isPlaying && globalMusicId === index}

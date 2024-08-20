@@ -13,6 +13,15 @@ import {
 } from '@/app/state';
 import { useRecoilState } from 'recoil';
 import useToggleMenu from '@/app/useToggleMenu';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+interface chartId {
+    coverImgUrl: string;
+    audioUrl: string;
+    title: string;
+    id: number;
+}
 
 const OneChartById = () => {
     const { currentCardId, toggleMenu } = useToggleMenu();
@@ -23,66 +32,19 @@ const OneChartById = () => {
     const [, setImage] = useRecoilState(globalImageState);
     const [, setArtist] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
+    const [chartId, setChartId] = useState<chartId[]>([]);
     const id = useParams();
     console.log(id);
-    const data = [
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 41,
-            src: '/Player/stairway.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 42,
-            src: '/Player/Bellin.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 43,
-            src: '/Player/judas.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 44,
-            src: '/Player/Bellaire.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 45,
-            src: '/Player/IVdasi.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 46,
-            src: '/Player/SoMany.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 47,
-            src: '/Player/Kendrick.mp3',
-        },
-        {
-            image: '/images/MusicCard.svg',
-            title: 'Yellow',
-            temeName: 'Morgan Maxwell',
-            id: 48,
-            src: '/Player/stairway.mp3',
-        },
-    ];
+    useEffect(() => {
+        axios
+            .get('https://enigma-wtuc.onrender.com/musics')
+            .then((result) => {
+                setChartId(result.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching music data:', error);
+            });
+    }, []);
     const handleClick = (
         item: {
             image?: string;
@@ -93,10 +55,10 @@ const OneChartById = () => {
         },
         index: number,
     ) => {
-        const allSrc = data.map((item) => item.src);
-        const imageSrc = data.map((item) => item.image);
-        const artist = data.map((item) => item.temeName);
-        const title = data.map((item) => item.title);
+        const allSrc = chartId.map((item) => item.audioUrl);
+        const imageSrc = chartId.map((item) => item.coverImgUrl);
+        const artist = chartId.map((item) => item.title);
+        const title = chartId.map((item) => item.title);
         setIsPlaying(true);
         setGlobalId(item.id);
         setImage(imageSrc);
@@ -111,12 +73,12 @@ const OneChartById = () => {
                 <p className={styles.pathColor}>Top hits in 2024</p>
             </div>
             <div className={styles.oneMusicCard}>
-                {data.map((item, index) => (
+                {chartId.map((item, index) => (
                     <MusicCard
                         key={item.id}
-                        image={item.image}
+                        image={item.coverImgUrl}
                         title={item.title}
-                        teamName={item.temeName}
+                        teamName={item.title}
                         deleteOrLike={false}
                         id={item.id}
                         isPlaying={isPlaying && globalMusicId === index}
