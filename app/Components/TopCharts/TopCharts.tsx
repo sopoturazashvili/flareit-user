@@ -100,7 +100,7 @@ const TopCharts = () => {
             <div className={styles.title}>
                 <span className={styles.title}>Top Charts</span>
             </div>
-            <div className={styles.containerInside}>
+            <div className={styles.list}>
                 {charts.map((chart) => (
                     <ChartCard
                         key={chart.id}
