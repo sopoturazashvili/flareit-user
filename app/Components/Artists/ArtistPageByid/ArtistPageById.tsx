@@ -17,7 +17,7 @@ import useToggleMenu from '@/app/useToggleMenu';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-interface artistId {
+interface artistid {
     coverImgUrl: string;
     audioUrl: string;
     title: string;
@@ -33,7 +33,7 @@ const ArtistPageById = () => {
     const [, setImage] = useRecoilState(globalImageState);
     const [, setArtist] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
-    const [artistId,setArtistId] = useState<artistId[]>([])
+    const [artistId, setArtistId] = useState<artistid[]>([]);
     const id = useParams();
     console.log(id);
     useEffect(() => {

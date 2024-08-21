@@ -32,7 +32,8 @@ const TopFourHits = () => {
     const [music, setMusic] = useState<Music[]>([]);
 
     useEffect(() => {
-        axios.get('https://enigma-wtuc.onrender.com/musics/tophits')
+        axios
+            .get('https://enigma-wtuc.onrender.com/musics/tophits')
             .then((result) => {
                 setMusic(result.data);
             })
