@@ -1,5 +1,6 @@
 import styles from './RegisterForm.module.scss';
 import Input from '@/app/Components/Input/Input';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 import { useForm } from 'react-hook-form';
 
 interface FormInputs {
@@ -17,6 +18,14 @@ const RegisterForm = () => {
     } = useForm<FormInputs>();
     const onSubmit = (values: FormInputs) => {
         console.log(values);
+        axios
+            .post<Response>('https://enigma-wtuc.onrender.com/users', values)
+            .then((response: AxiosResponse<Response>) => {
+                console.log('Data sent successfully:', response.data);
+            })
+            .catch((error: AxiosError) => {
+                console.error('Error sending data:', error);
+            });
     };
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
