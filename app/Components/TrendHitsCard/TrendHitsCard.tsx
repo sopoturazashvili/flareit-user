@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import styles from './TrendHitsCard.module.scss';
 import FillAndTextButton from '../FillButton/FillAndTextButton';
+import { useMediaQuery } from 'react-responsive';
+
+interface Item {
+    id: number;
+    backgroundImage: string;
+    title: string;
+}
 
 const TrendHitsCard = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
-
-    const items = [
+    const [items, setItems] = useState<Item[]>([
         {
             id: 1,
             backgroundImage: '/images/trendhits_blue.jpeg',
@@ -21,7 +27,54 @@ const TrendHitsCard = () => {
             backgroundImage: '/images/trendhits_green.jpeg',
             title: 'new arrivals',
         },
-    ];
+    ]);
+
+    const isTablet = useMediaQuery({ minWidth: 600, maxWidth: 1023 });
+    const isMobile = useMediaQuery({ maxWidth: 599 });
+
+    useEffect(() => {
+        const tabletItems = [
+            {
+                id: 1,
+                backgroundImage: '/images/trendhits_blue_tablet.jpeg',
+                title: 'trend hits',
+            },
+            {
+                id: 2,
+                backgroundImage: '/images/trendhits_red_tablet.jpeg',
+                title: 'most liked',
+            },
+            {
+                id: 3,
+                backgroundImage: '/images/trendhits_green_tablet.jpeg',
+                title: 'new arrivals',
+            },
+        ];
+
+        const mobileItems = [
+            {
+                id: 1,
+                backgroundImage: '/images/trendhits_blue_mobile.jpeg',
+                title: 'trend hits',
+            },
+            {
+                id: 2,
+                backgroundImage: '/images/trendhits_red_mobile.jpeg',
+                title: 'most liked',
+            },
+            {
+                id: 3,
+                backgroundImage: '/images/trendhits_green_mobile.jpeg',
+                title: 'new arrivals',
+            },
+        ];
+
+        if (isMobile) {
+            setItems(mobileItems);
+        } else if (isTablet) {
+            setItems(tabletItems);
+        }
+    }, [isTablet, isMobile]);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
