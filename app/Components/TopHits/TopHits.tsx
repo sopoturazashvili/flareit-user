@@ -35,7 +35,7 @@ const TopHits = () => {
     const [topHits, setTopHits] = useState<tophits[]>([]);
     useEffect(() => {
         axios
-            .get('https://enigma-wtuc.onrender.com/musics/tophits')
+            .get('https://enigma-wtuc.onrender.com/musics')
             .then((result) => {
                 setTopHits(result.data);
             })
