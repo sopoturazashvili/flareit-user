@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styles from './TrendHitsCard.module.scss';
 import FillAndTextButton from '../FillButton/FillAndTextButton';
+import { useMediaQuery } from 'react-responsive';
+import { Item } from '@/app/interfaces/item';
+import { tabletItems, mobileItems } from '@/app/utils/items';
 
 const TrendHitsCard = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
-
-    const items = [
+    const [items, setItems] = useState<Item[]>([
         {
             id: 1,
             backgroundImage: '/images/trendhits_blue.jpeg',
@@ -21,7 +23,18 @@ const TrendHitsCard = () => {
             backgroundImage: '/images/trendhits_green.jpeg',
             title: 'new arrivals',
         },
-    ];
+    ]);
+
+    const isTablet = useMediaQuery({ minWidth: 600, maxWidth: 1023 });
+    const isMobile = useMediaQuery({ maxWidth: 599 });
+
+    useEffect(() => {
+        if (isMobile) {
+            setItems(mobileItems);
+        } else if (isTablet) {
+            setItems(tabletItems);
+        }
+    }, [isTablet, isMobile]);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
