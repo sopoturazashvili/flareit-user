@@ -21,6 +21,7 @@ const RegisterForm = () => {
         axios
             .post<Response>('https://enigma-wtuc.onrender.com/users', values)
             .then((response: AxiosResponse<Response>) => {
+                window.location.href = '/authpage';
                 console.log('Data sent successfully:', response.data);
             })
             .catch((error: AxiosError) => {
@@ -77,10 +78,6 @@ const RegisterForm = () => {
                     type={'password'}
                     error={errors.confirmPassword?.message}
                 />
-            </div>
-            <div className={styles.checkboxContainer}>
-                <input className={styles.checkboxPointer} type="checkbox" />
-                <p className={styles.checkboxTitle}>Remember password</p>
             </div>
             <div className={styles.inputContainer}>
                 <div className={styles.inputSubmit}>

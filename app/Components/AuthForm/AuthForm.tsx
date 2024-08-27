@@ -33,6 +33,7 @@ const AuthForm = () => {
                 if (token) {
                     localStorage.setItem('authToken', token);
                     console.log('Token saved in localStorage:', token);
+                    window.location.href = '/';
                 }
             })
             .catch((error: AxiosError) => {
@@ -72,10 +73,6 @@ const AuthForm = () => {
                     type="password"
                     error={errors.password?.message}
                 />
-            </div>
-            <div className={styles.checkboxContaeiner}>
-                <input className={styles.checkboxPointer} type="checkbox" />
-                <p className={styles.checkboxColor}>Remember password</p>
             </div>
             <div className={styles.inputContainer}>
                 <div className={styles.inputSubbmit}>
