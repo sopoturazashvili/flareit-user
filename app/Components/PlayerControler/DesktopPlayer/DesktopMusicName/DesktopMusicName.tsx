@@ -30,7 +30,7 @@ const DesktopMusicName = () => {
                         : styles.image
                 }
                 src={
-                    image[index] ? image[index] : '/PlayerControler/Default.svg'
+                    image[index] ? image[index] : '/PlayerControler/chven.JPG'
                 }
                 alt="Music Cover"
             />
