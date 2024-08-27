@@ -4,7 +4,7 @@ import Link from 'next/link';
 import AuthForm from '@/app/Components/AuthForm/AuthForm';
 import styles from './AuthPageContainer.module.scss';
 
-const AuthPageContaiener = () => {
+const AuthPageContainer = () => {
     return (
         <div className={styles.authPage}>
             <video className={styles.backgroundVideo} autoPlay muted loop>
@@ -31,4 +31,4 @@ const AuthPageContaiener = () => {
     );
 };
 
-export default AuthPageContaiener;
+export default AuthPageContainer;
