@@ -1,7 +1,7 @@
-import AuthPageContaiener from '@/app/Components/AuthPageContainer/AuthPageContainer';
+import AuthPageContainer from '@/app/Components/AuthPageContainer/AuthPageContainer';
 
 const AuthPage = () => {
-    return <AuthPageContaiener />;
+    return <AuthPageContainer />;
 };
 
 export default AuthPage;
