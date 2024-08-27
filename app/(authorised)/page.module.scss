@@ -62,6 +62,9 @@
     .hitsContainer {
         grid-template-columns: 1fr;
     }
+    .artistCard {
+        padding-bottom: 50px;
+    }
 }
 
 @media screen and (max-width: 599px) {
@@ -69,6 +72,7 @@
         overflow-x: scroll;
         width: 100%;
         display: flex;
+        padding-bottom: 50px;
     }
     .artistCard::-webkit-scrollbar {
         display: none;
