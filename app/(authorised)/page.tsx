@@ -34,8 +34,10 @@ export default function Home() {
             </div>
             <div className={styles.sectionHeader}>
                 <SectionHeader title={'Top Albums'} href={'topalbums'} />
-                <div className={styles.artistCard}>
-                    <TopFourAlbums pagePathName={'topalbums'} />
+                <div className={styles.artistCardCont}>
+                    <div className={styles.artistCard}>
+                        <TopFourAlbums pagePathName={'topalbums'} />
+                    </div>
                 </div>
             </div>
         </main>
