@@ -33,3 +33,21 @@ export const mobileItems = [
         title: 'new arrivals',
     },
 ];
+
+export const trendHitsItems = [
+    {
+        id: 1,
+        backgroundImage: '/images/trendhits_blue.jpeg',
+        title: 'trend hits',
+    },
+    {
+        id: 2,
+        backgroundImage: '/images/trendhits_red.jpeg',
+        title: 'most liked',
+    },
+    {
+        id: 3,
+        backgroundImage: '/images/trendhits_green.jpeg',
+        title: 'new arrivals',
+    },
+];
