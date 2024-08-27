@@ -1,11 +1,15 @@
 import styles from './AuthForm.module.scss';
 import Input from '@/app/Components/Input/Input';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 import { useForm } from 'react-hook-form';
 
 interface FormInputs {
     email: string;
     password: string;
-    confirmPassword: string;
+}
+
+interface Response {
+    access_token: string;
 }
 
 const AuthForm = () => {
@@ -14,8 +18,26 @@ const AuthForm = () => {
         handleSubmit,
         formState: { errors, isSubmitted },
     } = useForm<FormInputs>();
-    const onSubmit = (value: FormInputs) => {
-        console.log(value);
+    const onSubmit = (values: FormInputs) => {
+        console.log(values);
+        axios
+            .post<Response>(
+                'https://enigma-wtuc.onrender.com/auth/login',
+                values,
+            )
+            .then((response: AxiosResponse<Response>) => {
+                console.log('Data sent successfully:', response.data);
+
+                const token = response.data.access_token;
+
+                if (token) {
+                    localStorage.setItem('authToken', token);
+                    console.log('Token saved in localStorage:', token);
+                }
+            })
+            .catch((error: AxiosError) => {
+                console.error('Error sending data:', error);
+            });
     };
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
