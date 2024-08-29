@@ -79,7 +79,7 @@ const AuthForm = () => {
                     <input
                         className={styles.input}
                         type="submit"
-                        value="Sign Up"
+                        value="Sign In"
                     />
                 </div>
             </div>
