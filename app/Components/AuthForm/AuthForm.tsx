@@ -1,6 +1,7 @@
 import styles from './AuthForm.module.scss';
 import Input from '@/app/Components/Input/Input';
 import axios, { AxiosError, AxiosResponse } from 'axios';
+import router from 'next/router';
 import { useForm } from 'react-hook-form';
 
 interface FormInputs {
@@ -33,7 +34,7 @@ const AuthForm = () => {
                 if (token) {
                     localStorage.setItem('authToken', token);
                     console.log('Token saved in localStorage:', token);
-                    window.location.href = '/';
+                    router.push('/');
                 }
             })
             .catch((error: AxiosError) => {
