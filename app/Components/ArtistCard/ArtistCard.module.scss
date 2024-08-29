@@ -1,59 +1,67 @@
-@import "../../styles/colors.scss";
+@import '../../styles/colors.scss';
 
 .container {
-  background-color: $PrimaryBlackTone3;
-  width: 100%;
-  min-width: 150px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 16px;
-  padding: 20px;
+    background-color: $PrimaryBlackTone3;
+    width: 100%;
+    min-width: 150px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    padding: 20px;
 }
 
 .image {
-  width: 100%;
+    width: 100%;
 }
 
 .container:hover {
-  background-color: rgba(138, 138, 138, 0.13);
-  transition: 1s;
+    background-color: rgba(138, 138, 138, 0.13);
 }
 
 .containerCenter {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .infoContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .infoNumb {
-  color: rgba(255, 255, 255, 0.64);
+    color: rgba(255, 255, 255, 0.64);
 }
 
 .imageContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .artistName {
-  text-transform: capitalize;
+    text-transform: capitalize;
 }
 
-@media screen and (min-width:1023px) and (max-width:1270px) {
-  .container{
-    min-width: 80px;
-  }
+@media screen and (min-width: 1023px) and (max-width: 1270px) {
+    .container {
+        min-width: 80px;
+    }
 }
 
-@media screen and (min-width:1024px) and (max-width:1050px) {
-  .container{
-    padding: 14px;
-  }
+@media screen and (min-width: 1023px) and (max-width: 1375px) {
+    .infoContainer {
+        max-width: 55px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1050px) {
+    .container {
+        padding: 14px;
+    }
 }

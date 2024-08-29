@@ -1,4 +1,5 @@
 'use client';
+
 import { useParams } from 'next/navigation';
 import AlbumCard from '../../AlbumCard/AlbumCard';
 import MusicCard from '../../MusicCard/MusicCard';
@@ -17,10 +18,25 @@ import useToggleMenu from '@/app/useToggleMenu';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-interface artistid {
+interface Music {
     coverImgUrl: string;
     audioUrl: string;
     title: string;
+    id: number;
+}
+
+interface Artist {
+    biography: string;
+    id: number;
+    artistName: string;
+    coverImgUrl: string;
+}
+
+interface Album {
+    title: string;
+    releaseDate: string;
+    artistName: string;
+    coverImgUrl: string;
     id: number;
 }
 
@@ -33,161 +49,101 @@ const ArtistPageById = () => {
     const [, setImage] = useRecoilState(globalImageState);
     const [, setArtist] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
-    const [artistId, setArtistId] = useState<artistid[]>([]);
-    const id = useParams();
-    console.log(id);
-    useEffect(() => {
-        axios
-            .get('https://enigma-wtuc.onrender.com/musics')
-            .then((result) => {
-                setArtistId(result.data);
-            })
-            .catch((error) => {
-                console.error('Error fetching music data:', error);
-            });
-    }, []);
-    const albumsData = [
-        {
-            id: 1,
-            artistName: 'Gunna',
-            albumName: 'one of wun',
-            year: '2019',
-            image: '/images/guna.png',
-        },
-        {
-            id: 2,
-            artistName: 'Morgan Wallen',
-            albumName: 'Dangerous',
-            year: '2000',
-            image: '/images/dangerous.png',
-        },
-        {
-            id: 3,
-            artistName: 'Twenty one pilot',
-            albumName: 'Clancy',
-            year: '2000',
-            image: '/images/clancy.png',
-        },
-        {
-            id: 4,
-            artistName: 'Billie Eillish',
-            albumName: 'Hit me hard...',
-            year: '2005',
-            image: '/images/billie.png',
-        },
-        {
-            id: 5,
-            artistName: 'Olivia Rodrigo',
-            albumName: 'Guts',
-            year: '2000',
-            image: '/images/taylorSwift.png',
-        },
-        {
-            id: 6,
-            artistName: 'Taylor Swift',
-            albumName: '1989',
-            year: '1989',
-            image: '/images/1989.png',
-        },
-        {
-            id: 7,
-            artistName: 'SZA',
-            albumName: 'SOS',
-            year: '2009',
-            image: '/images/sza.png',
-        },
-        {
-            id: 8,
-            artistName: 'Taylor Swift',
-            albumName: 'Lover',
-            year: '2001',
-            image: '/images/lover.png',
-        },
-    ];
+    const [musics, setMusics] = useState<Music[]>([]);
+    const [artist, setArtistData] = useState<Artist | null>(null);
+    const [albums, setAlbums] = useState<Album[]>([]);
 
-    const handleClick = (
-        item: {
-            image?: string;
-            title?: string;
-            temeName?: string;
-            id: number;
-            src?: string;
-        },
-        index: number,
-    ) => {
-        const allSrc = artistId.map((item) => item.audioUrl);
-        const imageSrc = artistId.map((item) => item.coverImgUrl);
-        const artist = artistId.map((item) => item.title);
-        const title = artistId.map((item) => item.title);
+    const { id } = useParams();
+
+    useEffect(() => {
+        if (id) {
+            const fetchData = async () => {
+                try {
+                    const musicsResult = await axios.get(
+                        'https://enigma-wtuc.onrender.com/musics',
+                    );
+                    setMusics(musicsResult.data);
+
+                    const artistResult = await axios.get(
+                        `https://enigma-wtuc.onrender.com/authors/${id}`,
+                    );
+                    setArtistData(artistResult.data);
+
+                    const albumsResult = await axios.get(
+                        'https://enigma-wtuc.onrender.com/albums',
+                    );
+                    setAlbums(albumsResult.data);
+                } catch (error) {
+                    console.error(
+                        'An error occurred while fetching data:',
+                        error,
+                    );
+                }
+            };
+            fetchData();
+        }
+    }, [id]);
+
+    const handleClick = (item: Music, index: number) => {
+        const allSrc = musics.map((music) => music.audioUrl);
+        const imageSrc = musics.map((music) => music.coverImgUrl);
+        const artistNames = musics.map((music) => music.title);
+        const titles = musics.map((music) => music.title);
+
         setIsPlaying(true);
         setGlobalId(item.id);
         setImage(imageSrc);
         setGlobalsrc(allSrc);
         setActiveIdx(index);
-        setArtist(artist);
-        setTitle(title);
+        setArtist(artistNames);
+        setTitle(titles);
     };
+
     return (
         <div className={styles.container}>
-            <div>
-                <p className={styles.pathName}>Coldplay</p>
-            </div>
             <div className={styles.nameAndPhoto}>
-                <img
-                    className={styles.photo}
-                    src="/images/artistById.svg"
-                    alt="artistById"
-                />
-                <p className={styles.nameColor}>Coldplay</p>
-                <p className={styles.biografiContainer}>
-                    Coldplayare a Britishrockband formed inLondonin 1997,
-                    consisting of vocalist and pianistChris Martin, lead
-                    guitaristJonny Buckland, bassistGuy Berryman, drummer and
-                    percussionistWill Champion, and managerPhil Harvey.[a]They
-                    are best known fortheir live performances,[3]having
-                    alsoimpacted popular culturewiththeir
-                    artistry,advocacyandachievements. The members of the band
-                    initially met atUniversity College London, calling
-                    themselves Big Fat Noises and changing to Starfish, before
-                    settling on the current name. After releasingSafety(1998)
-                    independently, Coldplay signed withParlophonein 1999 and
-                    wrote their debut album,Parachutes(2000). It featured
-                    breakthrough single // eslint-disable-next-line,
-                    react/no-unescaped-entities react/no-unescaped-entities
-                    Yellow and received aBrit Award for British Album of the
-                    Yearand aGrammy Award for Best Alternative Music Album. The
-                    groups follow-up,A Rush of Blood to the Head(2002), won the
-                    same accolades.
-                </p>
+                {artist && (
+                    <>
+                        <img
+                            className={styles.photo}
+                            src={artist.coverImgUrl}
+                            alt={artist.artistName}
+                        />
+                        <p className={styles.nameColor}>{artist.artistName}</p>
+                        <p className={styles.biografiContainer}>
+                            {artist.biography}
+                        </p>
+                    </>
+                )}
             </div>
             <div className={styles.musicCard}>
-                {artistId.map((itme, index) => (
+                {musics.map((music, index) => (
                     <MusicCard
-                        key={itme.id}
-                        image={itme.coverImgUrl}
-                        title={itme.title}
-                        teamName={itme.title}
+                        key={music.id}
+                        image={music.coverImgUrl}
+                        title={music.title}
+                        teamName={music.title}
                         deleteOrLike={false}
-                        id={itme.id}
-                        isPlaying={isPlaying && globalMusicId === index}
-                        onClick={() => handleClick(itme, index)}
+                        id={music.id}
+                        isPlaying={isPlaying && globalMusicId === music.id}
+                        onClick={() => handleClick(music, index)}
                         index={index}
-                        menuOpen={currentCardId === itme.id}
-                        toggleMenu={() => toggleMenu(itme.id)}
+                        menuOpen={currentCardId === music.id}
+                        toggleMenu={() => toggleMenu(music.id)}
                     />
                 ))}
             </div>
             <div className={styles.albumContainer}>
                 <p className={styles.albumsCont}>Albums</p>
                 <div className={styles.albumMapContainer}>
-                    {albumsData.map((item) => (
+                    {albums.map((album) => (
                         <AlbumCard
-                            key={item.id}
-                            image={item.image}
-                            albumName={item.albumName}
-                            year={item.year}
-                            artistName={item.artistName}
-                            id={item.id}
+                            key={album.id}
+                            image={album.coverImgUrl}
+                            albumName={album.title}
+                            year={album.releaseDate}
+                            artistName={album.artistName}
+                            id={album.id}
                             pagePathName={'albums'}
                         />
                     ))}

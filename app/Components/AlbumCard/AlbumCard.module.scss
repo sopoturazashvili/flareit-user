@@ -22,7 +22,6 @@
 
 .container:hover {
     background-color: $PrimaryGreyHover;
-    transition: 1s;
 }
 
 .coverContainer {
@@ -61,6 +60,22 @@
 @media screen and (min-width: 1023px) and (max-width: 1270px) {
     .container {
         min-width: 80px;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-width: 1375px) {
+    .infoContainer {
+        max-width: 55px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .artistNameCont {
+        max-width: 55px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        color: rgba(255, 255, 255, 0.64);
     }
 }
 

@@ -26,7 +26,7 @@ const AlbumCard = (props: Props) => {
                         <h4 className={styles.albumName}>{props.albumName}</h4>
                         <span className={styles.albumText}>{props.year}</span>
                     </div>
-                    <div>
+                    <div className={styles.artistNameCont}>
                         <span className={styles.artistName}>
                             {props.artistName}
                         </span>
