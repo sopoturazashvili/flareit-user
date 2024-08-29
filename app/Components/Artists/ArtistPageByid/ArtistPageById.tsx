@@ -53,31 +53,24 @@ const ArtistPageById = () => {
     const [artist, setArtistData] = useState<Artist | null>(null);
     const [albums, setAlbums] = useState<Album[]>([]);
 
+    console.log(artist, 'artist');
+    console.log(albums, 'albums');
+    console.log(musics, 'musics');
+
     const { id } = useParams();
 
     useEffect(() => {
         if (id) {
             const fetchData = async () => {
                 try {
-                    const musicsResult = await axios.get(
-                        'https://enigma-wtuc.onrender.com/musics',
-                    );
-                    setMusics(musicsResult.data);
-
                     const artistResult = await axios.get(
                         `https://enigma-wtuc.onrender.com/authors/${id}`,
                     );
                     setArtistData(artistResult.data);
-
-                    const albumsResult = await axios.get(
-                        'https://enigma-wtuc.onrender.com/albums',
-                    );
-                    setAlbums(albumsResult.data);
+                    setAlbums(artistResult.data.albums);
+                    setMusics(artistResult.data.musics);
                 } catch (error) {
-                    console.error(
-                        'An error occurred while fetching data:',
-                        error,
-                    );
+                    alert(error);
                 }
             };
             fetchData();
