@@ -21,7 +21,10 @@ const AuthPageContainer = () => {
                     </div>
                     <AuthForm />
                     <div className={styles.anotherAccountContainer}>
-                        <Link className={styles.anotherAccount} href={''}>
+                        <Link
+                            className={styles.anotherAccount}
+                            href={'/registerpage'}
+                        >
                             Don’t have an account? Sign up{' '}
                         </Link>
                     </div>
