@@ -35,6 +35,11 @@
     line-height: normal;
 }
 
+.image {
+    max-width: 208px;
+    width: 100%;
+}
+
 .artistName {
     color: $PrimaryWhiteTone1;
     font-size: 16px;

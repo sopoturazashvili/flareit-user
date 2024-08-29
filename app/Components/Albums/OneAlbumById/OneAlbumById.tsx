@@ -1,4 +1,5 @@
 'use client';
+
 import {
     authorNameState,
     globalImageState,
@@ -14,13 +15,23 @@ import { useRecoilState } from 'recoil';
 import useToggleMenu from '@/app/useToggleMenu';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams } from 'next/navigation';
 
-interface albumId {
+interface Musics {
     coverImgUrl: string;
     audioUrl: string;
     title: string;
     id: number;
 }
+
+interface AlbumId {
+    coverImgUrl: string;
+    releaseDate: string;
+    title: string;
+    albumName: string;
+    artistName: string;
+}
+
 const OneAlbumById = () => {
     const { currentCardId, toggleMenu } = useToggleMenu();
     const [, setGlobalsrc] = useRecoilState(musicGlobalState);
@@ -30,17 +41,24 @@ const OneAlbumById = () => {
     const [, setImage] = useRecoilState(globalImageState);
     const [, setArtist] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
-    const [albumId, setAlbumId] = useState<albumId[]>([]);
+    const [album, setAlbum] = useState<AlbumId | null>(null);
+    const [musics, setMusics] = useState<Musics[]>([]);
+
+    const param = useParams();
+    const id = param.id;
     useEffect(() => {
-        axios
-            .get('https://enigma-wtuc.onrender.com/musics')
-            .then((result) => {
-                setAlbumId(result.data);
-            })
-            .catch((error) => {
-                console.error('Error fetching music data:', error);
-            });
-    }, []);
+        if (id) {
+            axios
+                .get(`https://enigma-wtuc.onrender.com/albums/${id}`)
+                .then((res) => {
+                    setAlbum(res.data);
+                    setMusics(res.data.musics);
+                })
+                .catch((error) => {
+                    alert(error);
+                });
+        }
+    }, [id]);
 
     const handleClick = (
         item: {
@@ -52,31 +70,41 @@ const OneAlbumById = () => {
         },
         index: number,
     ) => {
-        const allSrc = albumId.map((item) => item.audioUrl);
-        const imageSrc = albumId.map((item) => item.coverImgUrl);
-        const artist = albumId.map((item) => item.title);
-        const title = albumId.map((item) => item.title);
+        const allSrc = musics.map((music) => music.audioUrl);
+        const imageSrc = musics.map((music) => music.coverImgUrl);
+
         setIsPlaying(true);
         setGlobalId(item.id);
         setImage(imageSrc);
         setGlobalsrc(allSrc);
         setActiveIdx(index);
-        setArtist(artist);
-        setTitle(title);
+        setArtist([item.title ?? '']);
+        setTitle([item.title ?? '']);
     };
+
     return (
         <div className={styles.OneAlbumByIdContainer}>
             <div>
-                <div className={styles.photoContainer}>
-                    <img src="/images/OneAlbumPhoto.svg" alt="OneAlbumPhoto" />
-                    <div className={styles.nameContainer}>
-                        <span className={styles.musicName}>Lovers</span>
-                        <span className={styles.artistName}>Taylor Swift</span>
+                {album && (
+                    <div className={styles.photoContainer}>
+                        <img
+                            className={styles.image}
+                            src={album.coverImgUrl}
+                            alt="Album Cover"
+                        />
+                        <div className={styles.nameContainer}>
+                            <span className={styles.musicName}>
+                                {album.title}
+                            </span>
+                            <span className={styles.artistName}>
+                                {album.artistName}
+                            </span>
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
             <div className={styles.musicCard}>
-                {albumId.map((item, index) => (
+                {musics.map((item, index) => (
                     <MusicCard
                         key={item.id}
                         image={item.coverImgUrl}
@@ -84,7 +112,7 @@ const OneAlbumById = () => {
                         teamName={item.title}
                         id={item.id}
                         deleteOrLike={false}
-                        isPlaying={isPlaying && globalMusicId === index}
+                        isPlaying={isPlaying && globalMusicId === item.id}
                         onClick={() => handleClick(item, index)}
                         index={index}
                         menuOpen={currentCardId === item.id}
