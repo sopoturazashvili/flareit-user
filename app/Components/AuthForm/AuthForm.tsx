@@ -23,7 +23,6 @@ const AuthForm = () => {
     const router = useRouter();
 
     const onSubmit = (values: FormInputs) => {
-        console.log(values);
         axios
             .post<Response>(
                 'https://enigma-wtuc.onrender.com/auth/login',
@@ -35,7 +34,7 @@ const AuthForm = () => {
                 const token = response.data.access_token;
 
                 if (token) {
-                    localStorage.setItem('authToken', token);
+                    localStorage.setItem('token', token);
                     console.log('Token saved in localStorage:', token);
                     router.push('/');
                 }
