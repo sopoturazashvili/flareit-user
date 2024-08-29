@@ -1,121 +1,31 @@
+'use client';
+import { useEffect, useState } from 'react';
 import AlbumCard from '../AlbumCard/AlbumCard';
 import styles from './TopAlbums.module.scss';
+import axios from 'axios';
+
+interface Album {
+    coverImgUrl: string;
+    title: string;
+    releaseDate: string;
+    albumName: string;
+    artistName: string;
+    id: number;
+}
 
 const TopAlbums = () => {
-    const albums = [
-        {
-            id: 1,
-            artistName: 'Gunna',
-            albumName: 'one of wun',
-            year: '2019',
-            image: '/images/guna.png',
-        },
-        {
-            id: 2,
-            artistName: 'Morgan Wallen',
-            albumName: 'Dangerous',
-            year: '2000',
-            image: '/images/dangerous.png',
-        },
-        {
-            id: 3,
-            artistName: 'Twenty one pilot',
-            albumName: 'Clancy',
-            year: '2000',
-            image: '/images/clancy.png',
-        },
-        {
-            id: 4,
-            artistName: 'Billie Eillish',
-            albumName: 'Hit me hard...',
-            year: '2005',
-            image: '/images/billie.png',
-        },
-        {
-            id: 5,
-            artistName: 'Olivia Rodrigo',
-            albumName: 'Guts',
-            year: '2000',
-            image: '/images/taylorSwift.png',
-        },
-        {
-            id: 6,
-            artistName: 'Taylor Swift',
-            albumName: '1989',
-            year: '1989',
-            image: '/images/1989.png',
-        },
-        {
-            id: 7,
-            artistName: 'SZA',
-            albumName: 'SOS',
-            year: '2009',
-            image: '/images/sza.png',
-        },
-        {
-            id: 8,
-            artistName: 'Taylor Swift',
-            albumName: 'Lover',
-            year: '2001',
-            image: '/images/lover.png',
-        },
-        {
-            id: 9,
-            artistName: 'Taylor Swift',
-            albumName: 'Lover',
-            year: '2001',
-            image: '/images/lover.png',
-        },
-        {
-            id: 10,
-            artistName: 'Taylor Swift',
-            albumName: 'Lover',
-            year: '2001',
-            image: '/images/lover.png',
-        },
-        {
-            id: 11,
-            artistName: 'Taylor Swift',
-            albumName: 'Lover',
-            year: '2001',
-            image: '/images/lover.png',
-        },
-        {
-            id: 12,
-            artistName: 'Taylor Swift',
-            albumName: 'Lover',
-            year: '2001',
-            image: '/images/lover.png',
-        },
-        {
-            id: 13,
-            artistName: 'Taylor Swift',
-            albumName: 'Lover',
-            year: '2001',
-            image: '/images/lover.png',
-        },
-        {
-            id: 14,
-            artistName: 'Taylor Swift',
-            albumName: 'Lover',
-            year: '2001',
-            image: '/images/lover.png',
-        },
-        {
-            id: 15,
-            artistName: 'Taylor Swift',
-            albumName: 'Lover',
-            year: '2001',
-            image: '/images/lover.png',
-        },
-        {
-            id: 16,
-            artistName: 'Taylor Swift',
-            albumName: 'Lover',
-            year: '2001',
-            image: '/images/lover.png',
-        },
-    ];
+    const [albums, setAlbums] = useState<Album[]>([]);
+
+    useEffect(() => {
+        axios
+            .get('https://enigma-wtuc.onrender.com/albums')
+            .then((res) => {
+                setAlbums(res.data);
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    }, []);
 
     return (
         <div className={styles.container}>
@@ -126,9 +36,9 @@ const TopAlbums = () => {
                 {albums.map((album) => (
                     <AlbumCard
                         key={album.id}
-                        image={album.image}
-                        albumName={album.albumName}
-                        year={album.year}
+                        image={album.coverImgUrl}
+                        albumName={album.title}
+                        year={album.releaseDate}
                         artistName={album.artistName}
                         id={album.id}
                         pagePathName={'topalbums'}
