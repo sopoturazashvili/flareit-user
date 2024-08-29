@@ -95,6 +95,12 @@ const Playlists = () => {
             </div>
             <div className={styles.list}>
                 <AddPlaylist />
+                <ArtistPlaylistItem
+                    image={'/icons/liked_music_icon.jpg'}
+                    text={'Liked Songs'}
+                    imageRound={false}
+                    pathName={'/playlists/likedsongs'}
+                />
                 {playlists.map((playlist) => (
                     <ArtistPlaylistItem
                         key={playlist.id}
