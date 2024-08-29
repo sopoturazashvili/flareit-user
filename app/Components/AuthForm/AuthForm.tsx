@@ -1,7 +1,7 @@
 import styles from './AuthForm.module.scss';
 import Input from '@/app/Components/Input/Input';
 import axios, { AxiosError, AxiosResponse } from 'axios';
-import router from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
 interface FormInputs {
@@ -19,6 +19,9 @@ const AuthForm = () => {
         handleSubmit,
         formState: { errors, isSubmitted },
     } = useForm<FormInputs>();
+
+    const router = useRouter();
+
     const onSubmit = (values: FormInputs) => {
         console.log(values);
         axios
