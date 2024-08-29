@@ -53,10 +53,6 @@ const ArtistPageById = () => {
     const [artist, setArtistData] = useState<Artist | null>(null);
     const [albums, setAlbums] = useState<Album[]>([]);
 
-    console.log(artist, 'artist');
-    console.log(albums, 'albums');
-    console.log(musics, 'musics');
-
     const { id } = useParams();
 
     useEffect(() => {
