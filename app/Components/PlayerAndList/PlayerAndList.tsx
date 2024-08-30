@@ -42,7 +42,7 @@ const PlayerAndList = () => {
                 setMusicList(res.data);
             })
             .catch((err) => {
-                alert(err);
+                alert(err)
             });
     }, []);
     const handleClick = (item: MusicListItemProps, index: number) => {
