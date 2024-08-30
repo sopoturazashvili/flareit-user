@@ -44,9 +44,9 @@ const TabeltVolume = (props: Props) => {
                 )}
                 <TabletVolumeInput tabletWidth={props.tabletWidth} />
                 <img
-                    src="/PlayerControler/Involved.svg"
+                    src="/PlayerControler/involved.svg"
                     style={tabletInvolved}
-                    alt="Involved"
+                    alt="involved"
                 />
             </div>
         </div>

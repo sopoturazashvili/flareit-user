@@ -58,7 +58,7 @@ const DesktopVolume = (props: Props) => {
                 <VolumeInput width={props.width} />
                 <img
                     className={styles.Involved}
-                    src="/PlayerControler/Involved.svg"
+                    src="/PlayerControler/involved.svg"
                     style={involved}
                     alt="img"
                 />
