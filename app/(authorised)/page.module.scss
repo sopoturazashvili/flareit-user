@@ -2,7 +2,6 @@
 
 .main {
     background-color: $PrimaryBlackTone2;
-    height: 100vh;
     overflow: auto;
     width: 100%;
     padding-bottom: 50px;
@@ -13,6 +12,13 @@
 }
 
 .artistCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+}
+
+.albumCard {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 10px;
@@ -53,6 +59,15 @@
         overflow-x: scroll;
         width: 100%;
     }
+    .albumCard {
+        overflow-x: scroll;
+        width: 100%;
+        padding-bottom: 130px;
+    }
+
+    .albumCard::-webkit-scrollbar {
+        display: none;
+    }
     .artistCard::-webkit-scrollbar {
         display: none;
     }
@@ -69,6 +84,15 @@
         overflow-x: scroll;
         width: 100%;
         display: flex;
+    }
+    .albumCard {
+        overflow-x: scroll;
+        width: 100%;
+        display: flex;
+        padding-bottom: 130px;
+    }
+    .albumCard::-webkit-scrollbar {
+        display: none;
     }
     .artistCard::-webkit-scrollbar {
         display: none;

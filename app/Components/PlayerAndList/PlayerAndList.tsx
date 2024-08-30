@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MusicListItem from '../MusicListItem/MusicListItem';
 import NextPlay from './NextPlay/NextPlay';
 import styles from './PlayerAndList.module.scss';
@@ -14,6 +14,16 @@ import {
     musicId,
     musicNameState,
 } from '@/app/state';
+import axios from 'axios';
+
+interface MusicListItemProps {
+    title: string;
+    coverImgUrl: string;
+    audioUrl: string;
+    artistName: string;
+    id: number;
+    songDuration: string;
+}
 
 const PlayerAndList = () => {
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
@@ -23,64 +33,31 @@ const PlayerAndList = () => {
     const [, setImage] = useRecoilState(globalImageState);
     const [, setMusicName] = useRecoilState(musicNameState);
     const [, setAuthorName] = useRecoilState(authorNameState);
+    const [musicList, setMusicList] = useState<MusicListItemProps[]>([]);
 
-    const data = [
-        {
-            image: '/images/natashaB.png',
-            songTitle: 'Unwritten',
-            artistName: 'Natasha Bedingfield',
-            songDuration: '4:17',
-            id: 49,
-            src: '/Player/Move.mp3',
-        },
-        {
-            image: '/images/natashaB.png',
-            songTitle: 'Unwritten',
-            artistName: 'Natasha Bedingfield',
-            songDuration: '4:17',
-            id: 50,
-            src: '/Player/Mwaki.mp3',
-        },
-        {
-            image: '/images/natashaB.png',
-            songTitle: 'Unwritten',
-            artistName: 'Natasha Bedingfield',
-            songDuration: '4:17',
-            id: 51,
-            src: '/Player/Good.mp3',
-        },
-        {
-            image: '/images/natashaB.png',
-            songTitle: 'Unwritten',
-            artistName: 'Natasha Bedingfield',
-            songDuration: '4:17',
-            id: 52,
-            src: '/Player/Shouse.mp3',
-        },
-    ];
+    useEffect(() => {
+        axios
+            .get('https://enigma-wtuc.onrender.com/musics/shuffle')
+            .then((res) => {
+                setMusicList(res.data);
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    }, []);
+    const handleClick = (item: MusicListItemProps, index: number) => {
+        const allSrc = musicList.map((music) => music.audioUrl);
+        const imageSrc = musicList.map((music) => music.coverImgUrl);
+        const musicNames = musicList.map((music) => music.title);
+        const authors = musicList.map((music) => music.artistName);
 
-    const handleClick = (
-        item: {
-            image?: string;
-            songTitle?: string;
-            artistName?: string;
-            songDuration?: string;
-            id: number;
-            src?: string;
-        },
-        index: number,
-    ) => {
-        const allSrc = data.map((item) => item.src);
-        const imageSrc = data.map((item) => item.image);
-        const musicName = data.map((item) => item.songTitle);
-        const title = data.map((item) => item.artistName);
         setIsPlaying(true);
         setGlobalId(item.id);
         setImage(imageSrc);
         setGlobalsrc(allSrc);
         setActiveIdx(index);
-        setMusicName(musicName);
-        setAuthorName(title);
+        setMusicName(musicNames);
+        setAuthorName(authors);
     };
 
     return (
@@ -89,12 +66,12 @@ const PlayerAndList = () => {
                 <div className={styles.playerAndListContainer}>
                     <NextPlay />
                     <div className={styles.listDataContainer}>
-                        {data.map((item, index) => (
+                        {musicList.map((item, index) => (
                             <MusicListItem
                                 index={index}
                                 key={item.id}
-                                image={item.image}
-                                songTitle={item.songTitle}
+                                image={item.coverImgUrl}
+                                songTitle={item.title}
                                 artistName={item.artistName}
                                 songDuration={item.songDuration}
                                 isPlaying={

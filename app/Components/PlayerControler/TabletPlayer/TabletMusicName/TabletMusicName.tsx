@@ -10,9 +10,7 @@ const TabletMusicName = () => {
         <div className={styles.tabletMusicName}>
             <img
                 className={styles.image}
-                src={
-                    image[index] ? image[index] : '/PlayerControler/Default.svg'
-                }
+                src={image[index] ? image[index] : '/images/MusicLogo.svg'}
                 alt="photo"
             />
             <TabletName />
