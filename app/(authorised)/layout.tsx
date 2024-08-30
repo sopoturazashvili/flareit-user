@@ -24,7 +24,7 @@ const Layout = (props: Props) => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token) {
-            router.replace('/authPage');
+            router.replace('/auth');
         } else {
             setIsAuthenticated(true);
         }

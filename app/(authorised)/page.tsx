@@ -1,7 +1,5 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 import SectionHeader from '../Components/SectionHeader/SectionHeader';
 import TopFourAlbums from '../Components/TopFourAlbums/TopFourAlbums';
 import TopFourArtist from '../Components/TopFourArtist/TopFourArtist';
@@ -11,23 +9,6 @@ import TrendHitsCard from '../Components/TrendHitsCard/TrendHitsCard';
 import styles from './page.module.scss';
 
 export default function Home() {
-    const router = useRouter();
-    const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(
-        null,
-    );
-
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            router.replace('/authPage');
-        } else {
-            setIsAuthenticated(true);
-        }
-    }, [router]);
-
-    if (isAuthenticated === null) {
-        return <div className={styles.hidden}></div>;
-    }
     return (
         <main className={styles.main}>
             <div>
