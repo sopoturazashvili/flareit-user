@@ -1,6 +1,6 @@
 import styles from './RegisterForm.module.scss';
 import Input from '@/app/Components/Input/Input';
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosError, isAxiosError } from 'axios';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -19,16 +19,31 @@ const RegisterForm = () => {
         formState: { errors, isSubmitted },
     } = useForm<FormInputs>();
 
-    const onSubmit = (values: FormInputs) => {
-        axios
-            .post<Response>('https://enigma-wtuc.onrender.com/users', values)
-            .then((response: AxiosResponse<Response>) => {
-                window.location.href = '/authPage';
-                console.log('Data sent successfully:', response.data);
-            })
-            .catch(() => {
-                setFail('errorr');
-            });
+    const onSubmit = async (values: FormInputs) => {
+        try {
+            await axios.post('https://enigma-wtuc.onrender.com/users', values);
+            window.location.href = '/authPage';
+        } catch (error) {
+            if (isAxiosError(error)) {
+                const axiosError = error as AxiosError;
+
+                if (axiosError.response) {
+                    if (axiosError.response.data === 'User exists') {
+                        setFail('Account with this email already exists');
+                    } else {
+                        setFail('Something went wrong. Please try again.');
+                    }
+                } else if (axiosError.request) {
+                    setFail(
+                        'No response from the server. Please check your network connection.',
+                    );
+                } else {
+                    setFail('An unexpected error occurred.');
+                }
+            } else {
+                setFail('An unexpected error occurred.');
+            }
+        }
     };
 
     return (
