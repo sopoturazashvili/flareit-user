@@ -23,7 +23,7 @@ const MusicListItem = (props: Props) => {
                 <div className={styles.itemHoverPhoto} onClick={props.onClick}>
                     {
                         <Image
-                            src="/Images/PlayHover.svg"
+                            src="/images/PlayHover.svg"
                             alt="Pause Button"
                             width={54}
                             height={56}
