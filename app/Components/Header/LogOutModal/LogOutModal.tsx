@@ -13,7 +13,7 @@ const LogOutModal = (props: Props) => {
     const handleLogout = (event: React.MouseEvent) => {
         event.stopPropagation();
         localStorage.removeItem('token');
-        router.push('/authPage');
+        router.push('/auth');
     };
 
     return (
