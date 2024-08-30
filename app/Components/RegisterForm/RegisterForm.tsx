@@ -1,14 +1,9 @@
+import { ErrorResponse, RegisterInputs } from '@/app/interfaces/item';
 import styles from './RegisterForm.module.scss';
 import Input from '@/app/Components/Input/Input';
 import axios, { AxiosError, isAxiosError } from 'axios';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-
-interface FormInputs {
-    email: string;
-    password: string;
-    confirmPassword: string;
-}
 
 const RegisterForm = () => {
     const [fail, setFail] = useState<string | null>(null);
@@ -17,9 +12,9 @@ const RegisterForm = () => {
         getValues,
         handleSubmit,
         formState: { errors, isSubmitted },
-    } = useForm<FormInputs>();
+    } = useForm<RegisterInputs>();
 
-    const onSubmit = async (values: FormInputs) => {
+    const onSubmit = async (values: RegisterInputs) => {
         try {
             await axios.post('https://enigma-wtuc.onrender.com/users', values);
             window.location.href = '/authPage';
@@ -28,7 +23,11 @@ const RegisterForm = () => {
                 const axiosError = error as AxiosError;
 
                 if (axiosError.response) {
-                    if (axiosError.response.data === 'User exists') {
+                    console.log(axiosError.response.data);
+                    const responseData = axiosError.response
+                        .data as ErrorResponse;
+
+                    if (responseData.message === 'User exists') {
                         setFail('Account with this email already exists');
                     } else {
                         setFail('Something went wrong. Please try again.');

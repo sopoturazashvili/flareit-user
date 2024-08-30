@@ -1,28 +1,20 @@
+import { AuthInputs, Response } from '@/app/interfaces/item';
 import styles from './AuthForm.module.scss';
 import Input from '@/app/Components/Input/Input';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
-interface FormInputs {
-    email: string;
-    password: string;
-}
-
-interface Response {
-    access_token: string;
-}
-
 const AuthForm = () => {
     const {
         register,
         handleSubmit,
         formState: { errors, isSubmitted },
-    } = useForm<FormInputs>();
+    } = useForm<AuthInputs>();
 
     const router = useRouter();
 
-    const onSubmit = (values: FormInputs) => {
+    const onSubmit = (values: AuthInputs) => {
         axios
             .post<Response>(
                 'https://enigma-wtuc.onrender.com/auth/login',
