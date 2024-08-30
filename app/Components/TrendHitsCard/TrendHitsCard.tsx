@@ -52,7 +52,7 @@ const TrendHitsCard: React.FC = () => {
                     <FillAndTextButton
                         text={'View playlist'}
                         fill={true}
-                        href={'/trendHits'}
+                        href={'/trendhits'}
                     />
                 </div>
             </div>
