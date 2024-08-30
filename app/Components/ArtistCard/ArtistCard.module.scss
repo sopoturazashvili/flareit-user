@@ -55,6 +55,18 @@
     .infoContainer {
         max-width: 55px;
         text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .artistName {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-width: 1300px) {
+    .infoContainer {
+        max-width: 55px;
+        text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
     }
