@@ -23,7 +23,7 @@ const AuthPageContainer = () => {
                     <div className={styles.anotherAccountContainer}>
                         <Link
                             className={styles.anotherAccount}
-                            href={'/registerpage'}
+                            href={'/register'}
                         >
                             Don’t have an account? Sign up{' '}
                         </Link>
