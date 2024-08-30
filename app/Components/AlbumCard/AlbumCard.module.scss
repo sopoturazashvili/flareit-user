@@ -57,13 +57,21 @@
     text-transform: capitalize;
 }
 
+.albumName {
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
 @media screen and (min-width: 1023px) and (max-width: 1270px) {
     .container {
         min-width: 80px;
     }
 }
 
-@media screen and (min-width: 1023px) and (max-width: 1450px) {
+@media screen and (min-width: 1023px) and (max-width: 1500px) {
     .infoContainer {
         max-width: 55px;
         text-overflow: ellipsis;
@@ -76,6 +84,11 @@
         overflow: hidden;
         white-space: nowrap;
         color: rgba(255, 255, 255, 0.64);
+    }
+    .albumName {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
     }
 }
 
