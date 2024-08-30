@@ -15,7 +15,7 @@ const TopFourArtist = () => {
 
     useEffect(() => {
         axios
-            .get('https://enigma-wtuc.onrender.com/authors')
+            .get('https://enigma-wtuc.onrender.com/authors/top-authors')
             .then((res) => {
                 setArtists(res.data);
             })
