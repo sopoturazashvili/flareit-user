@@ -2,7 +2,6 @@
 
 import RegisterForm from '@/app/Components/RegisterForm/RegisterForm';
 import styles from './RegisterPageContainer.module.scss';
-import Image from 'next/image';
 
 const RegisterPageContainer = () => {
     return (
@@ -13,9 +12,8 @@ const RegisterPageContainer = () => {
             <div className={styles.containerInside}>
                 <div className={styles.registerPageContainer}>
                     <div className={styles.flareIt}>
-                        <Image
-                            width={150}
-                            height={150}
+                        <img
+                            className={styles.flareItPhoto}
                             alt="Flare It"
                             src={'/authPage/authFlareIt.svg'}
                         />
