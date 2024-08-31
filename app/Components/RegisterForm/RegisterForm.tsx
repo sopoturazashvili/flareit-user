@@ -4,6 +4,7 @@ import Input from '@/app/Components/Input/Input';
 import axios, { AxiosError, isAxiosError } from 'axios';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Link from 'next/link';
 
 const RegisterForm = () => {
     const [fail, setFail] = useState<string | null>(null);
@@ -118,6 +119,11 @@ const RegisterForm = () => {
                         type="submit"
                         value="Sign Up"
                     />
+                </div>
+                <div className={styles.anotherAccountContainer}>
+                    <Link className={styles.anotherAccount} href={'/auth'}>
+                        do you have account? Sign in
+                    </Link>
                 </div>
             </div>
         </form>
