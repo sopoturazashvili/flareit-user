@@ -29,7 +29,7 @@ const AddPlaylist = () => {
                         }}
                     >
                         <img
-                            src="/Images/CreatedPlaylist.svg"
+                            src="/images/createdPlaylist.svg"
                             alt="CreatedPlaylist"
                         />
                     </div>
