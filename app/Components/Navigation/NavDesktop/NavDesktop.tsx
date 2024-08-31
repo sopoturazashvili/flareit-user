@@ -43,9 +43,6 @@ const NavDesktop = () => {
     };
     const pathname = usePathname();
 
-    const logOut = () => {
-        console.log('Log Out');
-    };
     return (
         <div className={styles.mainNavigation}>
             <div className={styles.lineContainer}>
@@ -91,7 +88,6 @@ const NavDesktop = () => {
                     ))}
                     <div className={styles.logOutTablet}>
                         <LogOutTablet
-                            onClick={logOut}
                             image={'Image/LogOutIcon.svg'}
                             title={'Log Out'}
                         />
