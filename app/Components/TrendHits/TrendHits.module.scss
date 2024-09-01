@@ -6,6 +6,7 @@
     gap: 20px;
     height: 100%;
     overflow: auto;
+    padding-bottom: 50px;
 }
 
 .container::-webkit-scrollbar {
@@ -27,6 +28,9 @@
 @media (max-width: 1023px) {
     .containerInside {
         grid-template-columns: 1fr;
+    }
+    .container {
+        padding-bottom: 170px;
     }
 }
 

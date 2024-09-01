@@ -70,7 +70,7 @@ const Playlist = (props: Props) => {
         setTitle(title);
     };
     return (
-        <div className={styles.PlaylistContainer}>
+        <div className={styles.playlistContainer}>
             <div className={styles.photoAndNameCont}>
                 <div className={styles.photoAndName}>
                     <img src={props.image} />

@@ -1,0 +1,35 @@
+.library {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.libraryList {
+    display: flex;
+    padding: 8px 16px;
+    gap: 8px;
+    border-radius: 8px;
+    background: #161616;
+}
+
+.title {
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.libraryTitle {
+    color: #fff;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
