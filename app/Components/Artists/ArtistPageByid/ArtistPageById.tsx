@@ -2,7 +2,6 @@
 
 import { useParams } from 'next/navigation';
 import AlbumCard from '../../AlbumCard/AlbumCard';
-import MusicCard from '../../MusicCard/MusicCard';
 import styles from './ArtistPageById.module.scss';
 import { useRecoilState } from 'recoil';
 import {
@@ -17,6 +16,7 @@ import {
 import useToggleMenu from '@/app/useToggleMenu';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import MusicCard from '../../MusicCard/MusicCard';
 
 interface Music {
     coverImgUrl: string;

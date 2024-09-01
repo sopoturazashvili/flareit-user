@@ -1,6 +1,5 @@
 'use client';
 
-import MusicCard from '@/app/Components/MusicCard/MusicCard';
 import styles from './TrendHits.module.scss';
 import {
     authorNameState,
@@ -13,6 +12,7 @@ import {
 } from '@/app/state';
 import { useRecoilState } from 'recoil';
 import useToggleMenu from '@/app/useToggleMenu';
+import MusicCard from '../MusicCard/MusicCard';
 
 const TrendHits = () => {
     const { currentCardId, toggleMenu } = useToggleMenu();
