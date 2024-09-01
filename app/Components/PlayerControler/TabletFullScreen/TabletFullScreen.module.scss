@@ -1,10 +1,8 @@
 .TabletFullScreen {
     background: linear-gradient(180deg, #1f485f 0%, #121522 100%);
-    // width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
-    // overflow: auto;
     top: 0;
     right: 0;
     bottom: 0;
@@ -14,7 +12,6 @@
 .imageAndName {
     display: flex;
     flex-direction: column;
-    // align-items: center;
     gap: 14px;
     width: 100%;
 }
@@ -22,7 +19,6 @@
 .tabletFullscreenPadd {
     padding: 0px 24px;
     height: 100vh;
-    // width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,4 +39,5 @@
     max-width: 535px;
     width: 100%;
     text-align: right;
+    padding-bottom: 12px;
 }

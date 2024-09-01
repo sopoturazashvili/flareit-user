@@ -21,17 +21,19 @@
 .inputAndSwitch {
     display: flex;
     flex-direction: column;
-    max-width: 361px;
     width: 100%;
     gap: 8px;
 }
 
-.tabletMuscName {
-    max-width: 201px;
-    width: 100%;
-}
+
 
 .volumAndSwitch {
     display: flex;
     justify-content: space-between;
+}
+
+@media screen and (min-width:600px) and (max-width:640px) {
+    .tabletPlayerContainer {
+        gap: 30px;
+    }
 }

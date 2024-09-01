@@ -1,6 +1,6 @@
 import MusicListItem from '@/app/Components/MusicListItem/MusicListItem';
 import styles from './MusicList.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import {
     authorNameState,
@@ -11,6 +11,16 @@ import {
     musicId,
     musicNameState,
 } from '@/app/state';
+import axios from 'axios';
+
+interface musicListitem {
+    title: string;
+    coverImgUrl: string;
+    audioUrl: string;
+    artistName: string;
+    id: number;
+    songDuration: string;
+}
 
 const MusicList = () => {
     const [, setGlobalsrc] = useRecoilState(musicGlobalState);
@@ -20,81 +30,17 @@ const MusicList = () => {
     const [, setImage] = useRecoilState(globalImageState);
     const [, setArtist] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
-    const data = [
-        {
-            image: '/images/natashaB.png',
-            songTitle: 'Unwritten',
-            artistName: 'Natasha Bedingfield',
-            songDuration: '4:17',
-            src: '/Player/stairway.mp3',
-            id: 80,
-        },
-        {
-            image: '/images/natashaB.png',
-            songTitle: 'Unwritten',
-            artistName: 'Natasha Bedingfield',
-            songDuration: '4:17',
-            src: '/Player/Bellin.mp3',
-            id: 81,
-        },
-        {
-            image: '/images/natashaB.png',
-            songTitle: 'Unwritten',
-            artistName: 'Natasha Bedingfield',
-            songDuration: '4:17',
-            src: '/Player/judas.mp3',
-            id: 82,
-        },
-        {
-            image: '/images/natashaB.png',
-            songTitle: 'Unwritten',
-            artistName: 'Natasha Bedingfield',
-            songDuration: '4:17',
-            src: '/Player/Bellaire.mp3',
-            id: 83,
-        },
-        {
-            image: '/images/natashaB.png',
-            songTitle: 'Unwritten',
-            artistName: 'Natasha Bedingfield',
-            songDuration: '4:17',
-            src: '/Player/IVdasi.mp3',
-            id: 84,
-        },
-        {
-            image: '/images/natashaB.png',
-            songTitle: 'Unwritten',
-            artistName: 'Natasha Bedingfield',
-            songDuration: '4:17',
-            src: '/Player/SoMany.mp3',
-            id: 85,
-        },
-        {
-            image: '/images/natashaB.png',
-            songTitle: 'Unwritten',
-            artistName: 'Natasha Bedingfield',
-            songDuration: '4:17',
-            src: '/Player/Kendrick.mp3',
-            id: 86,
-        },
-        {
-            image: '/images/natashaB.png',
-            songTitle: 'Unwritten',
-            artistName: 'Natasha Bedingfield',
-            songDuration: '4:17',
-            src: '/Player/stairway.mp3',
-            id: 87,
-        },
-        {
-            image: '/images/natashaB.png',
-            songTitle: 'Unwritten',
-            artistName: 'Natasha Bedingfield',
-            songDuration: '4:17',
-            src: '/Player/Bellin.mp3',
-            id: 88,
-        },
-    ];
-
+    const [musicList, setMusicList] = useState<musicListitem[]>([]);
+    useEffect(() => {
+        axios
+            .get('https://enigma-wtuc.onrender.com/musics/shuffle')
+            .then((res) => {
+                setMusicList(res.data);
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    }, []);
     const handleClick = (
         item: {
             image?: string;
@@ -106,10 +52,10 @@ const MusicList = () => {
         },
         index: number,
     ) => {
-        const allSrc = data.map((item) => item.src);
-        const imageSrc = data.map((item) => item.image);
-        const artist = data.map((item) => item.artistName);
-        const title = data.map((item) => item.songTitle);
+        const allSrc = musicList.map((item) => item.audioUrl);
+        const imageSrc = musicList.map((item) => item.coverImgUrl);
+        const artist = musicList.map((item) => item.artistName);
+        const title = musicList.map((item) => item.title);
         setIsPlaying(true);
         setGlobalId(item.id);
         setImage(imageSrc);
@@ -150,20 +96,22 @@ const MusicList = () => {
                 <div className={styles.nameAndMusic}>
                     <p className={styles.nextContainer}>Next Play</p>
                     <div className={styles.musicListItem}>
-                        {data.slice(0, musicUp ? 6 : 0).map((item, index) => (
-                            <MusicListItem
-                                id={index}
-                                key={item.songTitle}
-                                image={item.image}
-                                songTitle={item.songTitle}
-                                artistName={item.artistName}
-                                songDuration={item.songDuration}
-                                onClick={() => {
-                                    handleClick(item, index);
-                                }}
-                                index={index}
-                            />
-                        ))}
+                        {musicList
+                            .slice(0, musicUp ? 6 : 0)
+                            .map((item, index) => (
+                                <MusicListItem
+                                    id={index}
+                                    key={item.id}
+                                    image={item.coverImgUrl}
+                                    songTitle={item.title}
+                                    artistName={item.artistName}
+                                    songDuration={item.songDuration}
+                                    onClick={() => {
+                                        handleClick(item, index);
+                                    }}
+                                    index={index}
+                                />
+                            ))}
                     </div>
                 </div>
             </div>

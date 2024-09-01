@@ -1,7 +1,7 @@
 import styles from './LogOut.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 interface Props {
     src: string;
@@ -11,24 +11,36 @@ interface Props {
 }
 
 const LogOut = (props: Props) => {
-    const [profile, setProfile] = useState(false);
+    const pathname = usePathname();
 
-    const onClick = () => {
-        setProfile(!profile);
-    };
     return (
-        <Link
-            className={styles.profile}
-            onClick={onClick}
-            href={'/mobilelogout'}
-        >
-            <Image
-                src={props.src}
-                width={props.width}
-                height={props.height}
-                alt={'profile'}
-            />
-            {props.title && <span className={styles.title}>{props.title}</span>}
+        <Link href="/mobilelogout" passHref>
+            <div className={styles.profile}>
+                {pathname === '/mobilelogout' ? (
+                    <Image
+                        src="/Image/mobileProfile.svg"
+                        width={props.width}
+                        height={props.height}
+                        alt={props.title}
+                    />
+                ) : (
+                    <Image
+                        src={props.src}
+                        width={props.width}
+                        height={props.height}
+                        alt={props.title}
+                    />
+                )}
+                <span
+                    className={
+                        pathname === '/mobilelogout'
+                            ? styles.pink
+                            : styles.title
+                    }
+                >
+                    {props.title}
+                </span>
+            </div>
         </Link>
     );
 };

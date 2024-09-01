@@ -30,7 +30,7 @@ const NavMobile = () => {
             image: '/Image/Library.svg',
             title: 'Library',
             pinkImage: '/Image/pinkLibrary.svg',
-            href: '/artists',
+            href: '/mobilelibrary',
             key: 'library',
         },
     ];

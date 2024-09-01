@@ -20,14 +20,14 @@ const AddPlaylist = () => {
 
     return (
         <>
-            <div className={styles.createdPlaylistContainer}>
+            <div
+                className={styles.createdPlaylistContainer}
+                onClick={() => {
+                    setIsModalOpen(!isModalOpen);
+                }}
+            >
                 <div className={styles.createdPlaylist}>
-                    <div
-                        className={styles.icon}
-                        onClick={() => {
-                            setIsModalOpen(!isModalOpen);
-                        }}
-                    >
+                    <div className={styles.icon}>
                         <img
                             src="/images/createdPlaylist.svg"
                             alt="CreatedPlaylist"
