@@ -1,5 +1,4 @@
 import styles from './MusicCard.module.scss';
-import LikeButton from '../LikeButton/LikeButton';
 import DeleteBox from '../DleleteBox/DeleteBox';
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
@@ -61,11 +60,7 @@ const MusicCard = (props: Props) => {
                 </div>
             </div>
             <div className={styles.buttonsContainer}>
-                {props.deleteOrLike ? (
-                    <DeleteBox id={props.id} />
-                ) : (
-                    <LikeButton isLiked={false} id={props.id} />
-                )}
+                {props.deleteOrLike && <DeleteBox id={props.id} />}
                 <div onClick={props.toggleMenu} className={styles.dots}>
                     <BiDotsVerticalRounded size={24} color="white" />
                     {props.menuOpen && (

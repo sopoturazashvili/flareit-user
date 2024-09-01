@@ -9,13 +9,13 @@ import {
     musicId,
     musicNameState,
 } from '@/app/state';
-import MusicCard from '../../MusicCard/MusicCard';
 import styles from './OneAlbumById.module.scss';
 import { useRecoilState } from 'recoil';
 import useToggleMenu from '@/app/useToggleMenu';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'next/navigation';
+import MusicCard from '../../MusicCard/MusicCard';
 
 interface Musics {
     coverImgUrl: string;

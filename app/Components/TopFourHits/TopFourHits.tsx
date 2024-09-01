@@ -1,5 +1,4 @@
 import { useRecoilState } from 'recoil';
-import MusicCard from '../MusicCard/MusicCard';
 import {
     authorNameState,
     globalImageState,
@@ -12,6 +11,7 @@ import {
 import useToggleMenu from '@/app/useToggleMenu';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import MusicCard from '../MusicCard/MusicCard';
 
 interface Music {
     coverImgUrl: string;
