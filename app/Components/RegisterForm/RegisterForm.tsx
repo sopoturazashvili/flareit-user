@@ -18,7 +18,7 @@ const RegisterForm = () => {
     const onSubmit = async (values: RegisterInputs) => {
         try {
             await axios.post('https://enigma-wtuc.onrender.com/users', values);
-            window.location.href = '/authPage';
+            window.location.href = '/auth';
         } catch (error) {
             if (isAxiosError(error)) {
                 const axiosError = error as AxiosError;
