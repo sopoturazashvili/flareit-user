@@ -3,15 +3,7 @@ import { useEffect, useState } from 'react';
 import AlbumCard from '../AlbumCard/AlbumCard';
 import styles from './albums.module.scss';
 import axios from 'axios';
-
-interface Album {
-    coverImgUrl: string;
-    title: string;
-    releaseDate: string;
-    albumName: string;
-    artistName: string;
-    id: number;
-}
+import { Album } from '@/app/interfaces/item';
 
 const Albums = () => {
     const [albums, setAlbums] = useState<Album[]>([]);

@@ -21,6 +21,7 @@ import MusicCard from '../../MusicCard/MusicCard';
 interface Music {
     coverImgUrl: string;
     audioUrl: string;
+    artistName: string;
     title: string;
     id: number;
 }
@@ -53,8 +54,8 @@ const ArtistPageById = () => {
     const [artist, setArtistData] = useState<Artist | null>(null);
     const [albums, setAlbums] = useState<Album[]>([]);
 
-    const { id } = useParams();
-
+    const params = useParams();
+    const id = params?.id;
     useEffect(() => {
         if (id) {
             const fetchData = async () => {
@@ -62,11 +63,14 @@ const ArtistPageById = () => {
                     const artistResult = await axios.get(
                         `https://enigma-wtuc.onrender.com/authors/${id}`,
                     );
-                    setArtistData(artistResult.data);
-                    setAlbums(artistResult.data.albums);
-                    setMusics(artistResult.data.musics);
+                    setArtistData(artistResult.data || null);
+                    setAlbums(artistResult.data.albums || []);
+                    setMusics(artistResult.data.musics || []);
+
+                    console.log(artistResult);
                 } catch (error) {
-                    alert(error);
+                    console.error('Error fetching artist data:', error);
+                    alert('Failed to fetch artist data. Please try again.');
                 }
             };
             fetchData();
@@ -76,7 +80,7 @@ const ArtistPageById = () => {
     const handleClick = (item: Music, index: number) => {
         const allSrc = musics.map((music) => music.audioUrl);
         const imageSrc = musics.map((music) => music.coverImgUrl);
-        const artistNames = musics.map((music) => music.title);
+        const artistNames = musics.map((music) => music.artistName);
         const titles = musics.map((music) => music.title);
 
         setIsPlaying(true);
@@ -111,7 +115,7 @@ const ArtistPageById = () => {
                         key={music.id}
                         image={music.coverImgUrl}
                         title={music.title}
-                        teamName={music.title}
+                        teamName={music.artistName}
                         deleteOrLike={false}
                         id={music.id}
                         isPlaying={isPlaying && globalMusicId === music.id}
