@@ -4,8 +4,10 @@ import Input from '@/app/Components/Input/Input';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 
 const AuthForm = () => {
+    const [fail, setFail] = useState<string>();
     const {
         register,
         handleSubmit,
@@ -21,8 +23,6 @@ const AuthForm = () => {
                 values,
             )
             .then((response: AxiosResponse<Response>) => {
-                console.log('Data sent successfully:', response.data);
-
                 const token = response.data.access_token;
 
                 if (token) {
@@ -33,6 +33,10 @@ const AuthForm = () => {
             })
             .catch((error: AxiosError) => {
                 console.error('Error sending data:', error);
+
+                if (error.message === 'Request failed with status code 401') {
+                    setFail('Invalid email or password. Please try again.');
+                }
             });
     };
     return (
@@ -69,6 +73,11 @@ const AuthForm = () => {
                     error={errors.password?.message}
                 />
             </div>
+            {fail && (
+                <div className={styles.errorContainer}>
+                    <span className={styles.fail}>{fail}</span>
+                </div>
+            )}
             <div className={styles.inputContainer}>
                 <div className={styles.inputSubbmit}>
                     <input
