@@ -25,7 +25,6 @@
     line-height: 16px;
 }
 
-
 .checkboxContaeiner {
     display: flex;
     align-items: center;
@@ -49,7 +48,6 @@
     justify-content: center;
 }
 
-
 .inputSubbmit {
     max-width: 488px;
     width: 100%;
@@ -67,7 +65,10 @@
     cursor: pointer;
 }
 
-
 .checkboxPointer {
     cursor: pointer;
+}
+
+.fail {
+    color: red;
 }

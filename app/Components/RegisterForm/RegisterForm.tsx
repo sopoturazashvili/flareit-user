@@ -109,7 +109,7 @@ const RegisterForm = () => {
             </div>
             {fail && (
                 <div className={styles.errorContainer}>
-                    <span className={styles.color}>{fail}</span>
+                    <span className={styles.fail}>{fail}</span>
                 </div>
             )}
             <div className={styles.inputContainer}>
