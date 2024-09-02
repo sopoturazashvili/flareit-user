@@ -1,94 +1,24 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import ArtistPlaylistItem from '../ArtistPlaylistListItem/ArtistPlaylistItem';
 import styles from './Artists.module.scss';
+import axios from 'axios';
+import { ArtistCard } from '@/app/interfaces/item';
 
 const Artists = () => {
-    const artists = [
-        {
-            id: 1,
-            name: 'Sia',
-            image: '/images/sia.svg',
-        },
-        {
-            id: 2,
-            name: 'Beyonce',
-            image: '/images/beyonce.svg',
-        },
-        {
-            id: 3,
-            name: 'Ed Sheeran',
-            image: '/images/edSheeran.svg',
-        },
-        {
-            id: 4,
-            name: 'Taylor Swift',
-            image: '/images/taylor.svg',
-        },
-        {
-            id: 5,
-            name: 'Ariana Grande',
-            image: '/images/ariana.svg',
-        },
-        {
-            id: 6,
-            name: 'Sia',
-            image: '/images/sia.svg',
-        },
-        {
-            id: 7,
-            name: 'Sia',
-            image: '/images/sia.svg',
-        },
-        {
-            id: 8,
-            name: 'Sia',
-            image: '/images/sia.svg',
-        },
-        {
-            id: 9,
-            name: 'Sia',
-            image: '/images/sia.svg',
-        },
-        {
-            id: 10,
-            name: 'Sia',
-            image: '/images/sia.svg',
-        },
-        {
-            id: 11,
-            name: 'Sia',
-            image: '/images/sia.svg',
-        },
-        {
-            id: 12,
-            name: 'Sia',
-            image: '/images/sia.svg',
-        },
-        {
-            id: 13,
-            name: 'Sia',
-            image: '/images/sia.svg',
-        },
-        {
-            id: 14,
-            name: 'Sia',
-            image: '/images/sia.svg',
-        },
-        {
-            id: 15,
-            name: 'Sia',
-            image: '/images/sia.svg',
-        },
-        {
-            id: 16,
-            name: 'Sia',
-            image: '/images/sia.svg',
-        },
-        {
-            id: 17,
-            name: 'Sia',
-            image: '/images/sia.svg',
-        },
-    ];
+    const [artists, setArtists] = useState<ArtistCard[]>([]);
+
+    useEffect(() => {
+        axios
+            .get('https://enigma-wtuc.onrender.com/authors')
+            .then((result) => {
+                setArtists(result.data);
+            })
+            .catch((error) => {
+                alert(error);
+            });
+    }, [artists]);
 
     return (
         <div className={styles.container}>
@@ -99,8 +29,8 @@ const Artists = () => {
                 {artists.map((artist) => (
                     <ArtistPlaylistItem
                         key={artist.id}
-                        image={artist.image}
-                        text={artist.name}
+                        image={artist.coverImgUrl}
+                        text={artist.artistName}
                         imageRound={true}
                         pathName={`/artists/${artist.id}`}
                     />
