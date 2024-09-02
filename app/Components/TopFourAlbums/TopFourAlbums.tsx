@@ -20,7 +20,7 @@ const TopFourAlbums = (props: Props) => {
 
     useEffect(() => {
         axios
-            .get('https://enigma-wtuc.onrender.com/albums')
+            .get('https://enigma-wtuc.onrender.com/albums/top-albums')
             .then((res) => {
                 setAlbums(res.data);
             })
