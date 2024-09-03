@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import styles from './DeleteBox.module.scss';
 import Modal from '../Modal/Modal';
 
 interface Props {
@@ -15,9 +14,6 @@ interface Props {
 
 const DeleteBox = (props: Props) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const onClick = () => {
-        setIsModalOpen(!isModalOpen);
-    };
 
     const deleteCard = () => {
         console.log(props.id);
@@ -34,7 +30,6 @@ const DeleteBox = (props: Props) => {
                 cancelText="Cancel"
                 confirmText="Delete"
                 onDone={props.onConfirm}
-                children={undefined}
             ></Modal>
         </>
     );
