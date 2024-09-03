@@ -3,6 +3,8 @@ import DeleteBox from '../DleleteBox/DeleteBox';
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
+import { useParams } from 'next/navigation';
 
 interface Props {
     image: string;
@@ -18,12 +20,16 @@ interface Props {
 }
 
 const MusicCard = (props: Props) => {
+    const [showModal, setShowModal] = useState(false);
+    const [isDeleted, setIsDeleted] = useState(false);
+    const token = localStorage.getItem('token');
     const [menuStyles, setMenuStyles] = useState<React.CSSProperties>({
         position: 'absolute',
         top: '0',
         left: '20px',
     });
     const musicCardRef = useRef<HTMLDivElement>(null);
+    const params = useParams();
 
     useEffect(() => {
         if (props.menuOpen && musicCardRef.current) {
@@ -38,6 +44,32 @@ const MusicCard = (props: Props) => {
             }
         }
     }, [props.menuOpen]);
+    const data = {
+        musicId: props.id,
+        playlistId: Number(params.id),
+    };
+
+    const handleDelete = async () => {
+        try {
+            await axios.delete(
+                'https://enigma-wtuc.onrender.com/playlists/musicId',
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                    data,
+                },
+            );
+            setIsDeleted(true);
+        } catch (error) {
+            alert(error);
+        } finally {
+            setShowModal(false);
+        }
+    };
+
+    if (isDeleted) return null;
 
     return (
         <div ref={musicCardRef} className={styles.musicCard}>
@@ -60,7 +92,16 @@ const MusicCard = (props: Props) => {
                 </div>
             </div>
             <div className={styles.buttonsContainer}>
-                {props.deleteOrLike && <DeleteBox id={props.id} />}
+                {props.deleteOrLike && (
+                    <div onClick={() => setShowModal(!showModal)}>
+                        <DeleteBox
+                            id={props.id}
+                            setRemove={() => setShowModal(showModal)}
+                            remove={showModal}
+                            onConfirm={handleDelete}
+                        />
+                    </div>
+                )}
                 <div onClick={props.toggleMenu} className={styles.dots}>
                     <BiDotsVerticalRounded size={24} color="white" />
                     {props.menuOpen && (

@@ -37,3 +37,7 @@ export interface ArtistCard {
     artistName: string;
     id: number;
 }
+export interface Playlist {
+    title: string;
+    id: number;
+}

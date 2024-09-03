@@ -78,3 +78,8 @@ export const showNavMobileState = atom({
     key: 'showNavMobileState',
     default: true,
 });
+
+export const musicPhotoState = atom({
+    key: 'musicphoto',
+    default: '',
+});

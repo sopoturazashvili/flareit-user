@@ -6,6 +6,13 @@ interface Props {
     id: number;
 }
 
+interface Props {
+    id: number;
+    setRemove: () => void;
+    remove: boolean;
+    onConfirm: () => void;
+}
+
 const DeleteBox = (props: Props) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const onClick = () => {
@@ -18,19 +25,17 @@ const DeleteBox = (props: Props) => {
     };
     return (
         <>
-            <img onClick={onClick} src="/images/Delete.svg" alt="Delete" />
+            <img onClick={deleteCard} src="/images/Delete.svg" alt="Delete" />
             <Modal
+                isOpen={props.remove}
+                title="Are you sure?"
+                setIsModalOpen={() => props.setRemove()}
                 hasFooter={true}
-                confirmText={'yes'}
-                cancelText={'no'}
-                onDone={deleteCard}
-                isOpen={isModalOpen}
-                setIsModalOpen={setIsModalOpen}
-            >
-                <span className={styles.modalText}>
-                    Are you sure to delete song ?
-                </span>
-            </Modal>
+                cancelText="Cancel"
+                confirmText="Delete"
+                onDone={props.onConfirm}
+                children={undefined}
+            ></Modal>
         </>
     );
 };
