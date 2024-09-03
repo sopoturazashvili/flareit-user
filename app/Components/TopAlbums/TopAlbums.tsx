@@ -18,9 +18,9 @@ const TopAlbums = () => {
 
     useEffect(() => {
         axios
-            .get('https://enigma-wtuc.onrender.com/albums')
+            .get('https://enigma-wtuc.onrender.com/albums/top-albums')
             .then((res) => {
-                setAlbums(res.data);
+                setAlbums(res.data.slice(0, 20));
             })
             .catch((err) => {
                 alert(err);
