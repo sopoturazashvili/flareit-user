@@ -5,7 +5,6 @@ import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'next/navigation';
-import { musicId } from '@/app/state';
 
 interface Props {
     image: string;
@@ -22,7 +21,7 @@ interface Props {
 
 const MusicCard = (props: Props) => {
     const [showModal, setShowModal] = useState(false);
-    const [isDeleted, setIsDeleted] = useState(false);
+    const [, setIsDeleted] = useState(false);
     const token = localStorage.getItem('token');
     const [menuStyles, setMenuStyles] = useState<React.CSSProperties>({
         position: 'absolute',
