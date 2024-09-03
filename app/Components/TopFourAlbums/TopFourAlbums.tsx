@@ -22,7 +22,7 @@ const TopFourAlbums = (props: Props) => {
         axios
             .get('https://enigma-wtuc.onrender.com/albums/top-albums')
             .then((res) => {
-                setAlbums(res.data);
+                setAlbums(res.data.slice(0, 4));
             })
             .catch((err) => {
                 alert(err);

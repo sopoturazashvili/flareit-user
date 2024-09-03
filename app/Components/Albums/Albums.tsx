@@ -10,7 +10,7 @@ const Albums = () => {
 
     useEffect(() => {
         axios
-            .get('https://enigma-wtuc.onrender.com/albums/top-albumsPage')
+            .get('https://enigma-wtuc.onrender.com/albums')
             .then((res) => {
                 setAlbums(res.data);
             })

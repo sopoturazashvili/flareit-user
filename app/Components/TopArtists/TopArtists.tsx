@@ -11,9 +11,9 @@ const TopArtists = () => {
 
     useEffect(() => {
         axios
-            .get('https://enigma-wtuc.onrender.com/authors/top-authorsPage')
+            .get('https://enigma-wtuc.onrender.com/authors/top-authors')
             .then((result) => {
-                setTopArtists(result.data);
+                setTopArtists(result.data.slice(0, 20));
             })
             .catch((error) => {
                 alert(error);

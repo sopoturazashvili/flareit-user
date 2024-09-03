@@ -6,7 +6,7 @@ import RecoilWrapper from './Components/RecoilWrapper/RecoilWrapper';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-    title: 'FlareIT',
+    title: 'FlareIt',
     description: 'Music web-app',
 };
 
