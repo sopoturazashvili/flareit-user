@@ -36,9 +36,9 @@ const TopHits = () => {
     const [topHits, setTopHits] = useState<Music[]>([]);
     useEffect(() => {
         axios
-            .get('https://enigma-wtuc.onrender.com/musics')
+            .get('https://enigma-wtuc.onrender.com/musics/tophits')
             .then((result) => {
-                setTopHits(result.data);
+                setTopHits(result.data.slice(0, 20));
             })
             .catch((error) => {
                 console.error('Error fetching music data:', error);

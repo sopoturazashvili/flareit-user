@@ -36,7 +36,7 @@ const TopFourHits = () => {
         axios
             .get('https://enigma-wtuc.onrender.com/musics/tophits')
             .then((result) => {
-                setMusic(result.data);
+                setMusic(result.data.slice(0, 4));
             })
             .catch((error) => {
                 alert(error);
