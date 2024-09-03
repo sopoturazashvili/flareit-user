@@ -18,6 +18,7 @@ interface Music {
     audioUrl: string;
     title: string;
     id: number;
+    artistName: string;
 }
 
 const TopFourHits = () => {
@@ -38,7 +39,7 @@ const TopFourHits = () => {
                 setMusic(result.data);
             })
             .catch((error) => {
-                console.error('Error fetching music data:', error);
+                alert(error);
             });
     }, []);
 
@@ -72,7 +73,7 @@ const TopFourHits = () => {
                     key={item.id}
                     image={item.coverImgUrl}
                     title={item.title}
-                    teamName={item.title}
+                    teamName={item.artistName}
                     id={item.id}
                     deleteOrLike={false}
                     isPlaying={isPlaying && globalMusicId === index}

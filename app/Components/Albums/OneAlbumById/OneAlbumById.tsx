@@ -22,6 +22,7 @@ interface Musics {
     audioUrl: string;
     title: string;
     id: number;
+    artistName: string;
 }
 
 interface AlbumId {
@@ -47,18 +48,22 @@ const OneAlbumById = () => {
     const param = useParams();
     const id = param.id;
     useEffect(() => {
-        if (id) {
-            axios
-                .get(`https://enigma-wtuc.onrender.com/albums/${id}`)
-                .then((res) => {
+        const fetchAlbum = async () => {
+            if (id) {
+                try {
+                    const res = await axios.get(
+                        `https://enigma-wtuc.onrender.com/albums/${id}`,
+                    );
                     setAlbum(res.data);
                     setMusics(res.data.musics);
-                })
-                .catch((error) => {
+                } catch (error) {
                     alert(error);
-                });
-        }
-    }, [id]);
+                }
+            }
+        };
+
+        fetchAlbum();
+    }, [id, album]);
 
     const handleClick = (
         item: {
@@ -109,7 +114,7 @@ const OneAlbumById = () => {
                         key={item.id}
                         image={item.coverImgUrl}
                         title={item.title}
-                        teamName={item.title}
+                        teamName={item.artistName}
                         id={item.id}
                         deleteOrLike={false}
                         isPlaying={isPlaying && globalMusicId === item.id}
