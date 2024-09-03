@@ -16,11 +16,12 @@ import useToggleMenu from '@/app/useToggleMenu';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-interface tophits {
+interface Music {
     coverImgUrl: string;
     audioUrl: string;
     title: string;
     id: number;
+    artistName: string;
 }
 
 const TopHits = () => {
@@ -32,7 +33,7 @@ const TopHits = () => {
     const [, setImage] = useRecoilState(globalImageState);
     const [, setArtist] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
-    const [topHits, setTopHits] = useState<tophits[]>([]);
+    const [topHits, setTopHits] = useState<Music[]>([]);
     useEffect(() => {
         axios
             .get('https://enigma-wtuc.onrender.com/musics')
@@ -75,7 +76,7 @@ const TopHits = () => {
                         key={item.id}
                         image={item.coverImgUrl}
                         title={item.title}
-                        teamName={item.title}
+                        teamName={item.artistName}
                         deleteOrLike={false}
                         id={item.id}
                         isPlaying={isPlaying && globalMusicId === index}
