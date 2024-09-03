@@ -5,26 +5,32 @@ import styles from './Playlists.module.scss';
 import ArtistPlaylistItem from '@/app/Components/ArtistPlaylistListItem/ArtistPlaylistItem';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
-interface Playlist {
-    title: string;
-    id: number;
-}
+import { Playlist } from '@/app/interfaces/item';
 
 const Playlists = () => {
-    const [playlists, setPlaylists] = useState<Playlist[]>([]);
+    const [playlists, setPlaylist] = useState<Playlist[]>([]);
+
+    const token = localStorage.getItem('token');
 
     useEffect(() => {
-        axios
-            .get('https://enigma-wtuc.onrender.com/playlists')
-            .then((result) => {
-                setPlaylists(result.data);
-            })
-            .catch((error) => {
-                alert(error);
-            });
-    });
-
+        if (token) {
+            axios
+                .get(`https://enigma-wtuc.onrender.com/users/me`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                })
+                .then((result) => {
+                    setPlaylist(result.data.playlists);
+                })
+                .catch((error) => {
+                    alert(error);
+                });
+        } else {
+            console.error('No authentication token found.');
+        }
+    }, [token]);
     return (
         <div className={styles.container}>
             <div>

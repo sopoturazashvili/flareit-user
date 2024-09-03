@@ -2,19 +2,36 @@ import { useState } from 'react';
 import styles from './AddPlaylist.module.scss';
 import Modal from '../../Modal/Modal';
 import PlayListInput from '../PlayListInput/PlayListInput';
+import axios from 'axios';
 
 const AddPlaylist = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [value, setValue] = useState<string>('');
+    const [title, setTitle] = useState<string>('');
+
+    const token = localStorage.getItem('token');
 
     const onAdd = (newValue: string) => {
-        setValue(newValue);
+        setTitle(newValue);
     };
 
-    const onDone = () => {
-        if (value !== '') {
-            setIsModalOpen(!isModalOpen);
-            console.log(value, 'value');
+    const onDone = async () => {
+        if (title) {
+            try {
+                axios.post(
+                    'https://enigma-wtuc.onrender.com/playlists',
+                    { title },
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`,
+                        },
+                    },
+                );
+                setIsModalOpen(false);
+                setTitle('');
+            } catch (err) {
+                alert('An error occurred while adding the playlist.');
+            }
         }
     };
 
@@ -22,9 +39,7 @@ const AddPlaylist = () => {
         <>
             <div
                 className={styles.createdPlaylistContainer}
-                onClick={() => {
-                    setIsModalOpen(!isModalOpen);
-                }}
+                onClick={() => setIsModalOpen(true)}
             >
                 <div className={styles.createdPlaylist}>
                     <div className={styles.icon}>
@@ -40,10 +55,10 @@ const AddPlaylist = () => {
                 isOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
                 hasFooter={true}
-                title={'Add Playlist'}
+                title="Add Playlist"
                 onDone={onDone}
-                cancelText={'Cancel'}
-                confirmText={'Done'}
+                cancelText="Cancel"
+                confirmText="Done"
             >
                 <PlayListInput onChange={onAdd} />
             </Modal>

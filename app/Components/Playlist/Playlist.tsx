@@ -13,15 +13,17 @@ import useToggleMenu from '@/app/useToggleMenu';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import MusicCard from '../MusicCard/MusicCard';
+import { useParams } from 'next/navigation';
 
 interface Props {
     image: string;
 }
 
-interface playlistId {
+interface PlaylistItem {
     coverImgUrl: string;
     audioUrl: string;
     title: string;
+    artistName: string;
     id: number;
 }
 
@@ -34,33 +36,45 @@ const Playlist = (props: Props) => {
     const [, setImage] = useRecoilState(globalImageState);
     const [, setArtist] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
-    const [playlistId, setPlaylistId] = useState<playlistId[]>([]);
+    const [playlist, setPlaylist] = useState<PlaylistItem[]>([]);
+    const token = localStorage.getItem('token');
+    const params = useParams();
+    const id = params.id;
 
     useEffect(() => {
-        axios
-            .get('https://enigma-wtuc.onrender.com/musics/tophits')
-            .then((result) => {
-                setPlaylistId(result.data);
-            })
-            .catch((error) => {
-                console.error('Error fetching music data:', error);
-            });
-    }, []);
+        if (token) {
+            axios
+                .get(`https://enigma-wtuc.onrender.com/playlists/${id}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                })
+                .then((result) => {
+                    setPlaylist(result.data.musics);
+                })
+                .catch((error) => {
+                    alert(error);
+                });
+        } else {
+            console.error('No authentication token found.');
+        }
+    }, [token]);
 
     const handleClick = (
         item: {
-            image?: string;
+            coverImgUrl?: string;
             title?: string;
-            temeName?: string;
+            artistName?: string;
             id: number;
-            src?: string;
+            audioUrl?: string;
         },
         index: number,
     ) => {
-        const allSrc = playlistId.map((item) => item.audioUrl);
-        const imageSrc = playlistId.map((item) => item.coverImgUrl);
-        const artist = playlistId.map((item) => item.title);
-        const title = playlistId.map((item) => item.title);
+        const allSrc = playlist.map((item) => item.audioUrl);
+        const imageSrc = playlist.map((item) => item.coverImgUrl);
+        const artist = playlist.map((item) => item.title);
+        const title = playlist.map((item) => item.artistName);
         setIsPlaying(true);
         setGlobalId(item.id);
         setImage(imageSrc);
@@ -69,6 +83,7 @@ const Playlist = (props: Props) => {
         setArtist(artist);
         setTitle(title);
     };
+
     return (
         <div className={styles.playlistContainer}>
             <div className={styles.photoAndNameCont}>
@@ -78,13 +93,13 @@ const Playlist = (props: Props) => {
                 </div>
             </div>
             <div className={styles.topFourHits}>
-                {playlistId.map((item, index) => (
+                {playlist.map((item, index) => (
                     <MusicCard
                         id={item.id}
                         key={item.id}
                         image={item.coverImgUrl}
                         title={item.title}
-                        teamName={item.title}
+                        teamName={item.artistName}
                         isPlaying={isPlaying && globalMusicId === index}
                         deleteOrLike={true}
                         onClick={() => handleClick(item, index)}
