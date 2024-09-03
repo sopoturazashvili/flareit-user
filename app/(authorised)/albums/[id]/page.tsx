@@ -4,9 +4,6 @@ import styles from './page.module.scss';
 const OneAlbum = () => {
     return (
         <div className={styles.OneAlbum}>
-            <div>
-                <span className={styles.pathName}>OneAlbum</span>
-            </div>
             <OneAlbumById />
         </div>
     );

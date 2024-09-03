@@ -1,34 +1,24 @@
+'use client';
+
 import ArtistPlaylistItem from '@/app/Components/ArtistPlaylistListItem/ArtistPlaylistItem';
 import styles from './TopArtists.module.scss';
+import { useEffect, useState } from 'react';
+import { ArtistCard } from '@/app/interfaces/item';
+import axios from 'axios';
 
 const TopArtists = () => {
-    const artists = [
-        {
-            id: 1,
-            name: 'Sia',
-            image: '/images/sia.svg',
-        },
-        {
-            id: 2,
-            name: 'Beyonce',
-            image: '/images/beyonce.svg',
-        },
-        {
-            id: 3,
-            name: 'Ed Sheeran',
-            image: '/images/edSheeran.svg',
-        },
-        {
-            id: 4,
-            name: 'Taylor Swift',
-            image: '/images/taylor.svg',
-        },
-        {
-            id: 5,
-            name: 'Ariana Grande',
-            image: '/images/ariana.svg',
-        },
-    ];
+    const [topArtists, setTopArtists] = useState<ArtistCard[]>([]);
+
+    useEffect(() => {
+        axios
+            .get('https://enigma-wtuc.onrender.com/authors/top-authorsPage')
+            .then((result) => {
+                setTopArtists(result.data);
+            })
+            .catch((error) => {
+                alert(error);
+            });
+    }, [topArtists]);
 
     return (
         <div className={styles.container}>
@@ -36,11 +26,11 @@ const TopArtists = () => {
                 <span className={styles.title}>Top Artists</span>
             </div>
             <div className={styles.list}>
-                {artists.map((artist) => (
+                {topArtists.map((artist) => (
                     <ArtistPlaylistItem
                         key={artist.id}
-                        image={artist.image}
-                        text={artist.name}
+                        image={artist.coverImgUrl}
+                        text={artist.artistName}
                         imageRound={true}
                         pathName={`artists/${artist.id}`}
                     />
