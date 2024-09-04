@@ -70,8 +70,12 @@ const MusicCard = (props: Props) => {
     };
 
     return (
-        <div ref={musicCardRef} className={styles.musicCard}>
-            <div className={styles.musicCardHeader} onClick={props.onClick}>
+        <div
+            ref={musicCardRef}
+            className={styles.musicCard}
+            onClick={props.onClick}
+        >
+            <div className={styles.musicCardHeader}>
                 <div className={styles.musicCardhover}>
                     <img
                         className={styles.musicCardPhoto}
