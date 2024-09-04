@@ -7,6 +7,7 @@ import SearchItemAuthor from './SearchItemAuthor/SearchItemAuthor';
 import SearchItemMusic from './SearchItemMusic/SearchItemMusic';
 import SearchItemAlbum from './SearchItemAlbum/SearchItemAlbum';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 interface ItemData {
     id: number;
@@ -31,6 +32,7 @@ interface Item {
 const Search = () => {
     const [searchResults, setSearchResults] = useState<Item[]>([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const pathname = usePathname();
 
     const handleSearch = async () => {
         if (searchTerm.trim() === '') {
@@ -54,6 +56,11 @@ const Search = () => {
         handleSearch();
         console.log(searchResults);
     }, [searchTerm]);
+
+    useEffect(() => {
+        setSearchTerm('');
+        setSearchResults([]);
+    }, [pathname]);
 
     const handleItemClick = () => {
         setSearchTerm('');
