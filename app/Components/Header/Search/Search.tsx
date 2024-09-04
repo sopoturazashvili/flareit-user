@@ -1,81 +1,107 @@
-import React, { useState } from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import styles from './Search.module.scss';
-import SearchList from './SearchList/SearchList';
+import axios from 'axios';
+import SearchItemAuthor from './SearchItemAuthor/SearchItemAuthor';
+import SearchItemMusic from './SearchItemMusic/SearchItemMusic';
+import SearchItemAlbum from './SearchItemAlbum/SearchItemAlbum';
+import Image from 'next/image';
+
+interface ItemData {
+    id: number;
+    title?: string;
+    coverImgUrl: string;
+    artistName: string;
+    lastName?: string;
+    biography?: string;
+    releaseDate?: string;
+    audioUrl?: string;
+    createdAt?: string;
+    deletedAt?: string | null;
+    playCount?: number;
+    updatedAt?: string;
+}
 
 interface Item {
-    id: number;
-    word: string;
-    search_count: number;
-    last_searched: string;
-    icon: string;
-    type: 'music' | 'album' | 'artist';
+    data: ItemData;
+    type: 'author' | 'music' | 'album';
 }
 
 const Search = () => {
-    const data: Item[] = [
-        {
-            id: 1,
-            word: 'programming1',
-            search_count: 10,
-            last_searched: '2023-07-06',
-            icon: '/Image/mapicon.svg',
-            type: 'music',
-        },
-        {
-            id: 2,
-            word: 'programming2',
-            search_count: 10,
-            last_searched: '2023-07-06',
-            icon: '/Image/mapicon.svg',
-            type: 'music',
-        },
-        {
-            id: 3,
-            word: 'programming3',
-            search_count: 10,
-            last_searched: '2023-07-06',
-            icon: '/Image/square.svg',
-            type: 'album',
-        },
-        {
-            id: 4,
-            word: 'programming4',
-            search_count: 10,
-            last_searched: '2023-07-06',
-            icon: '/Image/square.svg',
-            type: 'album',
-        },
-        {
-            id: 5,
-            word: 'programming5',
-            search_count: 10,
-            last_searched: '2023-07-06',
-            icon: '/Image/square.svg',
-            type: 'artist',
-        },
-        {
-            id: 6,
-            word: 'programming6',
-            search_count: 10,
-            last_searched: '2023-07-06',
-            icon: '/Image/square.svg',
-            type: 'artist',
-        },
-    ];
+    const [searchResults, setSearchResults] = useState<Item[]>([]);
+    const [searchTerm, setSearchTerm] = useState('');
 
-    const [search, setSearch] = useState('');
-
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.target.value);
+    const handleSearch = async () => {
+        if (searchTerm.trim() === '') {
+            setSearchResults([]);
+            return;
+        }
+        try {
+            const response = await axios.get(
+                'https://enigma-wtuc.onrender.com/search',
+                {
+                    params: { searchField: searchTerm },
+                },
+            );
+            setSearchResults(response.data);
+        } catch (error) {
+            console.error('Error during search', error);
+        }
     };
 
-    const renderItemsByType = (type: string) => {
-        const filteredData = data.filter((item) => item.type === type);
+    useEffect(() => {
+        handleSearch();
+        console.log(searchResults);
+    }, [searchTerm]);
+
+    const handleItemClick = () => {
+        setSearchTerm('');
+    };
+
+    const renderItemsByType = () => {
         return (
             <div className={styles.dataContainer}>
-                {filteredData.map((item) => (
-                    <SearchList key={item.id} item={item} />
-                ))}
+                {searchResults.map((item) => {
+                    const { data, type } = item;
+                    switch (type) {
+                        case 'author':
+                            return (
+                                <SearchItemAuthor
+                                    key={data.id}
+                                    id={data.id}
+                                    artistName={data.artistName}
+                                    coverImgUrl={data.coverImgUrl}
+                                    onClick={handleItemClick}
+                                />
+                            );
+                        case 'music':
+                            return (
+                                <SearchItemMusic
+                                    id={data.id}
+                                    key={data.id}
+                                    title={data.title}
+                                    artistName={data.artistName}
+                                    coverImgUrl={data.coverImgUrl}
+                                    audioUrl={data.audioUrl}
+                                    onClick={handleItemClick}
+                                />
+                            );
+                        case 'album':
+                            return (
+                                <SearchItemAlbum
+                                    id={data.id}
+                                    key={data.id}
+                                    title={data.title}
+                                    artistName={data.artistName}
+                                    coverImgUrl={data.coverImgUrl}
+                                    onClick={handleItemClick}
+                                />
+                            );
+                        default:
+                            return null;
+                    }
+                })}
             </div>
         );
     };
@@ -84,27 +110,27 @@ const Search = () => {
         <div className={styles.searchAndMap}>
             <div className={styles.searchInputContainer}>
                 <div className={styles.inputContainer}>
-                    <img
+                    <Image
                         src={
-                            search
-                                ? '/Image/searchWhite.svg'
-                                : '/Image/searchGrey.svg'
+                            searchTerm
+                                ? '/image/searchWhite.svg'
+                                : '/image/searchGrey.svg'
                         }
                         alt="Search Icon"
+                        width={24}
+                        height={24}
                     />
                     <input
                         type="text"
                         className={styles.input}
-                        onChange={onChange}
-                        value={search}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        value={searchTerm}
                         placeholder="Search"
                     />
                 </div>
-                {search && (
+                {searchTerm && (
                     <div className={styles.searchMapCont}>
-                        {renderItemsByType('music')}
-                        {renderItemsByType('album')}
-                        {renderItemsByType('artist')}
+                        {renderItemsByType()}
                     </div>
                 )}
             </div>
