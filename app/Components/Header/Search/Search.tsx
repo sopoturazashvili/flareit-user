@@ -50,6 +50,8 @@ const Search = () => {
         } catch (error) {
             console.error('Error during search', error);
         }
+
+        console.log(searchResults);
     };
 
     useEffect(() => {
