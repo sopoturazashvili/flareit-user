@@ -27,7 +27,6 @@ const AuthForm = () => {
 
                 if (token) {
                     localStorage.setItem('token', token);
-                    console.log('Token saved in localStorage:', token);
                     router.push('/');
                 }
             })

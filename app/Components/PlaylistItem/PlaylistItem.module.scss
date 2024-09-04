@@ -1,3 +1,5 @@
+@import '../../styles/colors.scss';
+
 .item {
     padding: 8px;
     display: flex;
@@ -9,4 +11,9 @@
 
 .title {
     color: #fff;
+}
+
+.item:hover {
+    background-color: $PrimaryGreyHover;
+    border-radius: 8px;
 }

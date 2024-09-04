@@ -56,7 +56,6 @@ const Search = () => {
 
     useEffect(() => {
         handleSearch();
-        console.log(searchResults);
     }, [searchTerm]);
 
     useEffect(() => {

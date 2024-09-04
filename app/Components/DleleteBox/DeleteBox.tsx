@@ -16,7 +16,6 @@ const DeleteBox = (props: Props) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const deleteCard = () => {
-        console.log(props.id);
         setIsModalOpen(!isModalOpen);
     };
     return (

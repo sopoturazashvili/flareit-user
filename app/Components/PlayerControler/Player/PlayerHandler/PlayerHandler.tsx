@@ -17,7 +17,6 @@ import axios from 'axios';
 const PlayerHandler = () => {
     const [musicSrc] = useRecoilState(musicGlobalState);
     const [isPlaying] = useRecoilState(isPlayingState);
-    const token = localStorage.getItem('token');
     const [, setCurrentTime] = useRecoilState(currentTimeState);
     const [, setAudioDuration] = useRecoilState(audioDurrationState);
     const [globalId] = useRecoilState(musicId);
@@ -27,9 +26,9 @@ const PlayerHandler = () => {
     const [shouldRewind, setShouldRewind] = useRecoilState(shouldRewindState);
     const [volume] = useRecoilState(volumeState);
     const [muted] = useRecoilState(mutedState);
-    console.log(musicSrc);
 
     const audioRef = useRef<HTMLAudioElement>(null);
+    const token = localStorage.getItem('token'); // Moved this to the top for consistency
 
     useEffect(() => {
         const audio = audioRef.current;
@@ -64,20 +63,27 @@ const PlayerHandler = () => {
     }, [setCurrentTime, setAudioDuration, setIndex, musicSrc.length]);
 
     useEffect(() => {
-        if (isPlaying) {
-            audioRef.current?.play();
-        } else {
-            audioRef.current?.pause();
+        const audio = audioRef.current;
+        if (audio) {
+            if (isPlaying) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
         }
     }, [isPlaying]);
 
     useEffect(() => {
         const audio = audioRef.current;
 
-        if (audio) {
-            audio.src = musicSrc[index]?.audioUrl;
+        if (audio && musicSrc[index]?.audioUrl) {
+            audio.src = musicSrc[index].audioUrl;
             audio.currentTime = 0;
-            audio.play();
+            audio
+                .play()
+                .catch((error) =>
+                    console.error('Failed to play audio:', error),
+                );
         }
     }, [index, musicSrc]);
 
@@ -107,27 +113,25 @@ const PlayerHandler = () => {
     }, [volume, muted]);
 
     useEffect(() => {
-        try {
-            axios.post(
-                'https://enigma-wtuc.onrender.com/listen-records',
-                { musicId: musicSrc[index]?.id },
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
+        if (token && musicSrc[index]?.id) {
+            axios
+                .post(
+                    'https://enigma-wtuc.onrender.com/listen-records',
+                    { musicId: musicSrc[index].id },
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`,
+                        },
                     },
-                },
-            );
-        } catch (error) {
-            alert(error);
+                )
+                .catch((error) =>
+                    console.error('Failed to post listen record:', error),
+                );
         }
-    }, [index, globalId]);
+    }, [index, globalId, musicSrc, token]);
 
-    return (
-        <>
-            <audio ref={audioRef} />
-        </>
-    );
+    return <audio ref={audioRef} />;
 };
 
 export default PlayerHandler;

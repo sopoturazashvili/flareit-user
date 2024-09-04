@@ -14,13 +14,12 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import MusicCard from '../MusicCard/MusicCard';
 import { useParams } from 'next/navigation';
+import { Musics } from '@/app/interfaces/item';
 
-interface PlaylistItem {
-    coverImgUrl: string;
-    audioUrl: string;
+interface Data {
     title: string;
-    artistName: string;
-    id: number;
+    coverImgUrl: string;
+    musics: Musics[];
 }
 
 const Playlist = () => {
@@ -32,13 +31,15 @@ const Playlist = () => {
     const [, setImage] = useRecoilState(globalImageState);
     const [, setArtist] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
-    const [playlist, setPlaylist] = useState<PlaylistItem[]>([]);
+    const [playlist, setPlaylist] = useState<Musics[]>([]);
+    const [data, setData] = useState<Data | null>(null);
+    const [photo, setPhoto] = useState<string>('');
     const token = localStorage.getItem('token');
     const params = useParams();
     const id = params.id;
 
     useEffect(() => {
-        if (token) {
+        if (token && id) {
             axios
                 .get(`https://enigma-wtuc.onrender.com/playlists/${id}`, {
                     headers: {
@@ -48,32 +49,27 @@ const Playlist = () => {
                 })
                 .then((result) => {
                     setPlaylist(result.data.musics);
+                    setPhoto(
+                        result.data.musics[result.data.musics.length - 1]
+                            .coverImgUrl,
+                    );
+                    setData(result.data);
                 })
                 .catch((error) => {
-                    alert(error);
+                    console.error('Error fetching playlist:', error);
                 });
         } else {
-            console.error('No authentication token found.');
+            console.error(
+                'No authentication token found or playlist ID missing.',
+            );
         }
-    }, [token]);
+    }, [token, id]);
 
-    const handleClick = (
-        item: {
-            coverImgUrl?: string;
-            title?: string;
-            artistName?: string;
-            id: number;
-            audioUrl?: string;
-        },
-        index: number,
-    ) => {
-        const allSrc = playlist.map((item) => ({
-            audioUrl: item.audioUrl,
-            id: item.id,
-        }));
-        const imageSrc = playlist.map((item) => item.coverImgUrl);
-        const artist = playlist.map((item) => item.title);
-        const title = playlist.map((item) => item.artistName);
+    const handleClick = (item: Musics, index: number) => {
+        const allSrc = playlist.map(({ audioUrl, id }) => ({ audioUrl, id }));
+        const imageSrc = playlist.map(({ coverImgUrl }) => coverImgUrl);
+        const artist = playlist.map(({ artistName }) => artistName);
+        const title = playlist.map(({ title }) => title);
         setIsPlaying(true);
         setGlobalId(item.id);
         setImage(imageSrc);
@@ -87,8 +83,16 @@ const Playlist = () => {
         <div className={styles.playlistContainer}>
             <div className={styles.photoAndNameCont}>
                 <div className={styles.photoAndName}>
-                    <img src={''} />
-                    <span className={styles.name}>My Everyday</span>
+                    <img
+                        className={styles.photo}
+                        src={photo ? photo : '/images/defaultPlaylist.png'}
+                        alt="Playlist Cover"
+                    />
+                    {data && (
+                        <>
+                            <span className={styles.name}>{data.title}</span>
+                        </>
+                    )}
                 </div>
             </div>
             <div className={styles.topFourHits}>
@@ -99,7 +103,7 @@ const Playlist = () => {
                         image={item.coverImgUrl}
                         title={item.title}
                         teamName={item.artistName}
-                        isPlaying={isPlaying && globalMusicId === index}
+                        isPlaying={isPlaying && globalMusicId === item.id}
                         deleteOrLike={true}
                         onClick={() => handleClick(item, index)}
                         index={index}
