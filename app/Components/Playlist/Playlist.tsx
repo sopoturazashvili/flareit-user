@@ -15,10 +15,6 @@ import axios from 'axios';
 import MusicCard from '../MusicCard/MusicCard';
 import { useParams } from 'next/navigation';
 
-interface Props {
-    image: string;
-}
-
 interface PlaylistItem {
     coverImgUrl: string;
     audioUrl: string;
@@ -27,7 +23,7 @@ interface PlaylistItem {
     id: number;
 }
 
-const Playlist = (props: Props) => {
+const Playlist = () => {
     const { currentCardId, toggleMenu } = useToggleMenu();
     const [, setGlobalsrc] = useRecoilState(musicGlobalState);
     const [globalMusicId, setGlobalId] = useRecoilState(musicId);
@@ -71,7 +67,10 @@ const Playlist = (props: Props) => {
         },
         index: number,
     ) => {
-        const allSrc = playlist.map((item) => item.audioUrl);
+        const allSrc = playlist.map((item) => ({
+            audioUrl: item.audioUrl,
+            id: item.id,
+        }));
         const imageSrc = playlist.map((item) => item.coverImgUrl);
         const artist = playlist.map((item) => item.title);
         const title = playlist.map((item) => item.artistName);
@@ -88,7 +87,7 @@ const Playlist = (props: Props) => {
         <div className={styles.playlistContainer}>
             <div className={styles.photoAndNameCont}>
                 <div className={styles.photoAndName}>
-                    <img src={props.image} />
+                    <img src={''} />
                     <span className={styles.name}>My Everyday</span>
                 </div>
             </div>

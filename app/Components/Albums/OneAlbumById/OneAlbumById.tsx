@@ -40,7 +40,7 @@ const OneAlbumById = () => {
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
     const [, setActiveIdx] = useRecoilState(indexState);
     const [, setImage] = useRecoilState(globalImageState);
-    const [, setArtist] = useRecoilState(musicNameState);
+    const [, setAuthorName] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
     const [album, setAlbum] = useState<AlbumId | null>(null);
     const [musics, setMusics] = useState<Musics[]>([]);
@@ -75,16 +75,21 @@ const OneAlbumById = () => {
         },
         index: number,
     ) => {
-        const allSrc = musics.map((music) => music.audioUrl);
+        const allSrc = musics.map((item) => ({
+            audioUrl: item.audioUrl,
+            id: item.id,
+        }));
         const imageSrc = musics.map((music) => music.coverImgUrl);
-
+        const musicName = musics.map((item) => item.artistName);
+        const title = musics.map((item) => item.title);
         setIsPlaying(true);
         setGlobalId(item.id);
         setImage(imageSrc);
         setGlobalsrc(allSrc);
         setActiveIdx(index);
-        setArtist([item.title ?? '']);
-        setTitle([item.title ?? '']);
+
+        setAuthorName(musicName);
+        setTitle(title);
     };
 
     return (

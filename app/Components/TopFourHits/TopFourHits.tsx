@@ -54,7 +54,11 @@ const TopFourHits = () => {
         index: number,
     ) => {
         const imageSrc = music.map((item) => item.coverImgUrl);
-        const allSrc = music.map((item) => item.audioUrl);
+        const allSrc = music.map((item) => ({
+            audioUrl: item.audioUrl,
+            id: item.id,
+        }));
+
         const musicName = music.map((item) => item.title);
         const title = music.map((item) => item.title);
         setIsPlaying(true);

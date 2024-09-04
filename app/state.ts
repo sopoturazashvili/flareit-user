@@ -1,4 +1,5 @@
 import { atom } from 'recoil';
+import { Musicsrc } from './interfaces/item';
 
 export const isPlayingState = atom({
     key: 'isPlaying',
@@ -35,7 +36,7 @@ export const fullScreenState = atom({
     default: false,
 });
 
-export const musicGlobalState = atom<string[]>({
+export const musicGlobalState = atom<Musicsrc[]>({
     key: 'musicGlobalState',
     default: [],
 });

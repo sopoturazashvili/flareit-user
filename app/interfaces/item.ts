@@ -23,6 +23,11 @@ export interface Response {
     access_token: string;
 }
 
+export interface Musicsrc {
+    id: number;
+    audioUrl: string;
+}
+
 export interface Album {
     coverImgUrl: string;
     title: string;

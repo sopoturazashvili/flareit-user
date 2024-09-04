@@ -5,7 +5,7 @@ import styles from './page.module.scss';
 const OnePlaylist = () => {
     return (
         <div className={styles.container}>
-            <Playlist image="" />
+            <Playlist  />
         </div>
     );
 };

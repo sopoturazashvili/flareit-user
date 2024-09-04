@@ -10,19 +10,24 @@ import {
     shouldRewindState,
     volumeState,
     mutedState,
+    musicId,
 } from '@/app/state';
+import axios from 'axios';
 
 const PlayerHandler = () => {
     const [musicSrc] = useRecoilState(musicGlobalState);
     const [isPlaying] = useRecoilState(isPlayingState);
+    const token = localStorage.getItem('token');
     const [, setCurrentTime] = useRecoilState(currentTimeState);
     const [, setAudioDuration] = useRecoilState(audioDurrationState);
+    const [globalId] = useRecoilState(musicId);
     const [index, setIndex] = useRecoilState(indexState);
     const [shouldAddTime, setShouldAddTime] =
         useRecoilState(shouldAddTimeState);
     const [shouldRewind, setShouldRewind] = useRecoilState(shouldRewindState);
     const [volume] = useRecoilState(volumeState);
     const [muted] = useRecoilState(mutedState);
+    console.log(musicSrc);
 
     const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -70,7 +75,7 @@ const PlayerHandler = () => {
         const audio = audioRef.current;
 
         if (audio) {
-            audio.src = musicSrc[index];
+            audio.src = musicSrc[index]?.audioUrl;
             audio.currentTime = 0;
             audio.play();
         }
@@ -100,6 +105,23 @@ const PlayerHandler = () => {
             audio.volume = muted ? 0 : volume / 100;
         }
     }, [volume, muted]);
+
+    useEffect(() => {
+        try {
+            axios.post(
+                'https://enigma-wtuc.onrender.com/listen-records',
+                { musicId: musicSrc[index]?.id },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                },
+            );
+        } catch (error) {
+            alert(error);
+        }
+    }, [index, globalId]);
 
     return (
         <>

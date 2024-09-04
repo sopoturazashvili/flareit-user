@@ -55,7 +55,10 @@ const OneChartById = () => {
         },
         index: number,
     ) => {
-        const allSrc = chartId.map((item) => item.audioUrl);
+        const allSrc = chartId.map((item) => ({
+            audioUrl: item.audioUrl,
+            id: item.id,
+        }));
         const imageSrc = chartId.map((item) => item.coverImgUrl);
         const artist = chartId.map((item) => item.title);
         const title = chartId.map((item) => item.title);

@@ -49,25 +49,6 @@ const MusicCard = (props: Props) => {
         playlistId: Number(params.id),
     };
 
-    const handleSongClick = async () => {
-        props.onClick();
-        try {
-            const response = await axios.post(
-                'https://enigma-wtuc.onrender.com/listen-records',
-                { musicId: props.id },
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                },
-            );
-            console.log('Response:', response);
-        } catch (error) {
-            console.error('Error sending music ID:', error);
-        }
-    };
-
     const handleDelete = async () => {
         try {
             await axios.delete(
@@ -88,11 +69,9 @@ const MusicCard = (props: Props) => {
         }
     };
 
-    // if (isDeleted) return null;
-
     return (
         <div ref={musicCardRef} className={styles.musicCard}>
-            <div className={styles.musicCardHeader} onClick={handleSongClick}>
+            <div className={styles.musicCardHeader} onClick={props.onClick}>
                 <div className={styles.musicCardhover}>
                     <img
                         className={styles.musicCardPhoto}

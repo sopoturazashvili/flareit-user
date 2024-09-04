@@ -57,7 +57,10 @@ const TrendHits = () => {
         index: number,
     ) => {
         const imageSrc = trendHits.map((item) => item.coverImgUrl);
-        const allSrc = trendHits.map((item) => item.audioUrl);
+        const allSrc = trendHits.map((item) => ({
+            audioUrl: item.audioUrl,
+            id: item.id,
+        }));
         const musicName = trendHits.map((item) => item.artistName);
         const title = trendHits.map((item) => item.title);
         setIsPlaying(true);
