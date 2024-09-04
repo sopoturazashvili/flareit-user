@@ -31,3 +31,16 @@
   flex-direction: column;
   gap: 8px;
 }
+
+
+.photo{
+  height: 200px;
+  width: 200px;
+}
+
+@media screen and (max-width:599px) {
+  .photo{
+    height: 102px;
+    width: 102px;
+  }
+}

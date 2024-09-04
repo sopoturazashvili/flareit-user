@@ -9,6 +9,7 @@ import { Playlist } from '@/app/interfaces/item';
 
 const Playlists = () => {
     const [playlists, setPlaylist] = useState<Playlist[]>([]);
+    console.log(playlists);
 
     const token = localStorage.getItem('token');
 
@@ -38,10 +39,16 @@ const Playlists = () => {
             </div>
             <div className={styles.list}>
                 <AddPlaylist />
-                {playlists.map((playlist) => (
+                {playlists.map((playlist: Playlist) => (
                     <ArtistPlaylistItem
                         key={playlist.id}
-                        image={'/images/defaultPlaylist.png'}
+                        image={
+                            playlist.musics[playlist.musics.length - 1]
+                                ?.coverImgUrl
+                                ? playlist.musics[playlist.musics.length - 1]
+                                      ?.coverImgUrl
+                                : '/images/defaultPlaylist.png'
+                        }
                         text={playlist.title}
                         imageRound={false}
                         pathName={`/playlists/${playlist.id}`}

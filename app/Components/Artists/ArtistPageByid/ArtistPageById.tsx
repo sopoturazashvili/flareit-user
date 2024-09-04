@@ -66,8 +66,6 @@ const ArtistPageById = () => {
                     setArtistData(artistResult.data || null);
                     setAlbums(artistResult.data.albums || []);
                     setMusics(artistResult.data.musics || []);
-
-                    console.log(artistResult);
                 } catch (error) {
                     console.error('Error fetching artist data:', error);
                     alert('Failed to fetch artist data. Please try again.');

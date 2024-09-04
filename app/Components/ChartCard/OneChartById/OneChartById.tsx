@@ -1,5 +1,4 @@
 'use client';
-import { useParams } from 'next/navigation';
 import MusicCard from '../../MusicCard/MusicCard';
 import styles from './OneChartById.module.scss';
 import {
@@ -33,8 +32,6 @@ const OneChartById = () => {
     const [, setArtist] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
     const [chartId, setChartId] = useState<chartId[]>([]);
-    const id = useParams();
-    console.log(id);
     useEffect(() => {
         axios
             .get('https://enigma-wtuc.onrender.com/musics')

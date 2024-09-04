@@ -24,7 +24,6 @@ const RegisterForm = () => {
                 const axiosError = error as AxiosError;
 
                 if (axiosError.response) {
-                    console.log(axiosError.response.data);
                     const responseData = axiosError.response
                         .data as ErrorResponse;
 

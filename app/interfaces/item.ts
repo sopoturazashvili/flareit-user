@@ -45,4 +45,15 @@ export interface ArtistCard {
 export interface Playlist {
     title: string;
     id: number;
+    musics: Musics[];
+}
+
+export interface Musics {
+    length: number;
+    coverImgUrl: string;
+    audioUrl: string;
+    title: string;
+    artistName: string;
+    id: number;
+    playCount: number;
 }

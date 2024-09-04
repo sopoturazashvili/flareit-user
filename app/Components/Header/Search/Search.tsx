@@ -52,7 +52,6 @@ const Search = () => {
 
     useEffect(() => {
         handleSearch();
-        console.log(searchResults);
     }, [searchTerm]);
 
     const handleItemClick = () => {

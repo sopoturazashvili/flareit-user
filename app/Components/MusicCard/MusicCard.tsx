@@ -104,7 +104,7 @@ const MusicCard = (props: Props) => {
                     <BiDotsVerticalRounded size={24} color="white" />
                     {props.menuOpen && (
                         <div style={menuStyles} className={styles.menu}>
-                            <DropDownMenu />
+                            <DropDownMenu id={props.id} />
                         </div>
                     )}
                 </div>
