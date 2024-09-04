@@ -46,7 +46,10 @@ const PlayerAndList = () => {
             });
     }, []);
     const handleClick = (item: MusicListItemProps, index: number) => {
-        const allSrc = musicList.map((music) => music.audioUrl);
+        const allSrc = musicList.map((item) => ({
+            audioUrl: item.audioUrl,
+            id: item.id,
+        }));
         const imageSrc = musicList.map((music) => music.coverImgUrl);
         const musicNames = musicList.map((music) => music.title);
         const authors = musicList.map((music) => music.artistName);

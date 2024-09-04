@@ -54,7 +54,10 @@ const TopHits = () => {
         },
         index: number,
     ) => {
-        const allSrc = topHits.map((item) => item.audioUrl);
+        const allSrc = topHits.map((item) => ({
+            audioUrl: item.audioUrl,
+            id: item.id,
+        }));
         const imageSrc = topHits.map((item) => item.coverImgUrl);
         const artist = topHits.map((item) => item.title);
         const title = topHits.map((item) => item.title);

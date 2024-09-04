@@ -52,7 +52,10 @@ const MusicList = () => {
         },
         index: number,
     ) => {
-        const allSrc = musicList.map((item) => item.audioUrl);
+        const allSrc = musicList.map((item) => ({
+            audioUrl: item.audioUrl,
+            id: item.id,
+        }));
         const imageSrc = musicList.map((item) => item.coverImgUrl);
         const artist = musicList.map((item) => item.artistName);
         const title = musicList.map((item) => item.title);

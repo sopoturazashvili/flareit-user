@@ -78,7 +78,10 @@ const ArtistPageById = () => {
     }, [id]);
 
     const handleClick = (item: Music, index: number) => {
-        const allSrc = musics.map((music) => music.audioUrl);
+        const allSrc = musics.map((item) => ({
+            audioUrl: item.audioUrl,
+            id: item.id,
+        }));
         const imageSrc = musics.map((music) => music.coverImgUrl);
         const artistNames = musics.map((music) => music.artistName);
         const titles = musics.map((music) => music.title);
