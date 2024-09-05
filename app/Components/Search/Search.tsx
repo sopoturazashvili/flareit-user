@@ -8,8 +8,6 @@ import SearchItemMusic from './SearchItemMusic/SearchItemMusic';
 import SearchItemAlbum from './SearchItemAlbum/SearchItemAlbum';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useRecoilState } from 'recoil';
-import { searchRefState, searchTermState } from '@/app/states/searchStates';
 
 interface ItemData {
     id: number;
@@ -49,18 +47,26 @@ interface Item {
 
 const Search = () => {
     const [searchResults, setSearchResults] = useState<Item[]>([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const searchRef = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
-    const [searchTerm, setSearchTerm] = useRecoilState(searchTermState);
-    const [, setSearchRef] = useRecoilState(searchRefState);
-    const searchReference = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        console.log(
-            'Component mounted, setting searchRef:',
-            searchReference.current,
-        );
-        setSearchRef(searchReference.current);
-    }, [setSearchRef]);
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                searchRef.current &&
+                !searchRef.current.contains(event.target as Node)
+            ) {
+                setSearchTerm('');
+            }
+        };
+
+        document.addEventListener('click', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, [searchRef, setSearchTerm]);
 
     const handleSearch = async () => {
         if (searchTerm.trim() === '') {
@@ -194,7 +200,7 @@ const Search = () => {
     };
 
     return (
-        <div className={styles.searchAndMap} ref={searchReference}>
+        <div className={styles.searchAndMap} ref={searchRef}>
             <div className={styles.searchInputContainer}>
                 <div className={styles.inputContainer}>
                     <Image
