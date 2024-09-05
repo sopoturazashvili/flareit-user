@@ -10,6 +10,8 @@ import PlayerHandler from '../Components/PlayerControler/Player/PlayerHandler/Pl
 import styles from './layout.module.scss';
 import { ReactNode } from 'react';
 import LoadingSpinner from '../Components/LoadingSpinner/LoaddingSpinner';
+import { searchRefState, searchTermState } from '../states/searchStates';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 interface Props {
     children: ReactNode;
@@ -20,6 +22,22 @@ const Layout = (props: Props) => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(
         null,
     );
+    const [, setSearchTerm] = useRecoilState(searchTermState);
+    const searchRef = useRecoilValue(searchRefState);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (searchRef && !searchRef.contains(event.target as Node)) {
+                setSearchTerm('');
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [searchRef, setSearchTerm]);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -33,6 +51,7 @@ const Layout = (props: Props) => {
     if (isAuthenticated === null) {
         return <LoadingSpinner />;
     }
+
     return (
         <div className={styles.wrapper}>
             <PlayerHandler />

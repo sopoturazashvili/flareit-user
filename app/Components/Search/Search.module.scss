@@ -1,4 +1,4 @@
-@import '../../../styles/colors.scss';
+@import '../../styles//colors.scss';
 
 .searchInputContainer {
     max-width: 434px;
@@ -12,7 +12,7 @@
     flex-direction: column;
     max-height: 100vh;
     overflow-y: auto;
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
 
 .inputContainer {

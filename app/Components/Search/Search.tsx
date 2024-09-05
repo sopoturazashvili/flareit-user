@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './Search.module.scss';
 import axios from 'axios';
 import SearchItemAuthor from './SearchItemAuthor/SearchItemAuthor';
@@ -8,6 +8,8 @@ import SearchItemMusic from './SearchItemMusic/SearchItemMusic';
 import SearchItemAlbum from './SearchItemAlbum/SearchItemAlbum';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { useRecoilState } from 'recoil';
+import { searchRefState, searchTermState } from '@/app/states/searchStates';
 
 interface ItemData {
     id: number;
@@ -47,8 +49,18 @@ interface Item {
 
 const Search = () => {
     const [searchResults, setSearchResults] = useState<Item[]>([]);
-    const [searchTerm, setSearchTerm] = useState('');
     const pathname = usePathname();
+    const [searchTerm, setSearchTerm] = useRecoilState(searchTermState);
+    const [, setSearchRef] = useRecoilState(searchRefState);
+    const searchReference = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        console.log(
+            'Component mounted, setting searchRef:',
+            searchReference.current,
+        );
+        setSearchRef(searchReference.current);
+    }, [setSearchRef]);
 
     const handleSearch = async () => {
         if (searchTerm.trim() === '') {
@@ -182,7 +194,7 @@ const Search = () => {
     };
 
     return (
-        <div className={styles.searchAndMap}>
+        <div className={styles.searchAndMap} ref={searchReference}>
             <div className={styles.searchInputContainer}>
                 <div className={styles.inputContainer}>
                     <Image
