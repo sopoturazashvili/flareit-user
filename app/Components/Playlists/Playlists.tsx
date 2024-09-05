@@ -23,14 +23,11 @@ const Playlists = () => {
                 })
                 .then((result) => {
                     setPlaylist(result.data.playlists);
-                })
-                .catch((error) => {
-                    alert(error);
                 });
         } else {
             console.error('No authentication token found.');
         }
-    }, [token]);
+    }, [token, playlists]);
     return (
         <div className={styles.container}>
             <div>
