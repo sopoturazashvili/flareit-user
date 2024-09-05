@@ -63,90 +63,86 @@ const Search = () => {
 
         document.addEventListener('click', handleClickOutside);
 
+        const handleSearch = async () => {
+            if (searchTerm.trim() === '') {
+                setSearchResults([]);
+                return;
+            }
+            try {
+                const response = await axios.get(
+                    'https://enigma-wtuc.onrender.com/search',
+                    {
+                        params: { searchField: searchTerm },
+                    },
+                );
+
+                console.log('this is response', response);
+
+                const flattenedResults: Item[] = [];
+
+                response.data.forEach(
+                    (item: {
+                        type: 'author' | 'album' | 'music';
+                        data: AuthorData | AlbumData | MusicData;
+                    }) => {
+                        if (item.type === 'author') {
+                            const authorData = item.data as AuthorData;
+                            flattenedResults.push({
+                                type: 'author',
+                                data: authorData,
+                            });
+
+                            if (authorData.albums) {
+                                authorData.albums.forEach(
+                                    (album: AlbumData) => {
+                                        flattenedResults.push({
+                                            type: 'album',
+                                            data: album,
+                                        });
+
+                                        album.musics.forEach(
+                                            (music: MusicData) => {
+                                                flattenedResults.push({
+                                                    type: 'music',
+                                                    data: music,
+                                                });
+                                            },
+                                        );
+                                    },
+                                );
+                            }
+                        } else if (item.type === 'album') {
+                            const albumData = item.data as AlbumData;
+                            flattenedResults.push({
+                                type: 'album',
+                                data: albumData,
+                            });
+
+                            albumData.musics.forEach((music: MusicData) => {
+                                flattenedResults.push({
+                                    type: 'music',
+                                    data: music,
+                                });
+                            });
+                        } else if (item.type === 'music') {
+                            const musicData = item.data as MusicData;
+                            flattenedResults.push({
+                                type: 'music',
+                                data: musicData,
+                            });
+                        }
+                    },
+                );
+                setSearchResults(flattenedResults);
+            } catch (error) {
+                console.error('Error during search', error);
+            }
+        };
+        handleSearch();
         return () => {
             document.removeEventListener('click', handleClickOutside);
         };
-    }, [searchRef, setSearchTerm]);
-
-    const handleSearch = async () => {
-        if (searchTerm.trim() === '') {
-            setSearchResults([]);
-            return;
-        }
-        try {
-            const response = await axios.get(
-                'https://enigma-wtuc.onrender.com/search',
-                {
-                    params: { searchField: searchTerm },
-                },
-            );
-
-            const flattenedResults: Item[] = [];
-
-            response.data.forEach(
-                (item: {
-                    type: 'author' | 'album' | 'music';
-                    data: AuthorData | AlbumData | MusicData;
-                }) => {
-                    if (item.type === 'author') {
-                        const authorData = item.data as AuthorData;
-                        flattenedResults.push({
-                            type: 'author',
-                            data: authorData,
-                        });
-
-                        if (authorData.albums) {
-                            authorData.albums.forEach((album: AlbumData) => {
-                                flattenedResults.push({
-                                    type: 'album',
-                                    data: album,
-                                });
-
-                                album.musics.forEach((music: MusicData) => {
-                                    flattenedResults.push({
-                                        type: 'music',
-                                        data: music,
-                                    });
-                                });
-                            });
-                        }
-                    } else if (item.type === 'album') {
-                        const albumData = item.data as AlbumData;
-                        flattenedResults.push({
-                            type: 'album',
-                            data: albumData,
-                        });
-
-                        albumData.musics.forEach((music: MusicData) => {
-                            flattenedResults.push({
-                                type: 'music',
-                                data: music,
-                            });
-                        });
-                    } else if (item.type === 'music') {
-                        const musicData = item.data as MusicData;
-                        flattenedResults.push({
-                            type: 'music',
-                            data: musicData,
-                        });
-                    }
-                },
-            );
-
-            setSearchResults(flattenedResults);
-        } catch (error) {
-            console.error('Error during search', error);
-        }
-    };
-
-    useEffect(() => {
-        handleSearch();
-    }, [searchTerm]);
-
-    useEffect(() => {
-        setSearchTerm('');
-        setSearchResults([]);
-    }, [pathname]);
+    }, [searchTerm, pathname]);
 
     const handleItemClick = () => {
         setSearchTerm('');
