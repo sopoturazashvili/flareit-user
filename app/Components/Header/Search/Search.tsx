@@ -24,8 +24,24 @@ interface ItemData {
     updatedAt?: string;
 }
 
+interface AuthorData extends ItemData {
+    albums?: AlbumData[];
+    musicsCount?: number;
+    totalPlayCount?: number;
+}
+
+interface AlbumData extends ItemData {
+    musics: MusicData[];
+    totalPlayCount?: number;
+}
+
+interface MusicData extends ItemData {
+    playCount?: number;
+    audioUrl?: string;
+}
+
 interface Item {
-    data: ItemData;
+    data: AuthorData | AlbumData | MusicData;
     type: 'author' | 'music' | 'album';
 }
 
@@ -46,7 +62,60 @@ const Search = () => {
                     params: { searchField: searchTerm },
                 },
             );
-            setSearchResults(response.data);
+
+            const flattenedResults: Item[] = [];
+
+            response.data.forEach(
+                (item: {
+                    type: 'author' | 'album' | 'music';
+                    data: AuthorData | AlbumData | MusicData;
+                }) => {
+                    if (item.type === 'author') {
+                        const authorData = item.data as AuthorData;
+                        flattenedResults.push({
+                            type: 'author',
+                            data: authorData,
+                        });
+
+                        if (authorData.albums) {
+                            authorData.albums.forEach((album: AlbumData) => {
+                                flattenedResults.push({
+                                    type: 'album',
+                                    data: album,
+                                });
+
+                                album.musics.forEach((music: MusicData) => {
+                                    flattenedResults.push({
+                                        type: 'music',
+                                        data: music,
+                                    });
+                                });
+                            });
+                        }
+                    } else if (item.type === 'album') {
+                        const albumData = item.data as AlbumData;
+                        flattenedResults.push({
+                            type: 'album',
+                            data: albumData,
+                        });
+
+                        albumData.musics.forEach((music: MusicData) => {
+                            flattenedResults.push({
+                                type: 'music',
+                                data: music,
+                            });
+                        });
+                    } else if (item.type === 'music') {
+                        const musicData = item.data as MusicData;
+                        flattenedResults.push({
+                            type: 'music',
+                            data: musicData,
+                        });
+                    }
+                },
+            );
+
+            setSearchResults(flattenedResults);
         } catch (error) {
             console.error('Error during search', error);
         }
@@ -119,8 +188,8 @@ const Search = () => {
                     <Image
                         src={
                             searchTerm
-                                ? '/image/searchWhite.svg'
-                                : '/image/searchGrey.svg'
+                                ? '/Image/searchWhite.svg'
+                                : '/Image/searchGrey.svg'
                         }
                         alt="Search Icon"
                         width={24}
