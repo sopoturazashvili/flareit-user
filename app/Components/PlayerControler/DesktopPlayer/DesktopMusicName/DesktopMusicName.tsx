@@ -29,7 +29,7 @@ const DesktopMusicName = () => {
                         ? styles.fullScreenImage
                         : styles.image
                 }
-                src={image[index] ? image[index] : '/images/MusicLogo.svg'}
+                src={image[index] ? image[index] : '/images/playerDefault.png'}
                 alt="Music Cover"
             />
             <span

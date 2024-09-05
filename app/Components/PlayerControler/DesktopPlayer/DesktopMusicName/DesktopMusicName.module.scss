@@ -14,6 +14,10 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    max-width: 230px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .image {

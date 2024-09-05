@@ -16,7 +16,7 @@ const MobileMusicName = () => {
         >
             <img
                 className={styles.image}
-                src={image[index] ? image[index] : '/images/MusicLogo.svg'}
+                src={image[index] ? image[index] : '/images/playerDefault.png'}
                 alt="photo"
             />
             <Name />
