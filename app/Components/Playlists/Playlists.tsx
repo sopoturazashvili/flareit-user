@@ -9,7 +9,6 @@ import { Playlist } from '@/app/interfaces/item';
 
 const Playlists = () => {
     const [playlists, setPlaylist] = useState<Playlist[]>([]);
-    console.log(playlists);
 
     const token = localStorage.getItem('token');
 
