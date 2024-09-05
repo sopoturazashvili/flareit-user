@@ -63,7 +63,7 @@ const Playlist = () => {
                 'No authentication token found or playlist ID missing.',
             );
         }
-    }, [token, id]);
+    }, [token, id, playlist]);
 
     const handleClick = (item: Musics, index: number) => {
         const allSrc = playlist.map(({ audioUrl, id }) => ({ audioUrl, id }));
