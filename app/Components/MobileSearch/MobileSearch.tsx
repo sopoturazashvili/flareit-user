@@ -1,5 +1,5 @@
 'use client';
-import Search from '../Header/Search/Search';
+import Search from '../Search/Search';
 import styles from './MobileSearch.module.scss';
 
 const MobileSearch = () => {

@@ -1,4 +1,4 @@
-@import '../../../styles/colors.scss';
+@import '../../styles//colors.scss';
 
 .searchInputContainer {
     max-width: 434px;
@@ -10,9 +10,13 @@
     background-color: $PrimaryBlackTone3;
     gap: 8px;
     flex-direction: column;
-    max-height: 100vh;
+    max-height: 400px;
     overflow-y: auto;
-    overflow-x: hidden; 
+    overflow-x: hidden;
+}
+
+.searchInputContainer::-webkit-scrollbar {
+    display: none;
 }
 
 .inputContainer {

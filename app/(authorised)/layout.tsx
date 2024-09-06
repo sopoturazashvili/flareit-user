@@ -33,6 +33,7 @@ const Layout = (props: Props) => {
     if (isAuthenticated === null) {
         return <LoadingSpinner />;
     }
+
     return (
         <div className={styles.wrapper}>
             <PlayerHandler />
