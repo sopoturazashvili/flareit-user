@@ -1,14 +1,18 @@
 import { useRouter } from 'next/navigation';
 import styles from './LogOutModal.module.scss';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { email } from '@/app/interfaces/item';
 
 interface Props {
-    email: string;
     setLogOut: (e: boolean) => void;
     logOut: boolean;
 }
 
 const LogOutModal = (props: Props) => {
+    const [emailList, setEmailList] = useState<email>();
     const router = useRouter();
+    const token = localStorage.getItem('token');
 
     const handleLogout = (event: React.MouseEvent) => {
         event.stopPropagation();
@@ -16,13 +20,28 @@ const LogOutModal = (props: Props) => {
         router.push('/auth');
     };
 
+    useEffect(() => {
+        if (token) {
+            axios
+                .get(`https://enigma-wtuc.onrender.com/users/me`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                })
+                .then((res) => {
+                    setEmailList(res.data);
+                });
+        }
+    }, [token]);
+
     return (
         <>
             {props.logOut && (
                 <div
                     className={styles.logOutBackground}
                     onClick={() => {
-                        props.setLogOut(!props.logOut);
+                        props.setLogOut(false);
                     }}
                 >
                     <div
@@ -31,9 +50,11 @@ const LogOutModal = (props: Props) => {
                     >
                         <div className={styles.logOutModal}>
                             <div>
-                                <span className={styles.color}>
-                                    {props.email}
-                                </span>
+                                {emailList && (
+                                    <span className={styles.color}>
+                                        {emailList.email}
+                                    </span>
+                                )}
                             </div>
                             <div
                                 className={styles.logOut}

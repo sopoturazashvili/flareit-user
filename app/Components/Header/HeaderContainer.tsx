@@ -35,7 +35,7 @@ const HeaderContainer = () => {
                         src={'/Image/LogOut.svg'}
                     />
                 </div>
-                <LogOutModal email={''} logOut={logOut} setLogOut={setLogOut} />
+                <LogOutModal logOut={logOut} setLogOut={setLogOut} />
                 <div className={styles.NavDesktop}>
                     <NavDesktop />
                 </div>
