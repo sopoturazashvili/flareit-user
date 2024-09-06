@@ -1,6 +1,8 @@
 import PlaylistItem from '@/app/Components/PlaylistItem/PlaylistItem';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import styles from './DropDownMenu.module.scss';
+import Link from 'next/link';
 
 interface Playlists {
     title: string;
@@ -50,7 +52,10 @@ const DropDownMenu = (props: Props) => {
     });
 
     return (
-        <div>
+        <div className={styles.container}>
+            <Link className={styles.create} href={'/playlists'}>
+                + Create Playlist
+            </Link>
             {playlists.map((playlist) => (
                 <PlaylistItem
                     playlistName={playlist.title}
