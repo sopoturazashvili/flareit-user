@@ -61,3 +61,9 @@ export interface Musics {
     id: number;
     playCount: number;
 }
+
+export interface TopChartsInter {
+    title: string;
+    coverImgUrl: string;
+    id: number;
+}
