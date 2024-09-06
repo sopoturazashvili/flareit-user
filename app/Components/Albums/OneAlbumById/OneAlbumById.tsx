@@ -11,7 +11,7 @@ import {
 } from '@/app/state';
 import styles from './OneAlbumById.module.scss';
 import { useRecoilState } from 'recoil';
-import useToggleMenu from '@/app/useToggleMenu';
+import useToggleMenu from '@/app/helpers/useToggleMenu';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'next/navigation';
