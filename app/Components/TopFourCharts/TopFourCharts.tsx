@@ -1,35 +1,30 @@
+import { useEffect, useState } from 'react';
 import ChartCard from '../ChartCard/ChartCard';
+import axios from 'axios';
+import { TopChartsInter } from '@/app/interfaces/item';
 
 const TopFourCharts = () => {
-    const data = [
-        {
-            id: 1,
-            image: '/images/topHits.png',
-            title: 'Top Hits 2024',
-        },
-        {
-            id: 2,
-            image: '/images/chartHitsStars.png',
-            title: 'Chart Hits Stars',
-        },
-        {
-            id: 3,
-            image: '/images/topMusicCharts.png',
-            title: 'Top Music Charts',
-        },
-        {
-            id: 4,
-            image: '/images/superChartHits.png',
-            title: 'Super Chart Hits',
-        },
-    ];
+    const [topCharts, setTopCharts] = useState<TopChartsInter[]>([]);
+    const token = localStorage.getItem('token');
+    useEffect(() => {
+        axios
+            .get('https://enigma-wtuc.onrender.com/topcharts', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((result) => {
+                setTopCharts(result.data);
+            });
+    }, [token]);
     return (
         <>
-            {data.map((item) => (
+            {topCharts.map((item) => (
                 <ChartCard
                     key={item.id}
                     id={item.id}
-                    image={item.image}
+                    image={item.coverImgUrl}
                     title={item.title}
                 />
             ))}
