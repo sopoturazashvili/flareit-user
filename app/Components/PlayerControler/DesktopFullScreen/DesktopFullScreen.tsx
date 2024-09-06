@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './DesktopFullScreen.module.scss';
-import DesktopMusicName from '../DesktopPlayer/DesktopMusicName/DesktopMusicName';
 import DesktopInputRange from '../DesktopPlayer/DesktopInputRange/DesktopInputRange';
 import Shuffle from '../Shuffle/Shufle';
 import DesktopVolume from '../DesktopPlayer/DesktopVolume/DesktopVolume';
 import DesktopMusicSwitch from '../DesktopMusicSwitch/DesktopMusicSwitch';
 import { fullScreenState, globalImageState, indexState } from '@/app/state';
 import { useRecoilState } from 'recoil';
+import FullScreenName from './DesktopFullScreenName/FullScreenName';
 
 const DesktopFullScreen = () => {
     const [image] = useRecoilState(globalImageState);
@@ -28,7 +28,7 @@ const DesktopFullScreen = () => {
                 />
                 <div className={styles.iconImage}></div>
                 <div>
-                    <DesktopMusicName />
+                    <FullScreenName />
                 </div>
                 <div className={styles.inputRangeCont}>
                     <Shuffle />

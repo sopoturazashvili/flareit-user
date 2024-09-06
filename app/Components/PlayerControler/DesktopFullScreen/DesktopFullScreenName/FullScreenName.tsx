@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './DesktopMusicName.module.scss';
 import { useRecoilState } from 'recoil';
+import styles from './FullScreenName.module.scss';
 import {
     authorNameState,
     fullScreenState,
@@ -9,7 +9,7 @@ import {
     musicNameState,
 } from '@/app/state';
 
-const DesktopMusicName = () => {
+const FullScreenName = () => {
     const [image] = useRecoilState(globalImageState);
     const [fullScreen, setFullScreen] = useRecoilState(fullScreenState);
     const [artist] = useRecoilState(musicNameState);
@@ -24,7 +24,7 @@ const DesktopMusicName = () => {
             }}
         >
             <img
-                className={styles.image}
+                className={styles.fullScreenImage}
                 src={image[index] ? image[index] : '/images/playerDefault.png'}
                 alt="Music Cover"
             />
@@ -41,4 +41,4 @@ const DesktopMusicName = () => {
     );
 };
 
-export default DesktopMusicName;
+export default FullScreenName;
