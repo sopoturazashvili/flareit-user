@@ -37,6 +37,10 @@ export interface Album {
     id: number;
 }
 
+export interface email {
+    email: string;
+}
+
 export interface ArtistCard {
     coverImgUrl: string;
     artistName: string;
