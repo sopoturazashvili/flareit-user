@@ -80,25 +80,24 @@ const Search = () => {
     }, [debouncedSearchTerm, pathname]);
 
     const handleClickSecond = (item: Musics, index: number) => {
-        // Use non-null assertion or default empty values to avoid `undefined`
         const allSrc = searchResults
             .filter((result) => result.type === SearchTypeEnum.Music)
             .map((result) => ({
-                audioUrl: result.data.audioUrl ?? '', // Provide a default value
+                audioUrl: result.data.audioUrl ?? '',
                 id: result.data.id,
             }));
 
         const imageSrc = searchResults
             .filter((result) => result.type === SearchTypeEnum.Music)
-            .map((result) => result.data.coverImgUrl ?? ''); // Provide a default value
+            .map((result) => result.data.coverImgUrl ?? '');
 
         const musicName = searchResults
             .filter((result) => result.type === SearchTypeEnum.Music)
-            .map((result) => result.data.artistName ?? ''); // Provide a default value
+            .map((result) => result.data.artistName ?? '');
 
         const title = searchResults
             .filter((result) => result.type === SearchTypeEnum.Music)
-            .map((result) => result.data.title ?? ''); // Provide a default value
+            .map((result) => result.data.title ?? '');
 
         setIsPlaying(true);
         setGlobalId(item.id);
