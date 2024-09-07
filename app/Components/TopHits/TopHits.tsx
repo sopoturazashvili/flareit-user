@@ -12,7 +12,7 @@ import {
 import MusicCard from '../MusicCard/MusicCard';
 import styles from './TopHits.module.scss';
 import { useRecoilState } from 'recoil';
-import useToggleMenu from '@/app/useToggleMenu';
+import useToggleMenu from '@/app/helpers/useToggleMenu';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
