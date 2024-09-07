@@ -11,7 +11,7 @@ import {
     musicNameState,
 } from '@/app/state';
 import { useRecoilState } from 'recoil';
-import useToggleMenu from '@/app/useToggleMenu';
+import useToggleMenu from '@/app/helpers/useToggleMenu';
 import MusicCard from '../MusicCard/MusicCard';
 import axios from 'axios';
 import { useEffect, useState } from 'react';

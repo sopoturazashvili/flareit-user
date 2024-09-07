@@ -1,10 +1,10 @@
-import styles from './MusicCard.module.scss';
-import DeleteBox from '../DleleteBox/DeleteBox';
-import DropDownMenu from '../DropDownMenu/DropDownMenu';
-import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'next/navigation';
+import { BiDotsVerticalRounded } from 'react-icons/bi';
+import styles from './MusicCard.module.scss';
+import DeleteBox from '../DleleteBox/DeleteBox';
+import DropDownMenu from '../DropDownMenu/DropDownMenu';
 
 interface Props {
     image: string;
@@ -29,6 +29,7 @@ const MusicCard = (props: Props) => {
         left: '20px',
     });
     const musicCardRef = useRef<HTMLDivElement>(null);
+    const menuRef = useRef<HTMLDivElement>(null);
     const params = useParams();
 
     useEffect(() => {
@@ -44,6 +45,28 @@ const MusicCard = (props: Props) => {
             }
         }
     }, [props.menuOpen]);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                menuRef.current &&
+                !menuRef.current.contains(event.target as Node) &&
+                musicCardRef.current &&
+                !musicCardRef.current.contains(event.target as Node)
+            ) {
+                props.toggleMenu();
+            }
+        };
+
+        if (props.menuOpen) {
+            document.addEventListener('click', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, [props.menuOpen, props.toggleMenu]);
+
     const data = {
         musicId: props.id,
         playlistId: Number(params.id),
@@ -70,12 +93,8 @@ const MusicCard = (props: Props) => {
     };
 
     return (
-        <div
-            ref={musicCardRef}
-            className={styles.musicCard}
-            onClick={props.onClick}
-        >
-            <div className={styles.musicCardHeader}>
+        <div ref={musicCardRef} className={styles.musicCard}>
+            <div className={styles.musicCardHeader} onClick={props.onClick}>
                 <div className={styles.musicCardhover}>
                     <img
                         className={styles.musicCardPhoto}
@@ -107,7 +126,11 @@ const MusicCard = (props: Props) => {
                 <div onClick={props.toggleMenu} className={styles.dots}>
                     <BiDotsVerticalRounded size={24} color="white" />
                     {props.menuOpen && (
-                        <div style={menuStyles} className={styles.menu}>
+                        <div
+                            ref={menuRef}
+                            style={menuStyles}
+                            className={styles.menu}
+                        >
                             <DropDownMenu id={props.id} />
                         </div>
                     )}

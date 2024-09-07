@@ -13,7 +13,7 @@ import {
     musicId,
     musicNameState,
 } from '@/app/state';
-import useToggleMenu from '@/app/useToggleMenu';
+import useToggleMenu from '@/app/helpers/useToggleMenu';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import MusicCard from '../../MusicCard/MusicCard';
