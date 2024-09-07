@@ -18,6 +18,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import MusicCard from '../../MusicCard/MusicCard';
 
+// Interfaces
 interface Music {
     coverImgUrl: string;
     audioUrl: string;
@@ -31,6 +32,7 @@ interface Artist {
     id: number;
     artistName: string;
     coverImgUrl: string;
+    albums: Album[];
 }
 
 interface Album {
@@ -39,6 +41,7 @@ interface Album {
     artistName: string;
     coverImgUrl: string;
     id: number;
+    musics: Music[];
 }
 
 const ArtistPageById = () => {
@@ -56,6 +59,7 @@ const ArtistPageById = () => {
 
     const params = useParams();
     const id = params?.id;
+
     useEffect(() => {
         if (id) {
             const fetchData = async () => {
@@ -63,9 +67,23 @@ const ArtistPageById = () => {
                     const artistResult = await axios.get(
                         `https://enigma-wtuc.onrender.com/authors/${id}`,
                     );
-                    setArtistData(artistResult.data || null);
-                    setAlbums(artistResult.data.albums || []);
-                    setMusics(artistResult.data.musics || []);
+
+                    const artistData = artistResult.data || null;
+                    setArtistData(artistData);
+                    setAlbums(artistData.albums || []);
+
+                    const allMusics = artistData.albums.reduce(
+                        (acc: Music[], album: Album) => {
+                            return [...acc, ...album.musics];
+                        },
+                        [],
+                    );
+
+                    const shuffledMusics = shuffleArray(allMusics);
+
+                    const selectedMusics = shuffledMusics.slice(0, 6);
+
+                    setMusics(selectedMusics);
                 } catch (error) {
                     console.error('Error fetching artist data:', error);
                     alert('Failed to fetch artist data. Please try again.');
@@ -74,6 +92,15 @@ const ArtistPageById = () => {
             fetchData();
         }
     }, [id]);
+
+    const shuffleArray = (array: Music[]) => {
+        const shuffled = array.slice();
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+    };
 
     const handleClick = (item: Music, index: number) => {
         const allSrc = musics.map((item) => ({
