@@ -12,6 +12,17 @@ import { Item } from '../../interfaces/searchInterfaces';
 import { useDebounce } from '../../helpers/useDebounce';
 import { processAndSortSearchResults } from '@/app/helpers/processSearchResults';
 import { SearchTypeEnum } from '@/app/enums/searchType.enum';
+import { useRecoilState } from 'recoil';
+import {
+    authorNameState,
+    globalImageState,
+    indexState,
+    isPlayingState,
+    musicGlobalState,
+    musicId,
+    musicNameState,
+} from '../state';
+import { Musics } from '@/app/interfaces/item';
 
 const Search = () => {
     const [searchResults, setSearchResults] = useState<Item[]>([]);
@@ -19,6 +30,13 @@ const Search = () => {
     const searchRef = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
     const debouncedSearchTerm = useDebounce(searchTerm, 200);
+    const [, setGlobalsrc] = useRecoilState(musicGlobalState);
+    const [, setGlobalId] = useRecoilState(musicId);
+    const [, setIsPlaying] = useRecoilState(isPlayingState);
+    const [, setActiveIdx] = useRecoilState(indexState);
+    const [, setImage] = useRecoilState(globalImageState);
+    const [, setAuthorName] = useRecoilState(musicNameState);
+    const [, setTitle] = useRecoilState(authorNameState);
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -44,8 +62,6 @@ const Search = () => {
             }
 
             try {
-                setSearchResults([]);
-
                 const { data } = await axios.get(
                     'https://enigma-wtuc.onrender.com/search',
                     {
@@ -63,28 +79,70 @@ const Search = () => {
         handleSearch();
     }, [debouncedSearchTerm, pathname]);
 
-    const handleItemClick = () => setSearchTerm('');
+    const handleClickSecond = (item: Musics, index: number) => {
+        // Use non-null assertion or default empty values to avoid `undefined`
+        const allSrc = searchResults
+            .filter((result) => result.type === SearchTypeEnum.Music)
+            .map((result) => ({
+                audioUrl: result.data.audioUrl ?? '', // Provide a default value
+                id: result.data.id,
+            }));
+
+        const imageSrc = searchResults
+            .filter((result) => result.type === SearchTypeEnum.Music)
+            .map((result) => result.data.coverImgUrl ?? ''); // Provide a default value
+
+        const musicName = searchResults
+            .filter((result) => result.type === SearchTypeEnum.Music)
+            .map((result) => result.data.artistName ?? ''); // Provide a default value
+
+        const title = searchResults
+            .filter((result) => result.type === SearchTypeEnum.Music)
+            .map((result) => result.data.title ?? ''); // Provide a default value
+
+        setIsPlaying(true);
+        setGlobalId(item.id);
+        setImage(imageSrc);
+        setGlobalsrc(allSrc);
+        setActiveIdx(index);
+        setAuthorName(musicName);
+        setTitle(title);
+    };
+
+    const handleClick = () => {
+        setSearchTerm('');
+    };
 
     const renderItemsByType = () => (
         <div className={styles.dataContainer}>
-            {searchResults.map(({ data, type }) => {
+            {searchResults.map(({ data, type }, index) => {
                 const commonProps = {
                     id: data.id,
                     artistName: data.artistName,
                     coverImgUrl: data.coverImgUrl,
-                    onClick: handleItemClick,
+                    title: data.title,
+                    index,
                 };
 
                 switch (type) {
                     case SearchTypeEnum.Author:
                         return (
-                            <SearchItemAuthor key={data.id} {...commonProps} />
+                            <SearchItemAuthor
+                                onClick={handleClick}
+                                key={data.id}
+                                {...commonProps}
+                            />
                         );
                     case SearchTypeEnum.Music:
                         return (
                             <SearchItemMusic
                                 key={data.id}
-                                {...commonProps}
+                                onClick={() =>
+                                    handleClickSecond(data as Musics, index)
+                                }
+                                id={data.id}
+                                artistName={data.artistName}
+                                coverImgUrl={data.coverImgUrl}
                                 title={data.title}
                                 audioUrl={data.audioUrl}
                             />
@@ -92,6 +150,7 @@ const Search = () => {
                     case SearchTypeEnum.Album:
                         return (
                             <SearchItemAlbum
+                                onClick={handleClick}
                                 key={data.id}
                                 {...commonProps}
                                 title={data.title}
