@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import styles from './SearchItemMusic.module.scss';
 
@@ -13,12 +12,7 @@ interface Props {
 
 const SearchItemMusic = (props: Props) => {
     return (
-        <Link
-            key={props.id}
-            className={styles.mapContainer}
-            href={`/albums/${props.id}`}
-            onClick={props.onClick}
-        >
+        <div className={styles.mapContainer} onClick={props.onClick}>
             <Image
                 className={styles.square}
                 src={props.coverImgUrl}
@@ -32,7 +26,7 @@ const SearchItemMusic = (props: Props) => {
                     {props.artistName}
                 </span>
             </div>
-        </Link>
+        </div>
     );
 };
 
