@@ -4,14 +4,12 @@ import styles from './MobileLogOut.module.scss';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { email } from '@/app/interfaces/item';
+import { getCookie, deleteCookie } from 'cookies-next';
 
 const MobileLogOut = () => {
     const router = useRouter();
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
-    const [emailList, setEmailList] = useState<email>();
+    const token = getCookie('token');
+    const [emailList, setEmailList] = useState<email | null>(null);
 
     const handleLogout = () => {
         deleteCookie('token');
@@ -31,7 +29,7 @@ const MobileLogOut = () => {
                     setEmailList(res.data);
                 })
                 .catch((err) => {
-                    console.error('Error fetching user data', err);
+                    console.error('Error fetching user data:', err);
                 });
         }
     }, [token]);
@@ -63,10 +61,3 @@ const MobileLogOut = () => {
 };
 
 export default MobileLogOut;
-function deleteCookie(arg0: string) {
-    throw new Error('Function not implemented.');
-}
-
-function getCookie(arg0: string) {
-    throw new Error('Function not implemented.');
-}

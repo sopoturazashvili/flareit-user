@@ -6,9 +6,9 @@ import { TopChartsInter } from '@/app/interfaces/item';
 const TopFourCharts = () => {
     const [topCharts, setTopCharts] = useState<TopChartsInter[]>([]);
     const token = document.cookie
-    .split('; ')
-    .find((row) => row.startsWith('token='))
-    ?.split('=')[1];
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
     useEffect(() => {
         axios
             .get('https://enigma-wtuc.onrender.com/topcharts', {
