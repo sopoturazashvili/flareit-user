@@ -67,9 +67,9 @@ const PlayerHandler = () => {
 
         if (audio) {
             if (isPlaying) {
-                audio.play(); // Continue from the current time
+                audio.play();
             } else {
-                audio.pause(); // Pause and retain the current position
+                audio.pause();
             }
         }
     }, [isPlaying]);
@@ -77,10 +77,9 @@ const PlayerHandler = () => {
         const audio = audioRef.current;
 
         if (audio && musicSrc[index]?.audioUrl) {
-            // Only set a new src if the music has changed (new song selected)
             if (audio.src !== musicSrc[index].audioUrl) {
                 audio.src = musicSrc[index].audioUrl;
-                audio.currentTime = 0; // Reset the time only for new songs
+                audio.currentTime = 0;
             }
 
             if (isPlaying) {
