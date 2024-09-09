@@ -26,7 +26,7 @@ const TrendHitsCard: React.FC = () => {
             setCurrentIndex(
                 (prevIndex) => (prevIndex + 1) % trendHitsItems.length,
             );
-        }, 4000);
+        }, 99999999999);
 
         return () => clearInterval(intervalId);
     }, []);

@@ -3,8 +3,8 @@
     display: flex;
     justify-content: flex-start;
     background-size: 100% 100%;
-    transition: background-image 0.5s ease-in-out; 
-    min-height: 300px; 
+    transition: background-image 0.5s ease-in-out;
+    min-height: 300px;
 }
 
 .trendHitsContrainer {
@@ -37,4 +37,27 @@
         font-size: 32px;
         font-weight: 700;
     }
+
+    .container {
+        min-height: 200px;
+    }
 }
+
+@media screen and (min-width: 1024px) and (max-width: 1250px) {
+    .container {
+        min-height: 273px;
+    }
+}
+
+@media screen and (min-width: 1500px) and (max-width: 1699px) {
+    .container {
+        min-height: 400px;
+    }
+}
+
+@media screen and (min-width: 1700px) {
+    .container {
+        min-height: 500px;
+    }
+}
+
