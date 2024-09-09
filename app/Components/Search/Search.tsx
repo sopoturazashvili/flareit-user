@@ -37,6 +37,10 @@ const Search = () => {
     const [, setImage] = useRecoilState(globalImageState);
     const [, setAuthorName] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -66,6 +70,10 @@ const Search = () => {
                     'https://enigma-wtuc.onrender.com/search',
                     {
                         params: { searchField: debouncedSearchTerm },
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`,
+                        },
                     },
                 );
 

@@ -7,11 +7,14 @@ import { email } from '@/app/interfaces/item';
 
 const MobileLogOut = () => {
     const router = useRouter();
-    const token = localStorage.getItem('token');
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
     const [emailList, setEmailList] = useState<email>();
 
     const handleLogout = () => {
-        localStorage.removeItem('token');
+        deleteCookie('token');
         router.push('/auth');
     };
 
@@ -26,9 +29,13 @@ const MobileLogOut = () => {
                 })
                 .then((res) => {
                     setEmailList(res.data);
+                })
+                .catch((err) => {
+                    console.error('Error fetching user data', err);
                 });
         }
     }, [token]);
+
     return (
         <div className={styles.mobileLogOut}>
             <div className={styles.profileAndButton}>
@@ -56,3 +63,10 @@ const MobileLogOut = () => {
 };
 
 export default MobileLogOut;
+function deleteCookie(arg0: string) {
+    throw new Error('Function not implemented.');
+}
+
+function getCookie(arg0: string) {
+    throw new Error('Function not implemented.');
+}

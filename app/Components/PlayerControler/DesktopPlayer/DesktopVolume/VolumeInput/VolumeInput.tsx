@@ -1,5 +1,3 @@
-// src/components/VolumeInput/VolumeInput.tsx
-
 import styles from './VolumeInput.module.scss';
 import { mutedState, volumeState } from '@/app/state';
 import { useRecoilState } from 'recoil';
@@ -13,11 +11,11 @@ const VolumeInput = (props: Props) => {
     const [muted] = useRecoilState(mutedState);
 
     const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newVolume = parseFloat(e.target.value); // 0 to 100
+        const newVolume = parseFloat(e.target.value);
         setVolume(newVolume);
     };
 
-    const progressPercent = muted ? 0 : volume; // Volume is in percentage
+    const progressPercent = muted ? 0 : volume;
     const trackStyle = {
         background: `linear-gradient(to right, #5E4BE2 ${progressPercent}%, #292929 ${progressPercent}%)`,
     };
@@ -31,7 +29,7 @@ const VolumeInput = (props: Props) => {
                 type="range"
                 min={0}
                 max={100}
-                value={muted ? 0 : volume} // 0 to 100
+                value={muted ? 0 : volume}
                 onChange={handleVolumeChange}
                 className={styles.volumeRange}
                 style={trackStyle}

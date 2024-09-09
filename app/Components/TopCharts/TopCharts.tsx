@@ -7,7 +7,10 @@ import { TopChartsInter } from '@/app/interfaces/item';
 
 const TopCharts = () => {
     const [topCharts, setTopCharts] = useState<TopChartsInter[]>([]);
-    const token = localStorage.getItem('token');
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
     useEffect(() => {
         axios
             .get('https://enigma-wtuc.onrender.com/topcharts', {

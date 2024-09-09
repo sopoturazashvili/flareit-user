@@ -44,6 +44,10 @@ const OneAlbumById = () => {
     const [, setTitle] = useRecoilState(authorNameState);
     const [album, setAlbum] = useState<AlbumId | null>(null);
     const [musics, setMusics] = useState<Musics[]>([]);
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
 
     const param = useParams();
     const id = param.id;
@@ -53,6 +57,12 @@ const OneAlbumById = () => {
                 try {
                     const res = await axios.get(
                         `https://enigma-wtuc.onrender.com/albums/${id}`,
+                        {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                Authorization: `Bearer ${token}`,
+                            },
+                        },
                     );
                     setAlbum(res.data);
                     setMusics(res.data.musics);

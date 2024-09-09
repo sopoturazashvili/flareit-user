@@ -8,10 +8,18 @@ import axios from 'axios';
 
 const TopArtists = () => {
     const [topArtists, setTopArtists] = useState<ArtistCard[]>([]);
-
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
     useEffect(() => {
         axios
-            .get('https://enigma-wtuc.onrender.com/authors/top-authors')
+            .get('https://enigma-wtuc.onrender.com/authors/top-authors', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            })
             .then((result) => {
                 setTopArtists(result.data.slice(0, 20));
             })

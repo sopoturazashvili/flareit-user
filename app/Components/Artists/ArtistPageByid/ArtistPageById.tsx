@@ -56,6 +56,10 @@ const ArtistPageById = () => {
     const [musics, setMusics] = useState<Music[]>([]);
     const [artist, setArtistData] = useState<Artist | null>(null);
     const [albums, setAlbums] = useState<Album[]>([]);
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
 
     const params = useParams();
     const id = params?.id;
@@ -66,6 +70,12 @@ const ArtistPageById = () => {
                 try {
                     const artistResult = await axios.get(
                         `https://enigma-wtuc.onrender.com/authors/${id}`,
+                        {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                Authorization: `Bearer ${token}`,
+                            },
+                        },
                     );
 
                     const artistData = artistResult.data || null;

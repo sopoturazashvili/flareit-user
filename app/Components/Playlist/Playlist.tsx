@@ -34,7 +34,10 @@ const Playlist = () => {
     const [playlist, setPlaylist] = useState<Musics[]>([]);
     const [data, setData] = useState<Data | null>(null);
     const [photo, setPhoto] = useState<string>('');
-    const token = localStorage.getItem('token');
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
     const params = useParams();
     const id = params.id;
 

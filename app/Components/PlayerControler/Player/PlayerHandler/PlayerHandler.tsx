@@ -28,7 +28,10 @@ const PlayerHandler = () => {
     const [muted] = useRecoilState(mutedState);
 
     const audioRef = useRef<HTMLAudioElement>(null);
-    const token = localStorage.getItem('token');
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
 
     useEffect(() => {
         const audio = audioRef.current;

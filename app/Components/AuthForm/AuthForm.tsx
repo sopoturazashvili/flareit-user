@@ -1,3 +1,5 @@
+'use client';
+
 import { AuthInputs, Response } from '@/app/interfaces/item';
 import styles from './AuthForm.module.scss';
 import Input from '@/app/Components/Input/Input';
@@ -5,6 +7,7 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { setCookie } from '@/app/helpers/Cookies';
 
 const AuthForm = () => {
     const [fail, setFail] = useState<string>();
@@ -26,7 +29,7 @@ const AuthForm = () => {
                 const token = response.data.access_token;
 
                 if (token) {
-                    localStorage.setItem('token', token);
+                    setCookie('token', token, 60);
                     router.push('/');
                 }
             })

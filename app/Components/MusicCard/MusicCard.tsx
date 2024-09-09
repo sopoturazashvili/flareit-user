@@ -24,7 +24,10 @@ interface Props {
 const MusicCard = (props: Props) => {
     const [showModal, setShowModal] = useState(false);
     const [, setIsDeleted] = useState(false);
-    const token = localStorage.getItem('token');
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
     const [menuStyles, setMenuStyles] = useState<React.CSSProperties>({
         position: 'absolute',
         top: '0',
@@ -35,8 +38,6 @@ const MusicCard = (props: Props) => {
     const params = useParams();
     const [isPlaying] = useRecoilState(isPlayingState);
     const [index] = useRecoilState(indexState);
-    // console.log(props.isPlaying, 'isPlaying');
-    // console.log(props.index, ' index');
     useEffect(() => {
         if (props.menuOpen && musicCardRef.current) {
             const rect = musicCardRef.current.getBoundingClientRect();

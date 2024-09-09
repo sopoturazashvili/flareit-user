@@ -36,7 +36,10 @@ const OneChartById = () => {
     const [, setTitle] = useRecoilState(authorNameState);
     const [chartData, setChartData] = useState<ChartItem[]>([]);
     const params = useParams();
-    const token = localStorage.getItem('token');
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
 
     useEffect(() => {
         const id = params.id;

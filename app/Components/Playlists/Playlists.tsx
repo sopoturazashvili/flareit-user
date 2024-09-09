@@ -10,7 +10,10 @@ import { Playlist } from '@/app/interfaces/item';
 const Playlists = () => {
     const [playlists, setPlaylist] = useState<Playlist[]>([]);
 
-    const token = localStorage.getItem('token');
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
 
     useEffect(() => {
         if (token) {
