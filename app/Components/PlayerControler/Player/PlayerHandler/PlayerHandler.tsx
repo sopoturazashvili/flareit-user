@@ -90,7 +90,7 @@ const PlayerHandler = () => {
                 audio.pause();
             }
         }
-    }, [index, isPlaying, musicSrc]);
+    }, [index, musicSrc]);
 
     useEffect(() => {
         const audio = audioRef.current;

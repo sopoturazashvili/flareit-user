@@ -35,7 +35,8 @@ const MusicCard = (props: Props) => {
     const params = useParams();
     const [isPlaying] = useRecoilState(isPlayingState);
     const [index] = useRecoilState(indexState);
-
+    // console.log(props.isPlaying, 'isPlaying');
+    // console.log(props.index, ' index');
     useEffect(() => {
         if (props.menuOpen && musicCardRef.current) {
             const rect = musicCardRef.current.getBoundingClientRect();
