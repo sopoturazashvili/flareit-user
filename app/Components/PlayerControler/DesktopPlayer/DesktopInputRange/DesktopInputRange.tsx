@@ -14,7 +14,6 @@ const DesktopInputRange = () => {
         const newTime = parseFloat(event.target.value);
         setCurrentTime(newTime);
 
-        // Update audio element's currentTime
         const audioElement = document.querySelector(
             'audio',
         ) as HTMLAudioElement;

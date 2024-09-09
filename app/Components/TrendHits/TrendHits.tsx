@@ -56,20 +56,24 @@ const TrendHits = () => {
         },
         index: number,
     ) => {
-        const imageSrc = trendHits.map((item) => item.coverImgUrl);
-        const allSrc = trendHits.map((item) => ({
-            audioUrl: item.audioUrl,
-            id: item.id,
-        }));
-        const musicName = trendHits.map((item) => item.artistName);
-        const title = trendHits.map((item) => item.title);
-        setIsPlaying(true);
-        setGlobalId(item.id);
-        setImage(imageSrc);
-        setGlobalsrc(allSrc);
-        setActiveIdx(index);
-        setMusicName(musicName);
-        setAuthorName(title);
+        if (globalMusicId === item.id) {
+            setIsPlaying(!isPlaying);
+        } else {
+            const imageSrc = trendHits.map((item) => item.coverImgUrl);
+            const allSrc = trendHits.map((item) => ({
+                audioUrl: item.audioUrl,
+                id: item.id,
+            }));
+            const musicName = trendHits.map((item) => item.artistName);
+            const title = trendHits.map((item) => item.title);
+            setIsPlaying(true);
+            setGlobalId(item.id);
+            setImage(imageSrc);
+            setGlobalsrc(allSrc);
+            setActiveIdx(index);
+            setMusicName(musicName);
+            setAuthorName(title);
+        }
     };
 
     return (

@@ -31,8 +31,8 @@ const Search = () => {
     const pathname = usePathname();
     const debouncedSearchTerm = useDebounce(searchTerm, 200);
     const [, setGlobalsrc] = useRecoilState(musicGlobalState);
-    const [, setGlobalId] = useRecoilState(musicId);
-    const [, setIsPlaying] = useRecoilState(isPlayingState);
+    const [globalMusicId, setGlobalId] = useRecoilState(musicId);
+    const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
     const [, setActiveIdx] = useRecoilState(indexState);
     const [, setImage] = useRecoilState(globalImageState);
     const [, setAuthorName] = useRecoilState(musicNameState);
@@ -80,32 +80,36 @@ const Search = () => {
     }, [debouncedSearchTerm, pathname]);
 
     const handleClickSecond = (item: Musics, index: number) => {
-        const allSrc = searchResults
-            .filter((result) => result.type === SearchTypeEnum.Music)
-            .map((result) => ({
-                audioUrl: result.data.audioUrl ?? '',
-                id: result.data.id,
-            }));
+        if (globalMusicId === item.id) {
+            setIsPlaying(!isPlaying);
+        } else {
+            const allSrc = searchResults
+                .filter((result) => result.type === SearchTypeEnum.Music)
+                .map((result) => ({
+                    audioUrl: result.data.audioUrl ?? '',
+                    id: result.data.id,
+                }));
 
-        const imageSrc = searchResults
-            .filter((result) => result.type === SearchTypeEnum.Music)
-            .map((result) => result.data.coverImgUrl ?? '');
+            const imageSrc = searchResults
+                .filter((result) => result.type === SearchTypeEnum.Music)
+                .map((result) => result.data.coverImgUrl ?? '');
 
-        const musicName = searchResults
-            .filter((result) => result.type === SearchTypeEnum.Music)
-            .map((result) => result.data.artistName ?? '');
+            const musicName = searchResults
+                .filter((result) => result.type === SearchTypeEnum.Music)
+                .map((result) => result.data.artistName ?? '');
 
-        const title = searchResults
-            .filter((result) => result.type === SearchTypeEnum.Music)
-            .map((result) => result.data.title ?? '');
+            const title = searchResults
+                .filter((result) => result.type === SearchTypeEnum.Music)
+                .map((result) => result.data.title ?? '');
 
-        setIsPlaying(true);
-        setGlobalId(item.id);
-        setImage(imageSrc);
-        setGlobalsrc(allSrc);
-        setActiveIdx(index);
-        setAuthorName(musicName);
-        setTitle(title);
+            setIsPlaying(true);
+            setGlobalId(item.id);
+            setImage(imageSrc);
+            setGlobalsrc(allSrc);
+            setActiveIdx(index);
+            setAuthorName(musicName);
+            setTitle(title);
+        }
     };
 
     const handleClick = () => {

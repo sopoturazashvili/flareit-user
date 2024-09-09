@@ -103,21 +103,25 @@ const ArtistPageById = () => {
     };
 
     const handleClick = (item: Music, index: number) => {
-        const allSrc = musics.map((item) => ({
-            audioUrl: item.audioUrl,
-            id: item.id,
-        }));
-        const imageSrc = musics.map((music) => music.coverImgUrl);
-        const artistNames = musics.map((music) => music.artistName);
-        const titles = musics.map((music) => music.title);
+        if (globalMusicId === item.id) {
+            setIsPlaying(!isPlaying);
+        } else {
+            const allSrc = musics.map((item) => ({
+                audioUrl: item.audioUrl,
+                id: item.id,
+            }));
+            const imageSrc = musics.map((music) => music.coverImgUrl);
+            const artistNames = musics.map((music) => music.artistName);
+            const titles = musics.map((music) => music.title);
 
-        setIsPlaying(true);
-        setGlobalId(item.id);
-        setImage(imageSrc);
-        setGlobalsrc(allSrc);
-        setActiveIdx(index);
-        setArtist(artistNames);
-        setTitle(titles);
+            setIsPlaying(true);
+            setGlobalId(item.id);
+            setImage(imageSrc);
+            setGlobalsrc(allSrc);
+            setActiveIdx(index);
+            setArtist(artistNames);
+            setTitle(titles);
+        }
     };
 
     return (

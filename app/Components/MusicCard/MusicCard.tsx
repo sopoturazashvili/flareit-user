@@ -5,6 +5,8 @@ import { BiDotsVerticalRounded } from 'react-icons/bi';
 import styles from './MusicCard.module.scss';
 import DeleteBox from '../DleleteBox/DeleteBox';
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
+import { useRecoilState } from 'recoil';
+import { indexState, isPlayingState } from '../state';
 
 interface Props {
     image: string;
@@ -31,6 +33,8 @@ const MusicCard = (props: Props) => {
     const musicCardRef = useRef<HTMLDivElement>(null);
     const menuRef = useRef<HTMLDivElement>(null);
     const params = useParams();
+    const [isPlaying] = useRecoilState(isPlayingState);
+    const [index] = useRecoilState(indexState);
 
     useEffect(() => {
         if (props.menuOpen && musicCardRef.current) {
@@ -91,6 +95,7 @@ const MusicCard = (props: Props) => {
             setShowModal(false);
         }
     };
+    console.log(props.isPlaying);
 
     return (
         <div ref={musicCardRef} className={styles.musicCard}>
@@ -102,7 +107,11 @@ const MusicCard = (props: Props) => {
                         alt="photo"
                     />
                     <div className={styles.musicCardHoverPhoto}>
-                        <img src="/images/PlayHover.svg" alt="PlayHover" />
+                        {isPlaying && props.index === index ? (
+                            <img src="/images/Pause.png" />
+                        ) : (
+                            <img src="/images/PlayHover.svg" alt="PlayHover" />
+                        )}
                     </div>
                 </div>
                 <div className={styles.musicCardTitle}>

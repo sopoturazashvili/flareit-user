@@ -64,32 +64,37 @@ const PlayerHandler = () => {
 
     useEffect(() => {
         const audio = audioRef.current;
+
         if (audio) {
             if (isPlaying) {
-                audio.play();
+                audio.play(); // Continue from the current time
             } else {
-                audio.pause();
+                audio.pause(); // Pause and retain the current position
             }
         }
     }, [isPlaying]);
-
     useEffect(() => {
         const audio = audioRef.current;
 
         if (audio && musicSrc[index]?.audioUrl) {
-            audio.src = musicSrc[index].audioUrl;
-            audio.currentTime = 0;
-            audio
-                .play()
-                .catch((error) =>
-                    console.error('Failed to play audio:', error),
-                );
+            // Only set a new src if the music has changed (new song selected)
+            if (audio.src !== musicSrc[index].audioUrl) {
+                audio.src = musicSrc[index].audioUrl;
+                audio.currentTime = 0; // Reset the time only for new songs
+            }
+
+            if (isPlaying) {
+                audio.play().catch((error) => {
+                    console.error('Failed to play audio:', error);
+                });
+            } else {
+                audio.pause();
+            }
         }
-    }, [index, musicSrc]);
+    }, [index, isPlaying, musicSrc]);
 
     useEffect(() => {
         const audio = audioRef.current;
-
         if (audio) {
             if (shouldAddTime) {
                 audio.currentTime = Math.min(
