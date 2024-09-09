@@ -37,17 +37,15 @@
         font-size: 32px;
         font-weight: 700;
     }
-}
 
-@media screen and (min-width: 1024px) and (max-width: 1149px) {
     .container {
-        min-height: 150px;
+        min-height: 200px;
     }
 }
 
-@media screen and (min-width: 1150px) and (max-width: 1250px) {
+@media screen and (min-width: 1024px) and (max-width: 1250px) {
     .container {
-        min-height: 200px;
+        min-height: 273px;
     }
 }
 
