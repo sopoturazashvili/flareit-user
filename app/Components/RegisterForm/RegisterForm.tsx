@@ -1,3 +1,5 @@
+'use client';
+
 import { ErrorResponse, RegisterInputs } from '@/app/interfaces/item';
 import styles from './RegisterForm.module.scss';
 import Input from '@/app/Components/Input/Input';
@@ -14,13 +16,14 @@ const RegisterForm = () => {
         handleSubmit,
         formState: { errors, isSubmitted },
     } = useForm<RegisterInputs>();
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
 
     const onSubmit = async (values: RegisterInputs) => {
         try {
+            const token = document.cookie
+                .split('; ')
+                .find((row) => row.startsWith('token='))
+                ?.split('=')[1];
+
             await axios.post('https://enigma-wtuc.onrender.com/users', values, {
                 headers: {
                     'Content-Type': 'application/json',
