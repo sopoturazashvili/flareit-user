@@ -33,7 +33,7 @@ const LogOutModal = (props: Props) => {
                     setEmailList(res.data);
                 });
         }
-    }, [token]);
+    }, []);
 
     return (
         <>
