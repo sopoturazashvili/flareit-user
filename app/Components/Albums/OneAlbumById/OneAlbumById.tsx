@@ -63,7 +63,7 @@ const OneAlbumById = () => {
         };
 
         fetchAlbum();
-    }, [id, album]);
+    }, []);
 
     const handleClick = (
         item: {
