@@ -14,10 +14,19 @@ const RegisterForm = () => {
         handleSubmit,
         formState: { errors, isSubmitted },
     } = useForm<RegisterInputs>();
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
 
     const onSubmit = async (values: RegisterInputs) => {
         try {
-            await axios.post('https://enigma-wtuc.onrender.com/users', values);
+            await axios.post('https://enigma-wtuc.onrender.com/users', values, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            });
             window.location.href = '/auth';
         } catch (error) {
             if (isAxiosError(error)) {

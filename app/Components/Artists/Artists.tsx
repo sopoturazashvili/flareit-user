@@ -8,10 +8,19 @@ import { ArtistCard } from '@/app/interfaces/item';
 
 const Artists = () => {
     const [artists, setArtists] = useState<ArtistCard[]>([]);
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
 
     useEffect(() => {
         axios
-            .get('https://enigma-wtuc.onrender.com/authors')
+            .get('https://enigma-wtuc.onrender.com/authors', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            })
             .then((result) => {
                 setArtists(result.data);
             })

@@ -34,9 +34,18 @@ const TopHits = () => {
     const [, setArtist] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
     const [topHits, setTopHits] = useState<Music[]>([]);
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
     useEffect(() => {
         axios
-            .get('https://enigma-wtuc.onrender.com/musics/tophits')
+            .get('https://enigma-wtuc.onrender.com/musics/tophits', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            })
             .then((result) => {
                 setTopHits(result.data.slice(0, 20));
             })

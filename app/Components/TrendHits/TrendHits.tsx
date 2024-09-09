@@ -34,10 +34,19 @@ const TrendHits = () => {
     const [, setMusicName] = useRecoilState(musicNameState);
     const [, setAuthorName] = useRecoilState(authorNameState);
     const [trendHits, setTrendHits] = useState<Music[]>([]);
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
 
     useEffect(() => {
         axios
-            .get('https://enigma-wtuc.onrender.com/musics/tophits')
+            .get('https://enigma-wtuc.onrender.com/musics/tophits', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            })
             .then((result) => {
                 setTrendHits(result.data.slice(0, 20));
             })

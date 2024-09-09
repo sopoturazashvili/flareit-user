@@ -12,7 +12,10 @@ interface Props {
 const LogOutModal = (props: Props) => {
     const [emailList, setEmailList] = useState<email>();
     const router = useRouter();
-    const token = localStorage.getItem('token');
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
 
     const handleLogout = (event: React.MouseEvent) => {
         event.stopPropagation();

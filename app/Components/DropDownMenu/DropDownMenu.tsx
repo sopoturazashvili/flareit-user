@@ -15,7 +15,10 @@ interface Props {
 const DropDownMenu = (props: Props) => {
     const [playlists, setPlaylist] = useState<Playlists[]>([]);
     const [, setId] = useState<number>();
-    const token = localStorage.getItem('token');
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
 
     useEffect(() => {
         if (token) {

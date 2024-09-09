@@ -15,10 +15,19 @@ interface Album {
 
 const TopAlbums = () => {
     const [albums, setAlbums] = useState<Album[]>([]);
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
 
     useEffect(() => {
         axios
-            .get('https://enigma-wtuc.onrender.com/albums/top-albums')
+            .get('https://enigma-wtuc.onrender.com/albums/top-albums', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            })
             .then((res) => {
                 setAlbums(res.data.slice(0, 20));
             })

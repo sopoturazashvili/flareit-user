@@ -31,10 +31,19 @@ const TopFourHits = () => {
     const [, setMusicName] = useRecoilState(musicNameState);
     const [, setAuthorName] = useRecoilState(authorNameState);
     const [music, setMusic] = useState<Music[]>([]);
+    const token = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('token='))
+        ?.split('=')[1];
 
     useEffect(() => {
         axios
-            .get('https://enigma-wtuc.onrender.com/musics/tophits')
+            .get('https://enigma-wtuc.onrender.com/musics/tophits', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            })
             .then((result) => {
                 setMusic(result.data.slice(0, 4));
             })
