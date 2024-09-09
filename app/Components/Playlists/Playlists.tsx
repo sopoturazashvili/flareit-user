@@ -27,7 +27,7 @@ const Playlists = () => {
         } else {
             console.error('No authentication token found.');
         }
-    }, [token, playlists]);
+    }, [token]);
     return (
         <div className={styles.container}>
             <div>
