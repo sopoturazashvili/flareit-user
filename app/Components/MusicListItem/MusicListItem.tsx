@@ -1,5 +1,6 @@
+import { useRecoilState } from 'recoil';
 import styles from './MusicListItem.module.scss';
-import Image from 'next/image';
+import { indexState, isPlayingState } from '../state';
 
 interface Props {
     id: number;
@@ -13,6 +14,9 @@ interface Props {
 }
 
 const MusicListItem = (props: Props) => {
+    const [isPlaying] = useRecoilState(isPlayingState);
+    const [currentIndex] = useRecoilState(indexState);
+
     return (
         <div className={styles.listItem} onClick={props.onClick}>
             <div
@@ -20,14 +24,19 @@ const MusicListItem = (props: Props) => {
                 className={styles.itemImageWrapper}
             >
                 <div className={styles.itemHoverPhoto}>
-                    {
-                        <Image
-                            src="/images/PlayHover.svg"
+                    {isPlaying && props.index === currentIndex ? (
+                        <img
+                            className={styles.image}
+                            src="/images/Pause.png"
                             alt="Pause Button"
-                            width={54}
-                            height={56}
                         />
-                    }
+                    ) : (
+                        <img
+                            className={styles.image}
+                            src="/images/PlayHover.svg"
+                            alt="Play Button"
+                        />
+                    )}
                 </div>
             </div>
             <div className={styles.section}>

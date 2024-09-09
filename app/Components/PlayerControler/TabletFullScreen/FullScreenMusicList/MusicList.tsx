@@ -24,8 +24,8 @@ interface musicListitem {
 
 const MusicList = () => {
     const [, setGlobalsrc] = useRecoilState(musicGlobalState);
-    const [, setGlobalId] = useRecoilState(musicId);
-    const [, setIsPlaying] = useRecoilState(isPlayingState);
+    const [globalMusicId, setGlobalId] = useRecoilState(musicId);
+    const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
     const [, setActiveIdx] = useRecoilState(indexState);
     const [, setImage] = useRecoilState(globalImageState);
     const [, setArtist] = useRecoilState(musicNameState);
@@ -44,29 +44,35 @@ const MusicList = () => {
     const handleClick = (
         item: {
             image?: string;
-            songTitle?: string;
-            artistName?: string;
-            songDuration?: string;
-            src?: string;
+            title?: string;
+            temeName?: string;
             id: number;
+            src?: string;
         },
         index: number,
     ) => {
-        const allSrc = musicList.map((item) => ({
-            audioUrl: item.audioUrl,
-            id: item.id,
-        }));
-        const imageSrc = musicList.map((item) => item.coverImgUrl);
-        const artist = musicList.map((item) => item.artistName);
-        const title = musicList.map((item) => item.title);
-        setIsPlaying(true);
-        setGlobalId(item.id);
-        setImage(imageSrc);
-        setGlobalsrc(allSrc);
-        setActiveIdx(index);
-        setArtist(artist);
-        setTitle(title);
+        if (globalMusicId === item.id) {
+            setIsPlaying(!isPlaying);
+        } else {
+            const imageSrc = musicList.map((item) => item.coverImgUrl);
+            const allSrc = musicList.map((item) => ({
+                audioUrl: item.audioUrl,
+                id: item.id,
+            }));
+
+            const musicName = musicList.map((item) => item.title);
+            const title = musicList.map((item) => item.title);
+
+            setIsPlaying(true);
+            setGlobalId(item.id);
+            setGlobalsrc(allSrc);
+            setActiveIdx(index);
+            setImage(imageSrc);
+            setTitle(musicName);
+            setArtist(title);
+        }
     };
+
     const [musicUp, setMusicUp] = useState(false);
 
     const musicUpFunc = () => {

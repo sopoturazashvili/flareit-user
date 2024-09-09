@@ -75,21 +75,26 @@ const OneAlbumById = () => {
         },
         index: number,
     ) => {
-        const allSrc = musics.map((item) => ({
-            audioUrl: item.audioUrl,
-            id: item.id,
-        }));
-        const imageSrc = musics.map((music) => music.coverImgUrl);
-        const musicName = musics.map((item) => item.artistName);
-        const title = musics.map((item) => item.title);
-        setIsPlaying(true);
-        setGlobalId(item.id);
-        setImage(imageSrc);
-        setGlobalsrc(allSrc);
-        setActiveIdx(index);
+        if (globalMusicId === item.id) {
+            setIsPlaying(!isPlaying);
+        } else {
+            const imageSrc = musics.map((item) => item.coverImgUrl);
+            const allSrc = musics.map((item) => ({
+                audioUrl: item.audioUrl,
+                id: item.id,
+            }));
 
-        setAuthorName(musicName);
-        setTitle(title);
+            const musicName = musics.map((item) => item.title);
+            const title = musics.map((item) => item.title);
+
+            setIsPlaying(true);
+            setGlobalId(item.id);
+            setGlobalsrc(allSrc);
+            setActiveIdx(index);
+            setImage(imageSrc);
+            setTitle(musicName);
+            setAuthorName(title);
+        }
     };
 
     return (

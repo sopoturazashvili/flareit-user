@@ -53,21 +53,26 @@ const TopFourHits = () => {
         },
         index: number,
     ) => {
-        const imageSrc = music.map((item) => item.coverImgUrl);
-        const allSrc = music.map((item) => ({
-            audioUrl: item.audioUrl,
-            id: item.id,
-        }));
+        if (globalMusicId === item.id) {
+            setIsPlaying(!isPlaying);
+        } else {
+            const imageSrc = music.map((item) => item.coverImgUrl);
+            const allSrc = music.map((item) => ({
+                audioUrl: item.audioUrl,
+                id: item.id,
+            }));
 
-        const musicName = music.map((item) => item.title);
-        const title = music.map((item) => item.title);
-        setIsPlaying(true);
-        setGlobalId(item.id);
-        setGlobalsrc(allSrc);
-        setActiveIdx(index);
-        setImage(imageSrc);
-        setMusicName(musicName);
-        setAuthorName(title);
+            const musicName = music.map((item) => item.title);
+            const title = music.map((item) => item.title);
+
+            setIsPlaying(true);
+            setGlobalId(item.id);
+            setGlobalsrc(allSrc);
+            setActiveIdx(index);
+            setImage(imageSrc);
+            setMusicName(musicName);
+            setAuthorName(title);
+        }
     };
 
     return (

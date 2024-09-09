@@ -64,21 +64,29 @@ const OneChartById = () => {
     }, [params.id]);
 
     const handleClick = (item: ChartItem, index: number) => {
-        const allSrc = chartData.slice(0, 14).map((data) => ({
-            audioUrl: data.audioUrl,
-            id: data.id,
-        }));
-        const imageSrc = chartData.slice(0, 14).map((data) => data.coverImgUrl);
-        const artist = chartData.slice(0, 14).map((data) => data.artistName);
-        const title = chartData.slice(0, 14).map((data) => data.title);
+        if (globalMusicId === item.id) {
+            setIsPlaying(!isPlaying);
+        } else {
+            const allSrc = chartData.slice(0, 14).map((data) => ({
+                audioUrl: data.audioUrl,
+                id: data.id,
+            }));
+            const imageSrc = chartData
+                .slice(0, 14)
+                .map((data) => data.coverImgUrl);
+            const artist = chartData
+                .slice(0, 14)
+                .map((data) => data.artistName);
+            const title = chartData.slice(0, 14).map((data) => data.title);
 
-        setIsPlaying(true);
-        setGlobalId(item.id);
-        setImage(imageSrc);
-        setGlobalsrc(allSrc);
-        setActiveIdx(index);
-        setArtist(artist);
-        setTitle(title);
+            setIsPlaying(true);
+            setGlobalId(item.id);
+            setImage(imageSrc);
+            setGlobalsrc(allSrc);
+            setActiveIdx(index);
+            setArtist(artist);
+            setTitle(title);
+        }
     };
 
     const displayData = chartData.slice(0, 14);

@@ -66,17 +66,24 @@ const Playlist = () => {
     }, [token, id, playlist]);
 
     const handleClick = (item: Musics, index: number) => {
-        const allSrc = playlist.map(({ audioUrl, id }) => ({ audioUrl, id }));
-        const imageSrc = playlist.map(({ coverImgUrl }) => coverImgUrl);
-        const artist = playlist.map(({ artistName }) => artistName);
-        const title = playlist.map(({ title }) => title);
-        setIsPlaying(true);
-        setGlobalId(item.id);
-        setImage(imageSrc);
-        setGlobalsrc(allSrc);
-        setActiveIdx(index);
-        setArtist(artist);
-        setTitle(title);
+        if (globalMusicId === item.id) {
+            setIsPlaying(!isPlaying);
+        } else {
+            const allSrc = playlist.map(({ audioUrl, id }) => ({
+                audioUrl,
+                id,
+            }));
+            const imageSrc = playlist.map(({ coverImgUrl }) => coverImgUrl);
+            const artist = playlist.map(({ artistName }) => artistName);
+            const title = playlist.map(({ title }) => title);
+            setIsPlaying(true);
+            setGlobalId(item.id);
+            setImage(imageSrc);
+            setGlobalsrc(allSrc);
+            setActiveIdx(index);
+            setArtist(artist);
+            setTitle(title);
+        }
     };
 
     return (

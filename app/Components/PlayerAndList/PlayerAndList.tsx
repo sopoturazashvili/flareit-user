@@ -40,27 +40,37 @@ const PlayerAndList = () => {
             .get('https://enigma-wtuc.onrender.com/musics/shuffle')
             .then((res) => {
                 setMusicList(res.data);
-            })
-            .catch((err) => {
-                alert(err);
             });
     }, []);
-    const handleClick = (item: MusicListItemProps, index: number) => {
-        const allSrc = musicList.map((item) => ({
-            audioUrl: item.audioUrl,
-            id: item.id,
-        }));
-        const imageSrc = musicList.map((music) => music.coverImgUrl);
-        const musicNames = musicList.map((music) => music.title);
-        const authors = musicList.map((music) => music.artistName);
 
-        setIsPlaying(true);
-        setGlobalId(item.id);
-        setImage(imageSrc);
-        setGlobalsrc(allSrc);
-        setActiveIdx(index);
-        setMusicName(musicNames);
-        setAuthorName(authors);
+    const handleClick = (
+        item: {
+            id: number;
+            image?: string;
+            title?: string;
+            artist?: string;
+            src?: string;
+        },
+        index: number,
+    ) => {
+        if (globalMusicId === item.id) {
+            setIsPlaying(!isPlaying);
+        } else {
+            const imageSrc = musicList.map((item) => item.coverImgUrl);
+            const allSrc = musicList.map((item) => ({
+                audioUrl: item.audioUrl,
+                id: item.id,
+            }));
+            const musicName = musicList.map((item) => item.artistName);
+            const title = musicList.map((item) => item.title);
+            setIsPlaying(true);
+            setGlobalId(item.id);
+            setImage(imageSrc);
+            setGlobalsrc(allSrc);
+            setActiveIdx(index);
+            setMusicName(musicName);
+            setAuthorName(title);
+        }
     };
 
     return (

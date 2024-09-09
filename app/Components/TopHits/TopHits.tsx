@@ -46,28 +46,34 @@ const TopHits = () => {
     }, []);
     const handleClick = (
         item: {
-            id: number;
             image?: string;
             title?: string;
-            artist?: string;
+            temeName?: string;
+            id: number;
             src?: string;
         },
         index: number,
     ) => {
-        const allSrc = topHits.map((item) => ({
-            audioUrl: item.audioUrl,
-            id: item.id,
-        }));
-        const imageSrc = topHits.map((item) => item.coverImgUrl);
-        const artist = topHits.map((item) => item.title);
-        const title = topHits.map((item) => item.title);
-        setIsPlaying(true);
-        setGlobalId(item.id);
-        setImage(imageSrc);
-        setGlobalsrc(allSrc);
-        setActiveIdx(index);
-        setArtist(artist);
-        setTitle(title);
+        if (globalMusicId === item.id) {
+            setIsPlaying(!isPlaying);
+        } else {
+            const imageSrc = topHits.map((item) => item.coverImgUrl);
+            const allSrc = topHits.map((item) => ({
+                audioUrl: item.audioUrl,
+                id: item.id,
+            }));
+
+            const musicName = topHits.map((item) => item.title);
+            const title = topHits.map((item) => item.title);
+
+            setIsPlaying(true);
+            setGlobalId(item.id);
+            setGlobalsrc(allSrc);
+            setActiveIdx(index);
+            setImage(imageSrc);
+            setTitle(musicName);
+            setArtist(title);
+        }
     };
 
     return (
