@@ -1,4 +1,4 @@
-@import "../../../styles/colors.scss";
+@import '../../../styles/colors.scss';
 
 .mainNavigation {
     display: flex;
@@ -11,10 +11,19 @@
     height: 100%;
 }
 
-.navigation {
+.lineContainer {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    justify-content: flex-end;
+    max-width: 302px;
+    width: 100%;
+}
+
+.line {
+    background-color: $PrimaryBlackTone1;
+    max-width: 40px;
+    width: fit-content;
+    justify-content: flex-end;
+    cursor: pointer;
 }
 
 .navigationContainer {
@@ -26,16 +35,25 @@
     gap: 36px;
     height: 100%;
     padding: 0px 24px;
-    transform: translatex(302px);
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    visibility: hidden;
     position: fixed;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    transition:
+        transform 0.3s ease-in-out,
+        visibility 0.3s ease-in-out;
+    visibility: hidden;
 }
 
 .navigationContainer.open {
     transform: translateX(0);
     visibility: visible;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .navigationBox {
@@ -45,33 +63,29 @@
     color: white;
     padding: 8px 16px;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .navigationBox:hover {
     background-color: $PrimaryBlackTone3;
-    transition: 1s;
+    transition: background-color 0.3s;
 }
 
-.line {
-    background-color: $PrimaryBlackTone1;
-    max-width: 302px;
-    width: fit-content;
-    justify-content: flex-end;
+.logo {
+    display: block;
 }
 
-.lineContainer {
-    display: flex;
-    justify-content: flex-end;
-    max-width: 302px;
-    width: 100%;
+.logOutTablet {
+    display: block;
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .lineContainer {
         display: none;
     }
 
     .navigationContainer {
+        max-width: 302px;
         width: 100%;
         background-color: $PrimaryBlackTone1;
         display: flex;
@@ -79,7 +93,6 @@
         gap: 36px;
         height: 100%;
         padding: 12px 24px;
-        transform: none;
         transform: none;
         visibility: visible;
         position: static;
@@ -107,18 +120,35 @@
         align-items: flex-start;
     }
 
-    .logOut {
-        display: none;
+    .logo {
+        display: block;
     }
 }
 
-
-@media screen and (min-width:600px) and (max-width:1023px) {
+@media screen and (min-width: 600px) and (max-width: 1023px) {
     .logOut {
         display: none;
     }
+
+    .logo {
+        display: none;
+    }
+    .navigationLine {
+        padding: 12px 0px;
+    }
+}
+
+@media screen and (max-width: 599px) {
     .logo {
         display: none;
     }
 
+    .navigationContainer {
+        max-width: 100%;
+        padding: 0px 20px;
+    }
+
+    .logOutTablet {
+        display: block;
+    }
 }
