@@ -95,7 +95,6 @@ const MusicCard = (props: Props) => {
             setShowModal(false);
         }
     };
-    console.log(props.isPlaying);
 
     return (
         <div ref={musicCardRef} className={styles.musicCard}>

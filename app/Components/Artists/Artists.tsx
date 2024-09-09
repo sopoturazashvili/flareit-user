@@ -18,7 +18,7 @@ const Artists = () => {
             .catch((error) => {
                 alert(error);
             });
-    }, [artists]);
+    }, []);
 
     return (
         <div className={styles.container}>
