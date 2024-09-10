@@ -98,6 +98,13 @@ const MusicCard = (props: Props) => {
         }
     };
 
+    const handleEditClick = (event: React.MouseEvent) => {
+        event.stopPropagation();
+        event.preventDefault();
+        if (props.toggleMenu) {
+            props.toggleMenu();
+        }
+    };
     return (
         <div
             className={styles.listItem}
@@ -143,7 +150,7 @@ const MusicCard = (props: Props) => {
                         />
                     </div>
                 )}
-                <div onClick={props.toggleMenu} className={styles.dots}>
+                <div onClick={handleEditClick} className={styles.dots}>
                     <BiDotsVerticalRounded size={24} color="white" />
                     {props.menuOpen && (
                         <div
