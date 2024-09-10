@@ -18,7 +18,7 @@ const SearchItemAuthor = (props: Props) => {
             onClick={props.onClick}
         >
             <Image
-                className={styles.square}
+                className={styles.itemImg}
                 src={props.coverImgUrl}
                 width={24}
                 height={24}

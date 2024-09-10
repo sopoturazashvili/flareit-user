@@ -23,15 +23,16 @@
     width: 100%;
     align-items: center;
     padding: 8px 4px;
+    
 }
 
 .round {
     border-radius: 24px;
 }
 
-.square {
+.itemImg {
     border-radius: 4px;
-}
+} 
 
 .textContainer {
     display: flex;
