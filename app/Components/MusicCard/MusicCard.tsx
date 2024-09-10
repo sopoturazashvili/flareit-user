@@ -111,7 +111,10 @@ const MusicCard = (props: Props) => {
                         {isPlaying && props.index === index ? (
                             <img src="/PlayerControler/Play.svg" />
                         ) : (
-                            <img src="/PlayerControler/Pause.svg" alt="PlayHover" />
+                            <img
+                                src="/PlayerControler/Pause.svg"
+                                alt="PlayHover"
+                            />
                         )}
                     </div>
                 </div>

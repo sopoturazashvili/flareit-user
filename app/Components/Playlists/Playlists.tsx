@@ -51,6 +51,9 @@ const Playlists = () => {
                         text={playlist.title}
                         imageRound={false}
                         pathName={`/playlists/${playlist.id}`}
+                        id={playlist.id}
+                        value={playlist.title}
+                        edit={true}
                     />
                 ))}
             </div>

@@ -42,6 +42,8 @@ const Artists = () => {
                         text={artist.artistName}
                         imageRound={true}
                         pathName={`/artists/${artist.id}`}
+                        id={artist.id}
+                        edit={true}
                     />
                 ))}
             </div>
