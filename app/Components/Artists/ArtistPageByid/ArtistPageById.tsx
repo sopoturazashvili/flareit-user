@@ -18,7 +18,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import MusicCard from '../../MusicCard/MusicCard';
 
-// Interfaces
 interface Music {
     coverImgUrl: string;
     audioUrl: string;
