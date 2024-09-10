@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useRecoilState } from 'recoil';
 import {
     audioDurrationState,
@@ -16,20 +16,20 @@ import axios from 'axios';
 import { shuffleState } from '@/app/Components/state';
 
 const PlayerHandler = () => {
-    const [musicSrc] = useRecoilState(musicGlobalState); // массив с песнями
-    const [isPlaying] = useRecoilState(isPlayingState); // флаг воспроизведения
-    const [, setCurrentTime] = useRecoilState(currentTimeState); // текущее время
-    const [, setAudioDuration] = useRecoilState(audioDurrationState); // продолжительность трека
-    const [globalId] = useRecoilState(musicId); // глобальный ID
-    const [index, setIndex] = useRecoilState(indexState); // текущий индекс трека
-    const [isShuffle] = useRecoilState(shuffleState); // флаг шаффла
+    const [musicSrc] = useRecoilState(musicGlobalState);
+    const [isPlaying] = useRecoilState(isPlayingState);
+    const [, setCurrentTime] = useRecoilState(currentTimeState);
+    const [, setAudioDuration] = useRecoilState(audioDurrationState);
+    const [globalId] = useRecoilState(musicId);
+    const [index, setIndex] = useRecoilState(indexState);
+    const [isShuffle] = useRecoilState(shuffleState);
     const [shouldAddTime, setShouldAddTime] =
-        useRecoilState(shouldAddTimeState); // флаг перемотки вперед
-    const [shouldRewind, setShouldRewind] = useRecoilState(shouldRewindState); // флаг перемотки назад
-    const [volume] = useRecoilState(volumeState); // громкость
-    const [muted] = useRecoilState(mutedState); // флаг заглушения
+        useRecoilState(shouldAddTimeState);
+    const [shouldRewind, setShouldRewind] = useRecoilState(shouldRewindState);
+    const [volume] = useRecoilState(volumeState);
+    const [muted] = useRecoilState(mutedState);
 
-    const audioRef = useRef<HTMLAudioElement>(null); // ссылка на аудио
+    const audioRef = useRef<HTMLAudioElement>(null);
     const token = document.cookie
         .split('; ')
         .find((row) => row.startsWith('token='))
@@ -52,7 +52,7 @@ const PlayerHandler = () => {
 
         const handleEnded = () => {
             if (isShuffle) {
-                playRandomTrack(); // Воспроизведение случайного трека при завершении текущего
+                playRandomTrack();
             } else {
                 setIndex((prevIndex) => (prevIndex + 1) % musicSrc.length);
             }

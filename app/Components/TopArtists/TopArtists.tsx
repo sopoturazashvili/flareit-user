@@ -41,6 +41,8 @@ const TopArtists = () => {
                         text={artist.artistName}
                         imageRound={true}
                         pathName={`artists/${artist.id}`}
+                        id={0}
+                        edit={false}
                     />
                 ))}
             </div>
