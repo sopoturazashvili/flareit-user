@@ -11,10 +11,10 @@ import styles from './Playlist.module.scss';
 import { useRecoilState } from 'recoil';
 import useToggleMenu from '@/app/helpers/useToggleMenu';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import MusicCard from '../MusicCard/MusicCard';
 import { useParams } from 'next/navigation';
 import { Musics } from '@/app/interfaces/item';
+import apiInstance from '@/app/ApiInstance';
 
 interface Data {
     title: string;
@@ -34,22 +34,13 @@ const Playlist = () => {
     const [playlist, setPlaylist] = useState<Musics[]>([]);
     const [data, setData] = useState<Data | null>(null);
     const [photo, setPhoto] = useState<string>('');
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
     const params = useParams();
     const id = params.id;
 
     useEffect(() => {
-        if (token && id) {
-            axios
-                .get(`https://enigma-wtuc.onrender.com/playlists/${id}`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                })
+        if (id) {
+            apiInstance
+                .get(`/playlists/${id}`)
                 .then((result) => {
                     setPlaylist(result.data.musics);
                     setPhoto(
@@ -66,7 +57,7 @@ const Playlist = () => {
                 'No authentication token found or playlist ID missing.',
             );
         }
-    }, [id, token, playlist.length]);
+    }, [id, playlist.length]);
 
     const handleClick = (item: Musics, index: number) => {
         if (globalMusicId === item.id) {

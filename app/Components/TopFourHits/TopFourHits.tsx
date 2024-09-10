@@ -9,9 +9,9 @@ import {
     musicNameState,
 } from '@/app/state';
 import useToggleMenu from '@/app/helpers/useToggleMenu';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import MusicCard from '../MusicCard/MusicCard';
+import apiInstance from '@/app/ApiInstance';
 
 interface Music {
     coverImgUrl: string;
@@ -31,19 +31,10 @@ const TopFourHits = () => {
     const [, setMusicName] = useRecoilState(musicNameState);
     const [, setAuthorName] = useRecoilState(authorNameState);
     const [music, setMusic] = useState<Music[]>([]);
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
 
     useEffect(() => {
-        axios
-            .get('https://enigma-wtuc.onrender.com/musics/tophits', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-            })
+        apiInstance
+            .get('/musics/tophits')
             .then((result) => {
                 setMusic(result.data.slice(0, 4));
             })

@@ -13,8 +13,8 @@ import {
 import { useRecoilState } from 'recoil';
 import useToggleMenu from '@/app/helpers/useToggleMenu';
 import MusicCard from '../MusicCard/MusicCard';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import apiInstance from '@/app/ApiInstance';
 
 interface Music {
     coverImgUrl: string;
@@ -34,19 +34,10 @@ const TrendHits = () => {
     const [, setMusicName] = useRecoilState(musicNameState);
     const [, setAuthorName] = useRecoilState(authorNameState);
     const [trendHits, setTrendHits] = useState<Music[]>([]);
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
 
     useEffect(() => {
-        axios
-            .get('https://enigma-wtuc.onrender.com/musics/tophits', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-            })
+        apiInstance
+            .get('/musics/tophits')
             .then((result) => {
                 setTrendHits(result.data.slice(0, 20));
             })

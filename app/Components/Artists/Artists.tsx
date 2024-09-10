@@ -3,24 +3,15 @@
 import { useEffect, useState } from 'react';
 import ArtistPlaylistItem from '../ArtistPlaylistListItem/ArtistPlaylistItem';
 import styles from './Artists.module.scss';
-import axios from 'axios';
 import { ArtistCard } from '@/app/interfaces/item';
+import apiInstance from '@/app/ApiInstance';
 
 const Artists = () => {
     const [artists, setArtists] = useState<ArtistCard[]>([]);
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
 
     useEffect(() => {
-        axios
-            .get('https://enigma-wtuc.onrender.com/authors', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-            })
+        apiInstance
+            .get('/authors')
             .then((result) => {
                 setArtists(result.data);
             })

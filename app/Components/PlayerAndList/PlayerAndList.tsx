@@ -14,7 +14,7 @@ import {
     musicId,
     musicNameState,
 } from '@/app/state';
-import axios from 'axios';
+import apiInstance from '@/app/ApiInstance';
 
 interface MusicListItemProps {
     title: string;
@@ -34,22 +34,11 @@ const PlayerAndList = () => {
     const [, setMusicName] = useRecoilState(musicNameState);
     const [, setAuthorName] = useRecoilState(authorNameState);
     const [musicList, setMusicList] = useState<MusicListItemProps[]>([]);
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
 
     useEffect(() => {
-        axios
-            .get('https://enigma-wtuc.onrender.com/musics/shuffle', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-            })
-            .then((res) => {
-                setMusicList(res.data);
-            });
+        apiInstance.get('/musics/shuffle').then((res) => {
+            setMusicList(res.data);
+        });
     }, []);
 
     const handleClick = (

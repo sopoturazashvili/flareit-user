@@ -1,8 +1,8 @@
 import PlaylistItem from '@/app/Components/PlaylistItem/PlaylistItem';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import styles from './DropDownMenu.module.scss';
 import Link from 'next/link';
+import apiInstance from '@/app/ApiInstance';
 
 interface Playlists {
     title: string;
@@ -15,37 +15,21 @@ interface Props {
 const DropDownMenu = (props: Props) => {
     const [playlists, setPlaylist] = useState<Playlists[]>([]);
     const [, setId] = useState<number>();
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
 
     useEffect(() => {
-        if (token) {
-            axios
-                .get('https://enigma-wtuc.onrender.com/users/me', {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                })
-                .then((res) => {
-                    setPlaylist(res.data.playlists);
-                })
-                .catch((error) => {
-                    console.error('Error fetching playlists:', error);
-                });
-        }
-    }, [token]);
-
-    useEffect(() => {
-        axios
-            .get('https://enigma-wtuc.onrender.com/musics', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
+        apiInstance
+            .get('/users/me')
+            .then((res) => {
+                setPlaylist(res.data.playlists);
             })
+            .catch((error) => {
+                console.error('Error fetching playlists:', error);
+            });
+    }, []);
+
+    useEffect(() => {
+        apiInstance
+            .get('/musics')
             .then((res) => {
                 setId(res.data.id);
             })

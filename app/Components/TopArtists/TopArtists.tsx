@@ -4,22 +4,13 @@ import ArtistPlaylistItem from '@/app/Components/ArtistPlaylistListItem/ArtistPl
 import styles from './TopArtists.module.scss';
 import { useEffect, useState } from 'react';
 import { ArtistCard } from '@/app/interfaces/item';
-import axios from 'axios';
+import apiInstance from '@/app/ApiInstance';
 
 const TopArtists = () => {
     const [topArtists, setTopArtists] = useState<ArtistCard[]>([]);
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
     useEffect(() => {
-        axios
-            .get('https://enigma-wtuc.onrender.com/authors/top-authors', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-            })
+        apiInstance
+            .get('/authors/top-authors')
             .then((result) => {
                 setTopArtists(result.data.slice(0, 20));
             })

@@ -14,8 +14,8 @@ import {
 import { useRecoilState } from 'recoil';
 import useToggleMenu from '@/app/helpers/useToggleMenu';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useParams } from 'next/navigation';
+import apiInstance from '@/app/ApiInstance';
 
 interface ChartItem {
     coverImgUrl: string;
@@ -36,21 +36,12 @@ const OneChartById = () => {
     const [, setTitle] = useRecoilState(authorNameState);
     const [chartData, setChartData] = useState<ChartItem[]>([]);
     const params = useParams();
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
 
     useEffect(() => {
         const id = params.id;
         if (id === '7') {
-            axios
-                .get(`https://enigma-wtuc.onrender.com/authors/162`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                })
+            apiInstance
+                .get(`/authors/162`)
                 .then((result) => {
                     setChartData(result.data.albums[0].musics);
                 })
@@ -58,16 +49,9 @@ const OneChartById = () => {
                     console.error('Error fetching music data:', error);
                 });
         } else {
-            axios
-                .get(`https://enigma-wtuc.onrender.com/musics`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                })
-                .then((result) => {
-                    setChartData(result.data);
-                });
+            apiInstance.get(`/musics`).then((result) => {
+                setChartData(result.data);
+            });
         }
     }, [params.id]);
 

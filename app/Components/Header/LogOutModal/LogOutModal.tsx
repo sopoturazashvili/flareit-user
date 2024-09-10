@@ -1,8 +1,9 @@
 import { useRouter } from 'next/navigation';
 import styles from './LogOutModal.module.scss';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { email } from '@/app/interfaces/item';
+import apiInstance from '@/app/ApiInstance';
+import Cookies from 'js-cookie';
 
 interface Props {
     setLogOut: (e: boolean) => void;
@@ -12,31 +13,18 @@ interface Props {
 const LogOutModal = (props: Props) => {
     const [emailList, setEmailList] = useState<email>();
     const router = useRouter();
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
 
-    const handleLogout = (event: React.MouseEvent) => {
+    const handleLogout = async (event: React.MouseEvent) => {
         event.stopPropagation();
-        localStorage.removeItem('token');
-        router.push('/auth');
+        Cookies.remove('token');
+        await router.push('/auth');
     };
 
     useEffect(() => {
-        if (token) {
-            axios
-                .get(`https://enigma-wtuc.onrender.com/users/me`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                })
-                .then((res) => {
-                    setEmailList(res.data);
-                });
-        }
-    }, [token]);
+        apiInstance.get(`/users/me`).then((res) => {
+            setEmailList(res.data);
+        });
+    }, []);
 
     return (
         <>

@@ -2,9 +2,9 @@
 import { useRouter } from 'next/navigation';
 import styles from './MobileLogOut.module.scss';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { email } from '@/app/interfaces/item';
 import { getCookie, deleteCookie } from 'cookies-next';
+import apiInstance from '@/app/ApiInstance';
 
 const MobileLogOut = () => {
     const router = useRouter();
@@ -18,13 +18,8 @@ const MobileLogOut = () => {
 
     useEffect(() => {
         if (token) {
-            axios
-                .get(`https://enigma-wtuc.onrender.com/users/me`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                })
+            apiInstance
+                .get(`/users/me`)
                 .then((res) => {
                     setEmailList(res.data);
                 })

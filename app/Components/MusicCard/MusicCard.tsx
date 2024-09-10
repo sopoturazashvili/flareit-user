@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
 import { useParams } from 'next/navigation';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import styles from './MusicCard.module.scss';
@@ -8,6 +7,7 @@ import DropDownMenu from '../DropDownMenu/DropDownMenu';
 import { useRecoilState } from 'recoil';
 import { indexState, isPlayingState } from '../state';
 import { searchTermState } from '@/app/state';
+import apiInstance from '@/app/ApiInstance';
 
 interface Props {
     image: string;
@@ -25,10 +25,6 @@ interface Props {
 const MusicCard = (props: Props) => {
     const [showModal, setShowModal] = useState(false);
     const [, setIsDeleted] = useState(false);
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
     const [menuStyles, setMenuStyles] = useState<React.CSSProperties>({
         position: 'absolute',
         top: '0',
@@ -82,16 +78,9 @@ const MusicCard = (props: Props) => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(
-                'https://enigma-wtuc.onrender.com/playlists/musicId',
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                    data,
-                },
-            );
+            await apiInstance.delete('/playlists/musicId', {
+                data,
+            });
             setIsDeleted(true);
         } catch (error) {
             alert(error);

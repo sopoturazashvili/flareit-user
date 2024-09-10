@@ -15,8 +15,8 @@ import {
 } from '@/app/state';
 import useToggleMenu from '@/app/helpers/useToggleMenu';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import MusicCard from '../../MusicCard/MusicCard';
+import apiInstance from '@/app/ApiInstance';
 
 interface Music {
     coverImgUrl: string;
@@ -55,10 +55,6 @@ const ArtistPageById = () => {
     const [musics, setMusics] = useState<Music[]>([]);
     const [artist, setArtistData] = useState<Artist | null>(null);
     const [albums, setAlbums] = useState<Album[]>([]);
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
 
     const params = useParams();
     const id = params?.id;
@@ -67,14 +63,8 @@ const ArtistPageById = () => {
         if (id) {
             const fetchData = async () => {
                 try {
-                    const artistResult = await axios.get(
-                        `https://enigma-wtuc.onrender.com/authors/${id}`,
-                        {
-                            headers: {
-                                'Content-Type': 'application/json',
-                                Authorization: `Bearer ${token}`,
-                            },
-                        },
+                    const artistResult = await apiInstance.get(
+                        `/authors/${id}`,
                     );
 
                     const artistData = artistResult.data || null;

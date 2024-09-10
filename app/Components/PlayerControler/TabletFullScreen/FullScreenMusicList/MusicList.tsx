@@ -1,3 +1,5 @@
+'use client';
+
 import MusicListItem from '@/app/Components/MusicListItem/MusicListItem';
 import styles from './MusicList.module.scss';
 import { useEffect, useState } from 'react';
@@ -11,7 +13,7 @@ import {
     musicId,
     musicNameState,
 } from '@/app/state';
-import axios from 'axios';
+import apiInstance from '@/app/ApiInstance';
 
 interface musicListitem {
     title: string;
@@ -31,18 +33,9 @@ const MusicList = () => {
     const [, setArtist] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
     const [musicList, setMusicList] = useState<musicListitem[]>([]);
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
     useEffect(() => {
-        axios
-            .get('https://enigma-wtuc.onrender.com/musics/shuffle', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-            })
+        apiInstance
+            .get('/musics/shuffle')
             .then((res) => {
                 setMusicList(res.data);
             })

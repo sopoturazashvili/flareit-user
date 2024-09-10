@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef } from 'react';
 import { useRecoilState } from 'recoil';
 import {
@@ -30,10 +32,6 @@ const PlayerHandler = () => {
     const [muted] = useRecoilState(mutedState);
 
     const audioRef = useRef<HTMLAudioElement>(null);
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
 
     useEffect(() => {
         const audio = audioRef.current;
@@ -127,23 +125,16 @@ const PlayerHandler = () => {
     }, [volume, muted]);
 
     useEffect(() => {
-        if (token && musicSrc[index]?.id) {
+        if (musicSrc[index]?.id) {
             axios
-                .post(
-                    'https://enigma-wtuc.onrender.com/listen-records',
-                    { musicId: musicSrc[index].id },
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                            Authorization: `Bearer ${token}`,
-                        },
-                    },
-                )
+                .post('https://enigma-wtuc.onrender.com/listen-records', {
+                    musicId: musicSrc[index].id,
+                })
                 .catch((error) =>
                     console.error('Failed to post listen record:', error),
                 );
         }
-    }, [index, globalId, musicSrc, token]);
+    }, [index, globalId, musicSrc]);
 
     const playRandomTrack = () => {
         const randomIndex = Math.floor(Math.random() * musicSrc.length);

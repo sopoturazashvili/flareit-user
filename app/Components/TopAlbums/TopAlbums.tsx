@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import AlbumCard from '../AlbumCard/AlbumCard';
 import styles from './TopAlbums.module.scss';
-import axios from 'axios';
+import apiInstance from '@/app/ApiInstance';
 
 interface Album {
     coverImgUrl: string;
@@ -15,19 +15,10 @@ interface Album {
 
 const TopAlbums = () => {
     const [albums, setAlbums] = useState<Album[]>([]);
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
 
     useEffect(() => {
-        axios
-            .get('https://enigma-wtuc.onrender.com/albums/top-albums', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-            })
+        apiInstance
+            .get('/albums/top-albums')
             .then((res) => {
                 setAlbums(res.data.slice(0, 20));
             })
