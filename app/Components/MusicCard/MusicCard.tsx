@@ -99,21 +99,28 @@ const MusicCard = (props: Props) => {
     };
 
     return (
-        <div ref={musicCardRef} className={styles.musicCard}>
-            <div className={styles.musicCardHeader} onClick={props.onClick}>
-                <div className={styles.musicCardhover}>
-                    <img
-                        className={styles.musicCardPhoto}
-                        src={props.image}
-                        alt="photo"
-                    />
-                    <div className={styles.musicCardHoverPhoto}>
+        <div
+            className={styles.listItem}
+            ref={musicCardRef}
+            onClick={props.onClick}
+        >
+            <div className={styles.photo}>
+                <div
+                    style={{ backgroundImage: `url(${props.image})` }}
+                    className={styles.itemImageWrapper}
+                >
+                    <div className={styles.itemHoverPhoto}>
                         {isPlaying && props.index === index ? (
-                            <img src="/PlayerControler/Play.svg" />
+                            <img
+                                className={styles.image}
+                                src="/PlayerControler/Play.svg"
+                                alt="Pause Button"
+                            />
                         ) : (
                             <img
+                                className={styles.image}
                                 src="/PlayerControler/Pause.svg"
-                                alt="PlayHover"
+                                alt="Play Button"
                             />
                         )}
                     </div>
