@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './NavDesktop.module.scss';
 import { usePathname } from 'next/navigation';
 import NavDesktopItem from './NavDesktopItem/NavDesktopItem';
@@ -35,6 +35,7 @@ const NavDesktop = () => {
             key: '/albums',
         },
     ];
+    const navRef = useRef<HTMLDivElement>(null);
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -43,8 +44,28 @@ const NavDesktop = () => {
     };
     const pathname = usePathname();
 
+    useEffect(() => {
+        setIsOpen(false);
+    }, [pathname]);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            const target = event.target as Node | null;
+
+            if (isOpen && navRef.current && !navRef.current.contains(target)) {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isOpen]);
+
     return (
-        <div className={styles.mainNavigation}>
+        <div className={styles.mainNavigation} ref={navRef}>
             <div className={styles.lineContainer}>
                 <div className={styles.line} onClick={toggleMenu}>
                     <Image
