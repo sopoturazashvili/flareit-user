@@ -79,7 +79,7 @@ const OneAlbumById = () => {
         item: {
             image?: string;
             title?: string;
-            temeName?: string;
+            artistName?: string;
             id: number;
             src?: string;
         },
@@ -94,7 +94,7 @@ const OneAlbumById = () => {
                 id: item.id,
             }));
 
-            const musicName = musics.map((item) => item.title);
+            const artistName = musics.map((item) => item.artistName);
             const title = musics.map((item) => item.title);
 
             setIsPlaying(true);
@@ -102,7 +102,7 @@ const OneAlbumById = () => {
             setGlobalsrc(allSrc);
             setActiveIdx(index);
             setImage(imageSrc);
-            setTitle(musicName);
+            setTitle(artistName);
             setAuthorName(title);
         }
     };

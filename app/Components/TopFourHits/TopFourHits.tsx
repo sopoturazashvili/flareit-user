@@ -56,7 +56,7 @@ const TopFourHits = () => {
         item: {
             image?: string;
             title?: string;
-            temeName?: string;
+            artistName?: string;
             id: number;
             src?: string;
         },
@@ -71,7 +71,7 @@ const TopFourHits = () => {
                 id: item.id,
             }));
 
-            const musicName = music.map((item) => item.title);
+            const artistName = music.map((item) => item.artistName);
             const title = music.map((item) => item.title);
 
             setIsPlaying(true);
@@ -79,7 +79,7 @@ const TopFourHits = () => {
             setGlobalsrc(allSrc);
             setActiveIdx(index);
             setImage(imageSrc);
-            setMusicName(musicName);
+            setMusicName(artistName);
             setAuthorName(title);
         }
     };
