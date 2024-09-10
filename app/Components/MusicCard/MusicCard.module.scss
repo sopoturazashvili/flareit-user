@@ -60,7 +60,6 @@
     display: flex;
     gap: 8px;
     align-items: center;
-
 }
 
 .listItem {
@@ -118,6 +117,11 @@
 
 .dots {
     position: relative;
+}
+
+.buttons {
+    display: flex;
+    gap: 5px;
 }
 
 .menu {

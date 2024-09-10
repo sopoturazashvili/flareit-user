@@ -23,10 +23,11 @@ import {
     musicNameState,
 } from '../state';
 import { Musics } from '@/app/interfaces/item';
+import { searchTermState } from '@/app/state';
 
 const Search = () => {
     const [searchResults, setSearchResults] = useState<Item[]>([]);
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchTerm, setSearchTerm] = useRecoilState(searchTermState);
     const searchRef = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
     const debouncedSearchTerm = useDebounce(searchTerm, 200);

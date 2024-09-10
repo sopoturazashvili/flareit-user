@@ -11,6 +11,11 @@ export const mutedState = atom({
     default: false,
 });
 
+export const searchTermState = atom({
+    key: 'searchterm',
+    default: '',
+});
+
 export const volumeState = atom({
     key: 'volume',
     default: 50,

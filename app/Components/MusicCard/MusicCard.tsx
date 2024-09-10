@@ -7,6 +7,7 @@ import DeleteBox from '../DleleteBox/DeleteBox';
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
 import { useRecoilState } from 'recoil';
 import { indexState, isPlayingState } from '../state';
+import { searchTermState } from '@/app/state';
 
 interface Props {
     image: string;
@@ -35,6 +36,7 @@ const MusicCard = (props: Props) => {
     });
     const musicCardRef = useRef<HTMLDivElement>(null);
     const menuRef = useRef<HTMLDivElement>(null);
+    const [searchTerm] = useRecoilState(searchTermState);
     const params = useParams();
     const [isPlaying] = useRecoilState(isPlayingState);
     const [index] = useRecoilState(indexState);
@@ -139,7 +141,9 @@ const MusicCard = (props: Props) => {
                     </span>
                 </div>
             </div>
-            <div className={styles.buttonsContainer}>
+            <div
+                className={searchTerm ? styles.button : styles.buttonsContainer}
+            >
                 {props.deleteOrLike && (
                     <div onClick={() => setShowModal(!showModal)}>
                         <DeleteBox
@@ -150,7 +154,10 @@ const MusicCard = (props: Props) => {
                         />
                     </div>
                 )}
-                <div onClick={handleEditClick} className={styles.dots}>
+                <div
+                    onClick={handleEditClick}
+                    className={searchTerm ? '' : styles.dots}
+                >
                     <BiDotsVerticalRounded size={24} color="white" />
                     {props.menuOpen && (
                         <div
