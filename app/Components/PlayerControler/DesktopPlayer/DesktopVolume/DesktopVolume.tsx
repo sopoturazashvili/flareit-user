@@ -1,5 +1,3 @@
-// src/components/DesktopVolume/DesktopVolume.tsx
-
 import styles from './DesktopVolume.module.scss';
 import { mutedState, volumeState } from '@/app/state';
 import { useRecoilState } from 'recoil';
