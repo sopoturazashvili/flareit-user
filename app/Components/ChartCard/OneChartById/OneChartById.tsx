@@ -59,7 +59,12 @@ const OneChartById = () => {
                 });
         } else {
             axios
-                .get(`https://enigma-wtuc.onrender.com/musics`)
+                .get(`https://enigma-wtuc.onrender.com/musics`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                })
                 .then((result) => {
                     setChartData(result.data);
                 });
