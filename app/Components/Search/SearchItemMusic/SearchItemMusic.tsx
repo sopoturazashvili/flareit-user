@@ -14,7 +14,7 @@ const SearchItemMusic = (props: Props) => {
     return (
         <div className={styles.mapContainer} onClick={props.onClick}>
             <Image
-                className={styles.square}
+                className={styles.itemImg}
                 src={props.coverImgUrl}
                 width={24}
                 height={24}
