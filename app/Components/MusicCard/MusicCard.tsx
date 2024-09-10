@@ -109,9 +109,9 @@ const MusicCard = (props: Props) => {
                     />
                     <div className={styles.musicCardHoverPhoto}>
                         {isPlaying && props.index === index ? (
-                            <img src="/images/Pause.png" />
+                            <img src="/PlayerControler/Play.svg" />
                         ) : (
-                            <img src="/images/PlayHover.svg" alt="PlayHover" />
+                            <img src="/PlayerControler/Pause.svg" alt="PlayHover" />
                         )}
                     </div>
                 </div>

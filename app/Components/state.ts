@@ -6,6 +6,11 @@ export const isPlayingState = atom({
     default: false,
 });
 
+export const shuffleState = atom({
+    key: 'shuffle',
+    default: false,
+});
+
 export const mutedState = atom({
     key: 'muted',
     default: false,
