@@ -33,7 +33,7 @@ const TrendHitsCard: React.FC = () => {
 
     const currentItem = trendHitsItems[currentIndex];
     const bgStyles = {
-        backgroundImage: `url(${trendHitsItems[0].backgroundImage})`,
+        backgroundImage: '/images/trendhits_blue.jpeg',
         backgroundColor: '#333',
         width: '100%',
         height: 'auto',
