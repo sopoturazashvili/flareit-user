@@ -53,6 +53,9 @@
     .musicCard {
         grid-template-columns: 1fr 1fr;
     }
+    .OneAlbumByIdContainer {
+        padding-bottom: 170px;
+    }
 }
 
 @media screen and (min-width: 599px) and (max-width: 660px) {
@@ -64,6 +67,9 @@
 @media screen and (max-width: 599px) {
     .musicCard {
         grid-template-columns: 1fr;
+    }
+    .OneAlbumByIdContainer {
+        padding-bottom: 170px;
     }
 }
 
