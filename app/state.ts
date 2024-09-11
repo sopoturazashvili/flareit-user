@@ -21,6 +21,11 @@ export const volumeState = atom({
     default: 50,
 });
 
+export const shuffleState = atom({
+    key: 'shuffle',
+    default: false,
+});
+
 export const currentTimeState = atom({
     key: 'currentTime',
     default: 0,

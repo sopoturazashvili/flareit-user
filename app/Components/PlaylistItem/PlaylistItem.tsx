@@ -1,5 +1,5 @@
-import axios from 'axios';
 import styles from './PlaylistItem.module.scss';
+import apiInstance from '@/app/ApiInstance';
 
 interface Props {
     playlistName: string;
@@ -8,23 +8,12 @@ interface Props {
 }
 
 const PlaylistItem = (props: Props) => {
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
-
     const addPlaylist = async () => {
         try {
-            await axios.patch(
-                `https://enigma-wtuc.onrender.com/playlists/addToPlaylist`,
-                { playlistId: props.id, musicId: props.idsecond },
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                },
-            );
+            await apiInstance.patch(`/addToPlaylist`, {
+                playlistId: props.id,
+                musicId: props.idsecond,
+            });
         } catch (error) {
             alert(error);
         }

@@ -13,9 +13,9 @@ import {
     volumeState,
     mutedState,
     musicId,
+    shuffleState,
 } from '@/app/state';
-import axios from 'axios';
-import { shuffleState } from '@/app/Components/state';
+import apiInstance from '@/app/ApiInstance';
 
 const PlayerHandler = () => {
     const [musicSrc] = useRecoilState(musicGlobalState);
@@ -126,8 +126,8 @@ const PlayerHandler = () => {
 
     useEffect(() => {
         if (musicSrc[index]?.id) {
-            axios
-                .post('https://enigma-wtuc.onrender.com/listen-records', {
+            apiInstance
+                .post('/listen-records', {
                     musicId: musicSrc[index].id,
                 })
                 .catch((error) =>

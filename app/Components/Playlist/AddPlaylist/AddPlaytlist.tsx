@@ -2,16 +2,11 @@ import { useState } from 'react';
 import styles from './AddPlaylist.module.scss';
 import Modal from '../../Modal/Modal';
 import PlayListInput from '../PlayListInput/PlayListInput';
-import axios from 'axios';
+import apiInstance from '@/app/ApiInstance';
 
 const AddPlaylist = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [title, setTitle] = useState<string>('');
-
-    const token = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('token='))
-        ?.split('=')[1];
 
     const onAdd = (newValue: string) => {
         setTitle(newValue);
@@ -20,16 +15,7 @@ const AddPlaylist = () => {
     const onDone = async () => {
         if (title) {
             try {
-                axios.post(
-                    'https://enigma-wtuc.onrender.com/playlists',
-                    { title },
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                            Authorization: `Bearer ${token}`,
-                        },
-                    },
-                );
+                apiInstance.post('/playlists', { title });
                 setIsModalOpen(false);
                 setTitle('');
             } catch (err) {

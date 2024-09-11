@@ -1,6 +1,6 @@
 import { useRecoilState } from 'recoil';
 import styles from './Shuffle.module.scss';
-import { shuffleState } from '../../state';
+import { shuffleState } from '@/app/state';
 
 const Shuffle = () => {
     const [isShuffle, setIsShuffle] = useRecoilState(shuffleState);

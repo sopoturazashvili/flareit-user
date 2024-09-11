@@ -9,7 +9,6 @@ interface Props {
 const TabletVolumeInput = (props: Props) => {
     const [volume, setVolume] = useRecoilState(volumeState);
     const [muted] = useRecoilState(mutedState);
-    // const [isPlaying] = useRecoilState(isPlayingState);
 
     const TabletVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newVolume = parseFloat(e.target.value);

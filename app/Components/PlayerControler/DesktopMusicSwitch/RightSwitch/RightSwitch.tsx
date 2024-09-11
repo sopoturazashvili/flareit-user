@@ -1,8 +1,12 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
-import { indexState, isPlayingState, musicGlobalState } from '@/app/state';
+import {
+    indexState,
+    isPlayingState,
+    musicGlobalState,
+    shuffleState,
+} from '@/app/state';
 import styles from './RightSwitch.module.scss';
-import { shuffleState } from '@/app/Components/state';
 
 const RightSwitch = () => {
     const [, setIndex] = useRecoilState(indexState);

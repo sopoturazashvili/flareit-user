@@ -5,6 +5,7 @@ import MusicListItem from '../MusicListItem/MusicListItem';
 import NextPlay from './NextPlay/NextPlay';
 import styles from './PlayerAndList.module.scss';
 import { useRecoilState } from 'recoil';
+import apiInstance from '@/app/ApiInstance';
 import {
     authorNameState,
     globalImageState,
@@ -14,7 +15,6 @@ import {
     musicId,
     musicNameState,
 } from '@/app/state';
-import apiInstance from '@/app/ApiInstance';
 
 interface MusicListItemProps {
     title: string;

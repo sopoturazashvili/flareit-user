@@ -1,6 +1,6 @@
 import { useRecoilState } from 'recoil';
 import styles from './MusicListItem.module.scss';
-import { indexState, isPlayingState } from '../state';
+import { indexState, isPlayingState } from '@/app/state';
 
 interface Props {
     id: number;

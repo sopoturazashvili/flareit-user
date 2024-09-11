@@ -1,4 +1,5 @@
 'use client';
+
 import AddPlaylist from '@/app/Components/Playlist/AddPlaylist/AddPlaytlist';
 import styles from './Playlists.module.scss';
 import ArtistPlaylistItem from '@/app/Components/ArtistPlaylistListItem/ArtistPlaylistItem';

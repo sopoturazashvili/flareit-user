@@ -20,7 +20,7 @@ import {
     musicGlobalState,
     musicId,
     musicNameState,
-} from '../state';
+} from '@/app/state';
 import { Musics } from '@/app/interfaces/item';
 import { searchTermState } from '@/app/state';
 import apiInstance from '@/app/ApiInstance';

@@ -1,7 +1,6 @@
 import { useRecoilState } from 'recoil';
-import { indexState, musicGlobalState } from '@/app/state';
+import { indexState, musicGlobalState, shuffleState } from '@/app/state';
 import styles from './LeftSwitch.module.scss';
-import { shuffleState } from '@/app/Components/state';
 
 const LeftSwitch = () => {
     const [, setIndex] = useRecoilState(indexState);

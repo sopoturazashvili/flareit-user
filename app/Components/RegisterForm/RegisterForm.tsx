@@ -19,17 +19,12 @@ const RegisterForm = () => {
 
     const onSubmit = async (values: RegisterInputs) => {
         try {
-            const token = document.cookie
-                .split('; ')
-                .find((row) => row.startsWith('token='))
-                ?.split('=')[1];
+            // const token = document.cookie
+            //     .split('; ')
+            //     .find((row) => row.startsWith('token='))
+            //     ?.split('=')[1];
 
-            await axios.post('https://enigma-wtuc.onrender.com/users', values, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-            });
+            await axios.post('https://enigma-wtuc.onrender.com/users', values);
             window.location.href = '/auth';
         } catch (error) {
             if (isAxiosError(error)) {

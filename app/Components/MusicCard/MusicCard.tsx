@@ -5,7 +5,7 @@ import styles from './MusicCard.module.scss';
 import DeleteBox from '../DleleteBox/DeleteBox';
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
 import { useRecoilState } from 'recoil';
-import { indexState, isPlayingState } from '../state';
+import { indexState, isPlayingState } from '@/app/state';
 import { searchTermState } from '@/app/state';
 import apiInstance from '@/app/ApiInstance';
 
