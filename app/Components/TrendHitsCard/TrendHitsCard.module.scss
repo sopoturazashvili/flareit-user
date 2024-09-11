@@ -4,7 +4,6 @@
     justify-content: flex-start;
     background-size: 100% 100%;
     transition: background-image 0.5s ease-in-out;
-    min-height: 300px;
 }
 
 .trendHitsContainer {
@@ -32,29 +31,14 @@
     max-width: 200px;
 }
 
-@media screen and (max-width: 450px) {
-    .trendHitsContainer {
-        margin: 52px 0 52px 10px;
-    }
-
+@media screen and (max-width: 599px) {
     .titles {
         font-size: 24px;
         font-weight: 700;
     }
 
-    .titleContainer {
-        max-width: 120px;
-    }
-}
-
-@media screen and (max-width: 599px) {
-    .titles {
-        font-size: 32px;
-        font-weight: 700;
-    }
-
     .container {
-        max-height: 137px;
+        height: 137px;
     }
 
     .trendHitsContainer {
