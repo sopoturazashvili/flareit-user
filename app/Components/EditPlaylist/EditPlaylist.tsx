@@ -17,10 +17,6 @@ export interface FormValues {
 const EditPlaylist = forwardRef<{ submitForm: () => void }, AddMusicProps>(
     ({ onDone, id, value }, ref) => {
         const { handleSubmit, register } = useForm<FormValues>();
-        const token = document.cookie
-            .split('; ')
-            .find((row) => row.startsWith('token='))
-            ?.split('=')[1];
 
         const onRegister: SubmitHandler<FormValues> = async (values) => {
             if (!values.title.trim()) {
@@ -29,16 +25,7 @@ const EditPlaylist = forwardRef<{ submitForm: () => void }, AddMusicProps>(
             }
 
             try {
-                await axios.patch(
-                    `https://enigma-wtuc.onrender.com/playlists/${id}`,
-                    { title: values.title },
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                            Authorization: `Bearer ${token}`,
-                        },
-                    },
-                );
+                await axios.patch(`/playlists/${id}`, { title: values.title });
             } catch (error) {
                 alert('Error updating playlist');
             }
