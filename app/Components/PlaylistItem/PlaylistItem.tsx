@@ -1,5 +1,5 @@
-import axios from 'axios';
 import styles from './PlaylistItem.module.scss';
+import apiInstance from '@/app/ApiInstance';
 
 interface Props {
     playlistName: string;
@@ -10,7 +10,7 @@ interface Props {
 const PlaylistItem = (props: Props) => {
     const addPlaylist = async () => {
         try {
-            await axios.patch(`/playlists/addToPlaylist`, {
+            await apiInstance.patch(`/playlists/addToPlaylist`, {
                 playlistId: props.id,
                 musicId: props.idsecond,
             });
