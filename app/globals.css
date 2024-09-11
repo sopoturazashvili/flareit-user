@@ -62,7 +62,7 @@ a {
 }
 @media  screen and (max-width : 599px) {
   body {
-    height: 100dvh;
+    height: 100vh;
     overflow: auto;
   }
 }
