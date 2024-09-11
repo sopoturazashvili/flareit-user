@@ -3,10 +3,11 @@
 import { ErrorResponse, RegisterInputs } from '@/app/interfaces/item';
 import styles from './RegisterForm.module.scss';
 import Input from '@/app/Components/Input/Input';
-import axios, { AxiosError, isAxiosError } from 'axios';
+import { AxiosError, isAxiosError } from 'axios';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
+import apiInstance from '@/app/ApiInstance';
 
 const RegisterForm = () => {
     const [fail, setFail] = useState<string | null>(null);
@@ -19,12 +20,7 @@ const RegisterForm = () => {
 
     const onSubmit = async (values: RegisterInputs) => {
         try {
-            // const token = document.cookie
-            //     .split('; ')
-            //     .find((row) => row.startsWith('token='))
-            //     ?.split('=')[1];
-
-            await axios.post('https://enigma-wtuc.onrender.com/users', values);
+            await apiInstance.post('/users', values);
             window.location.href = '/auth';
         } catch (error) {
             if (isAxiosError(error)) {
@@ -68,7 +64,7 @@ const RegisterForm = () => {
                     submitted={isSubmitted}
                 />
                 {errors.email && (
-                    <span className={styles.color}>{errors.email.message}</span>
+                    <span className={styles.fail}>{errors.email.message}</span>
                 )}
             </div>
             <div className={styles.emailContainer}>
@@ -87,7 +83,7 @@ const RegisterForm = () => {
                     type="password"
                 />
                 {errors.password && (
-                    <span className={styles.color}>
+                    <span className={styles.fail}>
                         {errors.password.message}
                     </span>
                 )}
@@ -108,7 +104,7 @@ const RegisterForm = () => {
                     type="password"
                 />
                 {errors.confirmPassword && (
-                    <span className={styles.color}>
+                    <span className={styles.fail}>
                         {errors.confirmPassword.message}
                     </span>
                 )}
