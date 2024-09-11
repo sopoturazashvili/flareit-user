@@ -78,7 +78,7 @@ const TrendHits = () => {
 
     return (
         <div className={styles.container}>
-            <span className={styles.title}>Trend Hits</span>
+            <span className={styles.title}>Weekly Hits</span>
             <div className={styles.containerInside}>
                 {trendHits.map((item, index) => (
                     <MusicCard
