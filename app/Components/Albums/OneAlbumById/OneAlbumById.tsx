@@ -90,8 +90,8 @@ const OneAlbumById = () => {
             setGlobalsrc(allSrc);
             setActiveIdx(index);
             setImage(imageSrc);
-            setTitle(artistName);
-            setAuthorName(title);
+            setTitle(title);
+            setAuthorName(artistName);
         }
     };
 
