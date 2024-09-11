@@ -60,3 +60,9 @@ h6 {
 a {
   text-decoration: none;
 }
+@media  screen and (max-width : 599px) {
+  body {
+    height: 100dvh;
+    overflow: auto;
+  }
+}
