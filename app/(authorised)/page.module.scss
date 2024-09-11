@@ -103,3 +103,10 @@
         gap: 20px;
     }
 }
+
+
+@media screen and (max-width:599px) {
+    .hitsContainer {
+        gap: 8px;
+    }
+}
