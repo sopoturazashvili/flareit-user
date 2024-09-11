@@ -16,6 +16,12 @@ const TrendHitsCard: React.FC = () => {
           ? tabletItems
           : trendHitsItems;
 
+    const defaultBackgroundImage = isMobile
+        ? '/images/trendhits_blue_mobile.jpeg'
+        : isTablet
+          ? '/images/trendhits_blue_tablet.jpeg'
+          : '/images/trendhits_blue.jpeg';
+
     useEffect(() => {
         setLoadedImages(Array(items.length).fill(false));
         items.forEach((item, index) => {
@@ -41,7 +47,7 @@ const TrendHitsCard: React.FC = () => {
 
     const currentItem = items[currentIndex];
     const bgStyles = {
-        backgroundImage: '/images/trendhits_blue.jpeg',
+        backgroundImage: `url(${defaultBackgroundImage})`,
         backgroundColor: '#333',
         width: '100%',
         height: 'auto',
