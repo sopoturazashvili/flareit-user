@@ -30,7 +30,7 @@ const Search = () => {
     const [searchTerm, setSearchTerm] = useRecoilState(searchTermState);
     const searchRef = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
-    const debouncedSearchTerm = useDebounce(searchTerm, 200);
+    const debouncedSearchTerm = useDebounce(searchTerm, 300);
     const [, setGlobalsrc] = useRecoilState(musicGlobalState);
     const [globalMusicId, setGlobalId] = useRecoilState(musicId);
     const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
@@ -53,7 +53,7 @@ const Search = () => {
         document.addEventListener('click', handleClickOutside);
 
         return () => document.removeEventListener('click', handleClickOutside);
-    }, [setSearchTerm]);
+    }, []);
 
     useEffect(() => {
         const handleSearch = async () => {
@@ -63,6 +63,7 @@ const Search = () => {
             }
 
             try {
+                setSearchResults([]);
                 const { data } = await apiInstance.get('/search', {
                     params: { searchField: debouncedSearchTerm },
                 });
