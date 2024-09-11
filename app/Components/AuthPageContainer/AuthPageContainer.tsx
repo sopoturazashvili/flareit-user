@@ -7,7 +7,13 @@ import styles from './AuthPageContainer.module.scss';
 const AuthPageContainer = () => {
     return (
         <div className={styles.authPage}>
-            <video className={styles.backgroundVideo} autoPlay muted loop>
+            <video
+                className={styles.backgroundVideo}
+                autoPlay
+                muted
+                loop
+                poster="/images/bg_forvideo.png"
+            >
                 <source src="/authPage/authBlue.mp4" />
             </video>
             <div className={styles.container}>
