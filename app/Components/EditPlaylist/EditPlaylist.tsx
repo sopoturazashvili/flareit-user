@@ -1,7 +1,7 @@
 import styles from './EditPlaylist.module.scss';
 import { forwardRef, useImperativeHandle } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import axios from 'axios';
+import apiInstance from '@/app/ApiInstance';
 
 interface AddMusicProps {
     onDone?: () => void;
@@ -25,7 +25,9 @@ const EditPlaylist = forwardRef<{ submitForm: () => void }, AddMusicProps>(
             }
 
             try {
-                await axios.patch(`/playlists/${id}`, { title: values.title });
+                await apiInstance.patch(`/playlists/${id}`, {
+                    title: values.title,
+                });
             } catch (error) {
                 alert('Error updating playlist');
             }
