@@ -17,3 +17,14 @@
 .pause {
     cursor: pointer;
 }
+
+@media screen and (max-width: 599px) {
+    .musicSwitch {
+        gap: 8px;
+    }
+}
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+    .musicSwitch {
+        gap: 32px;
+    }
+}

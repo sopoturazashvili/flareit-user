@@ -1,6 +1,6 @@
 .fullScreenImage {
     text-align: center;
-   padding-top: 20px;
+    padding-top: 20px;
 }
 
 .backButton {
@@ -10,5 +10,12 @@
 }
 
 .image {
-    width: 100%;
+    width: 360px;
+    object-fit: cover;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+    .image {
+        width: 600px;
+    }
 }
