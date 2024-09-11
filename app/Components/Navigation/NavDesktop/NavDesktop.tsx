@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import styles from './NavDesktop.module.scss';
 import { usePathname } from 'next/navigation';
 import NavDesktopItem from './NavDesktopItem/NavDesktopItem';
