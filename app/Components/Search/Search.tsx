@@ -53,7 +53,7 @@ const Search = () => {
         document.addEventListener('click', handleClickOutside);
 
         return () => document.removeEventListener('click', handleClickOutside);
-    }, []);
+    }, [setSearchTerm]);
 
     useEffect(() => {
         const handleSearch = async () => {
