@@ -88,6 +88,7 @@ const PlayerHandler = () => {
             if (audio.src !== musicSrc[index].audioUrl) {
                 audio.src = musicSrc[index].audioUrl;
                 audio.currentTime = 0;
+                audio.load();
             }
 
             if (isPlaying) {
@@ -98,7 +99,7 @@ const PlayerHandler = () => {
                 audio.pause();
             }
         }
-    }, [index, musicSrc]);
+    }, [index, musicSrc, isPlaying]);
 
     useEffect(() => {
         const audio = audioRef.current;
@@ -127,9 +128,7 @@ const PlayerHandler = () => {
     useEffect(() => {
         if (musicSrc[index]?.id) {
             apiInstance
-                .post('/listen-records', {
-                    musicId: musicSrc[index].id,
-                })
+                .post('/listen-records', { musicId: musicSrc[index].id })
                 .catch((error) =>
                     console.error('Failed to post listen record:', error),
                 );
@@ -137,8 +136,10 @@ const PlayerHandler = () => {
     }, [index, globalId, musicSrc]);
 
     const playRandomTrack = () => {
-        const randomIndex = Math.floor(Math.random() * musicSrc.length);
-        setIndex(randomIndex);
+        if (musicSrc.length > 0) {
+            const randomIndex = Math.floor(Math.random() * musicSrc.length);
+            setIndex(randomIndex);
+        }
     };
 
     return <audio ref={audioRef} />;
