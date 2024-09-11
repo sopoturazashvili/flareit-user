@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { setCookie } from '@/app/helpers/Cookies';
 
 const AuthForm = () => {
-    const [fail, setFail] = useState<string>();
+    const [fail, setFail] = useState<string | null>(null);
     const {
         register,
         handleSubmit,
@@ -36,15 +36,17 @@ const AuthForm = () => {
             .catch((error: AxiosError) => {
                 console.error('Error sending data:', error);
 
-                if (error.message === 'Request failed with status code 401') {
+                if (error.response?.status === 401) {
                     setFail('Invalid email or password. Please try again.');
+                } else {
+                    setFail('Something went wrong. Please try again.');
                 }
             });
     };
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-            <div className={styles.emileContainer}>
-                <p className={styles.passwordColor}>Enter email</p>
+            <div className={styles.emailContainer}>
+                <p className={styles.title}>Enter email</p>
                 <Input
                     placeholder="Enter Email"
                     register={register('email', {
@@ -55,11 +57,13 @@ const AuthForm = () => {
                         },
                     })}
                     submitted={isSubmitted}
-                    error={errors.email?.message}
                 />
+                {errors.email && (
+                    <span className={styles.fail}>{errors.email.message}</span>
+                )}
             </div>
             <div className={styles.passwordContainer}>
-                <p className={styles.passwordColor}>Enter password</p>
+                <p className={styles.title}>Enter password</p>
                 <Input
                     placeholder="Enter Password"
                     register={register('password', {
@@ -72,8 +76,12 @@ const AuthForm = () => {
                     })}
                     submitted={isSubmitted}
                     type="password"
-                    error={errors.password?.message}
                 />
+                {errors.password && (
+                    <span className={styles.fail}>
+                        {errors.password.message}
+                    </span>
+                )}
             </div>
             {fail && (
                 <div className={styles.errorContainer}>
@@ -81,7 +89,7 @@ const AuthForm = () => {
                 </div>
             )}
             <div className={styles.inputContainer}>
-                <div className={styles.inputSubbmit}>
+                <div className={styles.inputSubmit}>
                     <input
                         className={styles.input}
                         type="submit"
