@@ -86,7 +86,7 @@ const Playlist = () => {
                 <div className={styles.photoAndName}>
                     <img
                         className={styles.photo}
-                        src={photo ? photo : '/images/defaultPlaylist.png'}
+                        src={photo ? photo : '/images/MusicLogo.svg'}
                         alt="Playlist Cover"
                     />
                     {data && (

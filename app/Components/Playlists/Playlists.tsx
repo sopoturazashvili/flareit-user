@@ -30,7 +30,7 @@ const Playlists = () => {
                                 ?.coverImgUrl
                                 ? playlist.musics[playlist.musics.length - 1]
                                       ?.coverImgUrl
-                                : '/images/defaultPlaylist.png'
+                                : '/images/MusicLogo.svg'
                         }
                         text={playlist.title}
                         imageRound={false}

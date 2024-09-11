@@ -5,7 +5,7 @@ import styles from './MusicCard.module.scss';
 import DeleteBox from '../DleleteBox/DeleteBox';
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
 import { useRecoilState } from 'recoil';
-import { indexState, isPlayingState } from '@/app/state';
+import { indexState, isPlayingState, tabletMenuState } from '@/app/state';
 import { searchTermState } from '@/app/state';
 import apiInstance from '@/app/ApiInstance';
 
@@ -33,6 +33,7 @@ const MusicCard = (props: Props) => {
     const musicCardRef = useRef<HTMLDivElement>(null);
     const menuRef = useRef<HTMLDivElement>(null);
     const [searchTerm] = useRecoilState(searchTermState);
+    const [isOpen] = useRecoilState(tabletMenuState);
     const params = useParams();
     const [isPlaying] = useRecoilState(isPlayingState);
     const [index] = useRecoilState(indexState);
@@ -131,7 +132,11 @@ const MusicCard = (props: Props) => {
                 </div>
             </div>
             <div
-                className={searchTerm ? styles.button : styles.buttonsContainer}
+                className={
+                    searchTerm || isOpen
+                        ? styles.button
+                        : styles.buttonsContainer
+                }
             >
                 {props.deleteOrLike && (
                     <div onClick={() => setShowModal(!showModal)}>
@@ -145,7 +150,7 @@ const MusicCard = (props: Props) => {
                 )}
                 <div
                     onClick={handleEditClick}
-                    className={searchTerm ? '' : styles.dots}
+                    className={searchTerm || isOpen ? '' : styles.dots}
                 >
                     <BiDotsVerticalRounded size={24} color="white" />
                     {props.menuOpen && (

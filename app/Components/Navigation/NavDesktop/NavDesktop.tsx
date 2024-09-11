@@ -8,7 +8,12 @@ import Image from 'next/image';
 import LogOutTablet from './LogOutTablet/LogOutTablet';
 import Logo from '../../Logo/Logo';
 import { useRecoilState } from 'recoil';
-import { fullScreenState, globalImageState, indexState } from '@/app/state';
+import {
+    fullScreenState,
+    globalImageState,
+    indexState,
+    tabletMenuState,
+} from '@/app/state';
 import EmailItem from './EmailItem/EmailItem';
 import { useMediaQuery } from 'react-responsive';
 
@@ -38,7 +43,7 @@ const NavDesktop = () => {
         },
     ];
     const navRef = useRef<HTMLDivElement>(null);
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useRecoilState(tabletMenuState);
     const isTablet = useMediaQuery({
         query: '(min-width: 600px) and (max-width: 1023px)',
     });

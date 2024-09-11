@@ -21,6 +21,11 @@ export const volumeState = atom({
     default: 50,
 });
 
+export const tabletMenuState = atom({
+    key: 'tabletMenu',
+    default: false,
+});
+
 export const shuffleState = atom({
     key: 'shuffle',
     default: false,
