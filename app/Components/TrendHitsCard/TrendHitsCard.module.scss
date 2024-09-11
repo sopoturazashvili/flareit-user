@@ -7,12 +7,12 @@
     min-height: 300px;
 }
 
-.trendHitsContrainer {
+.trendHitsContainer {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin: 52px 0 52px 50px;
+    margin: 52px 0 52px 30px;
     gap: 12px;
 }
 
@@ -29,7 +29,22 @@
 }
 
 .titleContainer {
-    max-width: 150px;
+    max-width: 200px;
+}
+
+@media screen and (max-width: 450px) {
+    .trendHitsContainer {
+        margin: 52px 0 52px 10px;
+    }
+
+    .titles {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .titleContainer {
+        max-width: 120px;
+    }
 }
 
 @media screen and (max-width: 599px) {
@@ -39,25 +54,52 @@
     }
 
     .container {
-        min-height: 200px;
+        max-height: 137px;
+    }
+
+    .trendHitsContainer {
+        margin: 52px 0 52px 20px;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+    .container {
+        max-height: 400px;
     }
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1250px) {
     .container {
-        min-height: 273px;
+        max-height: 273px;
+    }
+
+    .trendHitsContainer {
+        margin: 52px 0 52px 30px;
+    }
+}
+
+@media screen and (min-width: 1251px) and (max-width: 1499px) {
+    .trendHitsContainer {
+        margin: 52px 0 52px 70px;
     }
 }
 
 @media screen and (min-width: 1500px) and (max-width: 1699px) {
     .container {
-        min-height: 400px;
+        max-height: 400px;
+    }
+
+    .trendHitsContainer {
+        margin: 52px 0 52px 70px;
     }
 }
 
 @media screen and (min-width: 1700px) {
     .container {
-        min-height: 500px;
+        max-height: 500px;
+    }
+
+    .trendHitsContainer {
+        margin: 52px 0 52px 90px;
     }
 }
-
