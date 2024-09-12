@@ -50,6 +50,20 @@
     }
 }
 
+.none {
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
 .itemHoverPhoto {
     width: 100%;
     height: 100%;

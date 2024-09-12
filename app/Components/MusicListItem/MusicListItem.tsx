@@ -1,6 +1,6 @@
 import { useRecoilState } from 'recoil';
 import styles from './MusicListItem.module.scss';
-import { indexState, isPlayingState } from '@/app/state';
+import { indexState, isPlayingState, logOutState } from '@/app/state';
 
 interface Props {
     id: number;
@@ -16,6 +16,7 @@ interface Props {
 const MusicListItem = (props: Props) => {
     const [isPlaying] = useRecoilState(isPlayingState);
     const [currentIndex] = useRecoilState(indexState);
+    const [logout] = useRecoilState(logOutState);
 
     return (
         <div className={styles.listItem} onClick={props.onClick}>
@@ -23,7 +24,7 @@ const MusicListItem = (props: Props) => {
                 style={{ backgroundImage: `url(${props.image})` }}
                 className={styles.itemImageWrapper}
             >
-                <div className={styles.itemHoverPhoto}>
+                <div className={logout ? styles.none : styles.itemHoverPhoto}>
                     {isPlaying && props.index === currentIndex ? (
                         <img
                             className={styles.image}

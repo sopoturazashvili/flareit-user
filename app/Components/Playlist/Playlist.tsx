@@ -39,6 +39,7 @@ const Playlist = () => {
     const [click] = useRecoilState(clickState);
     const params = useParams();
     const id = params.id;
+    console.log(click);
 
     useEffect(() => {
         if (id) {

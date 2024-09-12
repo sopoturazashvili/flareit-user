@@ -3,10 +3,13 @@ import styles from './AddPlaylist.module.scss';
 import Modal from '../../Modal/Modal';
 import PlayListInput from '../PlayListInput/PlayListInput';
 import apiInstance from '@/app/ApiInstance';
+import { useRecoilState } from 'recoil';
+import { clickState } from '@/app/state';
 
 const AddPlaylist = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [title, setTitle] = useState<string>('');
+    const [click, setClick] = useRecoilState(clickState);
 
     const onAdd = (newValue: string) => {
         setTitle(newValue);
@@ -18,6 +21,7 @@ const AddPlaylist = () => {
                 apiInstance.post('/playlists', { title });
                 setIsModalOpen(false);
                 setTitle('');
+                setClick(!click);
             } catch (err) {
                 alert('An error occurred while adding the playlist.');
             }
