@@ -51,6 +51,11 @@ export const fullScreenState = atom({
     default: false,
 });
 
+export const logOutState = atom({
+    key: 'logout',
+    default: false,
+});
+
 export const musicGlobalState = atom<Musicsrc[]>({
     key: 'musicGlobalState',
     default: [],
@@ -63,7 +68,7 @@ export const indexState = atom({
 
 export const musicId = atom({
     key: 'musicId',
-    default: 1,
+    default: 0,
 });
 
 export const shouldAddTimeState = atom({

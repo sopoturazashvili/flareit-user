@@ -3,13 +3,14 @@
 import styles from './HeaderContainer.module.scss';
 import NavDesktop from '../Navigation/NavDesktop/NavDesktop';
 import Search from '../Search/Search';
-import { useState } from 'react';
 import LogOutWeb from '../LogoutWeb/LogOutWeb';
 import Logo from '../Logo/Logo';
 import LogOutModal from './LogOutModal/LogOutModal';
+import { useRecoilState } from 'recoil';
+import { logOutState } from '@/app/state';
 
 const HeaderContainer = () => {
-    const [logOut, setLogOut] = useState(false);
+    const [logOut, setLogOut] = useRecoilState(logOutState);
 
     return (
         <div className={styles.headerContainerBox}>
