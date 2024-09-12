@@ -83,7 +83,7 @@ const Playlist = () => {
 
     return (
         <div className={styles.playlistContainer}>
-             <div className={styles.artisCont}>
+            <div className={styles.artisCont}>
                 <Link href={'/playlists'} className={styles.artist}>
                     Playlist
                 </Link>
