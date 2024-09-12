@@ -1,5 +1,6 @@
 import { atom } from 'recoil';
 import { Musicsrc } from './interfaces/item';
+import exp from 'constants';
 
 export const isPlayingState = atom({
     key: 'isPlaying',
@@ -98,4 +99,9 @@ export const showNavMobileState = atom({
 export const musicPhotoState = atom({
     key: 'musicphoto',
     default: '',
+});
+
+export const clickState = atom({
+    key: 'click',
+    default: false,
 });

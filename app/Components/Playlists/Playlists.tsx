@@ -6,15 +6,18 @@ import ArtistPlaylistItem from '@/app/Components/ArtistPlaylistListItem/ArtistPl
 import { useEffect, useState } from 'react';
 import { Playlist } from '@/app/interfaces/item';
 import apiInstance from '@/app/ApiInstance';
+import { useRecoilState } from 'recoil';
+import { clickState } from '@/app/state';
 
 const Playlists = () => {
     const [playlists, setPlaylist] = useState<Playlist[]>([]);
+    const [click] = useRecoilState(clickState);
 
     useEffect(() => {
         apiInstance.get(`/users/me`).then((result) => {
             setPlaylist(result.data.playlists);
         });
-    }, [playlists.length]);
+    }, [playlists.length, click]);
     return (
         <div className={styles.container}>
             <div>

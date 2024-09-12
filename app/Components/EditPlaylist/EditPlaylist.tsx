@@ -2,6 +2,8 @@ import styles from './EditPlaylist.module.scss';
 import { forwardRef, useImperativeHandle } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import apiInstance from '@/app/ApiInstance';
+import { useRecoilState } from 'recoil';
+import { clickState } from '@/app/state';
 
 interface AddMusicProps {
     onDone?: () => void;
@@ -13,10 +15,10 @@ export interface FormValues {
     title: string;
 }
 
-// eslint-disable-next-line react/display-name
 const EditPlaylist = forwardRef<{ submitForm: () => void }, AddMusicProps>(
     ({ onDone, id, value }, ref) => {
         const { handleSubmit, register } = useForm<FormValues>();
+        const [click, setClick] = useRecoilState(clickState);
 
         const onRegister: SubmitHandler<FormValues> = async (values) => {
             if (!values.title.trim()) {
@@ -31,7 +33,7 @@ const EditPlaylist = forwardRef<{ submitForm: () => void }, AddMusicProps>(
             } catch (error) {
                 alert('Error updating playlist');
             }
-
+            setClick(!click);
             if (onDone && values.title.trim()) {
                 onDone();
             }

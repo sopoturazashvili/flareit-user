@@ -5,7 +5,12 @@ import styles from './MusicCard.module.scss';
 import DeleteBox from '../DleleteBox/DeleteBox';
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
 import { useRecoilState } from 'recoil';
-import { indexState, isPlayingState, tabletMenuState } from '@/app/state';
+import {
+    clickState,
+    indexState,
+    isPlayingState,
+    tabletMenuState,
+} from '@/app/state';
 import { searchTermState } from '@/app/state';
 import apiInstance from '@/app/ApiInstance';
 
@@ -33,6 +38,7 @@ const MusicCard = (props: Props) => {
     const musicCardRef = useRef<HTMLDivElement>(null);
     const menuRef = useRef<HTMLDivElement>(null);
     const [searchTerm] = useRecoilState(searchTermState);
+    const [click, setClick] = useRecoilState(clickState);
     const [isOpen] = useRecoilState(tabletMenuState);
     const params = useParams();
     const [isPlaying] = useRecoilState(isPlayingState);
@@ -82,6 +88,7 @@ const MusicCard = (props: Props) => {
             await apiInstance.delete('/playlists/musicId', {
                 data,
             });
+            setClick(!click);
             setIsDeleted(true);
         } catch (error) {
             alert(error);

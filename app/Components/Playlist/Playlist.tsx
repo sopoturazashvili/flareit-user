@@ -1,5 +1,6 @@
 import {
     authorNameState,
+    clickState,
     globalImageState,
     indexState,
     isPlayingState,
@@ -35,6 +36,7 @@ const Playlist = () => {
     const [playlist, setPlaylist] = useState<Musics[]>([]);
     const [data, setData] = useState<Data | null>(null);
     const [photo, setPhoto] = useState<string>('');
+    const [click] = useRecoilState(clickState);
     const params = useParams();
     const id = params.id;
 
@@ -58,7 +60,7 @@ const Playlist = () => {
                 'No authentication token found or playlist ID missing.',
             );
         }
-    }, [id, playlist.length, data, photo]);
+    }, [click]);
 
     const handleClick = (item: Musics, index: number) => {
         if (globalMusicId === item.id) {
