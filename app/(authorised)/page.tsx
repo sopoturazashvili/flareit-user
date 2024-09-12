@@ -5,14 +5,13 @@ import TopFourAlbums from '../Components/TopFourAlbums/TopFourAlbums';
 import TopFourArtist from '../Components/TopFourArtist/TopFourArtist';
 import TopFourCharts from '../Components/TopFourCharts/TopFourCharts';
 import TopFourHits from '../Components/TopFourHits/TopFourHits';
-import TrendHitsCard from '../Components/TrendHitsCard/TrendHitsCard';
+import WeeklyHitsCard from '../Components/WeeklyHitsCard/TrendHitsCard';
 import styles from './page.module.scss';
-
 export default function Home() {
     return (
         <main className={styles.main}>
             <div>
-                <TrendHitsCard />
+                <WeeklyHitsCard />
             </div>
             <div className={styles.sectionHeader}>
                 <SectionHeader title={'Popular Artists'} href={'topartists'} />

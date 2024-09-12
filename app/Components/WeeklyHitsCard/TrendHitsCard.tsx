@@ -4,7 +4,7 @@ import styles from './TrendHitsCard.module.scss';
 import FillAndTextButton from '../FillButton/FillAndTextButton';
 import { trendHitsItems, tabletItems, mobileItems } from '@/app/utils/items';
 
-const TrendHitsCard: React.FC = () => {
+const WeeklyHitsCard = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [loadedImages, setLoadedImages] = useState<boolean[]>([]);
     const isMobile = useMediaQuery({ minWidth: 320, maxWidth: 599 });
@@ -67,7 +67,7 @@ const TrendHitsCard: React.FC = () => {
                     <FillAndTextButton
                         text={'View playlist'}
                         fill={true}
-                        href={'/trendhits'}
+                        href={'/weeklyhits'}
                     />
                 </div>
             </div>
@@ -75,4 +75,4 @@ const TrendHitsCard: React.FC = () => {
     );
 };
 
-export default TrendHitsCard;
+export default WeeklyHitsCard;

@@ -1,6 +1,6 @@
 'use client';
 
-import styles from './TrendHits.module.scss';
+import styles from './WeeklyHits.module.scss';
 import {
     authorNameState,
     globalImageState,
@@ -24,7 +24,7 @@ interface Music {
     artistName: string;
 }
 
-const TrendHits = () => {
+const WeeklyHits = () => {
     const { currentCardId, toggleMenu } = useToggleMenu();
     const [, setGlobalsrc] = useRecoilState(musicGlobalState);
     const [globalMusicId, setGlobalId] = useRecoilState(musicId);
@@ -33,13 +33,13 @@ const TrendHits = () => {
     const [, setImage] = useRecoilState(globalImageState);
     const [, setMusicName] = useRecoilState(musicNameState);
     const [, setAuthorName] = useRecoilState(authorNameState);
-    const [trendHits, setTrendHits] = useState<Music[]>([]);
+    const [weeklyHits, setWeeklyHits] = useState<Music[]>([]);
 
     useEffect(() => {
         apiInstance
-            .get('/musics/tophits')
+            .get('/musics/tophits/week')
             .then((result) => {
-                setTrendHits(result.data.slice(0, 20));
+                setWeeklyHits(result.data.slice(0, 10));
             })
             .catch((error) => {
                 console.error('Error fetching music data:', error);
@@ -59,13 +59,13 @@ const TrendHits = () => {
         if (globalMusicId === item.id) {
             setIsPlaying(!isPlaying);
         } else {
-            const imageSrc = trendHits.map((item) => item.coverImgUrl);
-            const allSrc = trendHits.map((item) => ({
+            const imageSrc = weeklyHits.map((item) => item.coverImgUrl);
+            const allSrc = weeklyHits.map((item) => ({
                 audioUrl: item.audioUrl,
                 id: item.id,
             }));
-            const musicName = trendHits.map((item) => item.artistName);
-            const title = trendHits.map((item) => item.title);
+            const musicName = weeklyHits.map((item) => item.artistName);
+            const title = weeklyHits.map((item) => item.title);
             setIsPlaying(true);
             setGlobalId(item.id);
             setImage(imageSrc);
@@ -80,7 +80,7 @@ const TrendHits = () => {
         <div className={styles.container}>
             <span className={styles.title}>Weekly Hits</span>
             <div className={styles.containerInside}>
-                {trendHits.map((item, index) => (
+                {weeklyHits.map((item, index) => (
                     <MusicCard
                         key={item.id}
                         image={item.coverImgUrl}
@@ -100,4 +100,4 @@ const TrendHits = () => {
     );
 };
 
-export default TrendHits;
+export default WeeklyHits;
