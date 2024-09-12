@@ -36,7 +36,7 @@ const DropDownMenu = (props: Props) => {
             .catch((error) => {
                 console.error('Error fetching playlists:', error);
             });
-    });
+    }, []);
 
     return (
         <div className={styles.container}>

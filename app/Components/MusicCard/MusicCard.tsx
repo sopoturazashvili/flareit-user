@@ -97,6 +97,12 @@ const MusicCard = (props: Props) => {
             props.toggleMenu();
         }
     };
+    const deleteClick = (event: React.MouseEvent) => {
+        event.stopPropagation();
+        event.preventDefault();
+        setShowModal(!showModal);
+    };
+
     return (
         <div
             className={styles.listItem}
@@ -139,7 +145,7 @@ const MusicCard = (props: Props) => {
                 }
             >
                 {props.deleteOrLike && (
-                    <div onClick={() => setShowModal(!showModal)}>
+                    <div onClick={deleteClick}>
                         <DeleteBox
                             id={props.id}
                             setRemove={() => setShowModal(showModal)}

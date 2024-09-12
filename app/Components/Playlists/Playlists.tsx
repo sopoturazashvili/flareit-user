@@ -14,7 +14,7 @@ const Playlists = () => {
         apiInstance.get(`/users/me`).then((result) => {
             setPlaylist(result.data.playlists);
         });
-    }, [playlists.length]);
+    }, [playlists]);
     return (
         <div className={styles.container}>
             <div>

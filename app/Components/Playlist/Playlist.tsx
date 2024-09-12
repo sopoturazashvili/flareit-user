@@ -57,7 +57,7 @@ const Playlist = () => {
                 'No authentication token found or playlist ID missing.',
             );
         }
-    }, [id, playlist.length]);
+    }, [id, playlist.length, data, photo]);
 
     const handleClick = (item: Musics, index: number) => {
         if (globalMusicId === item.id) {
