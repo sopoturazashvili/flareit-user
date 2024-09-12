@@ -16,6 +16,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import MusicCard from '../../MusicCard/MusicCard';
 import apiInstance from '@/app/ApiInstance';
+import Link from 'next/link';
 
 interface Musics {
     coverImgUrl: string;
@@ -97,6 +98,13 @@ const OneAlbumById = () => {
 
     return (
         <div className={styles.OneAlbumByIdContainer}>
+            <div className={styles.artisCont}>
+                <Link href={'/albums'} className={styles.artist}>
+                    Albums
+                </Link>
+                <img src="/images/metia.svg" />
+                {album && <p className={styles.songs}>{album.artistName}</p>}
+            </div>
             <div>
                 {album && (
                     <div className={styles.photoContainer}>

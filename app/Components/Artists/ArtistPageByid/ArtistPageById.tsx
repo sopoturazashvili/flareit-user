@@ -17,6 +17,7 @@ import useToggleMenu from '@/app/helpers/useToggleMenu';
 import { useEffect, useState } from 'react';
 import MusicCard from '../../MusicCard/MusicCard';
 import apiInstance from '@/app/ApiInstance';
+import Link from 'next/link';
 
 interface Music {
     coverImgUrl: string;
@@ -125,6 +126,13 @@ const ArtistPageById = () => {
 
     return (
         <div className={styles.container}>
+            <div className={styles.artisCont}>
+                <Link href={'/artists'} className={styles.artist}>
+                    Artists
+                </Link>
+                <img src="/images/metia.svg" />
+                {artist && <p className={styles.songs}>{artist.artistName}</p>}
+            </div>
             <div className={styles.nameAndPhoto}>
                 {artist && (
                     <>
