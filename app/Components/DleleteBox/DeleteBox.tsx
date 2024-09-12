@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import Modal from '../Modal/Modal';
-import { useRecoilState } from 'recoil';
-import { clickState } from '@/app/state';
 
 interface Props {
     id: number;

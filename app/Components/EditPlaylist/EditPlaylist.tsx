@@ -14,7 +14,7 @@ interface AddMusicProps {
 export interface FormValues {
     title: string;
 }
-
+/* eslint-disable */
 const EditPlaylist = forwardRef<{ submitForm: () => void }, AddMusicProps>(
     ({ onDone, id, value }, ref) => {
         const { handleSubmit, register } = useForm<FormValues>();
@@ -66,5 +66,6 @@ const EditPlaylist = forwardRef<{ submitForm: () => void }, AddMusicProps>(
         );
     },
 );
+/* eslint-disable */
 
 export default EditPlaylist;

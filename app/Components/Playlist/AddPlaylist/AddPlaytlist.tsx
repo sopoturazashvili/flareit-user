@@ -12,18 +12,17 @@ const AddPlaylist = () => {
         setTitle(newValue);
     };
 
-
     const onDone = async () => {
-            if (title) {
-                try {
-                    apiInstance.post('/playlists', { title });
-                    setIsModalOpen(false);
-                    setTitle('');
-                } catch (err) {
-                    alert('An error occurred while adding the playlist.');
-                }
+        if (title) {
+            try {
+                apiInstance.post('/playlists', { title });
+                setIsModalOpen(false);
+                setTitle('');
+            } catch (err) {
+                alert('An error occurred while adding the playlist.');
             }
-        };
+        }
+    };
 
     return (
         <>
