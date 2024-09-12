@@ -1,46 +1,67 @@
 .playlistContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .photoAndNameCont {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.artisCont {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.artist {
+    color: rgba(255, 255, 255, 0.64);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.songs {
+    color: #fff;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 .photoAndName {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  gap: 16px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
 }
 
 .name {
-  color: #fff;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+    color: #fff;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 .topFourHits {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-
-.photo{
-  height: 200px;
-  width: 200px;
+.photo {
+    height: 200px;
+    width: 200px;
 }
 
-@media screen and (max-width:599px) {
-  .photo{
-    height: 102px;
-    width: 102px;
-  }
+@media screen and (max-width: 599px) {
+    .photo {
+        height: 102px;
+        width: 102px;
+    }
 }

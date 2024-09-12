@@ -15,6 +15,7 @@ import MusicCard from '../MusicCard/MusicCard';
 import { useParams } from 'next/navigation';
 import { Musics } from '@/app/interfaces/item';
 import apiInstance from '@/app/ApiInstance';
+import Link from 'next/link';
 
 interface Data {
     title: string;
@@ -82,6 +83,13 @@ const Playlist = () => {
 
     return (
         <div className={styles.playlistContainer}>
+             <div className={styles.artisCont}>
+                <Link href={'/playlists'} className={styles.artist}>
+                    Playlist
+                </Link>
+                <img src="/images/metia.svg" />
+                {data && <p className={styles.songs}>{data.title}</p>}
+            </div>
             <div className={styles.photoAndNameCont}>
                 <div className={styles.photoAndName}>
                     <img
