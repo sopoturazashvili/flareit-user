@@ -72,6 +72,7 @@ const NavDesktop = () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [isOpen]);
+    console.log(isOpen);
 
     return (
         <div className={styles.mainNavigation} ref={navRef}>
@@ -94,11 +95,15 @@ const NavDesktop = () => {
                     {fullScreen && image[index] ? '' : <Logo />}
                 </div>
                 <div className={styles.navigation}>
-                    <div className={styles.navigationLine}>
+                    <div
+                        className={styles.navigationLine}
+                        onClick={() => {
+                            setIsOpen(false);
+                        }}
+                    >
                         <Image
                             width={40}
                             height={40}
-                            onClick={toggleMenu}
                             src="/Image/Line.svg"
                             alt="Menu"
                         />
