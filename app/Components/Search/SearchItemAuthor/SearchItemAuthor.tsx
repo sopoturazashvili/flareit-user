@@ -25,6 +25,7 @@ const SearchItemAuthor = (props: Props) => {
                 alt="Icon"
             />
             <span className={styles.searchAndMapText}>{props.artistName}</span>
+            <span className={styles.type}>~Artist</span>
         </Link>
     );
 };
