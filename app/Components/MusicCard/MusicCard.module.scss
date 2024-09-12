@@ -52,7 +52,7 @@
         visibility: hidden;
     }
     .itemHoverPhoto {
-    display: none;
+        display: none;
     }
 }
 .musicCard {
@@ -65,24 +65,25 @@
     gap: 8px;
     align-items: center;
 }
+@media screen and (min-width: 1023px) {
+    .listItem {
+        display: flex;
+        align-items: center;
+        border-radius: 12px;
+        background-color: $PrimaryBlackTone3;
+        justify-content: space-between;
+        width: 100%;
+        padding: 12px 16px 12px 16px;
+        transition: 0.3s ease;
+        cursor: pointer;
 
-.listItem {
-    display: flex;
-    align-items: center;
-    border-radius: 12px;
-    background-color: $PrimaryBlackTone3;
-    justify-content: space-between;
-    width: 100%;
-    padding: 12px 16px 12px 16px;
-    transition: 0.3s ease;
-    cursor: pointer;
+        &:hover {
+            background: #252525;
+        }
 
-    &:hover {
-        background: rgba(15, 15, 15, 0.88);
-    }
-
-    &:hover .itemHoverPhoto {
-        opacity: 1;
+        &:hover .itemHoverPhoto {
+            opacity: 1;
+        }
     }
 }
 .musicCard:hover .musicCardHoverPhoto {
@@ -142,4 +143,30 @@
 
 .menu::-webkit-scrollbar {
     display: none;
+}
+
+@media screen and (max-width: 599px) {
+    .listItem {
+        display: flex;
+        align-items: center;
+        border-radius: 12px;
+        background-color: $PrimaryBlackTone3;
+        justify-content: space-between;
+        width: 100%;
+        padding: 12px 16px 12px 16px;
+        transition: 0.3s ease;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+    .listItem {
+        display: flex;
+        align-items: center;
+        border-radius: 12px;
+        background-color: $PrimaryBlackTone3;
+        justify-content: space-between;
+        width: 100%;
+        padding: 12px 16px 12px 16px;
+        transition: 0.3s ease;
+    }
 }

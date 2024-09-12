@@ -42,7 +42,7 @@
     cursor: pointer;
 
     &:hover {
-        background: rgba(15, 15, 15, 0.88);
+        background: #252525;
     }
 
     &:hover .itemHoverPhoto {
@@ -96,14 +96,6 @@
         max-width: 736px;
         width: 100%;
         transition: 0.3s ease;
-
-        &:hover {
-            background: rgba(15, 15, 15, 0.88);
-        }
-
-        &:hover .itemHoverPhoto {
-            opacity: 1;
-        }
     }
 
     .itemImageWrapper {
@@ -133,14 +125,6 @@
         max-height: 56px;
         width: 100%;
         transition: 0.3s ease;
-
-        &:hover {
-            background: rgba(15, 15, 15, 0.88);
-        }
-
-        &:hover .itemHoverPhoto {
-            opacity: 1;
-        }
     }
 
     .section {
