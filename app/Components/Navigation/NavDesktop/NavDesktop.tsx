@@ -72,7 +72,6 @@ const NavDesktop = () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [isOpen]);
-    console.log(isOpen);
 
     return (
         <div className={styles.mainNavigation} ref={navRef}>
