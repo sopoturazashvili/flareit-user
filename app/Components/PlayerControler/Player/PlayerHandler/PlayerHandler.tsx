@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import {
     audioDurrationState,
@@ -32,6 +32,8 @@ const PlayerHandler = () => {
     const [muted] = useRecoilState(mutedState);
 
     const audioRef = useRef<HTMLAudioElement>(null);
+    const [currentTrackUrl, setCurrentTrackUrl] = useState<string | null>(null);
+    const [lastCurrentTime] = useState<number>(0);
 
     useEffect(() => {
         const audio = audioRef.current;
@@ -74,7 +76,9 @@ const PlayerHandler = () => {
 
         if (audio) {
             if (isPlaying) {
-                audio.play();
+                audio.play().catch((error) => {
+                    console.error('Failed to play audio:', error);
+                });
             } else {
                 audio.pause();
             }
@@ -83,23 +87,19 @@ const PlayerHandler = () => {
 
     useEffect(() => {
         const audio = audioRef.current;
+        const newTrackUrl = musicSrc[index]?.audioUrl || '';
 
-        if (audio && musicSrc[index]?.audioUrl) {
-            if (audio.src !== musicSrc[index].audioUrl) {
-                audio.src = musicSrc[index].audioUrl;
-                audio.currentTime = 0;
-                audio.load();
-            }
-
+        if (audio && newTrackUrl && newTrackUrl !== currentTrackUrl) {
+            setCurrentTrackUrl(newTrackUrl);
+            audio.src = newTrackUrl;
+            audio.load();
             if (isPlaying) {
                 audio.play().catch((error) => {
                     console.error('Failed to play audio:', error);
                 });
-            } else {
-                audio.pause();
             }
         }
-    }, [index, musicSrc, isPlaying]);
+    }, [index, musicSrc, isPlaying, lastCurrentTime, currentTrackUrl]);
 
     useEffect(() => {
         const audio = audioRef.current;
