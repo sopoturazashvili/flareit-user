@@ -23,7 +23,7 @@ const SearchItemMusic = (props: Props) => {
             <div className={styles.textContainer}>
                 <span className={styles.searchAndMapText}>{props.title}</span>
                 <div className={styles.searchAndMapText2}>
-                    {props.artistName}
+                    <span>{props.artistName}</span>
                     <span className={styles.type}>~Song</span>
                 </div>
             </div>
