@@ -9,6 +9,7 @@ import {
     clickState,
     indexState,
     isPlayingState,
+    musicId,
     tabletMenuState,
 } from '@/app/state';
 import { searchTermState } from '@/app/state';
@@ -35,6 +36,7 @@ const MusicCard = (props: Props) => {
         top: '0',
         left: '20px',
     });
+    const [globalId] = useRecoilState(musicId);
     const musicCardRef = useRef<HTMLDivElement>(null);
     const menuRef = useRef<HTMLDivElement>(null);
     const [searchTerm] = useRecoilState(searchTermState);
@@ -122,7 +124,9 @@ const MusicCard = (props: Props) => {
                     className={styles.itemImageWrapper}
                 >
                     <div className={styles.itemHoverPhoto}>
-                        {isPlaying && props.index === index ? (
+                        {isPlaying &&
+                        props.index === index &&
+                        globalId === props.id ? (
                             <img
                                 className={styles.image}
                                 src="/allFolders/PlayerControler/Play.svg"
