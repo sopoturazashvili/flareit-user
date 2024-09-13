@@ -44,7 +44,7 @@ const ArtistPlaylistItem = (props: Props) => {
                             </div>
                         )}
                         <img
-                            src={'/images/Arrow.svg'}
+                            src={'/allFolders/images/Arrow.svg'}
                             width={24}
                             height={24}
                             alt="Go to page"

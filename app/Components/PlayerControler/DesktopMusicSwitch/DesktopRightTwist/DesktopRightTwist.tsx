@@ -7,7 +7,7 @@ const DesktopRightTwist = () => {
     return (
         <img
             className={styles.RightTwist}
-            src="/PlayerControler/RightSwitch.svg"
+            src="/allFolders/PlayerControler/RightSwitch.svg"
             alt="Right Twist"
             onClick={() => setShouldAddTime(true)}
         />

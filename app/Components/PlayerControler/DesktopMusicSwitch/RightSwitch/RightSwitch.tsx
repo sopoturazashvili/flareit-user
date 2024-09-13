@@ -27,7 +27,7 @@ const RightSwitch = () => {
     return (
         <img
             className={styles.RightSwitch}
-            src="/PlayerControler/RightTwist.svg"
+            src="/allFolders/PlayerControler/RightTwist.svg"
             alt="Right Twist"
             onClick={handleNextTrack}
         />

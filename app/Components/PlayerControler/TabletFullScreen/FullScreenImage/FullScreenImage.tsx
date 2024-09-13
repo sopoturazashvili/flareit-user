@@ -15,7 +15,7 @@ const FullScreenImage = () => {
         <div className={styles.fullScreenImage}>
             <img
                 className={styles.backButton}
-                src="/PlayerControler/TabletBackButton.svg"
+                src="/allFolders/PlayerControler/TabletBackButton.svg"
                 alt="TabletBackButton"
                 onClick={() => {
                     fullFunc();

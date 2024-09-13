@@ -22,23 +22,28 @@ const NavDesktop = () => {
     const [image] = useRecoilState(globalImageState);
     const [index] = useRecoilState(indexState);
     const data = [
-        { title: 'Home', href: '/', image: '/Image/Home.svg', key: '/' },
+        {
+            title: 'Home',
+            href: '/',
+            image: '/allFolders/Image/Home.svg',
+            key: '/',
+        },
         {
             title: 'Artists',
             href: '/artists',
-            image: '/Image/Artist.svg',
+            image: '/allFolders/Image/Artist.svg',
             key: '/artists',
         },
         {
             title: 'Playlists',
             href: '/playlists',
-            image: '/Image/Albums.svg',
+            image: '/allFolders/Image/Albums.svg',
             key: '/playlists',
         },
         {
             title: 'Albums',
             href: '/albums',
-            image: '/Image/Playlist.svg',
+            image: '/allFolders/Image/Playlist.svg',
             key: '/albums',
         },
     ];
@@ -80,7 +85,7 @@ const NavDesktop = () => {
                     <Image
                         width={40}
                         height={40}
-                        src="/Image/Line.svg"
+                        src="/allFolders/Image/Line.svg"
                         alt="Menu"
                     />
                 </div>
@@ -103,7 +108,7 @@ const NavDesktop = () => {
                         <Image
                             width={40}
                             height={40}
-                            src="/Image/Line.svg"
+                            src="/allFolders/Image/Line.svg"
                             alt="Menu"
                         />
                     </div>
@@ -123,7 +128,7 @@ const NavDesktop = () => {
                     ))}
                     <div className={styles.logOutTablet}>
                         <LogOutTablet
-                            image={'Image/LogOutIcon.svg'}
+                            image={'/allFolders/Image/LogOutIcon.svg'}
                             title={'Log Out'}
                         />
                     </div>

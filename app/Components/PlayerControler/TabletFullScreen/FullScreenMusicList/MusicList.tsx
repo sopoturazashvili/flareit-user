@@ -97,11 +97,14 @@ const MusicList = () => {
                 >
                     {musicUp ? (
                         <img
-                            src="/PlayerControler/MusicDown.svg"
+                            src="/allFolders/PlayerControler/MusicDown.svg"
                             alt="MusicDown"
                         />
                     ) : (
-                        <img src="/PlayerControler/MusicUp.svg" alt="MusicUp" />
+                        <img
+                            src="/allFolders/PlayerControler/MusicUp.svg"
+                            alt="MusicUp"
+                        />
                     )}
                 </div>
                 <div className={styles.nameAndMusic}>

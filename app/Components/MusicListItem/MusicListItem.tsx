@@ -28,13 +28,13 @@ const MusicListItem = (props: Props) => {
                     {isPlaying && props.index === currentIndex ? (
                         <img
                             className={styles.image}
-                            src="/PlayerControler/Play.svg"
+                            src="/allFolders/PlayerControler/Play.svg"
                             alt="Pause Button"
                         />
                     ) : (
                         <img
                             className={styles.image}
-                            src="/PlayerControler/Pause.svg"
+                            src="/allFolders/PlayerControler/Pause.svg"
                             alt="Play Button"
                         />
                     )}

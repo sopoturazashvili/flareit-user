@@ -41,8 +41,8 @@ const Input = (props: Props) => {
                             className={styles.icon}
                             src={
                                 showPassword
-                                    ? '/images/eyes.svg'
-                                    : '/images/blockeyes.svg'
+                                    ? '/allFolders/images/eyes.svg'
+                                    : '/allFolders/images/blockeyes.svg'
                             }
                             onClick={togglePasswordVisibility}
                             style={{ cursor: 'pointer' }}

@@ -21,7 +21,7 @@ const LeftSwitch = () => {
     return (
         <img
             className={styles.LeftSwitch}
-            src="/PlayerControler/LeftSwitch.svg"
+            src="/allFolders/PlayerControler/LeftSwitch.svg"
             alt="Left Switch"
             onClick={playPrevious}
         />

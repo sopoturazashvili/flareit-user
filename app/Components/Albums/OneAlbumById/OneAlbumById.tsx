@@ -102,7 +102,7 @@ const OneAlbumById = () => {
                 <Link href={'/albums'} className={styles.artist}>
                     Albums
                 </Link>
-                <img src="/images/metia.svg" />
+                <img src="/allFolders/images/metia.svg" />
                 {album && <p className={styles.songs}>{album.artistName}</p>}
             </div>
             <div>

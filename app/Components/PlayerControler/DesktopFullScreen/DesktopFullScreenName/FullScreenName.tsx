@@ -25,7 +25,11 @@ const FullScreenName = () => {
         >
             <img
                 className={styles.fullScreenImage}
-                src={image[index] ? image[index] : '/images/playerDefault.png'}
+                src={
+                    image[index]
+                        ? image[index]
+                        : '/allFolders/images/playerDefault.png'
+                }
                 alt="Music Cover"
             />
             <span

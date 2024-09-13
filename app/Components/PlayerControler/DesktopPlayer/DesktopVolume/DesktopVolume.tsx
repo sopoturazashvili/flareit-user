@@ -39,7 +39,7 @@ const DesktopVolume = (props: Props) => {
                 {muted ? (
                     <img
                         className={styles.Muted}
-                        src="/PlayerControler/Muted.svg"
+                        src="/allFolders/PlayerControler/Muted.svg"
                         onClick={mutedFunc}
                         style={volumeWidth}
                         alt="Muted"
@@ -47,7 +47,7 @@ const DesktopVolume = (props: Props) => {
                 ) : (
                     <img
                         className={styles.Volume}
-                        src="/PlayerControler/Volume.svg"
+                        src="/allFolders/PlayerControler/Volume.svg"
                         style={volumeWidth}
                         onClick={mutedFunc}
                         alt="Volume"
@@ -56,7 +56,7 @@ const DesktopVolume = (props: Props) => {
                 <VolumeInput width={props.width} />
                 <img
                     className={styles.Involved}
-                    src="/PlayerControler/involved.svg"
+                    src="/allFolders/PlayerControler/involved.svg"
                     style={involved}
                     alt="img"
                 />

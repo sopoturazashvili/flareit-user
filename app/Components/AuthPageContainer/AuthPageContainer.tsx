@@ -12,7 +12,7 @@ const AuthPageContainer = () => {
                     <div className={styles.flareIt}>
                         <img
                             className={styles.flareItPhoto}
-                            src="/authPage/authFlareIt.svg"
+                            src="/allFolders/authPage/authFlareIt.svg"
                             alt="Flare It"
                         />
                     </div>

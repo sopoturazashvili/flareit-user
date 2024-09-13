@@ -172,8 +172,8 @@ const Search = () => {
                     <Image
                         src={
                             searchTerm
-                                ? '/Image/searchWhite.svg'
-                                : '/Image/searchGrey.svg'
+                                ? '/allFolders/Image/searchWhite.svg'
+                                : '/allFolders/Image/searchGrey.svg'
                         }
                         alt="Search Icon"
                         width={24}

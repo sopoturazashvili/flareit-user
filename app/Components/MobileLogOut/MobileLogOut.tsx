@@ -39,7 +39,10 @@ const MobileLogOut = () => {
                             <p className={styles.profile}>Profile</p>
                         </div>
                         <div className={styles.mobileLogOutName}>
-                            <img src="/Image/LogOut.svg" alt="LogOut" />
+                            <img
+                                src="/allFolders/Image/LogOut.svg"
+                                alt="LogOut"
+                            />
                             {emailList && (
                                 <p className={styles.color}>
                                     {emailList.email}
