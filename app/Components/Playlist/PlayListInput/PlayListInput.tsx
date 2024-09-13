@@ -1,6 +1,7 @@
 import styles from './PlayListInput.module.scss';
 
 interface Props {
+    value: string;
     onChange?: (value: string) => void;
 }
 
@@ -18,6 +19,7 @@ const PlayListInput = (props: Props) => {
                     type="text"
                     placeholder="add title"
                     onChange={onChange}
+                    value={props.value}
                 />
             </div>
         </div>

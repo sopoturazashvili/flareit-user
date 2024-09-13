@@ -53,7 +53,7 @@ const AddPlaylist = () => {
                 cancelText="Cancel"
                 confirmText="Done"
             >
-                <PlayListInput onChange={onAdd} />
+                <PlayListInput onChange={onAdd} value={title} />
             </Modal>
         </>
     );
