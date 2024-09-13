@@ -1,5 +1,6 @@
 import { useRouter } from 'next/navigation';
 import styles from './LogOutTablet.module.scss';
+import { deleteCookie } from 'cookies-next';
 
 interface Props {
     image: string;
@@ -9,9 +10,11 @@ interface Props {
 const LogOutTablet = (props: Props) => {
     const router = useRouter();
 
-    const handleLogout = () => {
-        localStorage.removeItem('token');
+    const handleLogout = async (event: React.MouseEvent) => {
+        event.stopPropagation();
+        deleteCookie('token');
         router.push('/auth');
+        window.location.reload();
     };
 
     return (

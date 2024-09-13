@@ -1,31 +1,44 @@
+'use client';
+
 import { useRouter } from 'next/navigation';
 import styles from './LogOutModal.module.scss';
 import { useEffect, useState } from 'react';
-import { email } from '@/app/interfaces/item';
 import apiInstance from '@/app/ApiInstance';
 import Cookies from 'js-cookie';
+import { deleteCookie } from '@/app/helpers/Cookies';
 
 interface Props {
     setLogOut: (e: boolean) => void;
     logOut: boolean;
 }
 
+interface Email {
+    email: string;
+}
+
 const LogOutModal = (props: Props) => {
-    const [emailList, setEmailList] = useState<email>();
+    const [emailList, setEmailList] = useState<Email | null>(null);
     const router = useRouter();
 
     const handleLogout = async (event: React.MouseEvent) => {
         event.stopPropagation();
+
         Cookies.remove('token');
-        await router.push('/auth');
+        deleteCookie('token');
+        router.push('/auth');
+        window.location.reload();
     };
 
     useEffect(() => {
-        apiInstance.get(`/users/me`).then((res) => {
-            setEmailList(res.data);
-        });
+        apiInstance
+            .get(`/users/me`)
+            .then((res) => {
+                setEmailList(res.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching user data:', error);
+            });
     }, []);
-
     return (
         <>
             {props.logOut && (

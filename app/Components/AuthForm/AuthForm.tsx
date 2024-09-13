@@ -6,19 +6,37 @@ import Input from '@/app/Components/Input/Input';
 import { AxiosError, AxiosResponse } from 'axios';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
-import { setCookie } from '@/app/helpers/Cookies';
+import { useState, useEffect } from 'react';
+import {
+    setLocalStorageEncrypted,
+    getLocalStorageDecrypted,
+    setCookie,
+} from '@/app/helpers/Cookies';
 import apiInstance from '@/app/ApiInstance';
 
 const AuthForm = () => {
     const [fail, setFail] = useState<string | null>(null);
+    const [rememberMe, setRememberMe] = useState<boolean>(false);
     const {
         register,
         handleSubmit,
         formState: { errors, isSubmitted },
+        setValue,
     } = useForm<AuthInputs>();
 
     const router = useRouter();
+
+    useEffect(() => {
+        const savedEmail = getLocalStorageDecrypted('email');
+        const savedPassword = getLocalStorageDecrypted('password');
+
+        if (savedEmail) {
+            setValue('email', savedEmail);
+        }
+        if (savedPassword) {
+            setValue('password', savedPassword);
+        }
+    }, [setValue]);
 
     const onSubmit = (values: AuthInputs) => {
         apiInstance
@@ -27,7 +45,14 @@ const AuthForm = () => {
                 const token = response.data.access_token;
 
                 if (token) {
-                    setCookie('token', token, 60);
+                    if (rememberMe) {
+                        setLocalStorageEncrypted('email', values.email);
+                        setLocalStorageEncrypted('password', values.password);
+                    } else {
+                        localStorage.removeItem('email');
+                        localStorage.removeItem('password');
+                    }
+                    setCookie('token', token, rememberMe ? 30 : 0);
                     router.push('/');
                 }
             })
@@ -41,6 +66,7 @@ const AuthForm = () => {
                 }
             });
     };
+
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
             <div className={styles.emailContainer}>
@@ -81,6 +107,19 @@ const AuthForm = () => {
                     </span>
                 )}
             </div>
+            <div className={styles.rememberMeContainer}>
+                <input
+                    className={styles.inputCheckbox}
+                    type="checkbox"
+                    id="rememberMe"
+                    checked={rememberMe}
+                    onChange={(e) => setRememberMe(e.target.checked)}
+                />
+                <label htmlFor="rememberPassword" className={styles.checbox}>
+                    {'Remember Password'}
+                </label>
+            </div>
+
             {fail && (
                 <div className={styles.errorContainer}>
                     <span className={styles.fail}>{fail}</span>
@@ -98,4 +137,5 @@ const AuthForm = () => {
         </form>
     );
 };
+
 export default AuthForm;

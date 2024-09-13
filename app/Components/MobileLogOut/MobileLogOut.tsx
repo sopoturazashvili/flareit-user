@@ -11,11 +11,12 @@ const MobileLogOut = () => {
     const token = getCookie('token');
     const [emailList, setEmailList] = useState<email | null>(null);
 
-    const handleLogout = () => {
+    const handleLogout = async (event: React.MouseEvent) => {
+        event.stopPropagation();
         deleteCookie('token');
         router.push('/auth');
+        window.location.reload();
     };
-
     useEffect(() => {
         if (token) {
             apiInstance
