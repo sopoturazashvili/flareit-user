@@ -12,6 +12,8 @@
 
 .image {
     width: 100%;
+    height: 200px;
+    object-fit: contain;
 }
 
 .container:hover {
@@ -63,6 +65,33 @@
     }
 }
 
+@media screen and (min-width: 600px) and (max-width: 900px) {
+    .container {
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 750px) {
+    .container {
+        padding: 5px;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-width: 1500px) {
+    .image {
+        height: 150px;
+    }
+    .container {
+        padding: 10px 10px;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-width: 1150px) {
+    .image {
+        height: 110px;
+    }
+}
+
 @media screen and (min-width: 1023px) and (max-width: 1300px) {
     .infoContainer {
         max-width: 55px;
@@ -95,5 +124,14 @@
 @media screen and (min-width: 1024px) and (max-width: 1050px) {
     .container {
         padding: 14px;
+    }
+}
+
+@media screen and (max-width: 599px) {
+    .image {
+        height: 150px;
+    }
+    .container  {
+    padding: 20px;
     }
 }
