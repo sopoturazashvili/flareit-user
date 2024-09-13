@@ -17,10 +17,10 @@ const WeeklyHitsCard = () => {
           : trendHitsItems;
 
     const defaultBackgroundImage = isMobile
-        ? '/images/trendhits_blue_mobile.jpeg'
+        ? '/allFolders/images/trendhits_blue_mobile.jpeg'
         : isTablet
-          ? '/images/trendhits_blue_tablet.jpeg'
-          : '/images/trendhits_blue.jpeg';
+          ? '/allFolders/images/trendhits_blue_tablet.jpeg'
+          : '/allFolders/images/trendhits_blue.jpeg';
 
     useEffect(() => {
         setLoadedImages(Array(items.length).fill(false));

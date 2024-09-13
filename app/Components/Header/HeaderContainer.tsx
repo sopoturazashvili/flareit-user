@@ -33,7 +33,7 @@ const HeaderContainer = () => {
                         width={32}
                         height={32}
                         title={''}
-                        src={'/Image/LogOut.svg'}
+                        src={'/allFolders/Image/LogOut.svg'}
                     />
                 </div>
                 <LogOutModal logOut={logOut} setLogOut={setLogOut} />

@@ -65,7 +65,7 @@ const LogOutModal = (props: Props) => {
                                 onClick={handleLogout}
                             >
                                 <img
-                                    src="/Image/LogOutIcon.svg"
+                                    src="/allFolders/Image/LogOutIcon.svg"
                                     alt="LogOutIcon"
                                 />
                                 <span className={styles.color}>Log Out</span>

@@ -8,7 +8,7 @@ const DesktopLeftTwist = () => {
     return (
         <img
             className={styles.LeftTwist}
-            src="/PlayerControler/LeftTwist.svg"
+            src="/allFolders/PlayerControler/LeftTwist.svg"
             alt="Left Twist"
             onClick={() => setShouldRewind(true)}
         />

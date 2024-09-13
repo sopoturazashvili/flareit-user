@@ -20,7 +20,11 @@ const DeleteBox = (props: Props) => {
     };
     return (
         <>
-            <img onClick={deleteCard} src="/images/Delete.svg" alt="Delete" />
+            <img
+                onClick={deleteCard}
+                src="/allFolders/images/Delete.svg"
+                alt="Delete"
+            />
             <Modal
                 isOpen={props.remove}
                 title="Are you sure?"

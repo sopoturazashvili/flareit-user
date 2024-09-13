@@ -12,7 +12,7 @@ const RegisterPageContainer = () => {
                         <img
                             className={styles.flareItPhoto}
                             alt="Flare It"
-                            src={'/authPage/authFlareIt.svg'}
+                            src={'/allFolders/authPage/authFlareIt.svg'}
                         />
                     </div>
                     <RegisterForm />

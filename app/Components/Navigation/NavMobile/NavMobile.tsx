@@ -13,23 +13,23 @@ const NavMobile = () => {
 
     const dataItem = [
         {
-            image: '/Image/Home.svg',
+            image: '/allFolders/Image/Home.svg',
             title: 'Home',
-            pinkImage: '/Image/pinkHome.svg',
+            pinkImage: '/allFolders/Image/pinkHome.svg',
             href: '/',
             key: 'home',
         },
         {
-            image: '/Image/search.svg',
+            image: '/allFolders/Image/search.svg',
             title: 'Search',
-            pinkImage: '/Image/pinkSearch.svg',
+            pinkImage: '/allFolders/Image/pinkSearch.svg',
             href: '/mobilesearch',
             key: 'search',
         },
         {
-            image: '/Image/Library.svg',
+            image: '/allFolders/Image/Library.svg',
             title: 'Library',
-            pinkImage: '/Image/pinkLibrary.svg',
+            pinkImage: '/allFolders/Image/pinkLibrary.svg',
             href: '/mobilelibrary',
             key: 'library',
         },
@@ -53,7 +53,7 @@ const NavMobile = () => {
                         />
                     ))}
                     <LogOut
-                        src={'/Image/LogOut.svg'}
+                        src={'/allFolders/Image/LogOut.svg'}
                         width={24}
                         height={24}
                         title={'Profile'}

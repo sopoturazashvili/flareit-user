@@ -130,7 +130,7 @@ const ArtistPageById = () => {
                 <Link href={'/artists'} className={styles.artist}>
                     Artists
                 </Link>
-                <img src="/images/metia.svg" />
+                <img src="/allFolders/images/metia.svg" />
                 {artist && <p className={styles.songs}>{artist.artistName}</p>}
             </div>
             <div className={styles.nameAndPhoto}>

@@ -86,14 +86,14 @@ const Playlist = () => {
                 <Link href={'/playlists'} className={styles.artist}>
                     Playlist
                 </Link>
-                <img src="/images/metia.svg" />
+                <img src="/allFolders/images/metia.svg" />
                 {data && <p className={styles.songs}>{data.title}</p>}
             </div>
             <div className={styles.photoAndNameCont}>
                 <div className={styles.photoAndName}>
                     <img
                         className={styles.photo}
-                        src={photo ? photo : '/images/MusicLogo.svg'}
+                        src={photo ? photo : '/allFolders/images/MusicLogo.svg'}
                         alt="Playlist Cover"
                     />
                     {data && (

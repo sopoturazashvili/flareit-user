@@ -14,13 +14,13 @@ const Shuffle = () => {
             {isShuffle ? (
                 <img
                     className={styles.shuffle}
-                    src="/PlayerControler/pinkShuffle.svg"
+                    src="/allFolders/PlayerControler/pinkShuffle.svg"
                     alt="shuffle"
                 />
             ) : (
                 <img
                     className={styles.shuffle}
-                    src="/PlayerControler/shuffle.svg"
+                    src="/allFolders/PlayerControler/shuffle.svg"
                     alt="Messy"
                 />
             )}

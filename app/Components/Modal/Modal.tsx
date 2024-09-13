@@ -33,7 +33,7 @@ const Modal = (props: Props) => {
                         onClick={onClose}
                     >
                         <Image
-                            src={'/icons/closeButton.svg'}
+                            src={'/allFolders/icons/closeButton.svg'}
                             width={24}
                             height={24}
                             alt="Close Button"

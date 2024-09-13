@@ -18,7 +18,7 @@ const LogOut = (props: Props) => {
             <div className={styles.profile}>
                 {pathname === '/mobilelogout' ? (
                     <Image
-                        src="/Image/mobileProfile.svg"
+                        src="/allFolders/Image/mobileProfile.svg"
                         width={props.width}
                         height={props.height}
                         alt={props.title}

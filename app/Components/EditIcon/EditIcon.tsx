@@ -24,7 +24,10 @@ const EditIcon = (props: Props) => {
                     setClick(!click);
                 }}
             >
-                <img src="/images/editPlaylist.svg" alt="editPlaylist" />
+                <img
+                    src="/allFolders/images/editPlaylist.svg"
+                    alt="editPlaylist"
+                />
             </div>
             {click && (
                 <Modal

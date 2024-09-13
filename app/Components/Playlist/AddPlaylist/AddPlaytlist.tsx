@@ -37,7 +37,7 @@ const AddPlaylist = () => {
                 <div className={styles.createdPlaylist}>
                     <div className={styles.icon}>
                         <img
-                            src="/images/createdPlaylist.svg"
+                            src="/allFolders/images/createdPlaylist.svg"
                             alt="CreatedPlaylist"
                         />
                     </div>

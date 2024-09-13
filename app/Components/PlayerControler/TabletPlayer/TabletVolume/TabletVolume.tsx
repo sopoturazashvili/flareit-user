@@ -29,14 +29,14 @@ const TabeltVolume = (props: Props) => {
             <div className={styles.volume}>
                 {muted ? (
                     <img
-                        src="/PlayerControler/Muted.svg"
+                        src="/allFolders/PlayerControler/Muted.svg"
                         onClick={mutedFunc}
                         style={tabletVolumeWidth}
                         alt="Muted"
                     />
                 ) : (
                     <img
-                        src="/PlayerControler/Volume.svg"
+                        src="/allFolders/PlayerControler/Volume.svg"
                         style={tabletVolumeWidth}
                         onClick={mutedFunc}
                         alt="Volume"
@@ -44,7 +44,7 @@ const TabeltVolume = (props: Props) => {
                 )}
                 <TabletVolumeInput tabletWidth={props.tabletWidth} />
                 <img
-                    src="/PlayerControler/involved.svg"
+                    src="/allFolders/PlayerControler/involved.svg"
                     style={tabletInvolved}
                     alt="involved"
                 />
