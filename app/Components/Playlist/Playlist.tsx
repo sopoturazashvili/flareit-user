@@ -46,10 +46,7 @@ const Playlist = () => {
                 .get(`/playlists/${id}`)
                 .then((result) => {
                     setPlaylist(result.data.musics);
-                    setPhoto(
-                        result.data.musics[result.data.musics.length - 1]
-                            .coverImgUrl,
-                    );
+                    setPhoto(result.data.musics[0].coverImgUrl);
                     setData(result.data);
                 })
                 .catch((error) => {

@@ -29,10 +29,8 @@ const Playlists = () => {
                     <ArtistPlaylistItem
                         key={playlist.id}
                         image={
-                            playlist.musics[playlist.musics.length - 1]
-                                ?.coverImgUrl
-                                ? playlist.musics[playlist.musics.length - 1]
-                                      ?.coverImgUrl
+                            playlist.musics[0]?.coverImgUrl
+                                ? playlist.musics[0]?.coverImgUrl
                                 : '/images/MusicLogo.svg'
                         }
                         text={playlist.title}
