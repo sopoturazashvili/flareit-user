@@ -17,6 +17,19 @@
     gap: 8px;
 }
 
+.rememberMeContainer {
+    display: flex;
+    gap: 8px;
+}
+
+.inputCheckbox {
+    cursor: pointer;
+}
+
+.checbox {
+    color: #fff;
+}
+
 .title {
     color: var(--text-color, #fff);
     font-size: 14px;
