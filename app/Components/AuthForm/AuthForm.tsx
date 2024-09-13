@@ -3,11 +3,12 @@
 import { AuthInputs, Response } from '@/app/interfaces/item';
 import styles from './AuthForm.module.scss';
 import Input from '@/app/Components/Input/Input';
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { setCookie } from '@/app/helpers/Cookies';
+import apiInstance from '@/app/ApiInstance';
 
 const AuthForm = () => {
     const [fail, setFail] = useState<string | null>(null);
@@ -20,11 +21,8 @@ const AuthForm = () => {
     const router = useRouter();
 
     const onSubmit = (values: AuthInputs) => {
-        axios
-            .post<Response>(
-                'https://enigma-wtuc.onrender.com/auth/login',
-                values,
-            )
+        apiInstance
+            .post<Response>('/auth/login', values)
             .then((response: AxiosResponse<Response>) => {
                 const token = response.data.access_token;
 

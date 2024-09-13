@@ -21,7 +21,7 @@ const Button = (props: Props) => {
         <button
             style={{ width: props.width }}
             onClick={props.onClick}
-            className={classNames}
+            className={`${classNames} ${styles.cursor}`}
         >
             {props.text}
         </button>

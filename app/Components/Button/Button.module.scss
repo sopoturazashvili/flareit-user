@@ -1,5 +1,5 @@
 .btnCommon {
-    color: #E2E2E3;
+    color: #e2e2e3;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,12 +13,16 @@
     width: 100%;
 }
 
+.cursor {
+    cursor: pointer;
+}
+
 .primary {
-    background-color: #5E4BE2;
+    background-color: #5e4be2;
 }
 
 .secondary {
-    background-color: rgba(105, 109, 140, 0.20);
+    background-color: rgba(105, 109, 140, 0.2);
 }
 
 .secondary:hover {
@@ -26,7 +30,7 @@
 }
 
 .primary:hover {
-    background: #5141BF;
+    background: #5141bf;
 }
 
 .large {

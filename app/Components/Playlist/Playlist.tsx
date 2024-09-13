@@ -9,7 +9,7 @@ import {
     musicNameState,
 } from '@/app/state';
 import styles from './Playlist.module.scss';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import useToggleMenu from '@/app/helpers/useToggleMenu';
 import { useEffect, useState } from 'react';
 import MusicCard from '../MusicCard/MusicCard';
@@ -36,10 +36,9 @@ const Playlist = () => {
     const [playlist, setPlaylist] = useState<Musics[]>([]);
     const [data, setData] = useState<Data | null>(null);
     const [photo, setPhoto] = useState<string>('');
-    const [click] = useRecoilState(clickState);
+    const click = useRecoilValue(clickState);
     const params = useParams();
     const id = params.id;
-    console.log(click);
 
     useEffect(() => {
         if (id) {
@@ -61,7 +60,7 @@ const Playlist = () => {
                 'No authentication token found or playlist ID missing.',
             );
         }
-    }, [click]);
+    }, [click, id]);
 
     const handleClick = (item: Musics, index: number) => {
         if (globalMusicId === item.id) {

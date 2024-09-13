@@ -18,10 +18,10 @@ const AddPlaylist = () => {
     const onDone = async () => {
         if (title) {
             try {
-                apiInstance.post('/playlists', { title });
+                await apiInstance.post('/playlists', { title });
                 setIsModalOpen(false);
-                setTitle('');
                 setClick(!click);
+                setTitle('');
             } catch (err) {
                 alert('An error occurred while adding the playlist.');
             }
