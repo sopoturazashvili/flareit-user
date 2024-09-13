@@ -108,18 +108,18 @@ const AuthForm = () => {
                 )}
             </div>
             <div className={styles.rememberMeContainer}>
-                <input
-                    className={styles.inputCheckbox}
-                    type="checkbox"
-                    id="rememberMe"
-                    checked={rememberMe}
-                    onChange={(e) => setRememberMe(e.target.checked)}
-                />
-                <label htmlFor="rememberPassword" className={styles.checbox}>
+                <label htmlFor="rememberMe" className={styles.checkboxLabel}>
+                    <input
+                        className={styles.inputCheckbox}
+                        type="checkbox"
+                        id="rememberMe"
+                        checked={rememberMe}
+                        onChange={(e) => setRememberMe(e.target.checked)}
+                    />
+                    <span className={styles.checkmark}></span>
                     {'Remember Password'}
                 </label>
             </div>
-
             {fail && (
                 <div className={styles.errorContainer}>
                     <span className={styles.fail}>{fail}</span>
