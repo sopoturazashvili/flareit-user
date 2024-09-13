@@ -8,11 +8,11 @@ const MobileLibrary = () => {
             <div className={styles.container}>
                 <Link className={styles.libraryList} href={'/artists'}>
                     <img src="/allFolders/Image/Artist.svg" />
-                    <p className={styles.title}>Artist</p>
+                    <p className={styles.title}>Artists</p>
                 </Link>
                 <Link className={styles.libraryList} href={'/playlists'}>
                     <img src="/allFolders/Image/Playlist.svg" />
-                    <p className={styles.title}>Playlist</p>
+                    <p className={styles.title}>Playlists</p>
                 </Link>
                 <Link className={styles.libraryList} href={'/albums'}>
                     <img src="/allFolders/Image/Albums.svg" />
