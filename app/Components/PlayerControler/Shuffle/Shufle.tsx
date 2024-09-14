@@ -10,21 +10,23 @@ const Shuffle = () => {
     };
 
     return (
-        <div onClick={handleShuffleClick}>
+        <>
             {isShuffle ? (
                 <img
+                    onClick={handleShuffleClick}
                     className={styles.shuffle}
                     src="/allFolders/PlayerControler/pinkShuffle.svg"
                     alt="shuffle"
                 />
             ) : (
                 <img
+                    onClick={handleShuffleClick}
                     className={styles.shuffle}
                     src="/allFolders/PlayerControler/shuffle.svg"
                     alt="Messy"
                 />
             )}
-        </div>
+        </>
     );
 };
 
