@@ -6,7 +6,11 @@
     gap: 12px;
     height: 100%;
     overflow: auto;
-    padding-bottom: 170px;
+    padding-bottom: 50px;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
 }
 
 .title {
