@@ -108,7 +108,7 @@ const MusicList = () => {
                     )}
                 </div>
                 <div className={styles.nameAndMusic}>
-                    <p className={styles.nextContainer}>Next Play</p>
+                    <p className={styles.nextContainer}>For You</p>
                     <div className={styles.musicListItem}>
                         {musicList
                             .slice(0, musicUp ? 6 : 0)
