@@ -49,7 +49,7 @@ const OneChartById = () => {
                     console.error('Error fetching music data:', error);
                 });
         } else {
-            apiInstance.get(`/musics`).then((result) => {
+            apiInstance.get(`/musics/shuffle`).then((result) => {
                 setChartData(result.data);
             });
         }
