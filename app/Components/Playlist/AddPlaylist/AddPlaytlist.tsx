@@ -16,7 +16,7 @@ const AddPlaylist = () => {
     };
 
     const onDone = async () => {
-        if (title) {
+        if (title.trim()) {
             try {
                 await apiInstance.post('/playlists', { title });
                 setIsModalOpen(false);
