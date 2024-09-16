@@ -40,7 +40,7 @@ const WeeklyHitsCard = () => {
     useEffect(() => {
         const intervalId = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
-        }, 5000);
+        }, 4000);
 
         return () => clearInterval(intervalId);
     }, [items]);
