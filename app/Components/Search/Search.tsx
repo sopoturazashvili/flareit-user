@@ -69,7 +69,14 @@ const Search = () => {
                 });
 
                 const sortedResults = processAndSortSearchResults(data);
-                setSearchResults(sortedResults);
+                const uniqueResults = new Map();
+                sortedResults.forEach((item) => {
+                    if (!uniqueResults.has(item.data.id)) {
+                        uniqueResults.set(item.data.id, item);
+                    }
+                });
+
+                setSearchResults(Array.from(uniqueResults.values()));
             } catch (error) {
                 console.error('Error during search', error);
             }
