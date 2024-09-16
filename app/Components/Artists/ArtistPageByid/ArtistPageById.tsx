@@ -17,7 +17,7 @@ import useToggleMenu from '@/app/helpers/useToggleMenu';
 import { useEffect, useState } from 'react';
 import MusicCard from '../../MusicCard/MusicCard';
 import apiInstance from '@/app/ApiInstance';
-import Link from 'next/link';
+import ArtistId from './ArtistId/ArtistId';
 
 interface Music {
     coverImgUrl: string;
@@ -25,14 +25,6 @@ interface Music {
     artistName: string;
     title: string;
     id: number;
-}
-
-interface Artist {
-    biography: string;
-    id: number;
-    artistName: string;
-    coverImgUrl: string;
-    albums: Album[];
 }
 
 interface Album {
@@ -54,7 +46,6 @@ const ArtistPageById = () => {
     const [, setArtist] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
     const [musics, setMusics] = useState<Music[]>([]);
-    const [artist, setArtistData] = useState<Artist | null>(null);
     const [albums, setAlbums] = useState<Album[]>([]);
 
     const params = useParams();
@@ -69,7 +60,6 @@ const ArtistPageById = () => {
                     );
 
                     const artistData = artistResult.data || null;
-                    setArtistData(artistData);
                     setAlbums(artistData.albums || []);
 
                     const allMusics = artistData.albums.reduce(
@@ -126,28 +116,7 @@ const ArtistPageById = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.artisCont}>
-                <Link href={'/artists'} className={styles.artist}>
-                    Artists
-                </Link>
-                <img src="/allFolders/images/metia.svg" />
-                {artist && <p className={styles.songs}>{artist.artistName}</p>}
-            </div>
-            <div className={styles.nameAndPhoto}>
-                {artist && (
-                    <>
-                        <img
-                            className={styles.photo}
-                            src={artist.coverImgUrl}
-                            alt={artist.artistName}
-                        />
-                        <p className={styles.nameColor}>{artist.artistName}</p>
-                        <p className={styles.biografiContainer}>
-                            {artist.biography}
-                        </p>
-                    </>
-                )}
-            </div>
+            <ArtistId />
             <div className={styles.musicCard}>
                 {musics.map((music, index) => (
                     <MusicCard

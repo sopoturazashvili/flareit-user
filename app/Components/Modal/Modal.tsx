@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import Button from '../Button/Button';
 import styles from './Modal.module.scss';
-import Image from 'next/image';
+import ModlaImage from './ModalImage/ModalImage';
 
 interface Props {
     isOpen: boolean;
@@ -18,7 +18,6 @@ const Modal = (props: Props) => {
     const onClose = () => {
         props.setIsModalOpen(!props.isOpen);
     };
-
     return (
         <div
             className={
@@ -26,20 +25,11 @@ const Modal = (props: Props) => {
             }
         >
             <div className={styles.modal}>
-                <div className={styles.modalHeader}>
-                    <h4 className={styles.sectionTitle}>{props.title}</h4>
-                    <div
-                        className={styles.closeButtonWrapper}
-                        onClick={onClose}
-                    >
-                        <Image
-                            src={'/allFolders/icons/closeButton.svg'}
-                            width={24}
-                            height={24}
-                            alt="Close Button"
-                        />
-                    </div>
-                </div>
+                <ModlaImage
+                    title={props.title}
+                    setIsModalOpen={props.setIsModalOpen}
+                    isOpen={props.isOpen}
+                />
                 <div className={styles.content}>{props.children}</div>
                 {props.hasFooter && (
                     <div className={styles.buttonsContainer}>

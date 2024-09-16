@@ -1,35 +1,5 @@
 @import '../../../styles/colors.scss';
 
-.photoContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.artisCont {
-    display: flex;
-    gap: 4px;
-    align-items: center;
-}
-
-.artist {
-    color: rgba(255, 255, 255, 0.64);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
-
-.songs {
-    color: #fff;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
-
 .OneAlbumByIdContainer {
     display: flex;
     flex-direction: column;
@@ -41,34 +11,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px 20px;
-}
-
-.nameContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    align-items: center;
-}
-
-.musicName {
-    color: $PrimaryWhite;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
-
-.image {
-    max-width: 208px;
-    width: 100%;
-}
-
-.artistName {
-    color: $PrimaryWhiteTone1;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
 }
 
 @media screen and (min-width: 599px) and (max-width: 1023px) {

@@ -35,29 +35,6 @@
     transition: transform 0.3s ease;
 }
 
-.modalHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.sectionTitle {
-    line-height: 24px;
-    text-transform: capitalize;
-}
-
-.closeButtonWrapper {
-    padding: 4px;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    border: 1px solid #232934;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .buttonsContainer {
     width: 100%;
     display: flex;

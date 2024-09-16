@@ -16,21 +16,13 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import MusicCard from '../../MusicCard/MusicCard';
 import apiInstance from '@/app/ApiInstance';
-import Link from 'next/link';
+import AlbumIdCont from './AlbumId/AlbumId';
 
 interface Musics {
     coverImgUrl: string;
     audioUrl: string;
     title: string;
     id: number;
-    artistName: string;
-}
-
-interface AlbumId {
-    coverImgUrl: string;
-    releaseDate: string;
-    title: string;
-    albumName: string;
     artistName: string;
 }
 
@@ -43,7 +35,6 @@ const OneAlbumById = () => {
     const [, setImage] = useRecoilState(globalImageState);
     const [, setAuthorName] = useRecoilState(musicNameState);
     const [, setTitle] = useRecoilState(authorNameState);
-    const [album, setAlbum] = useState<AlbumId | null>(null);
     const [musics, setMusics] = useState<Musics[]>([]);
 
     const param = useParams();
@@ -53,7 +44,6 @@ const OneAlbumById = () => {
             if (id) {
                 try {
                     const res = await apiInstance.get(`/albums/${id}`);
-                    setAlbum(res.data);
                     setMusics(res.data.musics);
                 } catch (error) {
                     alert(error);
@@ -98,32 +88,7 @@ const OneAlbumById = () => {
 
     return (
         <div className={styles.OneAlbumByIdContainer}>
-            <div className={styles.artisCont}>
-                <Link href={'/albums'} className={styles.artist}>
-                    Albums
-                </Link>
-                <img src="/allFolders/images/metia.svg" />
-                {album && <p className={styles.songs}>{album.artistName}</p>}
-            </div>
-            <div>
-                {album && (
-                    <div className={styles.photoContainer}>
-                        <img
-                            className={styles.image}
-                            src={album.coverImgUrl}
-                            alt="Album Cover"
-                        />
-                        <div className={styles.nameContainer}>
-                            <span className={styles.musicName}>
-                                {album.title}
-                            </span>
-                            <span className={styles.artistName}>
-                                {album.artistName}
-                            </span>
-                        </div>
-                    </div>
-                )}
-            </div>
+            <AlbumIdCont />
             <div className={styles.musicCard}>
                 {musics.map((item, index) => (
                     <MusicCard

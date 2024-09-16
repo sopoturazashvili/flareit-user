@@ -10,41 +10,11 @@
     display: none;
 }
 
-.nameAndPhoto {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    align-items: center;
-    justify-content: center;
-}
-
 .pathName {
     color: #fff;
     font-size: 20px;
     font-style: normal;
     font-weight: 600;
-    line-height: normal;
-}
-
-.photo {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-}
-
-.nameColor {
-    color: #fff;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
-
-.biografiContainer {
-    color: #ababab;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
     line-height: normal;
 }
 
@@ -80,28 +50,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 8px 20px;
-}
-
-.artisCont {
-    display: flex;
-    gap: 4px;
-    align-items: center;
-}
-
-.artist {
-    color: rgba(255, 255, 255, 0.64);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
-
-.songs {
-    color: #fff;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
 }
 
 @media screen and (max-width: 599px) {
