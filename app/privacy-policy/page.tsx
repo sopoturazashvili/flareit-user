@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
                 We use Your Personal data to provide and improve the Service. By
                 using the Service, You agree to the collection and use of
                 information in accordance with this Privacy Policy. This Privacy
-                Policy has been created with the help of the
+                Policy has been created with the help of the{' '}
                 <a
                     href="https://www.termsfeed.com/privacy-policy-generator/"
                     target="_blank"
@@ -111,7 +111,7 @@ const PrivacyPolicy = () => {
                 <li>
                     <p>
                         <strong>Website</strong> refers to FlareIt, accessible
-                        from
+                        from{' '}
                         <a
                             href="https://www.flareit.ge"
                             rel="external nofollow noopener"
@@ -203,13 +203,13 @@ const PrivacyPolicy = () => {
                 Cookies. Persistent Cookies remain on Your personal computer or
                 mobile device when You go offline, while Session Cookies are
                 deleted as soon as You close Your web browser. You can learn
-                more about cookies on
+                more about cookies on{' '}
                 <a
                     href="https://www.termsfeed.com/blog/cookies/#What_Are_Cookies"
                     target="_blank"
                 >
                     TermsFeed website
-                </a>
+                </a>{' '}
                 article.
             </p>
             <p>
@@ -542,7 +542,7 @@ const PrivacyPolicy = () => {
             </p>
             <ul>
                 <li>
-                    By visiting this page on our website:
+                    By visiting this page on our website:{' '}
                     <a
                         href="https://www.flareit.ge"
                         rel="external nofollow noopener"
