@@ -24,7 +24,7 @@ export default function RootLayout({
                 />
                 <meta
                     name="tiktok-developers-site-verification"
-                    content="w6vVFd7ELI0XTrs0VsxSj0b9R67If51Q"
+                    content="Ysrjorsbey1UNmznVsKpdecQKz14truA"
                 />
             </head>
             <body className={inter.className}>
