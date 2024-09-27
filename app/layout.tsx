@@ -22,6 +22,10 @@ export default function RootLayout({
                     name="viewport"
                     content="width=device-width, initial-scale=1.0"
                 />
+                <meta
+                    name="tiktok-developers-site-verification"
+                    content="w6vVFd7ELI0XTrs0VsxSj0b9R67If51Q"
+                />
             </head>
             <body className={inter.className}>
                 <RecoilWrapper>{children}</RecoilWrapper>
