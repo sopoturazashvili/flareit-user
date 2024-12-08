@@ -5,7 +5,7 @@ import TopFourAlbums from '../Components/TopFourAlbums/TopFourAlbums';
 import TopFourArtist from '../Components/TopFourArtist/TopFourArtist';
 import TopFourCharts from '../Components/TopFourCharts/TopFourCharts';
 import TopFourHits from '../Components/TopFourHits/TopFourHits';
-import WeeklyHitsCard from '../Components/WeeklyHitsCard/TrendHitsCard';
+// import WeeklyHitsCard from '../Components/WeeklyHitsCard/TrendHitsCard';
 import styles from './page.module.scss';
 export default function Home() {
     return (
