@@ -11,7 +11,12 @@ export default function Home() {
     return (
         <main className={styles.main}>
             <div>
-                <WeeklyHitsCard />
+                {/* <WeeklyHitsCard /> */}
+                <video
+                    style={{ width: '100%', height: 200 }}
+                    src="/allFolders/image/russia.mov"
+                    controls
+                />
             </div>
             <div className={styles.sectionHeader}>
                 <SectionHeader title={'Popular Artists'} href={'topartists'} />
