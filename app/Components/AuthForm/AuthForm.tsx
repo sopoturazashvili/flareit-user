@@ -13,6 +13,9 @@ import {
     setCookie,
 } from '@/app/helpers/Cookies';
 import apiInstance from '@/app/ApiInstance';
+import { COMETCHAT_CONSTANTS } from '../../utils/cometChatConstants';
+import { UIKitSettingsBuilder } from '@cometchat/uikit-shared';
+import { CometChatUIKit } from '@cometchat/chat-uikit-react';
 
 const AuthForm = () => {
     const [fail, setFail] = useState<string | null>(null);
@@ -43,6 +46,7 @@ const AuthForm = () => {
             .post<Response>('/auth/login', values)
             .then((response: AxiosResponse<Response>) => {
                 const token = response.data.access_token;
+                console.log(response);
 
                 if (token) {
                     if (rememberMe) {
@@ -53,12 +57,61 @@ const AuthForm = () => {
                         localStorage.removeItem('password');
                     }
                     setCookie('token', token, rememberMe ? 30 : 0);
-                    router.push('/');
+
+                    let UIKitSettings;
+
+                    try {
+                        UIKitSettings = new UIKitSettingsBuilder()
+                            .setAppId(COMETCHAT_CONSTANTS.APP_ID)
+                            .setRegion(COMETCHAT_CONSTANTS.REGION)
+                            .setAuthKey(COMETCHAT_CONSTANTS.AUTH_KEY)
+                            .subscribePresenceForAllUsers()
+                            .build();
+
+                        if (!UIKitSettings) {
+                            throw new Error(
+                                'CometChat UIKit Settings could not be created.',
+                            );
+                        }
+
+                        console.log('UIKitSettings:', UIKitSettings);
+
+                        CometChatUIKit.init(UIKitSettings)
+                            .then(() => {
+                                console.log(
+                                    'CometChatUIKit Initialization completed successfully',
+                                );
+                                CometChatUIKit.login('cometchat-uid-1') // test user
+                                    .then((user) => {
+                                        console.log(
+                                            'User logged in to CometChat:',
+                                            user,
+                                        );
+                                        router.push('/');
+                                    })
+                                    .catch((error) => {
+                                        console.error(
+                                            'CometChat Login failed:',
+                                            error,
+                                        );
+                                    });
+                            })
+                            .catch((error: unknown) => {
+                                console.error(
+                                    'CometChatUIKit Initialization failed:',
+                                    error,
+                                );
+                            });
+                    } catch (error) {
+                        console.error(
+                            'Error during CometChat UIKit initialization:',
+                            error,
+                        );
+                    }
                 }
             })
             .catch((error: AxiosError) => {
                 console.error('Error sending data:', error);
-
                 if (error.response?.status === 401) {
                     setFail('Invalid email or password. Please try again.');
                 } else {

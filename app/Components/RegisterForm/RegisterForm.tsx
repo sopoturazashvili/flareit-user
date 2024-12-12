@@ -21,7 +21,8 @@ const RegisterForm = () => {
     const onSubmit = async (values: RegisterInputs) => {
         try {
             await apiInstance.post('/users', values);
-            window.location.href = '/auth';
+            console.log('Backend response:', Response);
+            // window.location.href = '/auth';
         } catch (error) {
             if (isAxiosError(error)) {
                 const axiosError = error as AxiosError;
