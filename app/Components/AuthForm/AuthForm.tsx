@@ -77,7 +77,7 @@ const AuthForm = () => {
                         console.log('UIKitSettings:', UIKitSettings);
 
                         CometChatUIKit.init(UIKitSettings)
-                            .then(() => {
+                            ?.then(() => {
                                 console.log(
                                     'CometChatUIKit Initialization completed successfully',
                                 );

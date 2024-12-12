@@ -22,7 +22,7 @@ const RegisterForm = () => {
         try {
             await apiInstance.post('/users', values);
             console.log('Backend response:', Response);
-            // window.location.href = '/auth';
+            window.location.href = '/auth';
         } catch (error) {
             if (isAxiosError(error)) {
                 const axiosError = error as AxiosError;
